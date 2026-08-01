@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://d025pitfucrqr"]
+
+[ext_resource type="Theme" path="res://UI/game_theme.tres" id="1_rneq6"]
+[ext_resource type="Script" path="res://Crowns/crowns_ui.gd" id="1_vq725"]
+[ext_resource type="Texture2D" uid="uid://dmlunk8wd361c" path="res://Crowns/Crowns_Icon.png" id="2_rneq6"]
+
+[node name="Crowns_UI" type="Control" node_paths=PackedStringArray("crowns_label")]
+layout_mode = 3
+anchor_right = 0.08541667
+anchor_bottom = 0.05925926
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vq725")
+crowns_label = NodePath("Crowns/Crowns_Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Crowns" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 164.0
+offset_bottom = 64.0
+theme = ExtResource("1_rneq6")
+
+[node name="TextureRect" type="TextureRect" parent="Crowns"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Crowns -
+The currency of the realm"
+texture = ExtResource("2_rneq6")
+expand_mode = 1
+
+[node name="Crowns_Label" type="Label" parent="Crowns"]
+layout_mode = 2
+text = "00000"

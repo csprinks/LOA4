@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://loa4charcard01"]
+
+[ext_resource type="Script" path="res://UI/character_card.gd" id="1_card"]
+[ext_resource type="Theme" path="res://UI/game_theme.tres" id="2_theme"]
+
+[node name="CharacterCard" type="Control"]
+custom_minimum_size = Vector2(360, 170)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("2_theme")
+script = ExtResource("1_card")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Row" type="HBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Portrait" type="TextureRect" parent="Panel/Margin/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="Panel/Margin/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="NameLabel" type="Label" parent="Panel/Margin/Row/Info"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Name"
+
+[node name="ClassLabel" type="Label" parent="Panel/Margin/Row/Info"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Class"
+
+[node name="LevelLabel" type="Label" parent="Panel/Margin/Row/Info"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Lv 1"
+
+[node name="HPRow" type="HBoxContainer" parent="Panel/Margin/Row/Info"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HPTag" type="Label" parent="Panel/Margin/Row/Info/HPRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "HP"
+
+[node name="HPBar" type="ProgressBar" parent="Panel/Margin/Row/Info/HPRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 14)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="Panel/Margin/Row/Info/HPRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100/100"
+
+[node name="APRow" type="HBoxContainer" parent="Panel/Margin/Row/Info"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="APTag" type="Label" parent="Panel/Margin/Row/Info/APRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "AP"
+
+[node name="APBar" type="ProgressBar" parent="Panel/Margin/Row/Info/APRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 14)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="APLabel" type="Label" parent="Panel/Margin/Row/Info/APRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "5/5"
+
+[node name="StatsGrid" type="GridContainer" parent="Panel/Margin/Row/Info"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 2
+columns = 3
