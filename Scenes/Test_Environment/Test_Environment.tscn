@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://loa4testenv001"]
+[gd_scene load_steps=9 format=3 uid="uid://loa4testenv001"]
 
 [ext_resource type="PackedScene" uid="uid://loa4player0001" path="res://Player/player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://Scenes/Test_Environment/party_readout.gd" id="2_readout"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -73,3 +74,6 @@ mesh = SubResource("BoxMesh_spawn")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="PartyReadout" type="CanvasLayer" parent="."]
+script = ExtResource("2_readout")
