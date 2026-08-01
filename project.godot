@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LOA4"
-run/main_scene="res://Scenes/Test_Environment/Test_Environment.tscn"
+run/main_scene="res://Scenes/Character Creation/character_creation.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,9 @@ config/icon="res://icon.svg"
 
 GameState="*res://Globals/Game_State.gd"
 FadeManager="*res://Globals/Fade_Manager.gd"
+SaveSystem="*res://Globals/Save_System.gd"
+Crowns="*res://Crowns/Crowns.gd"
+PartyManager="*res://Party_Manager.gd"
 
 [display]
 

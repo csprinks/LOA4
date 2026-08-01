@@ -1,0 +1,1070 @@
+[gd_scene format=3 uid="uid://clvv5e1p7s4lv"]
+
+[ext_resource type="Script" path="res://Scenes/Character Creation/character_creation.gd" id="1_ccctl"]
+[ext_resource type="Texture2D" uid="uid://pypceorgm3wv" path="res://Portraits/Portrait_1.png" id="2_q3a5c"]
+[ext_resource type="Script" path="res://Scenes/Character Creation/character_creation_flow.gd" id="3_ccflow"]
+
+[node name="Node2D" type="Node2D" unique_id=477099520]
+script = ExtResource("3_ccflow")
+
+[node name="Character_1" type="CanvasLayer" parent="." unique_id=757349106]
+script = ExtResource("1_ccctl")
+
+[node name="Character_1_Portrait" type="TextureRect" parent="Character_1" unique_id=1226513321]
+offset_left = 98.0
+offset_top = 189.0
+offset_right = 226.0
+offset_bottom = 317.0
+texture = ExtResource("2_q3a5c")
+
+[node name="Character_Name" type="LineEdit" parent="Character_1" unique_id=198942456]
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.008333334
+anchor_right = 0.13229166
+anchor_bottom = 0.037037037
+offset_left = 76.0
+offset_top = 319.0
+offset_right = 78.000015
+offset_bottom = 319.0
+placeholder_text = "Enter Hero Name"
+max_length = 16
+
+[node name="Class_H_Box" type="HBoxContainer" parent="Character_1" unique_id=2063126832]
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.05
+anchor_right = 0.21614583
+anchor_bottom = 0.35925925
+offset_left = 76.0
+offset_top = 319.0
+offset_right = 76.0
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Primary_Class" type="VBoxContainer" parent="Character_1/Class_H_Box" unique_id=526942513]
+layout_mode = 2
+
+[node name="Exp" type="Label" parent="Character_1/Class_H_Box/Primary_Class" unique_id=763893671]
+layout_mode = 2
+size_flags_vertical = 6
+text = "XP: 0"
+
+[node name="Primary_Class_Label" type="Label" parent="Character_1/Class_H_Box/Primary_Class" unique_id=1811573446]
+layout_mode = 2
+text = "Primary Class"
+horizontal_alignment = 1
+
+[node name="Primary_Class_List" type="ItemList" parent="Character_1/Class_H_Box/Primary_Class" unique_id=545768079]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+allow_reselect = true
+item_count = 10
+item_0/text = "Paladin"
+item_1/text = "Knight"
+item_2/text = "Barbarian"
+item_3/text = "Duelist"
+item_4/text = "Scoundrel"
+item_5/text = "Ranger"
+item_6/text = "Bard"
+item_7/text = "Sage"
+item_8/text = "Cleric"
+item_9/text = "Witch"
+
+[node name="Secondary_Class" type="VBoxContainer" parent="Character_1/Class_H_Box" unique_id=920483658]
+layout_mode = 2
+
+[node name="Deed_Points" type="Label" parent="Character_1/Class_H_Box/Secondary_Class" unique_id=601865351]
+layout_mode = 2
+text = "Deed Points(DP): 10"
+
+[node name="Secondary_Class_Label" type="Label" parent="Character_1/Class_H_Box/Secondary_Class" unique_id=1232641765]
+layout_mode = 2
+text = "Secondary Class"
+horizontal_alignment = 1
+
+[node name="Secondary_Class_List" type="ItemList" parent="Character_1/Class_H_Box/Secondary_Class" unique_id=1455885208]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+allow_reselect = true
+item_count = 10
+item_0/text = "Paladin"
+item_1/text = "Knight"
+item_2/text = "Barbarian"
+item_3/text = "Duelist"
+item_4/text = "Scoundrel"
+item_5/text = "Ranger"
+item_6/text = "Bard"
+item_7/text = "Sage"
+item_8/text = "Cleric"
+item_9/text = "Witch"
+
+[node name="Stats_HBox" type="HBoxContainer" parent="Character_1" unique_id=2119806361]
+anchors_preset = -1
+anchor_left = 0.0109375
+anchor_top = 0.375
+anchor_right = 0.2171875
+anchor_bottom = 0.5462963
+offset_left = 76.0
+offset_top = 319.0
+offset_right = 76.0
+offset_bottom = 319.0
+theme_override_constants/separation = 25
+
+[node name="Stats_Vbox" type="VBoxContainer" parent="Character_1/Stats_HBox" unique_id=416083869]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Stat" type="Label" parent="Character_1/Stats_HBox/Stats_Vbox" unique_id=1200142276]
+layout_mode = 2
+text = "Stat"
+horizontal_alignment = 1
+
+[node name="Might" type="Label" parent="Character_1/Stats_HBox/Stats_Vbox" unique_id=608326748]
+layout_mode = 2
+text = "Might"
+horizontal_alignment = 1
+
+[node name="Awareness" type="Label" parent="Character_1/Stats_HBox/Stats_Vbox" unique_id=1748512538]
+layout_mode = 2
+text = "Awareness"
+horizontal_alignment = 1
+
+[node name="Finesse" type="Label" parent="Character_1/Stats_HBox/Stats_Vbox" unique_id=631935304]
+layout_mode = 2
+text = "Finesse"
+horizontal_alignment = 1
+
+[node name="Intellect" type="Label" parent="Character_1/Stats_HBox/Stats_Vbox" unique_id=1869474860]
+layout_mode = 2
+text = "Intellect"
+horizontal_alignment = 1
+
+[node name="Charm" type="Label" parent="Character_1/Stats_HBox/Stats_Vbox" unique_id=1717219971]
+layout_mode = 2
+text = "Charm"
+horizontal_alignment = 1
+
+[node name="Fate" type="Label" parent="Character_1/Stats_HBox/Stats_Vbox" unique_id=976986772]
+layout_mode = 2
+text = "Fate"
+horizontal_alignment = 1
+
+[node name="Current_VBox" type="VBoxContainer" parent="Character_1/Stats_HBox" unique_id=127290694]
+layout_mode = 2
+
+[node name="Current_Label" type="Label" parent="Character_1/Stats_HBox/Current_VBox" unique_id=705196936]
+layout_mode = 2
+text = "Current"
+
+[node name="Might_Current" type="Label" parent="Character_1/Stats_HBox/Current_VBox" unique_id=1610608822]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_1/Stats_HBox/Current_VBox" unique_id=130364723]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_1/Stats_HBox/Current_VBox" unique_id=1153372908]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_1/Stats_HBox/Current_VBox" unique_id=210870183]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_1/Stats_HBox/Current_VBox" unique_id=2012642338]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_1/Stats_HBox/Current_VBox" unique_id=649578929]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="DP_Spent_Vbox" type="VBoxContainer" parent="Character_1/Stats_HBox" unique_id=1992339772]
+layout_mode = 2
+
+[node name="DP_Spent_Label" type="Label" parent="Character_1/Stats_HBox/DP_Spent_Vbox" unique_id=2004658038]
+layout_mode = 2
+text = "DP Spent"
+horizontal_alignment = 1
+
+[node name="Might_Current" type="Label" parent="Character_1/Stats_HBox/DP_Spent_Vbox" unique_id=631763410]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_1/Stats_HBox/DP_Spent_Vbox" unique_id=486966887]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_1/Stats_HBox/DP_Spent_Vbox" unique_id=2139808742]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_1/Stats_HBox/DP_Spent_Vbox" unique_id=713878673]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_1/Stats_HBox/DP_Spent_Vbox" unique_id=1272033937]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_1/Stats_HBox/DP_Spent_Vbox" unique_id=983172397]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Points Per Deed_Vbox" type="VBoxContainer" parent="Character_1/Stats_HBox" unique_id=1855791871]
+layout_mode = 2
+
+[node name="Current" type="Label" parent="Character_1/Stats_HBox/Points Per Deed_Vbox" unique_id=1335442122]
+layout_mode = 2
+text = "Points Per DP"
+
+[node name="Might_Current" type="Label" parent="Character_1/Stats_HBox/Points Per Deed_Vbox" unique_id=1452281813]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_1/Stats_HBox/Points Per Deed_Vbox" unique_id=349331707]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_1/Stats_HBox/Points Per Deed_Vbox" unique_id=1397762496]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_1/Stats_HBox/Points Per Deed_Vbox" unique_id=1794956464]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_1/Stats_HBox/Points Per Deed_Vbox" unique_id=560850569]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_1/Stats_HBox/Points Per Deed_Vbox" unique_id=1804311336]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Character_2" type="CanvasLayer" parent="." unique_id=368954390]
+script = ExtResource("1_ccctl")
+
+[node name="Character_2_Portrait" type="TextureRect" parent="Character_2" unique_id=575705065]
+offset_left = 528.0
+offset_top = 189.0
+offset_right = 656.0
+offset_bottom = 317.0
+texture = ExtResource("2_q3a5c")
+
+[node name="Character_Name" type="LineEdit" parent="Character_2" unique_id=283001947]
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.008333334
+anchor_right = 0.13229166
+anchor_bottom = 0.037037037
+offset_left = 506.0
+offset_top = 316.0
+offset_right = 508.0
+offset_bottom = 316.0
+placeholder_text = "Enter Hero Name"
+max_length = 16
+
+[node name="Class_H_Box" type="HBoxContainer" parent="Character_2" unique_id=1148074252]
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.05
+anchor_right = 0.21614583
+anchor_bottom = 0.35925925
+offset_left = 506.0
+offset_top = 316.0
+offset_right = 506.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Primary_Class" type="VBoxContainer" parent="Character_2/Class_H_Box" unique_id=2048393423]
+layout_mode = 2
+
+[node name="Exp" type="Label" parent="Character_2/Class_H_Box/Primary_Class" unique_id=858414388]
+layout_mode = 2
+size_flags_vertical = 6
+text = "XP: 0"
+
+[node name="Primary_Class_Label" type="Label" parent="Character_2/Class_H_Box/Primary_Class" unique_id=1883859250]
+layout_mode = 2
+text = "Primary Class"
+horizontal_alignment = 1
+
+[node name="Primary_Class_List" type="ItemList" parent="Character_2/Class_H_Box/Primary_Class" unique_id=424928705]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+allow_reselect = true
+item_count = 10
+item_0/text = "Paladin"
+item_1/text = "Knight"
+item_2/text = "Barbarian"
+item_3/text = "Duelist"
+item_4/text = "Scoundrel"
+item_5/text = "Ranger"
+item_6/text = "Bard"
+item_7/text = "Sage"
+item_8/text = "Cleric"
+item_9/text = "Witch"
+
+[node name="Secondary_Class" type="VBoxContainer" parent="Character_2/Class_H_Box" unique_id=451199673]
+layout_mode = 2
+
+[node name="Deed_Points" type="Label" parent="Character_2/Class_H_Box/Secondary_Class" unique_id=1400838114]
+layout_mode = 2
+text = "Deed Points(DP): 10"
+
+[node name="Secondary_Class_Label" type="Label" parent="Character_2/Class_H_Box/Secondary_Class" unique_id=23997717]
+layout_mode = 2
+text = "Secondary Class"
+horizontal_alignment = 1
+
+[node name="Secondary_Class_List" type="ItemList" parent="Character_2/Class_H_Box/Secondary_Class" unique_id=565055122]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+allow_reselect = true
+item_count = 10
+item_0/text = "Paladin"
+item_1/text = "Knight"
+item_2/text = "Barbarian"
+item_3/text = "Duelist"
+item_4/text = "Scoundrel"
+item_5/text = "Ranger"
+item_6/text = "Bard"
+item_7/text = "Sage"
+item_8/text = "Cleric"
+item_9/text = "Witch"
+
+[node name="Stats_HBox" type="HBoxContainer" parent="Character_2" unique_id=147838054]
+anchors_preset = -1
+anchor_left = 0.0109375
+anchor_top = 0.375
+anchor_right = 0.2171875
+anchor_bottom = 0.5462963
+offset_left = 506.0
+offset_top = 316.0
+offset_right = 506.0
+offset_bottom = 316.0
+theme_override_constants/separation = 25
+
+[node name="Stats_Vbox" type="VBoxContainer" parent="Character_2/Stats_HBox" unique_id=418337828]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Stat" type="Label" parent="Character_2/Stats_HBox/Stats_Vbox" unique_id=1893621809]
+layout_mode = 2
+text = "Stat"
+horizontal_alignment = 1
+
+[node name="Might" type="Label" parent="Character_2/Stats_HBox/Stats_Vbox" unique_id=1324273205]
+layout_mode = 2
+text = "Might"
+horizontal_alignment = 1
+
+[node name="Awareness" type="Label" parent="Character_2/Stats_HBox/Stats_Vbox" unique_id=1950879476]
+layout_mode = 2
+text = "Awareness"
+horizontal_alignment = 1
+
+[node name="Finesse" type="Label" parent="Character_2/Stats_HBox/Stats_Vbox" unique_id=1897377793]
+layout_mode = 2
+text = "Finesse"
+horizontal_alignment = 1
+
+[node name="Intellect" type="Label" parent="Character_2/Stats_HBox/Stats_Vbox" unique_id=981402054]
+layout_mode = 2
+text = "Intellect"
+horizontal_alignment = 1
+
+[node name="Charm" type="Label" parent="Character_2/Stats_HBox/Stats_Vbox" unique_id=437667487]
+layout_mode = 2
+text = "Charm"
+horizontal_alignment = 1
+
+[node name="Fate" type="Label" parent="Character_2/Stats_HBox/Stats_Vbox" unique_id=789267148]
+layout_mode = 2
+text = "Fate"
+horizontal_alignment = 1
+
+[node name="Current_VBox" type="VBoxContainer" parent="Character_2/Stats_HBox" unique_id=1616580958]
+layout_mode = 2
+
+[node name="Current_Label" type="Label" parent="Character_2/Stats_HBox/Current_VBox" unique_id=187768594]
+layout_mode = 2
+text = "Current"
+
+[node name="Might_Current" type="Label" parent="Character_2/Stats_HBox/Current_VBox" unique_id=979484214]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_2/Stats_HBox/Current_VBox" unique_id=1683211352]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_2/Stats_HBox/Current_VBox" unique_id=986580276]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_2/Stats_HBox/Current_VBox" unique_id=685955854]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_2/Stats_HBox/Current_VBox" unique_id=1348956784]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_2/Stats_HBox/Current_VBox" unique_id=1603856380]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="DP_Spent_Vbox" type="VBoxContainer" parent="Character_2/Stats_HBox" unique_id=661848796]
+layout_mode = 2
+
+[node name="DP_Spent_Label" type="Label" parent="Character_2/Stats_HBox/DP_Spent_Vbox" unique_id=140655933]
+layout_mode = 2
+text = "DP Spent"
+horizontal_alignment = 1
+
+[node name="Might_Current" type="Label" parent="Character_2/Stats_HBox/DP_Spent_Vbox" unique_id=497574294]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_2/Stats_HBox/DP_Spent_Vbox" unique_id=198388950]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_2/Stats_HBox/DP_Spent_Vbox" unique_id=520660311]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_2/Stats_HBox/DP_Spent_Vbox" unique_id=1456108465]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_2/Stats_HBox/DP_Spent_Vbox" unique_id=1779054772]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_2/Stats_HBox/DP_Spent_Vbox" unique_id=1984909618]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Points Per Deed_Vbox" type="VBoxContainer" parent="Character_2/Stats_HBox" unique_id=1850368900]
+layout_mode = 2
+
+[node name="Current" type="Label" parent="Character_2/Stats_HBox/Points Per Deed_Vbox" unique_id=909019939]
+layout_mode = 2
+text = "Points Per DP"
+
+[node name="Might_Current" type="Label" parent="Character_2/Stats_HBox/Points Per Deed_Vbox" unique_id=1291255742]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_2/Stats_HBox/Points Per Deed_Vbox" unique_id=949535916]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_2/Stats_HBox/Points Per Deed_Vbox" unique_id=2009147652]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_2/Stats_HBox/Points Per Deed_Vbox" unique_id=1163074267]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_2/Stats_HBox/Points Per Deed_Vbox" unique_id=1087708207]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_2/Stats_HBox/Points Per Deed_Vbox" unique_id=146034955]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Character_3" type="CanvasLayer" parent="." unique_id=752886682]
+script = ExtResource("1_ccctl")
+
+[node name="Character_3_Portrait" type="TextureRect" parent="Character_3" unique_id=623335630]
+offset_left = 973.0
+offset_top = 189.0
+offset_right = 1101.0
+offset_bottom = 317.0
+texture = ExtResource("2_q3a5c")
+
+[node name="Character_Name" type="LineEdit" parent="Character_3" unique_id=357271782]
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.008333334
+anchor_right = 0.13229166
+anchor_bottom = 0.037037037
+offset_left = 949.0
+offset_top = 317.0
+offset_right = 951.0
+offset_bottom = 317.0
+placeholder_text = "Enter Hero Name"
+max_length = 16
+
+[node name="Class_H_Box" type="HBoxContainer" parent="Character_3" unique_id=1469604578]
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.05
+anchor_right = 0.21614583
+anchor_bottom = 0.35925925
+offset_left = 949.0
+offset_top = 317.0
+offset_right = 949.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Primary_Class" type="VBoxContainer" parent="Character_3/Class_H_Box" unique_id=317839403]
+layout_mode = 2
+
+[node name="Exp" type="Label" parent="Character_3/Class_H_Box/Primary_Class" unique_id=335763902]
+layout_mode = 2
+size_flags_vertical = 6
+text = "XP: 0"
+
+[node name="Primary_Class_Label" type="Label" parent="Character_3/Class_H_Box/Primary_Class" unique_id=1400030927]
+layout_mode = 2
+text = "Primary Class"
+horizontal_alignment = 1
+
+[node name="Primary_Class_List" type="ItemList" parent="Character_3/Class_H_Box/Primary_Class" unique_id=1630021154]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+allow_reselect = true
+item_count = 10
+item_0/text = "Paladin"
+item_1/text = "Knight"
+item_2/text = "Barbarian"
+item_3/text = "Duelist"
+item_4/text = "Scoundrel"
+item_5/text = "Ranger"
+item_6/text = "Bard"
+item_7/text = "Sage"
+item_8/text = "Cleric"
+item_9/text = "Witch"
+
+[node name="Secondary_Class" type="VBoxContainer" parent="Character_3/Class_H_Box" unique_id=500939475]
+layout_mode = 2
+
+[node name="Deed_Points" type="Label" parent="Character_3/Class_H_Box/Secondary_Class" unique_id=1291235651]
+layout_mode = 2
+text = "Deed Points(DP): 10"
+
+[node name="Secondary_Class_Label" type="Label" parent="Character_3/Class_H_Box/Secondary_Class" unique_id=325872876]
+layout_mode = 2
+text = "Secondary Class"
+horizontal_alignment = 1
+
+[node name="Secondary_Class_List" type="ItemList" parent="Character_3/Class_H_Box/Secondary_Class" unique_id=589323787]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+allow_reselect = true
+item_count = 10
+item_0/text = "Paladin"
+item_1/text = "Knight"
+item_2/text = "Barbarian"
+item_3/text = "Duelist"
+item_4/text = "Scoundrel"
+item_5/text = "Ranger"
+item_6/text = "Bard"
+item_7/text = "Sage"
+item_8/text = "Cleric"
+item_9/text = "Witch"
+
+[node name="Stats_HBox" type="HBoxContainer" parent="Character_3" unique_id=627416725]
+anchors_preset = -1
+anchor_left = 0.0109375
+anchor_top = 0.375
+anchor_right = 0.2171875
+anchor_bottom = 0.5462963
+offset_left = 949.0
+offset_top = 317.0
+offset_right = 949.0
+offset_bottom = 317.0
+theme_override_constants/separation = 25
+
+[node name="Stats_Vbox" type="VBoxContainer" parent="Character_3/Stats_HBox" unique_id=655510040]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Stat" type="Label" parent="Character_3/Stats_HBox/Stats_Vbox" unique_id=958919284]
+layout_mode = 2
+text = "Stat"
+horizontal_alignment = 1
+
+[node name="Might" type="Label" parent="Character_3/Stats_HBox/Stats_Vbox" unique_id=2143876421]
+layout_mode = 2
+text = "Might"
+horizontal_alignment = 1
+
+[node name="Awareness" type="Label" parent="Character_3/Stats_HBox/Stats_Vbox" unique_id=1839088258]
+layout_mode = 2
+text = "Awareness"
+horizontal_alignment = 1
+
+[node name="Finesse" type="Label" parent="Character_3/Stats_HBox/Stats_Vbox" unique_id=1968448135]
+layout_mode = 2
+text = "Finesse"
+horizontal_alignment = 1
+
+[node name="Intellect" type="Label" parent="Character_3/Stats_HBox/Stats_Vbox" unique_id=1619557497]
+layout_mode = 2
+text = "Intellect"
+horizontal_alignment = 1
+
+[node name="Charm" type="Label" parent="Character_3/Stats_HBox/Stats_Vbox" unique_id=2087854244]
+layout_mode = 2
+text = "Charm"
+horizontal_alignment = 1
+
+[node name="Fate" type="Label" parent="Character_3/Stats_HBox/Stats_Vbox" unique_id=1221150561]
+layout_mode = 2
+text = "Fate"
+horizontal_alignment = 1
+
+[node name="Current_VBox" type="VBoxContainer" parent="Character_3/Stats_HBox" unique_id=981987594]
+layout_mode = 2
+
+[node name="Current_Label" type="Label" parent="Character_3/Stats_HBox/Current_VBox" unique_id=1550325972]
+layout_mode = 2
+text = "Current"
+
+[node name="Might_Current" type="Label" parent="Character_3/Stats_HBox/Current_VBox" unique_id=269867870]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_3/Stats_HBox/Current_VBox" unique_id=618009746]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_3/Stats_HBox/Current_VBox" unique_id=1171477336]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_3/Stats_HBox/Current_VBox" unique_id=1745099335]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_3/Stats_HBox/Current_VBox" unique_id=1880619466]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_3/Stats_HBox/Current_VBox" unique_id=59366440]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="DP_Spent_Vbox" type="VBoxContainer" parent="Character_3/Stats_HBox" unique_id=755570025]
+layout_mode = 2
+
+[node name="DP_Spent_Label" type="Label" parent="Character_3/Stats_HBox/DP_Spent_Vbox" unique_id=547567276]
+layout_mode = 2
+text = "DP Spent"
+horizontal_alignment = 1
+
+[node name="Might_Current" type="Label" parent="Character_3/Stats_HBox/DP_Spent_Vbox" unique_id=406796346]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_3/Stats_HBox/DP_Spent_Vbox" unique_id=960671124]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_3/Stats_HBox/DP_Spent_Vbox" unique_id=635471785]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_3/Stats_HBox/DP_Spent_Vbox" unique_id=1462066953]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_3/Stats_HBox/DP_Spent_Vbox" unique_id=1246951299]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_3/Stats_HBox/DP_Spent_Vbox" unique_id=1306161745]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Points Per Deed_Vbox" type="VBoxContainer" parent="Character_3/Stats_HBox" unique_id=930464372]
+layout_mode = 2
+
+[node name="Current" type="Label" parent="Character_3/Stats_HBox/Points Per Deed_Vbox" unique_id=1284202831]
+layout_mode = 2
+text = "Points Per DP"
+
+[node name="Might_Current" type="Label" parent="Character_3/Stats_HBox/Points Per Deed_Vbox" unique_id=642175502]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_3/Stats_HBox/Points Per Deed_Vbox" unique_id=1689196617]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_3/Stats_HBox/Points Per Deed_Vbox" unique_id=1082655698]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_3/Stats_HBox/Points Per Deed_Vbox" unique_id=96058010]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_3/Stats_HBox/Points Per Deed_Vbox" unique_id=1663007173]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_3/Stats_HBox/Points Per Deed_Vbox" unique_id=1359277291]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Character_4" type="CanvasLayer" parent="." unique_id=772162732]
+script = ExtResource("1_ccctl")
+
+[node name="Character_4_Portrait" type="TextureRect" parent="Character_4" unique_id=1132934016]
+offset_left = 1422.0
+offset_top = 189.0
+offset_right = 1550.0
+offset_bottom = 317.0
+texture = ExtResource("2_q3a5c")
+
+[node name="Character_Name" type="LineEdit" parent="Character_4" unique_id=982706399]
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.008333334
+anchor_right = 0.13229166
+anchor_bottom = 0.037037037
+offset_left = 1395.0
+offset_top = 317.0
+offset_right = 1397.0
+offset_bottom = 317.0
+placeholder_text = "Enter Hero Name"
+max_length = 16
+
+[node name="Class_H_Box" type="HBoxContainer" parent="Character_4" unique_id=837966776]
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.05
+anchor_right = 0.21614583
+anchor_bottom = 0.35925925
+offset_left = 1395.0
+offset_top = 317.0
+offset_right = 1395.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Primary_Class" type="VBoxContainer" parent="Character_4/Class_H_Box" unique_id=583191276]
+layout_mode = 2
+
+[node name="Exp" type="Label" parent="Character_4/Class_H_Box/Primary_Class" unique_id=187345698]
+layout_mode = 2
+size_flags_vertical = 6
+text = "XP: 0"
+
+[node name="Primary_Class_Label" type="Label" parent="Character_4/Class_H_Box/Primary_Class" unique_id=1463034556]
+layout_mode = 2
+text = "Primary Class"
+horizontal_alignment = 1
+
+[node name="Primary_Class_List" type="ItemList" parent="Character_4/Class_H_Box/Primary_Class" unique_id=1782644766]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+allow_reselect = true
+item_count = 10
+item_0/text = "Paladin"
+item_1/text = "Knight"
+item_2/text = "Barbarian"
+item_3/text = "Duelist"
+item_4/text = "Scoundrel"
+item_5/text = "Ranger"
+item_6/text = "Bard"
+item_7/text = "Sage"
+item_8/text = "Cleric"
+item_9/text = "Witch"
+
+[node name="Secondary_Class" type="VBoxContainer" parent="Character_4/Class_H_Box" unique_id=1358370805]
+layout_mode = 2
+
+[node name="Deed_Points" type="Label" parent="Character_4/Class_H_Box/Secondary_Class" unique_id=1366003164]
+layout_mode = 2
+text = "Deed Points(DP): 10"
+
+[node name="Secondary_Class_Label" type="Label" parent="Character_4/Class_H_Box/Secondary_Class" unique_id=1157722765]
+layout_mode = 2
+text = "Secondary Class"
+horizontal_alignment = 1
+
+[node name="Secondary_Class_List" type="ItemList" parent="Character_4/Class_H_Box/Secondary_Class" unique_id=1250961581]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+allow_reselect = true
+item_count = 10
+item_0/text = "Paladin"
+item_1/text = "Knight"
+item_2/text = "Barbarian"
+item_3/text = "Duelist"
+item_4/text = "Scoundrel"
+item_5/text = "Ranger"
+item_6/text = "Bard"
+item_7/text = "Sage"
+item_8/text = "Cleric"
+item_9/text = "Witch"
+
+[node name="Stats_HBox" type="HBoxContainer" parent="Character_4" unique_id=235774401]
+anchors_preset = -1
+anchor_left = 0.0109375
+anchor_top = 0.375
+anchor_right = 0.2171875
+anchor_bottom = 0.5462963
+offset_left = 1395.0
+offset_top = 317.0
+offset_right = 1395.0
+offset_bottom = 317.0
+theme_override_constants/separation = 25
+
+[node name="Stats_Vbox" type="VBoxContainer" parent="Character_4/Stats_HBox" unique_id=914172145]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Stat" type="Label" parent="Character_4/Stats_HBox/Stats_Vbox" unique_id=1835130514]
+layout_mode = 2
+text = "Stat"
+horizontal_alignment = 1
+
+[node name="Might" type="Label" parent="Character_4/Stats_HBox/Stats_Vbox" unique_id=731405887]
+layout_mode = 2
+text = "Might"
+horizontal_alignment = 1
+
+[node name="Awareness" type="Label" parent="Character_4/Stats_HBox/Stats_Vbox" unique_id=941670957]
+layout_mode = 2
+text = "Awareness"
+horizontal_alignment = 1
+
+[node name="Finesse" type="Label" parent="Character_4/Stats_HBox/Stats_Vbox" unique_id=865330979]
+layout_mode = 2
+text = "Finesse"
+horizontal_alignment = 1
+
+[node name="Intellect" type="Label" parent="Character_4/Stats_HBox/Stats_Vbox" unique_id=959583439]
+layout_mode = 2
+text = "Intellect"
+horizontal_alignment = 1
+
+[node name="Charm" type="Label" parent="Character_4/Stats_HBox/Stats_Vbox" unique_id=1544394014]
+layout_mode = 2
+text = "Charm"
+horizontal_alignment = 1
+
+[node name="Fate" type="Label" parent="Character_4/Stats_HBox/Stats_Vbox" unique_id=1100237648]
+layout_mode = 2
+text = "Fate"
+horizontal_alignment = 1
+
+[node name="Current_VBox" type="VBoxContainer" parent="Character_4/Stats_HBox" unique_id=1686663976]
+layout_mode = 2
+
+[node name="Current_Label" type="Label" parent="Character_4/Stats_HBox/Current_VBox" unique_id=1849927145]
+layout_mode = 2
+text = "Current"
+
+[node name="Might_Current" type="Label" parent="Character_4/Stats_HBox/Current_VBox" unique_id=729836616]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_4/Stats_HBox/Current_VBox" unique_id=1845588859]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_4/Stats_HBox/Current_VBox" unique_id=54324610]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_4/Stats_HBox/Current_VBox" unique_id=1645483971]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_4/Stats_HBox/Current_VBox" unique_id=1549068261]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_4/Stats_HBox/Current_VBox" unique_id=118290703]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="DP_Spent_Vbox" type="VBoxContainer" parent="Character_4/Stats_HBox" unique_id=897324510]
+layout_mode = 2
+
+[node name="DP_Spent_Label" type="Label" parent="Character_4/Stats_HBox/DP_Spent_Vbox" unique_id=518695512]
+layout_mode = 2
+text = "DP Spent"
+horizontal_alignment = 1
+
+[node name="Might_Current" type="Label" parent="Character_4/Stats_HBox/DP_Spent_Vbox" unique_id=1507146291]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_4/Stats_HBox/DP_Spent_Vbox" unique_id=1754258458]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_4/Stats_HBox/DP_Spent_Vbox" unique_id=1840734628]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_4/Stats_HBox/DP_Spent_Vbox" unique_id=1843384215]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_4/Stats_HBox/DP_Spent_Vbox" unique_id=1359944580]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_4/Stats_HBox/DP_Spent_Vbox" unique_id=1329502013]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Points Per Deed_Vbox" type="VBoxContainer" parent="Character_4/Stats_HBox" unique_id=16761265]
+layout_mode = 2
+
+[node name="Current" type="Label" parent="Character_4/Stats_HBox/Points Per Deed_Vbox" unique_id=1707251781]
+layout_mode = 2
+text = "Points Per DP"
+
+[node name="Might_Current" type="Label" parent="Character_4/Stats_HBox/Points Per Deed_Vbox" unique_id=441636231]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Awareness_Current" type="Label" parent="Character_4/Stats_HBox/Points Per Deed_Vbox" unique_id=1231441298]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Finesse_Current" type="Label" parent="Character_4/Stats_HBox/Points Per Deed_Vbox" unique_id=644850010]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Intellect_Current" type="Label" parent="Character_4/Stats_HBox/Points Per Deed_Vbox" unique_id=1065302063]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Charm_Current" type="Label" parent="Character_4/Stats_HBox/Points Per Deed_Vbox" unique_id=2118836522]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Fate_Current" type="Label" parent="Character_4/Stats_HBox/Points Per Deed_Vbox" unique_id=601183123]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=473345571]
+
+[node name="Start Game" type="Button" parent="CanvasLayer" unique_id=227792967]
+offset_left = 1672.0
+offset_top = 974.0
+offset_right = 1854.0
+offset_bottom = 1027.0
+theme_override_font_sizes/font_size = 32
+text = "Start Game"
+
+[node name="Main Menu" type="Button" parent="CanvasLayer" unique_id=953125481]
+offset_left = 57.0
+offset_top = 981.0
+offset_right = 395.0
+offset_bottom = 1034.0
+theme_override_font_sizes/font_size = 32
+text = "Return to Main Menu"
