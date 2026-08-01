@@ -11,9 +11,9 @@ extends Control
 @onready var _name_label: Label = %NameLabel
 @onready var _class_label: Label = %ClassLabel
 @onready var _level_label: Label = %LevelLabel
-@onready var _hp_bar: ProgressBar = %HPBar
+@onready var _hp_bar: StatBar = %HPBar
 @onready var _hp_label: Label = %HPLabel
-@onready var _ap_bar: ProgressBar = %APBar
+@onready var _ap_bar: StatBar = %APBar
 @onready var _ap_label: Label = %APLabel
 @onready var _stats_grid: GridContainer = %StatsGrid
 
@@ -61,13 +61,11 @@ func set_character(character: Character) -> void:
 		_portrait.texture = load(character.portrait)
 
 	var hp = character.hit_points
-	_hp_bar.max_value = hp.max_value
-	_hp_bar.value = hp.current
+	_hp_bar.set_ratio(float(hp.current) / hp.max_value if hp.max_value > 0 else 0.0)
 	_hp_label.text = "%d/%d" % [hp.current, hp.max_value]
 
 	var ap = character.action_points
-	_ap_bar.max_value = ap.max_value
-	_ap_bar.value = ap.current
+	_ap_bar.set_ratio(float(ap.current) / ap.max_value if ap.max_value > 0 else 0.0)
 	_ap_label.text = "%d/%d" % [ap.current, ap.max_value]
 
 	for stat_name in Character.STAT_NAMES:

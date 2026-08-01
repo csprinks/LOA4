@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://loa4charcard01"]
+[gd_scene load_steps=4 format=3 uid="uid://loa4charcard01"]
 
 [ext_resource type="Script" path="res://UI/character_card.gd" id="1_card"]
 [ext_resource type="Theme" path="res://UI/game_theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" uid="uid://loa4statbar0001" path="res://UI/stat_bar.tscn" id="3_bar"]
 
 [node name="CharacterCard" type="Control"]
-custom_minimum_size = Vector2(360, 170)
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("2_theme")
 script = ExtResource("1_card")
 
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,19 +72,19 @@ layout_mode = 2
 theme_override_constants/separation = 6
 
 [node name="HPTag" type="Label" parent="Panel/Margin/Row/Info/HPRow"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "HP"
 
-[node name="HPBar" type="ProgressBar" parent="Panel/Margin/Row/Info/HPRow"]
+[node name="HPBar" parent="Panel/Margin/Row/Info/HPRow" instance=ExtResource("3_bar")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 14)
+custom_minimum_size = Vector2(100, 12)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 1
 size_flags_vertical = 4
-max_value = 100.0
-value = 100.0
-show_percentage = false
+stripe_color = Color(0.85, 0.15, 0.15, 1)
+gap_color = Color(0.12, 0, 0, 0.35)
 
 [node name="HPLabel" type="Label" parent="Panel/Margin/Row/Info/HPRow"]
 unique_name_in_owner = true
@@ -95,19 +97,19 @@ layout_mode = 2
 theme_override_constants/separation = 6
 
 [node name="APTag" type="Label" parent="Panel/Margin/Row/Info/APRow"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "AP"
 
-[node name="APBar" type="ProgressBar" parent="Panel/Margin/Row/Info/APRow"]
+[node name="APBar" parent="Panel/Margin/Row/Info/APRow" instance=ExtResource("3_bar")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 14)
+custom_minimum_size = Vector2(100, 12)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 1
 size_flags_vertical = 4
-max_value = 5.0
-value = 5.0
-show_percentage = false
+stripe_color = Color(0.2, 0.75, 0.25, 1)
+gap_color = Color(0, 0.12, 0, 0.35)
 
 [node name="APLabel" type="Label" parent="Panel/Margin/Row/Info/APRow"]
 unique_name_in_owner = true
