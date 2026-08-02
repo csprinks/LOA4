@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://wyuldxsey41x"]
+[gd_scene format=3 uid="uid://wyuldxsey41x"]
 
 [ext_resource type="Script" path="res://Inventory/Code/Managers/InventoryManager.gd" id="1_6rl5f"]
 [ext_resource type="Script" path="res://Inventory/Code/Models/MagicSystems/attributes.gd" id="2_b7swq"]

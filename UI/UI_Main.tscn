@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://ellnsu2mwae3" path="res://UI/ui_main_control.gd" id="1_ctrl"]
 [ext_resource type="PackedScene" uid="uid://d025pitfucrqr" path="res://Crowns/crowns_ui.tscn" id="2_crowns"]
 [ext_resource type="PackedScene" uid="uid://bscbhmt4sjt8k" path="res://UI/character_card.tscn" id="3_card"]
+[ext_resource type="Script" path="res://UI/inventory_button.gd" id="4_invbtn"]
+[ext_resource type="Texture2D" uid="uid://cs8tt5wfcebpl" path="res://UI/Backpack_button.png" id="5_invicon"]
 
 [node name="UI_Main" type="CanvasLayer" unique_id=1660047181]
 
@@ -51,3 +53,20 @@ size_flags_horizontal = 3
 [node name="CharacterCard4" parent="UI_Main_Control/Cards" unique_id=1113804880 instance=ExtResource("3_card")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Inventory_Button" type="TextureButton" parent="UI_Main_Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -84.0
+offset_right = 84.0
+offset_bottom = -20.0
+grow_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("5_invicon")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_invbtn")
