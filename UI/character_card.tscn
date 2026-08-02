@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://loa4charcard01"]
+[gd_scene load_steps=5 format=3 uid="uid://loa4charcard01"]
 
 [ext_resource type="Script" path="res://UI/character_card.gd" id="1_card"]
 [ext_resource type="Theme" path="res://UI/game_theme.tres" id="2_theme"]
 [ext_resource type="PackedScene" uid="uid://loa4statbar0001" path="res://UI/stat_bar.tscn" id="3_bar"]
+[ext_resource type="PackedScene" uid="uid://01dod7fbq1lb" path="res://Inventory/scenes/ui/inventory_container.tscn" id="4_slot"]
 
 [node name="CharacterCard" type="Control"]
-custom_minimum_size = Vector2(300, 150)
+custom_minimum_size = Vector2(360, 150)
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("2_theme")
@@ -36,7 +37,11 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Portrait" type="TextureRect" parent="Panel/Margin/Row"]
+[node name="LeftCol" type="VBoxContainer" parent="Panel/Margin/Row"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="TextureRect" parent="Panel/Margin/Row/LeftCol"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
@@ -44,16 +49,58 @@ size_flags_vertical = 0
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Weapons" type="HBoxContainer" parent="Panel/Margin/Row/LeftCol"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PrimarySlot" parent="Panel/Margin/Row/LeftCol/Weapons" node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+slotRequirement = 13
+_otherWeaponSlot = NodePath("../SecondarySlot")
+
+[node name="SecondarySlot" parent="Panel/Margin/Row/LeftCol/Weapons" node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+slotRequirement = 14
+_otherWeaponSlot = NodePath("../PrimarySlot")
+
 [node name="Info" type="VBoxContainer" parent="Panel/Margin/Row"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 3
 
-[node name="NameLabel" type="Label" parent="Panel/Margin/Row/Info"]
+[node name="NameRow" type="HBoxContainer" parent="Panel/Margin/Row/Info"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NameLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Name"
+
+[node name="Corner" type="VBoxContainer" parent="Panel/Margin/Row/Info/NameRow"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="XPLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow/Corner"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "XP 0"
+horizontal_alignment = 2
+
+[node name="DPLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow/Corner"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "DP 0"
+horizontal_alignment = 2
 
 [node name="ClassLabel" type="Label" parent="Panel/Margin/Row/Info"]
 unique_name_in_owner = true

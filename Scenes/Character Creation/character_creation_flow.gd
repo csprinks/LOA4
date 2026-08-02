@@ -10,6 +10,11 @@ extends Node2D
 const NEXT_SCENE := "res://Scenes/Test_Environment/Test_Environment.tscn"
 const MENU_SCENE := "res://Scenes/Character Creation/character_creation.tscn"
 
+# Starter hand gear so new heroes have something in their equip slots. Temporary
+# until the backpack UI lets players pick their own gear.
+const STARTING_PRIMARY := "res://Inventory/Resources/Weapons/sword_1h.tres"
+const STARTING_SECONDARY := "res://Inventory/Resources/Weapons/shield.tres"
+
 
 func _ready() -> void:
 	var start_button := get_node_or_null("CanvasLayer/Start Game") as Button
@@ -64,6 +69,11 @@ func _build_party() -> void:
 		character.primary_class = panel.get_primary_class()
 		character.secondary_class = panel.get_secondary_class()
 		character.apply_stat_data(panel.get_stat_data())
+		# Deed Points the player left unspent at creation carry into the game as
+		# the character's available pool for later stat growth.
+		if panel.has_method("deeds_remaining"):
+			character.available_deed_points = panel.deeds_remaining()
+		_equip_starting_gear(character)
 
 		new_party.append(character)
 		index += 1
@@ -76,6 +86,24 @@ func _build_party() -> void:
 	party_manager.is_initialized = true
 	GameState.new_game_requested = false
 	party_manager.emit_signal("party_updated")
+
+
+# Give a new hero starter hand gear (serialized into its equipment dict) so the
+# card's equip slots show something. Temporary demo gear until the backpack UI.
+func _equip_starting_gear(character) -> void:
+	var events := get_node_or_null("/root/InventoryEvents")
+	character.set_equipment_slot("primary", _weapon_dict(STARTING_PRIMARY, events))
+	character.set_equipment_slot("secondary", _weapon_dict(STARTING_SECONDARY, events))
+
+func _weapon_dict(path: String, events: Node) -> Dictionary:
+	if not ResourceLoader.exists(path):
+		return {}
+	var weapon := InventoryWeapon.new()
+	weapon._resourceData = load(path)
+	weapon.itemName = weapon._resourceData.itemName
+	if events:
+		weapon.SetInventoryEvents(events)
+	return EquipmentSerializer.item_to_dict(weapon)
 
 
 func _go_to_scene(path: String) -> void:

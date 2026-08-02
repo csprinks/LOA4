@@ -35,6 +35,11 @@ var equipment: Dictionary = {"primary": {}, "secondary": {}}
 var primary_class: String = ""
 var secondary_class: String = ""
 
+# Deed Points available to spend on stat growth AFTER creation. Character
+# creation uses its own fixed 10-point pool; this is a separate ongoing pool
+# (0 for a freshly created hero) earned through progression later.
+var available_deed_points: int = 0
+
 var stats: Dictionary = {}
 
 func _init() -> void:
@@ -157,6 +162,7 @@ func to_dict() -> Dictionary:
 
 		"primary_class": primary_class,
 		"secondary_class": secondary_class,
+		"available_deed_points": available_deed_points,
 		"stats": _stats_to_dict()
 	}
 
@@ -195,6 +201,7 @@ func from_dict(data: Dictionary) -> void:
 
 	primary_class = data.get("primary_class", "")
 	secondary_class = data.get("secondary_class", "")
+	available_deed_points = int(data.get("available_deed_points", 0))
 
 	# Rebuild each stat from its saved {base, deeds_spent, points_per_deed}.
 	var stats_data = data.get("stats", {})
