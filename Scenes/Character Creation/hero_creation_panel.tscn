@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b243g060s4n23"]
+
+[ext_resource type="Script" path="res://Scenes/Character Creation/character_creation.gd" id="1_panel"]
+[ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="2_theme"]
+
+[node name="HeroCreationPanel" type="PanelContainer"]
+theme = ExtResource("2_theme")
+script = ExtResource("1_panel")

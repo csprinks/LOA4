@@ -118,6 +118,21 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.30196, 0.21961, 0.14902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.60339975, 0.3990504, 0.2091938, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup_hover"]
+bg_color = Color(0.47753555, 0.32320508, 0.21712852, 1)
+
 [resource]
 default_font = ExtResource("1_remvs")
 default_font_size = 36
@@ -145,13 +160,14 @@ LineEdit/colors/font_selected_color = Color(0.90588236, 0.69803923, 0.25882354, 
 LineEdit/colors/font_uneditable_color = Color(0.875, 0.875, 0.875, 0.5)
 LineEdit/colors/selection_color = Color(0.90588236, 0.69803923, 0.25882357, 0)
 Panel/styles/panel = SubResource("StyleBoxFlat_h60sh")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_h60sh")
 PopupMenu/colors/font_color = Color(1, 1, 1, 1)
 PopupMenu/colors/font_hover_color = Color(0.796078, 0.509804, 0, 1)
 PopupMenu/fonts/font = ExtResource("1_remvs")
 PopupMenu/fonts/font_separator = ExtResource("1_remvs")
 PopupMenu/fonts/title_font = ExtResource("1_remvs")
-PopupMenu/styles/hover = SubResource("StyleBoxEmpty_on4jg")
-PopupMenu/styles/panel = SubResource("StyleBoxEmpty_mpj0y")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_popup_hover")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_popup")
 PopupPanel/colors/title_color = Color(1, 1, 1, 1)
 PopupPanel/colors/title_outline_modulate = Color(1, 1, 1, 1)
 RichTextLabel/styles/background = null

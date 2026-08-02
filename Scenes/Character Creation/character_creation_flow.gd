@@ -17,22 +17,28 @@ const STARTING_SECONDARY := "res://Inventory/Resources/Weapons/shield.tres"
 
 
 func _ready() -> void:
-	var start_button := get_node_or_null("CanvasLayer/Start Game") as Button
+	var start_button := get_node_or_null("%StartButton") as Button
 	if start_button:
 		start_button.pressed.connect(_on_start_game_pressed)
 
-	var menu_button := get_node_or_null("CanvasLayer/Main Menu") as Button
+	var menu_button := get_node_or_null("%MainMenuButton") as Button
 	if menu_button:
 		menu_button.pressed.connect(_on_main_menu_pressed)
 
 
-# Each hero panel is a CanvasLayer running character_creation.gd, in tree order.
+# The hero panels run character_creation.gd; find them wherever they sit in the
+# tree (they live in an HBoxContainer under the UI layer), in tree order.
 func _character_panels() -> Array:
 	var panels := []
-	for child in get_children():
+	_collect_panels(self, panels)
+	return panels
+
+func _collect_panels(node: Node, panels: Array) -> void:
+	for child in node.get_children():
 		if child.has_method("get_stat_data"):
 			panels.append(child)
-	return panels
+		else:
+			_collect_panels(child, panels)
 
 
 func _on_start_game_pressed() -> void:
