@@ -1,0 +1,49 @@
+[gd_scene load_steps=27 format=3 uid="uid://wyuldxsey41x"]
+
+[ext_resource type="Script" path="res://Inventory/Code/Managers/InventoryManager.gd" id="1_6rl5f"]
+[ext_resource type="Script" path="res://Inventory/Code/Models/MagicSystems/attributes.gd" id="2_b7swq"]
+[ext_resource type="PackedScene" uid="uid://hdxuy81wguj3" path="res://Inventory/scenes/ui/loa_inventory.tscn" id="2_c1w6a"]
+[ext_resource type="PackedScene" uid="uid://cxl47xrwv584s" path="res://Inventory/scenes/ui/inspector.tscn" id="3_dkn26"]
+[ext_resource type="Texture2D" uid="uid://dgsfdykbvhtdo" path="res://Inventory/Images/AIIcons/blank_icon.png" id="4_iayec"]
+[ext_resource type="Script" path="res://Inventory/Code/Data/inventory_resource.gd" id="6_c3bhm"]
+[ext_resource type="Resource" uid="uid://bs3i1l6m0jwx1" path="res://Inventory/Resources/Weapons/axe.tres" id="7_suon3"]
+[ext_resource type="Resource" uid="uid://3aihnakmv0xu" path="res://Inventory/Resources/Weapons/hammer.tres" id="8_w3nor"]
+[ext_resource type="Resource" uid="uid://du538h7usp274" path="res://Inventory/Resources/Weapons/mace.tres" id="9_yswkn"]
+[ext_resource type="Resource" uid="uid://c1apfrtdnnovs" path="res://Inventory/Resources/Weapons/shield.tres" id="10_e1oxy"]
+[ext_resource type="Resource" uid="uid://c5nhrj0s54yn0" path="res://Inventory/Resources/Weapons/sword_1h.tres" id="11_ixren"]
+[ext_resource type="Resource" uid="uid://5rpjjxl7x8ji" path="res://Inventory/Resources/Weapons/sword_2h.tres" id="12_ibk70"]
+[ext_resource type="Resource" uid="uid://b07lta2pj3w5q" path="res://Inventory/Resources/Potions/action_points.tres" id="13_mng7q"]
+[ext_resource type="Resource" uid="uid://c6ejotwjmyjje" path="res://Inventory/Resources/Potions/energy.tres" id="14_v3jfr"]
+[ext_resource type="Resource" uid="uid://bcwg4tnqx8jfk" path="res://Inventory/Resources/Potions/healing.tres" id="15_ieo3h"]
+[ext_resource type="Resource" uid="uid://dubjey4x56ln3" path="res://Inventory/Resources/Potions/mana.tres" id="16_j6j3j"]
+[ext_resource type="Resource" uid="uid://b8u5nnm60otu1" path="res://Inventory/Resources/Chest/chest1.tres" id="17_kcb11"]
+[ext_resource type="Resource" uid="uid://ddkdvjslrpjge" path="res://Inventory/Resources/Chest/chest2.tres" id="18_noedl"]
+[ext_resource type="Resource" uid="uid://bm31e8lropoua" path="res://Inventory/Resources/Chest/chest3.tres" id="19_td1d4"]
+[ext_resource type="Resource" uid="uid://c8r8wsbcrhbbg" path="res://Inventory/Resources/Feet/feet1.tres" id="20_umj7e"]
+[ext_resource type="Resource" uid="uid://cgrmss1bqbdht" path="res://Inventory/Resources/Feet/feet2.tres" id="21_m70d0"]
+[ext_resource type="Resource" uid="uid://c6tislqgmpojl" path="res://Inventory/Resources/Feet/feet3.tres" id="22_428ga"]
+[ext_resource type="Resource" uid="uid://bfs80fuanp4d8" path="res://Inventory/Resources/Helmets/helm1.tres" id="23_l8w41"]
+[ext_resource type="Resource" uid="uid://cebp4fanv34yc" path="res://Inventory/Resources/Helmets/helm2.tres" id="24_cjamq"]
+[ext_resource type="Resource" uid="uid://cfxh5d7nc5oie" path="res://Inventory/Resources/Helmets/helm3.tres" id="25_jr64v"]
+[ext_resource type="PackedScene" uid="uid://sa6mtqpyuhgv" path="res://Inventory/Code/DragAndDrop/drag_inventory.tscn" id="26_suon3"]
+
+[node name="inventory_manager" type="Node" node_paths=PackedStringArray("inventoryResource", "attributes")]
+script = ExtResource("1_6rl5f")
+inventoryPrefab = ExtResource("2_c1w6a")
+inspectorPanel = ExtResource("3_dkn26")
+inventoryResource = NodePath("inventory_resource")
+attributes = NodePath("attributes")
+blankSprite = ExtResource("4_iayec")
+
+[node name="attributes" type="Node" parent="."]
+script = ExtResource("2_b7swq")
+attribute_1_max = 3
+attribute_2_max = 3
+attribute_3_max = 3
+MAX_NUM_ATTRIBUTES = 3
+
+[node name="inventory_resource" type="Node" parent="."]
+script = ExtResource("6_c3bhm")
+inventoryData = Array[Resource]([ExtResource("7_suon3"), ExtResource("8_w3nor"), ExtResource("9_yswkn"), ExtResource("10_e1oxy"), ExtResource("11_ixren"), ExtResource("12_ibk70"), ExtResource("13_mng7q"), ExtResource("14_v3jfr"), ExtResource("15_ieo3h"), ExtResource("16_j6j3j"), ExtResource("17_kcb11"), ExtResource("18_noedl"), ExtResource("19_td1d4"), ExtResource("20_umj7e"), ExtResource("21_m70d0"), ExtResource("22_428ga"), ExtResource("23_l8w41"), ExtResource("24_cjamq"), ExtResource("25_jr64v")])
+
+[node name="DragInventory" parent="." instance=ExtResource("26_suon3")]

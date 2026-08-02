@@ -1,0 +1,652 @@
+[gd_scene load_steps=3 format=3 uid="uid://hdxuy81wguj3"]
+
+[ext_resource type="Script" path="res://Inventory/scenes/Examples/InventoryExample.gd" id="1_fxkr8"]
+[ext_resource type="PackedScene" uid="uid://01dod7fbq1lb" path="res://Inventory/scenes/ui/inventory_container.tscn" id="2_7dfi7"]
+
+[node name="InventoryExample" type="CanvasLayer" node_paths=PackedStringArray("inventoryPanel", "inventoryGridContainer")]
+layer = 10
+script = ExtResource("1_fxkr8")
+inventoryPanel = NodePath("Panel")
+inventoryGridContainer = NodePath("Panel/VBoxContainer/GridContainer")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -481.0
+offset_top = 140.0
+offset_right = 276.0
+offset_bottom = 922.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -145.0
+offset_right = 134.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "INVENTORY"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+columns = 10
+
+[node name="inventory_container" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container2" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container3" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container4" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container5" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container6" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container7" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container8" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container9" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container10" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container11" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container12" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container13" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container14" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container15" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container16" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container17" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container18" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container19" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container20" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container21" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container22" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container23" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container24" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container25" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container26" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container27" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container28" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container29" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container30" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container31" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container32" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container33" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container34" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container35" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container36" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container37" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container38" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container39" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container40" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container41" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container42" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container43" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container44" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container45" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container46" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container47" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container48" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container49" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container50" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container51" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container52" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container53" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container54" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container55" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container56" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container57" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container58" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container59" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container60" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container61" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container62" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container63" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container64" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container65" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container66" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container67" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container68" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container69" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container70" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container71" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container72" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container73" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container74" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container75" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container76" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container77" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container78" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container79" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container80" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container81" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container82" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container83" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container84" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container85" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container86" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container87" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container88" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container89" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container90" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container91" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container92" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container93" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container94" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container95" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container96" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container97" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container98" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container99" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="inventory_container100" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 853.83
+offset_top = 100.0
+offset_right = 384.8302
+offset_bottom = -539.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="inventory_container2" parent="Panel/Panel2/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 2
+
+[node name="inventory_container3" parent="Panel/Panel2/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 4
+
+[node name="inventory_container4" parent="Panel/Panel2/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 8
+
+[node name="inventory_container5" parent="Panel/Panel2/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 9
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="inventory_container2" parent="Panel/Panel2/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 6
+
+[node name="inventory_container3" parent="Panel/Panel2/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 5
+
+[node name="inventory_container4" parent="Panel/Panel2/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 8
+
+[node name="inventory_container5" parent="Panel/Panel2/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 9
+
+[node name="Panel3" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 853.83
+offset_top = 290.0
+offset_right = 384.8302
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel3/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="inventory_container2" parent="Panel/Panel3/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 2
+
+[node name="inventory_container3" parent="Panel/Panel3/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 4
+
+[node name="inventory_container4" parent="Panel/Panel3/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 8
+
+[node name="inventory_container5" parent="Panel/Panel3/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 9
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="inventory_container2" parent="Panel/Panel3/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 6
+
+[node name="inventory_container3" parent="Panel/Panel3/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 5
+
+[node name="inventory_container4" parent="Panel/Panel3/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 8
+
+[node name="inventory_container5" parent="Panel/Panel3/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 9
+
+[node name="Panel4" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 853.83
+offset_top = 470.0
+offset_right = 385.8302
+offset_bottom = -168.99988
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel4/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel4/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="inventory_container2" parent="Panel/Panel4/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 2
+
+[node name="inventory_container3" parent="Panel/Panel4/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 4
+
+[node name="inventory_container4" parent="Panel/Panel4/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 8
+
+[node name="inventory_container5" parent="Panel/Panel4/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 9
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Panel4/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="inventory_container2" parent="Panel/Panel4/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 6
+
+[node name="inventory_container3" parent="Panel/Panel4/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 5
+
+[node name="inventory_container4" parent="Panel/Panel4/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 8
+
+[node name="inventory_container5" parent="Panel/Panel4/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 9
+
+[node name="Panel5" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 853.83
+offset_top = 660.0
+offset_right = 384.8302
+offset_bottom = 20.999878
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel5/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel5/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="inventory_container2" parent="Panel/Panel5/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 2
+
+[node name="inventory_container3" parent="Panel/Panel5/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 4
+
+[node name="inventory_container4" parent="Panel/Panel5/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 8
+
+[node name="inventory_container5" parent="Panel/Panel5/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 9
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Panel5/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="inventory_container2" parent="Panel/Panel5/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 6
+
+[node name="inventory_container3" parent="Panel/Panel5/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 5
+
+[node name="inventory_container4" parent="Panel/Panel5/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 8
+
+[node name="inventory_container5" parent="Panel/Panel5/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_7dfi7")]
+layout_mode = 2
+_can_NOT_drag_Color = Color(1, 0, 0, 0.6745098)
+slotRequirement = 9

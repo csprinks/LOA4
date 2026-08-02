@@ -24,6 +24,7 @@ Crowns="*res://Crowns/Crowns.gd"
 PartyManager="*res://Party_Manager.gd"
 RandomNumberManager="*res://Globals/random_number_manager.gd"
 InventoryEvents="*res://Globals/inventory_events.gd"
+InventoryManager="*res://Globals/inventory_manager.tscn"
 
 [display]
 
