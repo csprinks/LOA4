@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://bh4fy1hr0hgkw"]
+
+[ext_resource type="Script" uid="uid://0pw2k1eoowv0" path="res://Doors/Door_Metal_Grate/door_grate.gd" id="1_3gl2d"]
+[ext_resource type="PackedScene" uid="uid://bil75b3tyjex4" path="res://Doors/Door_Metal_Grate/Door_Grate.glb" id="1_233pl"]
+[ext_resource type="AudioStream" uid="uid://by60kpixvandh" path="res://Audio/Sound_Effects/Sound_Door_Open.mp3" id="2_3gl2d"]
+[ext_resource type="AudioStream" uid="uid://dwsqf2es2eunl" path="res://Doors/Door_Metal_Grate/Door_Grate.mp3" id="2_wfsva"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_finic"]
+size = Vector3(2, 2, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e4u1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_juf1x"]
+material = SubResource("StandardMaterial3D_6e4u1")
+size = Vector3(0.05, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mfyob"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="Animation" id="Animation_fomfy"]
+resource_name = "Door_Grate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Door_Grate2:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.782619, 0), Vector3(0, 1.3802, 0), Vector3(0, 1.8704, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f2dcw"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Door_Grate2:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.8704, 0), Vector3(0, 1.3802, 0), Vector3(0, 0.782619, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2h2tc"]
+_data = {
+&"Open": SubResource("Animation_fomfy"),
+&"RESET": SubResource("Animation_f2dcw")
+}
+
+[node name="Door_Grate" type="Node3D"]
+script = ExtResource("1_3gl2d")
+open_sound = ExtResource("2_3gl2d")
+close_sound = ExtResource("2_3gl2d")
+
+[node name="Door_Grate2" parent="." instance=ExtResource("1_233pl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8704, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_Grate2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Grate2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000499994)
+shape = SubResource("BoxShape3D_finic")
+
+[node name="Border" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Border"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("BoxMesh_juf1x")
+skeleton = NodePath("../../Door_Grate")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Border"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_juf1x")
+skeleton = NodePath("../../Door_Grate")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Border"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_juf1x")
+skeleton = NodePath("../../Door_Grate")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Border"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_juf1x")
+skeleton = NodePath("../../Door_Grate")
+
+[node name="Door_Grate" type="Area3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Grate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0526123)
+visible = false
+shape = SubResource("BoxShape3D_mfyob")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Door_Grate")
+libraries = {
+&"": SubResource("AnimationLibrary_2h2tc")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wfsva")
+
+[node name="Timer" type="Timer" parent="."]

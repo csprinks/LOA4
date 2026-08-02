@@ -14,6 +14,7 @@ signal player_moved(direction)
 # System components
 var movement_system: PlayerMovement
 var free_look_system: PlayerFreeLook
+var interaction_system: PlayerInteraction
 
 #region Initialization
 func _ready():
@@ -46,9 +47,14 @@ func setup_systems():
 	free_look_system = PlayerFreeLook.new(camera_controller, movement_system)
 	add_child(free_look_system)
 
+	interaction_system = PlayerInteraction.new(self, player_camera)
+	add_child(interaction_system)
+
 func connect_signals():
 	movement_system.movement_started.connect(_on_movement_started)
 	movement_system.movement_blocked.connect(_on_movement_blocked)
+	interaction_system.interaction_completed.connect(_on_interaction_completed)
+	interaction_system.interaction_failed.connect(_on_interaction_failed)
 #endregion
 
 #region Input Handling
@@ -62,11 +68,16 @@ func _input(event):
 	if free_look_system and free_look_system.handle_input(event):
 		return
 
+	# Left-click world interaction (keyboard interact runs off RC_Detection_Facing).
+	if interaction_system:
+		interaction_system.handle_mouse_click(event)
+
 func _physics_process(_delta: float) -> void:
 	movement_system.check_ground()
 	# Turning is a grid action; suppress it while the player is glancing around.
 	if not (free_look_system and free_look_system.is_active):
 		movement_system.handle_turn_input()
+	interaction_system.update_interaction_ray()
 #endregion
 
 #region System Event Handlers
@@ -75,12 +86,20 @@ func _on_movement_started(direction: Vector3):
 
 func _on_movement_blocked(_direction: Vector3, message: String):
 	display_text(message)
+
+func _on_interaction_completed(_target: Node, _interaction_type: String):
+	pass # Available for future use
+
+func _on_interaction_failed(reason: String):
+	display_text(reason)
 #endregion
 
 #region Feedback
-# Placeholder until GameTextBox is ported; then this routes to the on-screen box.
 func display_text(text_content: String):
-	print("Player: ", text_content)
+	GameTextBox.display_text(text_content)
+
+func display_temporary_text(text_content: String, duration: float = 3.0):
+	GameTextBox.display_temporary_text(text_content, duration)
 #endregion
 
 #region Public API

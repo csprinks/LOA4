@@ -1,6 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://loa4testenv001"]
+[gd_scene load_steps=13 format=3 uid="uid://loa4testenv001"]
 
 [ext_resource type="PackedScene" uid="uid://loa4player0001" path="res://Player/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://doce5nb77f6j7" path="res://Lever/Lever.tscn" id="2_lever"]
+[ext_resource type="PackedScene" uid="uid://bh4fy1hr0hgkw" path="res://Doors/Door_Metal_Grate/Door_Grate.tscn" id="3_grate"]
+[ext_resource type="PackedScene" uid="uid://dle7s6oxievj3" path="res://Wall_Locks/wall_lock_basic.tscn" id="4_lock"]
+[ext_resource type="PackedScene" uid="uid://c42yf7cyjovai" path="res://Doors/Door_Stone/door_stone.tscn" id="5_stone"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,6 +28,9 @@ albedo_color = Color(0.55, 0.5, 0.45, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_spawn"]
 size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_doorclick"]
+size = Vector3(1.4, 2.4, 0.4)
 
 [node name="Test_Environment" type="Node3D"]
 
@@ -73,3 +80,29 @@ mesh = SubResource("BoxMesh_spawn")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="DoorGrate_Lever" parent="." instance=ExtResource("3_grate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Lever" parent="." instance=ExtResource("2_lever") node_paths=PackedStringArray("connected_doors")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
+connected_doors = [NodePath("../DoorGrate_Lever")]
+
+[node name="DoorGrate_Lock" parent="." instance=ExtResource("3_grate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="WallLock" parent="." instance=ExtResource("4_lock") node_paths=PackedStringArray("target_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.2, -2)
+target_door = NodePath("../DoorGrate_Lock")
+
+[node name="SceneDoor" parent="." instance=ExtResource("5_stone") groups=["interactable"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 5.6)
+target_scene_path = "res://Scenes/Test_Environment/Test_Environment.tscn"
+
+[node name="ClickBody" type="StaticBody3D" parent="SceneDoor"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="ClickShape" type="CollisionShape3D" parent="SceneDoor/ClickBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_doorclick")

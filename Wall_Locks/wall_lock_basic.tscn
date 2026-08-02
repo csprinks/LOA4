@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://dle7s6oxievj3"]
+
+[ext_resource type="Script" uid="uid://bxxf4cbuioo6m" path="res://Wall_Locks/wall_lock_basic.gd" id="1_fnkws"]
+[ext_resource type="PackedScene" uid="uid://dgk2a757ckxtm" path="res://Wall_Locks/Wall_Lock_Basic.glb" id="1_isjlr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isjlr"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fnkws"]
+material = SubResource("StandardMaterial3D_isjlr")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fnkws"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a4kvx"]
+material = SubResource("StandardMaterial3D_fnkws")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_isjlr"]
+size = Vector3(0.075, 0.425, 0.25)
+
+[node name="Wall_Lock_Basic" type="StaticBody3D" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("1_fnkws")
+
+[node name="Wall_Lock_Basic" parent="." instance=ExtResource("1_isjlr")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0.02018994, 0, -1, -8.825303e-10, 0, 0, 0, 1, 0.013254449, 0.06615284, 0)
+mesh = SubResource("CylinderMesh_fnkws")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.2948476e-09, 0.99999994, 0, -0.052500002, -4.371139e-08, 0, 0, 0, 0.009999992, 0.013718937, 0.0008646697, 0)
+mesh = SubResource("PlaneMesh_a4kvx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06958144, 0, 0)
+shape = SubResource("BoxShape3D_isjlr")
