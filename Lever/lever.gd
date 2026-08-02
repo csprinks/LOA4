@@ -8,14 +8,14 @@ enum LeverState {
 
 # Configuration variables
 @export var start_position: LeverState = LeverState.DOWN
+@export var connected_platforms: Array[MovingBlockPlatform] = []
 @export var connected_doors: Array[DoorGrate] = []  # Doors this lever opens/closes
 @export var puzzle_id: String = ""
 @export var single_use: bool = false
 @export var sound_effect: AudioStream
 @export var interaction_distance: float = 3.0
+@export var reverse_platform_movement: bool = false  # Reverses platform movement sequence
 @export var cooldown_time: float = 1.0  # Cooldown between interactions
-# NOTE (5C): connected_platforms + reverse_platform_movement and the
-# _activate_platforms() path were dropped here until MovingBlockPlatform lands.
 
 # Internal state
 var current_state: LeverState
@@ -23,6 +23,7 @@ var _player_ref: Node3D = null
 var _audio_player: AudioStreamPlayer3D
 var _used: bool = false
 var is_opened: bool = false  # For interaction system compatibility
+var is_reversed: bool = false  # Track if platforms are currently reversed
 var can_interact: bool = true  # Cooldown flag
 var cooldown_timer: Timer  # Cooldown timer
 
@@ -109,6 +110,13 @@ func _execute_interaction():
 	if _audio_player:
 		_audio_player.play()
 
+	# Toggle reverse state if this lever reverses platforms
+	if reverse_platform_movement:
+		is_reversed = !is_reversed
+
+	# Activate connected platforms
+	_activate_platforms()
+
 	# Activate connected doors
 	_activate_doors()
 
@@ -132,6 +140,18 @@ func _activate_doors():
 # Cooldown timeout handler
 func _on_cooldown_timeout():
 	can_interact = true
+
+func _activate_platforms():
+	# Activate all connected platforms
+	for platform in connected_platforms:
+		if platform and is_instance_valid(platform):
+			if platform.activation_type == MovingBlockPlatform.ActivationType.LEVER_TOGGLE:
+				# Set platform reverse sequence if this lever controls that
+				if reverse_platform_movement:
+					platform.set_reverse_sequence(is_reversed)
+				platform.activate()
+			elif platform.activation_type == MovingBlockPlatform.ActivationType.LEVER_PUZZLE:
+				platform._on_lever_toggled()
 
 # Get current lever state (useful for puzzle systems)
 func get_state() -> LeverState:
@@ -162,6 +182,7 @@ func reset():
 	current_state = start_position
 	_used = false
 	is_opened = false
+	is_reversed = false
 	can_interact = true
 	
 	# Stop and reset cooldown timer

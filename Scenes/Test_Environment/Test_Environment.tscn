@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://loa4testenv001"]
+[gd_scene load_steps=16 format=3 uid="uid://loa4testenv001"]
 
 [ext_resource type="PackedScene" uid="uid://loa4player0001" path="res://Player/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://doce5nb77f6j7" path="res://Lever/Lever.tscn" id="2_lever"]
 [ext_resource type="PackedScene" uid="uid://bh4fy1hr0hgkw" path="res://Doors/Door_Metal_Grate/Door_Grate.tscn" id="3_grate"]
 [ext_resource type="PackedScene" uid="uid://dle7s6oxievj3" path="res://Wall_Locks/wall_lock_basic.tscn" id="4_lock"]
 [ext_resource type="PackedScene" uid="uid://c42yf7cyjovai" path="res://Doors/Door_Stone/door_stone.tscn" id="5_stone"]
+[ext_resource type="PackedScene" uid="uid://bbaqsup2uabw2" path="res://Moving_Platform/moving_platform.tscn" id="6_platform"]
+[ext_resource type="PackedScene" uid="uid://cusjibj5wq67n" path="res://Pressure Plate/pressure_plate.tscn" id="7_plate"]
+[ext_resource type="Script" uid="uid://bsfa6l0xnbnan" path="res://Moving_Platform/Puzzle_Activator.gd" id="8_puzzle"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -44,31 +47,31 @@ shadow_enabled = true
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 use_collision = true
-size = Vector3(12, 0.4, 12)
+size = Vector3(24, 0.4, 24)
 material = SubResource("StandardMaterial3D_floor")
 
 [node name="Wall_North" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -12)
 use_collision = true
-size = Vector3(12, 3, 0.4)
+size = Vector3(24, 3, 0.4)
 material = SubResource("StandardMaterial3D_wall")
 
 [node name="Wall_South" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 12)
 use_collision = true
-size = Vector3(12, 3, 0.4)
+size = Vector3(24, 3, 0.4)
 material = SubResource("StandardMaterial3D_wall")
 
 [node name="Wall_East" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.5, 0)
 use_collision = true
-size = Vector3(0.4, 3, 12)
+size = Vector3(0.4, 3, 24)
 material = SubResource("StandardMaterial3D_wall")
 
 [node name="Wall_West" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.5, 0)
 use_collision = true
-size = Vector3(0.4, 3, 12)
+size = Vector3(0.4, 3, 24)
 material = SubResource("StandardMaterial3D_wall")
 
 [node name="PlayerSpawn" type="Marker3D" parent="."]
@@ -82,21 +85,21 @@ mesh = SubResource("BoxMesh_spawn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="DoorGrate_Lever" parent="." instance=ExtResource("3_grate")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
 
 [node name="Lever" parent="." instance=ExtResource("2_lever") node_paths=PackedStringArray("connected_doors")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -2)
 connected_doors = [NodePath("../DoorGrate_Lever")]
 
 [node name="DoorGrate_Lock" parent="." instance=ExtResource("3_grate")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
 
 [node name="WallLock" parent="." instance=ExtResource("4_lock") node_paths=PackedStringArray("target_door")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.2, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.2, -2)
 target_door = NodePath("../DoorGrate_Lock")
 
 [node name="SceneDoor" parent="." instance=ExtResource("5_stone") groups=["interactable"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 5.6)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 11.6)
 target_scene_path = "res://Scenes/Test_Environment/Test_Environment.tscn"
 
 [node name="ClickBody" type="StaticBody3D" parent="SceneDoor"]
@@ -106,3 +109,39 @@ collision_mask = 0
 [node name="ClickShape" type="CollisionShape3D" parent="SceneDoor/ClickBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("BoxShape3D_doorclick")
+
+[node name="Platform_Toggle" parent="." instance=ExtResource("6_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 5)
+movement_sequence = Array[int]([3, 6, 2, 6])
+activation_type = 1
+
+[node name="Lever_Platform" parent="." instance=ExtResource("2_lever") node_paths=PackedStringArray("connected_platforms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 2)
+connected_platforms = [NodePath("../Platform_Toggle")]
+
+[node name="Pressure_Plate" parent="." instance=ExtResource("7_plate") node_paths=PackedStringArray("connected_platforms")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 8, 0, 2)
+connected_platforms = [NodePath("../Platform_Pressure")]
+
+[node name="Platform_Pressure" parent="." instance=ExtResource("6_platform") node_paths=PackedStringArray("pressure_plate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 4)
+movement_sequence = Array[int]([3])
+loop_movement = false
+activation_type = 3
+pressure_plate = NodePath("../Pressure_Plate")
+
+[node name="PuzzleGrate" parent="." instance=ExtResource("3_grate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Lever_Puzzle_A" parent="." instance=ExtResource("2_lever")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 6)
+
+[node name="Lever_Puzzle_B" parent="." instance=ExtResource("2_lever")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 6)
+
+[node name="PuzzleActivator" type="Node3D" parent="." node_paths=PackedStringArray("levers", "doors_to_open")]
+script = ExtResource("8_puzzle")
+puzzle_id = "demo_puzzle"
+levers = [NodePath("../Lever_Puzzle_A"), NodePath("../Lever_Puzzle_B")]
+required_states = Array[int]([0, 0])
+doors_to_open = [NodePath("../PuzzleGrate")]

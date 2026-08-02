@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbaqsup2uabw2"]
+
+[ext_resource type="PackedScene" uid="uid://cuupb414fr76o" path="res://Moving_Platform/Metal_Relief_Block/Metal_Relief_Block.glb" id="1_dumv1"]
+[ext_resource type="Script" uid="uid://b1lgfsvkd4jm6" path="res://Moving_Platform/moving_platform.gd" id="1_mh1tw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ahu70"]
+size = Vector3(2, 2, 2)
+
+[node name="Moving_Platform" type="CharacterBody3D"]
+script = ExtResource("1_mh1tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ahu70")
+
+[node name="Moving_Platform" type="Node3D" parent="."]
+
+[node name="Metal_Relief_Block" parent="Moving_Platform" instance=ExtResource("1_dumv1")]
