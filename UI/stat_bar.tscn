@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dbyfrf2n2dewl" path="res://UI/shaders/animated_stripes.gdshader" id="2_shader"]
 
 [sub_resource type="Gradient" id="Gradient_stripe"]
-offsets = PackedFloat32Array(0, 0.5, 1)
+offsets = PackedFloat32Array(0, 0.019784173, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_stripe"]
@@ -15,16 +15,20 @@ shader = ExtResource("2_shader")
 shader_parameter/color_gap = Color(0.61960787, 0.10980392, 0.5176471, 1)
 shader_parameter/color_stripe = Color(0.85, 0.15, 0.15, 1)
 shader_parameter/stripe_gradient = SubResource("GradientTexture1D_stripe")
-shader_parameter/divisions = 0.815
-shader_parameter/speed = 0.195
-shader_parameter/angle = 0.0
+shader_parameter/divisions = 1.375
+shader_parameter/speed = 0.2
+shader_parameter/angle = 0.075
 shader_parameter/stripe_width = 1.0
 
 [node name="StatBar" type="Control" unique_id=290141613]
 custom_minimum_size = Vector2(100, 12)
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.052083332
+anchor_bottom = 0.011111111
+offset_right = -100.0
+offset_bottom = -12.0
 script = ExtResource("1_bar")
+metadata/_edit_use_anchors_ = true
 
 [node name="BG" type="ColorRect" parent="." unique_id=1248837113]
 layout_mode = 1
@@ -42,4 +46,5 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
