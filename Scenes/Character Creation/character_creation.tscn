@@ -7,6 +7,17 @@
 [node name="Node2D" type="Node2D" unique_id=477099520]
 script = ExtResource("3_ccflow")
 
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47753555, 0.32320508, 0.21712852, 1)
+
 [node name="Character_1" type="CanvasLayer" parent="." unique_id=757349106]
 script = ExtResource("1_ccctl")
 
