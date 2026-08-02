@@ -19,16 +19,24 @@ extends Control
 @onready var _ap_bar: StatBar = %APBar
 @onready var _ap_label: Label = %APLabel
 @onready var _stats_grid: GridContainer = %StatsGrid
-@onready var _primary_slot: InventoryContainer = %PrimarySlot
-@onready var _secondary_slot: InventoryContainer = %SecondarySlot
+@onready var _armor_panel: Panel = %ArmorPanel
 
 const STAT_ABBREV := {
 	"Might": "MIG", "Awareness": "AWR", "Finesse": "FIN",
 	"Intellect": "INT", "Charm": "CHM", "Fate": "FAT",
 }
 
+# Equipment slot key -> the unique node name of its InventoryContainer in the
+# card scene. Weapons live on the card; the armor slots live in the ArmorPanel.
+const EQUIP_SLOT_NAMES := {
+	"primary": "PrimarySlot", "secondary": "SecondarySlot",
+	"head": "HeadSlot", "chest": "ChestSlot", "hands": "HandsSlot",
+	"feet": "FeetSlot", "neck": "NeckSlot", "ring": "RingSlot",
+}
+
 var _character: Character = null
 var _stat_value_labels: Dictionary = {}   # stat name -> Label
+var _slots: Dictionary = {}               # slot key -> InventoryContainer
 var _inventory_events: Node = null
 # True while we push saved equipment into the slots, so the resulting
 # slot_changed signals don't immediately write the same data straight back.
@@ -42,10 +50,20 @@ func _ready() -> void:
 
 func _setup_equipment_slots() -> void:
 	_inventory_events = get_node_or_null("/root/InventoryEvents")
-	if _primary_slot:
-		_primary_slot.slot_changed.connect(_on_slot_changed.bind("primary", _primary_slot))
-	if _secondary_slot:
-		_secondary_slot.slot_changed.connect(_on_slot_changed.bind("secondary", _secondary_slot))
+
+	for key in EQUIP_SLOT_NAMES:
+		var slot = get_node_or_null("%" + EQUIP_SLOT_NAMES[key])
+		if slot:
+			_slots[key] = slot
+			slot.slot_changed.connect(_on_slot_changed.bind(key, slot))
+
+	# The armor paperdoll shows/hides in sync with the backpack.
+	if _inventory_events and _inventory_events.has_signal("ShowInventory"):
+		_inventory_events.ShowInventory.connect(_on_toggle_inventory)
+
+func _on_toggle_inventory() -> void:
+	if _armor_panel:
+		_armor_panel.visible = not _armor_panel.visible
 
 # Build one "ABBR value" label per stat once, so set_character only updates text.
 func _build_stat_labels() -> void:
@@ -94,14 +112,14 @@ func set_character(character: Character) -> void:
 
 	_restore_equipment()
 
-# Push the character's saved equipment into the two hand slots.
+# Push the character's saved equipment into every equip slot (hands + armor).
 func _restore_equipment() -> void:
 	if not _character:
 		return
 
 	_restoring = true
-	_apply_slot(_primary_slot, _character.get_equipment_slot("primary"))
-	_apply_slot(_secondary_slot, _character.get_equipment_slot("secondary"))
+	for key in _slots:
+		_apply_slot(_slots[key], _character.get_equipment_slot(key))
 	_restoring = false
 
 func _apply_slot(slot: InventoryContainer, item_dict: Dictionary) -> void:

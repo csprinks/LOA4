@@ -31,12 +31,13 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.8
-anchor_top = 0.1
+anchor_top = 0.02
 anchor_right = 0.995
-anchor_bottom = 0.99
+anchor_bottom = 0.98
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/separation = 6
+alignment = 1
+theme_override_constants/separation = 68
 
 [node name="CharacterCard" parent="UI_Main_Control/Cards" unique_id=1815877498 instance=ExtResource("3_card")]
 layout_mode = 2

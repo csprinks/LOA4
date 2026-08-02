@@ -26,10 +26,11 @@ var level_system: LevelSystem
 var character_name: String = "Unnamed Hero"
 var portrait: String = "res://Portraits/Portrait_1.png"
 
-# Equipped hand items, keyed by slot ("primary"/"secondary"). Each value is a
-# dict produced by EquipmentSerializer.item_to_dict ({} means the slot is empty).
-# The character card UI keeps this in sync with the on-screen weapon slots.
-var equipment: Dictionary = {"primary": {}, "secondary": {}}
+# Equipped items, keyed by slot. Each value is a dict produced by
+# EquipmentSerializer.item_to_dict ({} means the slot is empty). The character
+# card UI keeps this in sync with the on-screen equip slots (hands + armor).
+const EQUIPMENT_SLOTS := ["primary", "secondary", "head", "chest", "hands", "feet", "neck", "ring"]
+var equipment: Dictionary = {}
 
 # Choices made on the Character Creation screen.
 var primary_class: String = ""
@@ -61,6 +62,9 @@ func _init() -> void:
 	level_system = LevelSystem.new(1, 0, 25)
 	level_system.level_up.connect(_on_level_up)
 	level_system.xp_gained.connect(_on_xp_gained)
+
+	for slot in EQUIPMENT_SLOTS:
+		equipment[slot] = {}
 
 #region Identity
 func get_name() -> String:
@@ -192,12 +196,11 @@ func from_dict(data: Dictionary) -> void:
 		level_system.current_xp = level_data.get("current_xp", 0)
 		level_system.favor_points = level_data.get("favor_points", 0)
 
-	# Equipped hand items. Normalise so both slot keys always exist.
+	# Equipped items. Normalise so every slot key always exists.
 	var equip_data = data.get("equipment", {})
-	equipment = {
-		"primary": equip_data.get("primary", {}) if typeof(equip_data) == TYPE_DICTIONARY else {},
-		"secondary": equip_data.get("secondary", {}) if typeof(equip_data) == TYPE_DICTIONARY else {}
-	}
+	equipment = {}
+	for slot in EQUIPMENT_SLOTS:
+		equipment[slot] = equip_data.get(slot, {}) if typeof(equip_data) == TYPE_DICTIONARY else {}
 
 	primary_class = data.get("primary_class", "")
 	secondary_class = data.get("secondary_class", "")
