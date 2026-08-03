@@ -74,8 +74,9 @@ func _input(event):
 
 func _physics_process(_delta: float) -> void:
 	movement_system.check_ground()
-	# Turning is a grid action; suppress it while the player is glancing around.
-	if not (free_look_system and free_look_system.is_active):
+	# Turning is a grid action; suppress it while the player is glancing around
+	# or while a scripted move (e.g. climbing stairs) owns the body.
+	if not (free_look_system and free_look_system.is_active) and movement_system.can_move:
 		movement_system.handle_turn_input()
 	interaction_system.update_interaction_ray()
 #endregion

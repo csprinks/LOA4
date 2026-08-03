@@ -31,6 +31,10 @@ var dialogue_cooldown_timer = 0.0
 # Reference to the player body
 var player_body: RigidBody3D
 var can_move: bool = true
+# True while an external system (e.g. animated stairs) is driving the body's
+# position by tween. Suppresses grid input, turning, and the ground-check freeze
+# so the scripted motion isn't fought by physics.
+var scripted_move: bool = false
 
 func _init(player: RigidBody3D):
 	player_body = player
@@ -124,6 +128,10 @@ func turn(angle: float):
 	)
 
 func check_ground():
+	# While a scripted move owns the body, keep it frozen (kinematic) so gravity
+	# doesn't fight the climb tween.
+	if scripted_move:
+		return
 	var space_state = player_body.get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
 		player_body.global_position,
@@ -141,6 +149,17 @@ func check_ground():
 
 func set_can_move(value: bool):
 	can_move = value
+
+# Begin a scripted, physics-free move (the caller tweens the body's position).
+func begin_scripted_move():
+	scripted_move = true
+	can_move = false
+	player_body.set_freeze_enabled(true)
+
+# Hand control back after a scripted move; the next check_ground re-grounds.
+func end_scripted_move():
+	scripted_move = false
+	can_move = true
 
 func get_is_moving() -> bool:
 	return is_moving

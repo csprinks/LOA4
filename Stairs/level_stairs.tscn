@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bscrtmllcsh8k"]
+
+[ext_resource type="Script" uid="uid://bi0k33j45tdu1" path="res://Stairs/level_transition.gd" id="1_st"]
+[ext_resource type="PackedScene" uid="uid://doy310u1vywod" path="res://Stairs/Stairs.glb" id="2_glb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trigger"]
+size = Vector3(2, 2, 2)
+
+[node name="Stairs" type="Area3D" unique_id=1430534718]
+collision_layer = 0
+script = ExtResource("1_st")
+
+[node name="TriggerShape" type="CollisionShape3D" parent="." unique_id=1048844911]
+shape = SubResource("BoxShape3D_trigger")
+
+[node name="Stairs" parent="." unique_id=1351498346 instance=ExtResource("2_glb")]

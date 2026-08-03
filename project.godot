@@ -27,6 +27,7 @@ InventoryEvents="*res://Globals/inventory_events.gd"
 InventoryManager="*res://Globals/inventory_manager.tscn"
 GameTextBox="*res://Globals/Game_Text_Box.gd"
 ResourceManager="*res://Globals/Resource_Manager.gd"
+LevelManager="*res://Globals/Level_Manager.gd"
 
 [display]
 

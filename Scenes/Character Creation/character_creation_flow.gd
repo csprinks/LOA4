@@ -43,7 +43,11 @@ func _collect_panels(node: Node, panels: Array) -> void:
 
 func _on_start_game_pressed() -> void:
 	_build_party()
-	_go_to_scene(NEXT_SCENE)
+	# Hand off to LevelManager, which spawns the persistent player (HUD embedded)
+	# into the first level. Then drop this creation screen; LevelManager runs its
+	# fade + load as an autoload coroutine independent of this node.
+	LevelManager.load_level(NEXT_SCENE)
+	queue_free()
 
 
 func _on_main_menu_pressed() -> void:
