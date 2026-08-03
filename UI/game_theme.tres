@@ -30,9 +30,20 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.60339975, 0.3990504, 0.2091938, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_on4jg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup_hover"]
+bg_color = Color(0.47753555, 0.32320508, 0.21712852, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpj0y"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.30196, 0.21961, 0.14902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.60339975, 0.3990504, 0.2091938, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdx0o"]
 content_margin_left = 10.0
@@ -117,21 +128,6 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
-content_margin_left = 6.0
-content_margin_top = 6.0
-content_margin_right = 6.0
-content_margin_bottom = 6.0
-bg_color = Color(0.30196, 0.21961, 0.14902, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.60339975, 0.3990504, 0.2091938, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup_hover"]
-bg_color = Color(0.47753555, 0.32320508, 0.21712852, 1)
 
 [resource]
 default_font = ExtResource("1_remvs")

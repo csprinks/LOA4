@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dape7c8cgamk4"]
+
+[ext_resource type="Script" uid="uid://bwstt4kibts3a" path="res://Push_Block/push_block.gd" id="1_1jg6w"]
+[ext_resource type="PackedScene" uid="uid://hxefnkrq73u5" path="res://Push_Block/Push Block.glb" id="1_16qqj"]
+[ext_resource type="Texture2D" uid="uid://gioqbhfh4o24" path="res://Push_Block/slap.png" id="3_y2pfd"]
+[ext_resource type="AudioStream" uid="uid://cs7oejptrinme" path="res://Audio/Sound_Effects/Push_Block.wav" id="4_ajfkt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pee0s"]
+size = Vector3(2, 2, 2)
+
+[node name="Push Block" type="AnimatableBody3D" groups=["interactable", "pushable_blocks"]]
+collision_layer = 5
+collision_mask = 1
+script = ExtResource("1_1jg6w")
+slide_sound = ExtResource("4_ajfkt")
+reset_sound = ExtResource("4_ajfkt")
+
+[node name="Push Block" parent="." instance=ExtResource("1_16qqj")]
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(-0.3, -4.5298744e-08, 1.980071e-15, 0, -1.3113417e-08, -0.3, 4.5298744e-08, -0.3, 1.3113417e-08, 0, 0.100824, -1.04108)
+size = Vector3(2.935, 2, 3)
+texture_albedo = ExtResource("3_y2pfd")
+texture_orm = ExtResource("3_y2pfd")
+cull_mask = 1
+
+[node name="Decal2" type="Decal" parent="."]
+transform = Transform3D(-1.3113417e-08, 0.3, -1.3113417e-08, 0, -1.3113417e-08, -0.3, -0.3, -1.3113417e-08, 5.7320567e-16, 1, 0.100824, 0)
+size = Vector3(3, 2, 3)
+texture_albedo = ExtResource("3_y2pfd")
+texture_orm = ExtResource("3_y2pfd")
+cull_mask = 1
+
+[node name="Decal3" type="Decal" parent="."]
+transform = Transform3D(0.3, 5.2453682e-08, -2.2928231e-15, 0, -1.3113417e-08, -0.3, -5.2453682e-08, 0.3, -1.3113417e-08, 0, 0.100824, 1)
+size = Vector3(2.935, 2, 3)
+texture_albedo = ExtResource("3_y2pfd")
+texture_orm = ExtResource("3_y2pfd")
+cull_mask = 1
+
+[node name="Decal4" type="Decal" parent="."]
+transform = Transform3D(2.2649372e-08, -0.3, 1.3113417e-08, 0, -1.3113417e-08, -0.3, 0.3, 2.2649372e-08, -9.900355e-16, -1, 0.100824, -0.0410821)
+size = Vector3(3, 2, 3)
+texture_albedo = ExtResource("3_y2pfd")
+texture_orm = ExtResource("3_y2pfd")
+cull_mask = 1
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ajfkt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pee0s")
