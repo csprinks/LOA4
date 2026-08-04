@@ -14,7 +14,7 @@ const AUTOMAP_LAYER := 20            # 1..20; main camera excludes this
 const CAM_HEIGHT := 40.0             # top-down camera height
 const FOG_HEIGHT := 14.0             # fog plane height (above walls, below camera)
 const MARKER_HEIGHT := 16.0          # player arrow height (above the fog)
-const VIEW_SIZE := 26.0              # orthographic view extent (world units)
+const VIEW_SIZE := 64.0              # orthographic view extent (world units) — larger = zoomed out
 
 var _fog: MeshInstance3D
 var _marker: MeshInstance3D
@@ -115,23 +115,28 @@ func _build_ui() -> void:
 	_canvas.layer = 40
 	add_child(_canvas)
 
-	# --- Always-on minimap (top-left) ---
-	var size := 220
-	var margin := 16
+	# --- Always-on minimap (top-left), small and semi-transparent ---
+	var size := 400
+	var margin := 14
 	var frame := ColorRect.new()
-	frame.color = Color(0.12, 0.1, 0.08, 0.9)
-	frame.position = Vector2(margin - 4, margin - 4)
-	frame.size = Vector2(size + 8, size + 8)
+	frame.color = Color(0.12, 0.1, 0.08, 0.35)
+	frame.position = Vector2(margin - 3, margin - 3)
+	frame.size = Vector2(size + 6, size + 6)
 	frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_canvas.add_child(frame)
 
 	var mini := TextureRect.new()
+	# IGNORE_SIZE must be set BEFORE the texture, else the 512px viewport texture
+	# forces the control's minimum size to 512 and our size gets clamped up.
+	mini.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	mini.stretch_mode = TextureRect.STRETCH_SCALE
 	mini.texture = _subviewport.get_texture()
 	mini.position = Vector2(margin, margin)
 	mini.size = Vector2(size, size)
-	mini.stretch_mode = TextureRect.STRETCH_SCALE
+	mini.modulate = Color(1, 1, 1, 0.8)   # let the game show through a little
 	mini.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_canvas.add_child(mini)
+	mini.size = Vector2(size, size)   # re-assert after entering the tree
 
 	# --- Fullscreen map (toggled with M) ---
 	_fullscreen = Control.new()
@@ -147,9 +152,10 @@ func _build_ui() -> void:
 	_fullscreen.add_child(bg)
 
 	var big := TextureRect.new()
+	big.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	big.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	big.texture = _subviewport.get_texture()
 	big.set_anchors_preset(Control.PRESET_FULL_RECT)
-	big.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	big.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_fullscreen.add_child(big)
 #endregion
