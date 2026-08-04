@@ -12,6 +12,7 @@ var is_open: bool = false
 func _ready() -> void:
 	setup_audio_player()
 	ensure_door_closed()
+	add_to_group("map_door")  # shows a marker on the automap
 
 func setup_audio_player():
 	if audio_player == null:

@@ -23,6 +23,7 @@ var _busy: bool = false
 func _ready() -> void:
 	monitoring = true
 	body_entered.connect(_on_body_entered)
+	add_to_group("map_stairs")  # shows a marker on the automap
 
 func _on_body_entered(body: Node) -> void:
 	if _busy or not body.is_in_group("player"):

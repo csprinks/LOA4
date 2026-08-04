@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://loa4player0001"]
+[gd_scene load_steps=7 format=3 uid="uid://loa4player0001"]
 
 [ext_resource type="Script" path="res://Player/Player_Manager.gd" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://loa4uimain0001" path="res://UI/UI_Main.tscn" id="2_hud"]
 [ext_resource type="Script" uid="uid://de81y4c5xtyc4" path="res://Player/RC_Detection.gd" id="3_rcdet"]
+[ext_resource type="Script" path="res://Automap/automap.gd" id="4_automap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_body"]
 size = Vector3(1, 1, 1)
@@ -22,6 +23,7 @@ player_camera = NodePath("Camera_Controller/Player_Camera")
 [node name="Player_Camera" type="Camera3D" parent="Camera_Controller"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.9993909, 0.034899496, 0, -0.034899496, 0.9993909, 0, 0.159383, 0.281204)
+cull_mask = 524287
 current = true
 fov = 90.0
 
@@ -40,3 +42,6 @@ collide_with_areas = true
 script = ExtResource("3_rcdet")
 
 [node name="UI_Main" parent="." instance=ExtResource("2_hud")]
+
+[node name="Automap" type="Node3D" parent="."]
+script = ExtResource("4_automap")
