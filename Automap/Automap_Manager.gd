@@ -19,6 +19,7 @@ const CELL_OFFSET := 128          # cell (cx,cz) -> texel (cx+OFFSET, cz+OFFSET)
 const MAX_SIGHT_CELLS := 14       # how far line of sight reveals down an open run
 const SIGHT_HEIGHT := 1.0         # ray height for wall checks
 const SIGHT_MASK := 1             # collide with walls/floor (layer 1)
+const FADE_TIME := 0.45           # seconds for a newly-revealed tile's fog to fade out
 
 # Per-level saved state: level_path -> { explored, features, image }
 var _level_maps: Dictionary = {}
@@ -29,6 +30,7 @@ var features: Dictionary = {}     # Vector2i -> String (feature type)
 var _mask_image: Image
 var _mask_texture: ImageTexture
 var _last_cell: Vector2i = Vector2i(2147483647, 2147483647)  # sentinel "none"
+var _fading: Dictionary = {}      # Vector2i -> float (0..1) tiles mid fade-in
 
 func _ready() -> void:
 	_new_blank_mask()
@@ -36,15 +38,15 @@ func _ready() -> void:
 	if lm and lm.has_signal("level_loaded"):
 		lm.level_loaded.connect(_on_level_loaded)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	var player := _get_player()
-	if player == null:
-		return
-	var cell := world_to_cell(player.global_position)
-	if cell == _last_cell:
-		return
-	_last_cell = cell
-	_reveal_from(cell, player)
+	if player != null:
+		var cell := world_to_cell(player.global_position)
+		if cell != _last_cell:
+			_last_cell = cell
+			_reveal_from(cell, player)
+	# Advance any tiles mid fade-in every frame.
+	_advance_fades(delta)
 
 #region Public API
 func get_mask_texture() -> Texture2D:
@@ -84,17 +86,36 @@ func _reveal_from(cell: Vector2i, player: Node3D) -> void:
 	if painted:
 		_mask_texture.update(_mask_image)
 
-# Reveal a single cell. Returns true if it was newly revealed (needs a repaint).
+# Mark a cell revealed and start its fog fading out. The mask value is ramped
+# 0->1 in _advance_fades, not painted instantly. Returns false (painting is
+# handled by the fade), kept for _reveal_from's call shape.
 func _reveal_cell(cell: Vector2i) -> bool:
 	if explored.has(cell):
 		return false
 	explored[cell] = true
-	var px := cell.x + CELL_OFFSET
-	var py := cell.y + CELL_OFFSET
-	if px >= 0 and py >= 0 and px < MASK_CELLS and py < MASK_CELLS:
-		_mask_image.set_pixel(px, py, Color(1, 0, 0, 1))
+	_fading[cell] = 0.0
 	emit_signal("cell_revealed", cell)
-	return true
+	return false
+
+# Ramp each fading tile's mask value toward 1.0, repaint, and drop finished ones.
+func _advance_fades(delta: float) -> void:
+	if _fading.is_empty():
+		return
+	var rate := delta / FADE_TIME
+	var finished: Array[Vector2i] = []
+	for cell in _fading:
+		var v: float = _fading[cell] + rate
+		var px: int = cell.x + CELL_OFFSET
+		var py: int = cell.y + CELL_OFFSET
+		if px >= 0 and py >= 0 and px < MASK_CELLS and py < MASK_CELLS:
+			_mask_image.set_pixel(px, py, Color(clampf(v, 0.0, 1.0), 0, 0, 1))
+		if v >= 1.0:
+			finished.append(cell)
+		else:
+			_fading[cell] = v
+	for cell in finished:
+		_fading.erase(cell)
+	_mask_texture.update(_mask_image)
 #endregion
 
 #region Level lifecycle
@@ -123,6 +144,7 @@ func _activate_level(level_path: String) -> void:
 		_new_blank_mask_image()
 	_mask_texture.set_image(_mask_image)
 	_last_cell = Vector2i(2147483647, 2147483647)
+	_fading.clear()
 	emit_signal("map_reset", level_path)
 #endregion
 
