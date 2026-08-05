@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Wooden_Plough.glb" id="1_h81v0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tx7cd"]
+size = Vector3(3.8345394, 2.877141, 1.8299817)
+
+[node name="Wooden_Plough" type="StaticBody3D" unique_id=1817995493]
+
+[node name="Wooden_Plough" type="Node3D" parent="." unique_id=1311175469 instance=ExtResource("1_h81v0")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1258640872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69716024, 0.97205925, 0.37798017)
+shape = SubResource("BoxShape3D_tx7cd")

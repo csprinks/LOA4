@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Hay_1.glb" id="1_5q4ff"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2jyt0"]
+size = Vector3(0.28103945, 0.013713514, 0.28103945)
+
+[node name="Hay_1" type="StaticBody3D" unique_id=1307506279]
+
+[node name="Hay_1" type="Node3D" parent="." unique_id=1359055144 instance=ExtResource("1_5q4ff")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=733045928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.071021e-08, 0)
+shape = SubResource("BoxShape3D_2jyt0")

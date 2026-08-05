@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Vase_04.glb" id="1_75wlw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l55ex"]
+size = Vector3(0.16363281, 0.3213734, 0.1679663)
+
+[node name="Vase_04" type="StaticBody3D" unique_id=1058191501]
+
+[node name="Vase_04" type="Node3D" parent="." unique_id=811342486 instance=ExtResource("1_75wlw")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1178199456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1606867, 1.2144446e-06)
+shape = SubResource("BoxShape3D_l55ex")

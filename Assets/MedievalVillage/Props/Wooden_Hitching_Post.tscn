@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Wooden_Hitching_Post.glb" id="1_ahs11"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a16nu"]
+size = Vector3(0.8515031, 1.1489531, 3.3117838)
+
+[node name="Wooden_Hitching_Post" type="StaticBody3D" unique_id=702533654]
+
+[node name="Wooden_Hitching_Post" type="Node3D" parent="." unique_id=435503206 instance=ExtResource("1_ahs11")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=202177328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031392604, 0.57445437, -0.006111264)
+shape = SubResource("BoxShape3D_a16nu")

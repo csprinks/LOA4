@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Castle_Side_3.glb" id="1_b2oem"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nksvb"]
+size = Vector3(29.381819, 47.253567, 24.725037)
+
+[node name="Castle_Side_3" type="StaticBody3D" unique_id=1541615657]
+
+[node name="Castle_Side_3" type="Node3D" parent="." unique_id=1749261920 instance=ExtResource("1_b2oem")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1297265082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.626783, 0)
+shape = SubResource("BoxShape3D_nksvb")

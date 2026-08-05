@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Tree.glb" id="1_at22h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qca4d"]
+size = Vector3(8.19929, 7.14747, 7.81921)
+
+[node name="Tree" type="StaticBody3D" unique_id=65391965]
+
+[node name="Tree" type="Node3D" parent="." unique_id=1420292861 instance=ExtResource("1_at22h")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1058552504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11281514, 3.533735, 0.17474508)
+shape = SubResource("BoxShape3D_qca4d")

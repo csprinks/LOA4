@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Castle_Boundary_Wall_Corner.glb" id="1_my4iu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qaun"]
+size = Vector3(5.349507, 17.957062, 5.3761916)
+
+[node name="Castle_Boundary_Wall_Corner" type="StaticBody3D" unique_id=780323955]
+
+[node name="Castle_Boundary_Wall_Corner2" type="Node3D" parent="." unique_id=1249993531 instance=ExtResource("1_my4iu")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=2009857617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021172285, 8.978531, -0.026618004)
+shape = SubResource("BoxShape3D_4qaun")

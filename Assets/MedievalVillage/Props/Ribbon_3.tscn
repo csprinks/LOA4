@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Ribbon_3.glb" id="1_s21pn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hsutu"]
+size = Vector3(0.2477257, 0.6721231, 0.107198045)
+
+[node name="Ribbon_3" type="StaticBody3D" unique_id=1657576896]
+
+[node name="Ribbon_32" type="Node3D" parent="." unique_id=855995699 instance=ExtResource("1_s21pn")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1946962100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.121543534, -0.32786787, 0.04608695)
+shape = SubResource("BoxShape3D_hsutu")

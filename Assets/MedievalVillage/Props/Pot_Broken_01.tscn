@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Pot_Broken_01.glb" id="1_v11s8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfb8r"]
+size = Vector3(0.14947997, 0.07123028, 0.1580923)
+
+[node name="Pot_Broken_01" type="StaticBody3D" unique_id=36968627]
+
+[node name="Pot_Broken_01" type="Node3D" parent="." unique_id=756764375 instance=ExtResource("1_v11s8")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=621180085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.021879787, 0.0039471462)
+shape = SubResource("BoxShape3D_vfb8r")

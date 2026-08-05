@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Sack_Bag_10.glb" id="1_rue2w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4s8af"]
+size = Vector3(0.7087921, 0.8557212, 0.95968354)
+
+[node name="Sack_Bag_10" type="StaticBody3D" unique_id=1245395198]
+
+[node name="Sack_Bag_10" type="Node3D" parent="." unique_id=1808865067 instance=ExtResource("1_rue2w")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=984880999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038504332, 0.3007258, 0.14048287)
+shape = SubResource("BoxShape3D_4s8af")

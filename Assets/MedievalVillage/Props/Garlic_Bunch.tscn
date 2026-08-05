@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Garlic_Bunch.glb" id="1_c56hj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4hf1"]
+size = Vector3(0.24982744, 0.5420364, 0.31805605)
+
+[node name="Garlic_Bunch" type="StaticBody3D" unique_id=1595451948]
+
+[node name="Garlic_Bunch" type="Node3D" parent="." unique_id=1478084 instance=ExtResource("1_c56hj")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=692188512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020183325, -0.102932066, 0.03002511)
+shape = SubResource("BoxShape3D_p4hf1")

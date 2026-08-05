@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Castle_Boundary_Gate_2.glb" id="1_d3ynp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iggjp"]
+size = Vector3(11.062822, 24.980034, 12.023071)
+
+[node name="Castle_Boundary_Gate_2" type="StaticBody3D" unique_id=948828616]
+
+[node name="Castle_Boundary_Gate_22" type="Node3D" parent="." unique_id=1384597470 instance=ExtResource("1_d3ynp")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=550211494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.486599, 12.490012, -5.1306)
+shape = SubResource("BoxShape3D_iggjp")

@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Crate.glb" id="1_67iau"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwv3a"]
+size = Vector3(1.4130647, 0.99308175, 1.4131169)
+
+[node name="Crate" type="StaticBody3D" unique_id=970891274]
+
+[node name="Crate" type="Node3D" parent="." unique_id=1300552159 instance=ExtResource("1_67iau")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=2122285628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00488472, 0.49686944, -0.004077196)
+shape = SubResource("BoxShape3D_xwv3a")

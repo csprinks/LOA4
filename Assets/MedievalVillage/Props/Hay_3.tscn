@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Hay_3.glb" id="1_y3db6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6v1ek"]
+size = Vector3(0.68278384, 0.013098143, 0.7625441)
+
+[node name="Hay_3" type="StaticBody3D" unique_id=658303691]
+
+[node name="Hay_3" type="Node3D" parent="." unique_id=1140567349 instance=ExtResource("1_y3db6")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=340037389]
+shape = SubResource("BoxShape3D_6v1ek")

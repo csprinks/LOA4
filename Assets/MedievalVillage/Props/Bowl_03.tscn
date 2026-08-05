@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Bowl_03.glb" id="1_85xel"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7okp7"]
+size = Vector3(0.21137899, 0.071373954, 0.21019775)
+
+[node name="Bowl_03" type="StaticBody3D" unique_id=1468160738]
+
+[node name="Bowl_03" type="Node3D" parent="." unique_id=99626451 instance=ExtResource("1_85xel")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1311102085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1292439e-07, 0.04395312, 0.0011975095)
+shape = SubResource("BoxShape3D_7okp7")

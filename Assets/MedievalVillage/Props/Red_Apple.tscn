@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Red_Apple.glb" id="1_bk0vi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjen1"]
+size = Vector3(0.1278183, 0.1423792, 0.123989254)
+
+[node name="Red_Apple" type="StaticBody3D" unique_id=131371429]
+
+[node name="Red_Apple" type="Node3D" parent="." unique_id=1580902692 instance=ExtResource("1_bk0vi")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=853863352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009253234, 0.07000521, -0.0006176755)
+shape = SubResource("BoxShape3D_bjen1")

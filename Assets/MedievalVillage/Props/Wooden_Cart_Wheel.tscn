@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Wooden_Cart_Wheel.glb" id="1_2iddj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rjceo"]
+size = Vector3(2.1601403, 0.8794512, 2.1461701)
+
+[node name="Wooden_Cart_Wheel" type="StaticBody3D" unique_id=89279746]
+
+[node name="Wooden_Cart_Wheel" type="Node3D" parent="." unique_id=1128649365 instance=ExtResource("1_2iddj")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1373742604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004822135, -0.0016386211, -0.007933259)
+shape = SubResource("BoxShape3D_rjceo")

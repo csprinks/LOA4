@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Barrel_02.glb" id="1_jori2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxrgb"]
+size = Vector3(0.59363806, 0.5792214, 0.598241)
+
+[node name="Barrel_02" type="StaticBody3D" unique_id=123885865]
+
+[node name="Barrel_02" type="Node3D" parent="." unique_id=1881797060 instance=ExtResource("1_jori2")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=958391603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0003475845, 0.28961, -9.763241e-05)
+shape = SubResource("BoxShape3D_wxrgb")

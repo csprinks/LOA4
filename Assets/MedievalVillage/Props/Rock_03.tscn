@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Rock_03.glb" id="1_qddte"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lgne6"]
+size = Vector3(1.8001692, 0.6621225, 1.4760883)
+
+[node name="Rock_03" type="StaticBody3D" unique_id=393167384]
+
+[node name="Rock_03" type="Node3D" parent="." unique_id=1314291769 instance=ExtResource("1_qddte")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1962316347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9802322e-08, -2.9802322e-07)
+shape = SubResource("BoxShape3D_lgne6")

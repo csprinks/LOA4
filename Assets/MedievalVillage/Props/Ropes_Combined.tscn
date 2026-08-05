@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Ropes_Combined.glb" id="1_djbog"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbv7i"]
+size = Vector3(22.238546, 10.333331, 19.211174)
+
+[node name="Ropes_Combined" type="StaticBody3D" unique_id=587820472]
+
+[node name="Ropes_Combined2" type="Node3D" parent="." unique_id=353693410 instance=ExtResource("1_djbog")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=2059491254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.128101, 5.0169497, -1.7453108)
+shape = SubResource("BoxShape3D_lbv7i")

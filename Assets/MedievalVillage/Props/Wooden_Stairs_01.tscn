@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Wooden_Stairs_01.glb" id="1_s4nyv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tknv"]
+size = Vector3(2.8952904, 2.1500072, 2.8149712)
+
+[node name="Wooden_Stairs_01" type="StaticBody3D" unique_id=959453170]
+
+[node name="Wooden_Stairs_01" type="Node3D" parent="." unique_id=625251155 instance=ExtResource("1_s4nyv")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=803502173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.853981, -1.0927739, 0.23952973)
+shape = SubResource("BoxShape3D_0tknv")

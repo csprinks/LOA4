@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Banana.glb" id="1_p1d28"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilknm"]
+size = Vector3(0.34576425, 0.34929708, 0.19015661)
+
+[node name="Banana" type="StaticBody3D" unique_id=1548040129]
+
+[node name="Banana" type="Node3D" parent="." unique_id=1639667205 instance=ExtResource("1_p1d28")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=411200266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12467881, -0.009857371, 0.019312985)
+shape = SubResource("BoxShape3D_ilknm")

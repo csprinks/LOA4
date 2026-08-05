@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/House_Light.glb" id="1_v1cic"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3fl7x"]
+size = Vector3(0.32312155, 0.70385605, 1.188156)
+
+[node name="House_Light" type="StaticBody3D" unique_id=291432656]
+
+[node name="House_Light" type="Node3D" parent="." unique_id=1212014114 instance=ExtResource("1_v1cic")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1553452452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05112984, -0.30170617, 0.58441657)
+shape = SubResource("BoxShape3D_3fl7x")

@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Wicker_Basket_02_04.glb" id="1_6eg4k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qan74"]
+size = Vector3(0.32174498, 0.15507106, 0.3190161)
+
+[node name="Wicker_Basket_02_04" type="StaticBody3D" unique_id=1706508099]
+
+[node name="Wicker_Basket_02_042" type="Node3D" parent="." unique_id=178188387 instance=ExtResource("1_6eg4k")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1101118831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.088061824, 0.06573171, 0.09670287)
+shape = SubResource("BoxShape3D_qan74")

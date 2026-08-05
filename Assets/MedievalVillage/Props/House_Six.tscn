@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/House_Six.glb" id="1_iygpk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ouj0k"]
+size = Vector3(4.7635245, 16.734516, 4.80011)
+
+[node name="House_Six" type="StaticBody3D" unique_id=952625464]
+
+[node name="House_Six" type="Node3D" parent="." unique_id=865718813 instance=ExtResource("1_iygpk")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=926049676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, 7.5825415, -1.4305115e-06)
+shape = SubResource("BoxShape3D_ouj0k")

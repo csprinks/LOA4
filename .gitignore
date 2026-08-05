@@ -3,6 +3,14 @@
 .nomedia
 /android/
 
+# Medieval Village: Godot re-extracts embedded glTF textures next to each .glb on
+# import (gltf/embedded_image_handling=Extract). These are derived from the
+# self-contained .glb source and regenerate on import, so keep them out of the repo.
+/Assets/MedievalVillage/Meshes/*.png
+/Assets/MedievalVillage/Meshes/*.png.import
+/Assets/MedievalVillage/Meshes/*.webp
+/Assets/MedievalVillage/Meshes/*.webp.import
+
 # Godot-specific ignores
 .import/
 export.cfg

@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Chilly_Bunch.glb" id="1_otq0b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fse5v"]
+size = Vector3(0.07404907, 0.45281982, 0.075488284)
+
+[node name="Chilly_Bunch" type="StaticBody3D" unique_id=269803716]
+
+[node name="Chilly_Bunch" type="Node3D" parent="." unique_id=216268670 instance=ExtResource("1_otq0b")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=568979204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0043394454, -0.22664398, 0.009985354)
+shape = SubResource("BoxShape3D_fse5v")

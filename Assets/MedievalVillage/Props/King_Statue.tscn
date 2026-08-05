@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/King_Statue.glb" id="1_3ms41"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1syxc"]
+size = Vector3(4.4670553, 6.274197, 4.523306)
+
+[node name="King_Statue" type="StaticBody3D" unique_id=731024825]
+
+[node name="King_Statue" type="Node3D" parent="." unique_id=774044553 instance=ExtResource("1_3ms41")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1526605410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0018262863, 2.7716289, 0.032898903)
+shape = SubResource("BoxShape3D_1syxc")

@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Horse_Dung.glb" id="1_p6c6s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mqr7i"]
+size = Vector3(1.577393, 0.29881942, 1.577393)
+
+[node name="Horse_Dung" type="StaticBody3D" unique_id=1752587627]
+
+[node name="Horse_Dung" type="Node3D" parent="." unique_id=1923525957 instance=ExtResource("1_p6c6s")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1519387312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.079244964, 0)
+shape = SubResource("BoxShape3D_mqr7i")

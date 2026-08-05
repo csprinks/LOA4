@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/MedievalVillage/Meshes/Wooden_Logs_Pile.glb" id="1_gyab7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_phetp"]
+size = Vector3(0.6419114, 1.3602889, 2.2283642)
+
+[node name="Wooden_Logs_Pile" type="StaticBody3D" unique_id=1274612444]
+
+[node name="Wooden_Logs_Pile" type="Node3D" parent="." unique_id=1656200976 instance=ExtResource("1_gyab7")]
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1381389621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 0.65760297, 3.5762787e-07)
+shape = SubResource("BoxShape3D_phetp")
