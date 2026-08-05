@@ -10,6 +10,11 @@
 [ext_resource type="Script" uid="uid://bsfa6l0xnbnan" path="res://Moving_Platform/Puzzle_Activator.gd" id="8_puzzle"]
 [ext_resource type="PackedScene" uid="uid://dape7c8cgamk4" path="res://Push_Block/push_block.tscn" id="9_push"]
 [ext_resource type="PackedScene" uid="uid://bscrtmllcsh8k" path="res://Stairs/level_stairs.tscn" id="10_stairs"]
+[ext_resource type="PackedScene" uid="uid://cxqdrktwjh40n" path="res://Treasure_Chest/treasure_chest.tscn" id="11_chest"]
+[ext_resource type="PackedScene" uid="uid://rg1w0y1tffwt" path="res://Fireball_Trap/Fireball_Trap.tscn" id="12_fire"]
+[ext_resource type="PackedScene" uid="uid://de68b8x8k0rxk" path="res://Spike_Trap/spike_trap.tscn" id="13_spike"]
+[ext_resource type="Resource" uid="uid://c5nhrj0s54yn0" path="res://Inventory/Resources/Weapons/sword_1h.tres" id="14_loot1"]
+[ext_resource type="Resource" uid="uid://bcwg4tnqx8jfk" path="res://Inventory/Resources/Potions/healing.tres" id="15_loot2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -172,3 +177,14 @@ prompt_text = "You climb the stairs to the next hall..."
 
 [node name="StairsTop" type="Marker3D" parent="." unique_id=1413753538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1221356, -12.002355)
+
+[node name="Treasure_Chest" parent="." instance=ExtResource("11_chest")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -9)
+contents = Array[Resource]([ExtResource("14_loot1"), ExtResource("15_loot2")])
+crowns_reward = 100
+
+[node name="Fireball_Trap" parent="." instance=ExtResource("12_fire")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 10, 1, -10)
+
+[node name="Spike_Trap" parent="." instance=ExtResource("13_spike")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4)

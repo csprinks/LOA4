@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxqdrktwjh40n"]
+
+[ext_resource type="Script" uid="uid://c8tyh3hoyl75f" path="res://Treasure_Chest/Treasure_Chest.gd" id="1_7x7ia"]
+[ext_resource type="PackedScene" uid="uid://co4b85oq5vjm2" path="res://Treasure_Chest/Chest_Top.glb" id="1_kerte"]
+[ext_resource type="PackedScene" uid="uid://crt7gvgvggqyd" path="res://Treasure_Chest/Chest_Bottom.glb" id="2_plqsk"]
+[ext_resource type="AudioStream" uid="uid://bxfqnw0qle6xc" path="res://Treasure_Chest/chest_open.wav" id="15_0ixuo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6e610"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="Animation" id="Animation_hx8jc"]
+resource_name = "Chest_Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.523599), Vector3(0, 0, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_0l8cu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.523599)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a05m2"]
+_data = {
+&"Chest_Open": SubResource("Animation_hx8jc"),
+&"RESET": SubResource("Animation_0l8cu")
+}
+
+[node name="Treasure_Chest" type="StaticBody3D" groups=["interactable", "map_chest"]]
+script = ExtResource("1_7x7ia")
+sound_effect = ExtResource("15_0ixuo")
+
+[node name="Hinge" type="Node3D" parent="."]
+transform = Transform3D(0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 0, 0, 1, -0.366801, 0.615618, 0)
+
+[node name="Chest_Top" parent="Hinge" instance=ExtResource("1_kerte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362122, -0.627213, 0)
+
+[node name="Chest_Bottom" parent="." instance=ExtResource("2_plqsk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_6e610")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a05m2")
+}

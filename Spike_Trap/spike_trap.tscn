@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://de68b8x8k0rxk"]
+
+[ext_resource type="PackedScene" uid="uid://dl7y3oh1gdni1" path="res://Spike_Trap/spike_trap_01.glb" id="1_vkmt1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4gkca"]
+size = Vector3(2, 1, 2)
+
+[node name="Spike_Trap" type="StaticBody3D" unique_id=427405398]
+
+[node name="Sketchfab_Scene" parent="." unique_id=925207823 instance=ExtResource("1_vkmt1")]
+transform = Transform3D(3.2, 0, 0, 0, 4, 0, 0, 0, 3.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=850052042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23146242, 0)
+shape = SubResource("BoxShape3D_4gkca")
