@@ -63,3 +63,31 @@ func load_party(slot: int) -> Dictionary:
 func party_save_exists(slot: int) -> bool:
 	var party_path = SAVE_DIR + "slot_%d/" % slot + PARTY_FILE
 	return FileAccess.file_exists(party_path)
+
+# True if any slot in [0, count) has a saved party. Used to enable/disable the
+# main menu's Load Game entry.
+func any_save_exists(count: int) -> bool:
+	for slot in range(count):
+		if party_save_exists(slot):
+			return true
+	return false
+
+# A light, read-only summary of a slot for the Load Game screen. Does NOT touch
+# PartyManager or the active game — it just peeks at the files on disk.
+# Returns { exists, names: [String], crowns: int }.
+func get_slot_summary(slot: int) -> Dictionary:
+	if not party_save_exists(slot):
+		return {"exists": false, "names": [], "crowns": 0}
+
+	var party = load_party(slot)
+	var names: Array = []
+	for char_index in party.get("characters", []):
+		var character = load_character(slot, char_index)
+		if character:
+			names.append(character.character_name)
+
+	return {
+		"exists": true,
+		"names": names,
+		"crowns": int(party.get("crowns", 0)),
+	}

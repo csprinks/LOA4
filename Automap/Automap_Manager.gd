@@ -40,7 +40,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var player := _get_player()
-	if player != null:
+	# Only sample the player when it's actually in the world. During a level load
+	# the persistent player is briefly detached from the tree (removed from the old
+	# level before being added to the new one); in that gap it has no global
+	# transform or World3D, so reading global_position / get_world_3d() would warn
+	# and then crash in _reveal_from. Skip those frames.
+	if player != null and player.is_inside_tree() and player.get_world_3d() != null:
 		var cell := world_to_cell(player.global_position)
 		if cell != _last_cell:
 			_last_cell = cell

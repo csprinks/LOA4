@@ -1,0 +1,147 @@
+[gd_scene load_steps=3 format=3 uid="uid://loa4mainmenu001"]
+
+[ext_resource type="Script" path="res://Scenes/Main_Menu/main_menu.gd" id="1_menu"]
+[ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="2_theme"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_menu")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47753555, 0.32320508, 0.21712852, 1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Root" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Title" type="Label" parent="UI/Root"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 96.0
+offset_right = 600.0
+offset_bottom = 232.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.90588236, 0.69803923, 0.25882354, 1)
+theme_override_colors/font_outline_color = Color(0.14, 0.08, 0.04, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 88
+text = "Legacy of Arcana"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UI/Root"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 228.0
+offset_right = 300.0
+offset_bottom = 276.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.7882353, 0.85)
+theme_override_colors/font_outline_color = Color(0.14, 0.08, 0.04, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "· IV ·"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="UI/Root"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.42
+anchor_right = 0.5
+anchor_bottom = 0.42
+offset_left = -190.0
+offset_top = 0.0
+offset_right = 190.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="NewGameButton" type="Button" parent="UI/Root/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="UI/Root/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Load Game"
+
+[node name="OptionsButton" type="Button" parent="UI/Root/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="TutorialButton" type="Button" parent="UI/Root/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Tutorial"
+
+[node name="QuitButton" type="Button" parent="UI/Root/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit to Desktop"
+
+[node name="FlashLabel" type="Label" parent="UI/Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.86
+anchor_right = 0.5
+anchor_bottom = 0.86
+offset_left = -400.0
+offset_top = 0.0
+offset_right = 400.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.90588236, 0.69803923, 0.25882354, 1)
+theme_override_colors/font_outline_color = Color(0.14, 0.08, 0.04, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="UI/Root"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -44.0
+offset_right = 322.0
+offset_bottom = -12.0
+grow_vertical = 0
+modulate = Color(1, 1, 1, 0.5)
+theme_override_font_sizes/font_size = 18
+text = "v0.4 · pre-alpha"

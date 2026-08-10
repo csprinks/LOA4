@@ -1,14 +1,13 @@
 extends Node2D
 
 ## Coordinates the Character Creation screen: gathers each hero panel's choices
-## into the party on "Start Game" and returns to the menu otherwise.
+## into the party on "Start Game" and returns to the Main Menu otherwise.
 ##
-## LOA4 phase 2: there is no Main Menu or Library scene yet, so "Start Game"
-## drops straight into the walkable test room and "Return to Main Menu" reloads
-## this screen. Repoint these constants once those scenes are ported.
+## LOA4: "Start Game" drops straight into the walkable test room (no Library scene
+## yet); "Return to Main Menu" goes back to the Main Menu scene.
 
 const NEXT_SCENE := "res://Scenes/Test_Environment/Test_Environment.tscn"
-const MENU_SCENE := "res://Scenes/Character Creation/character_creation.tscn"
+const MENU_SCENE := "res://Scenes/Main_Menu/main_menu.tscn"
 
 # Starter hand gear so new heroes have something in their equip slots. Temporary
 # until the backpack UI lets players pick their own gear.

@@ -1,0 +1,256 @@
+[gd_scene format=3 uid="uid://m5kqc507ajxs"]
+
+[ext_resource type="Script" path="res://UI/system_menu.gd" id="1_sys"]
+[ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="2_theme"]
+
+[node name="SystemMenu" type="CanvasLayer"]
+layer = 60
+process_mode = 3
+script = ExtResource("1_sys")
+
+[node name="Root" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Dim" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="MainPanel" type="PanelContainer" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -240.0
+offset_right = 210.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Root/MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 26
+
+[node name="VBox" type="VBoxContainer" parent="Root/MainPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="Root/MainPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.12, 0.06, 1)
+theme_override_font_sizes/font_size = 40
+text = "Menu"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Root/MainPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="Root/MainPanel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Save Game"
+
+[node name="LoadButton" type="Button" parent="Root/MainPanel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Load Game"
+
+[node name="OptionsButton" type="Button" parent="Root/MainPanel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Root/MainPanel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Quit to Desktop"
+
+[node name="HSeparator" type="HSeparator" parent="Root/MainPanel/Margin/VBox"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="Root/MainPanel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Resume"
+
+[node name="SlotPicker" type="Control" parent="Root"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlotTitle" type="Label" parent="Root/SlotPicker"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 70.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.90588236, 0.69803923, 0.25882354, 1)
+theme_override_colors/font_outline_color = Color(0.14, 0.08, 0.04, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 52
+text = "Load Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotsContainer" type="VBoxContainer" parent="Root/SlotPicker"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -190.0
+offset_right = 400.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="SlotBack" type="Button" parent="Root/SlotPicker"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -68.0
+offset_right = 244.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 22
+text = "Back"
+
+[node name="Confirm" type="Control" parent="Root"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CDim" type="ColorRect" parent="Root/Confirm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="CDialog" type="PanelContainer" parent="Root/Confirm"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -160.0
+offset_right = 330.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Root/Confirm/CDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Root/Confirm/CDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="ConfirmText" type="Label" parent="Root/Confirm/CDialog/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.18, 0.11, 0.06, 1)
+theme_override_font_sizes/font_size = 26
+text = "Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonRow" type="HBoxContainer" parent="Root/Confirm/CDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ConfirmCancel" type="Button" parent="Root/Confirm/CDialog/Margin/VBox/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+
+[node name="ConfirmYes" type="Button" parent="Root/Confirm/CDialog/Margin/VBox/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Confirm"
+
+[node name="Flash" type="Label" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.88
+anchor_right = 0.5
+anchor_bottom = 0.88
+offset_left = -400.0
+offset_top = 0.0
+offset_right = 400.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.90588236, 0.69803923, 0.25882354, 1)
+theme_override_colors/font_outline_color = Color(0.14, 0.08, 0.04, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 26
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -8,9 +8,13 @@ signal ShowEquipment
 signal ShowInspector(inspectorData: InspectorDataVariant)
 signal CloseInspector
 signal UseItem(data: UseItemData)
+signal ShowSystemMenu
 
 func EmitShowInventory() -> void:
 	ShowInventory.emit()
+
+func EmitShowSystemMenu() -> void:
+	ShowSystemMenu.emit()
 
 func EmitShowEquipment() -> void:
 	ShowEquipment.emit()

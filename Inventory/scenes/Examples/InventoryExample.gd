@@ -3,6 +3,9 @@ extends CanvasLayer
 
 @export var inventoryPanel: Panel
 @export var inventoryGridContainer: GridContainer
+## Optional in-inventory button that opens the in-game system menu (Save/Load/
+## Options/Quit). Wired through InventoryEvents so this widget stays decoupled.
+@export var menuButton: Button
 
 var inventory: Array[InventoryContainer] = []
 
@@ -10,6 +13,14 @@ func _ready() -> void:
 	for child in inventoryGridContainer.get_children():
 		if child is InventoryContainer:
 			inventory.append(child)
+
+	if menuButton:
+		menuButton.pressed.connect(_on_menu_button_pressed)
+
+func _on_menu_button_pressed() -> void:
+	var events := get_node_or_null("/root/InventoryEvents")
+	if events:
+		events.EmitShowSystemMenu()
 
 func ShowInventory() -> void:
 	inventoryPanel.visible = not inventoryPanel.visible
