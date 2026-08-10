@@ -6,6 +6,7 @@ extends Node
 const SAVE_DIR = "user://saves/"
 const CHARACTER_FILE_PREFIX = "character_"
 const PARTY_FILE = "party_data.json"
+const WORLD_FILE = "world_state.json"
 
 func _ready():
 	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
@@ -59,6 +60,34 @@ func load_party(slot: int) -> Dictionary:
 		var save_data = JSON.parse_string(json_string)
 		return save_data
 	return {}
+
+# World state (interactive objects + player location) for a slot. Written as a
+# single blob alongside the party files, so a saved slot is a coherent snapshot.
+func save_world(world_data: Dictionary, slot: int) -> void:
+	var slot_dir = SAVE_DIR + "slot_%d/" % slot
+	DirAccess.make_dir_recursive_absolute(slot_dir)
+
+	var file_path = slot_dir + WORLD_FILE
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(world_data))
+	else:
+		push_error("Failed to save world state: " + str(FileAccess.get_open_error()))
+
+
+func load_world(slot: int) -> Dictionary:
+	var world_path = SAVE_DIR + "slot_%d/" % slot + WORLD_FILE
+	if not FileAccess.file_exists(world_path):
+		return {}
+
+	var file = FileAccess.open(world_path, FileAccess.READ)
+	if file:
+		var json_string = file.get_as_text()
+		var save_data = JSON.parse_string(json_string)
+		if save_data is Dictionary:
+			return save_data
+	return {}
+
 
 func party_save_exists(slot: int) -> bool:
 	var party_path = SAVE_DIR + "slot_%d/" % slot + PARTY_FILE

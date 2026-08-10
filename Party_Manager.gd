@@ -86,6 +86,12 @@ func save_party():
 
 	SaveSystem.save_party(party_data, GameState.current_save_slot)
 
+	# Persist the world alongside the party so a saved slot is a coherent snapshot:
+	# interactive states (open doors, pulled levers, looted chests) + player location.
+	# capture_* is a no-op when there's no live level/player (e.g. crown spend from a menu).
+	WorldState.capture_current_level_and_player()
+	SaveSystem.save_world(WorldState.to_dict(), GameState.current_save_slot)
+
 	if DEBUG: print("Saved party to slot ", GameState.current_save_slot)
 
 func load_from_save(save_data: Dictionary):

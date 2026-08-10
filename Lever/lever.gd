@@ -31,6 +31,7 @@ signal interacted()
 
 func _ready():
 	add_to_group("interactable")
+	add_to_group("persistent")  # WorldState saves/restores our pulled state
 	current_state = start_position
 	
 	# Create audio player if sound effect is assigned
@@ -46,14 +47,7 @@ func _ready():
 	add_child(cooldown_timer)
 	
 	# Play initial animation to set correct visual state
-	var anim_player = $AnimationPlayer
-	if anim_player:
-		if current_state == LeverState.UP and anim_player.has_animation("Lever_up"):
-			anim_player.play("Lever_up")
-			anim_player.seek(anim_player.current_animation_length, true)
-		elif current_state == LeverState.DOWN and anim_player.has_animation("Lever_down"):
-			anim_player.play("Lever_down")
-			anim_player.seek(anim_player.current_animation_length, true)
+	_seek_animation_to_state()
 
 func interact():
 	# Prevent interaction if on cooldown
@@ -190,11 +184,35 @@ func reset():
 		cooldown_timer.stop()
 	
 	# Reset animation to starting position
+	_seek_animation_to_state()
+
+# Snap the lever mesh to the pose matching current_state, without animating.
+func _seek_animation_to_state() -> void:
 	var anim_player = $AnimationPlayer
-	if anim_player:
-		if current_state == LeverState.UP and anim_player.has_animation("Lever_up"):
-			anim_player.play("Lever_up")
-			anim_player.seek(anim_player.current_animation_length, true)
-		elif current_state == LeverState.DOWN and anim_player.has_animation("Lever_down"):
-			anim_player.play("Lever_down")
-			anim_player.seek(anim_player.current_animation_length, true)
+	if not anim_player:
+		return
+	if current_state == LeverState.UP and anim_player.has_animation("Lever_up"):
+		anim_player.play("Lever_up")
+		anim_player.seek(anim_player.current_animation_length, true)
+	elif current_state == LeverState.DOWN and anim_player.has_animation("Lever_down"):
+		anim_player.play("Lever_down")
+		anim_player.seek(anim_player.current_animation_length, true)
+
+#region Persistence (WorldState contract)
+func get_persistent_state() -> Dictionary:
+	return {
+		"state": int(current_state),
+		"used": _used,
+		"reversed": is_reversed,
+	}
+
+# Restore the lever's visible pose and flags only. Deliberately does NOT toggle or
+# re-fire connected doors/platforms — each of those persists its own state, so the
+# world is already coherent on load.
+func apply_persistent_state(state: Dictionary) -> void:
+	current_state = int(state.get("state", current_state)) as LeverState
+	_used = state.get("used", false)
+	is_opened = _used
+	is_reversed = state.get("reversed", false)
+	_seek_animation_to_state()
+#endregion

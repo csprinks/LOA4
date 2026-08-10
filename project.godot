@@ -28,6 +28,7 @@ InventoryManager="*res://Globals/inventory_manager.tscn"
 GameTextBox="*res://Globals/Game_Text_Box.gd"
 ResourceManager="*res://Globals/Resource_Manager.gd"
 LevelManager="*res://Globals/Level_Manager.gd"
+WorldState="*res://Globals/World_State.gd"
 AutomapManager="*res://Automap/Automap_Manager.gd"
 SystemMenu="*res://UI/system_menu.tscn"
 

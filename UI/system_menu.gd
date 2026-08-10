@@ -136,7 +136,11 @@ func _do_load(slot: int) -> void:
 	PartyManager.reset()
 	PartyManager.initialize_party()  # loads the slot's party from disk
 
-	var level: String = GameState.current_level if GameState.current_level != "" else WORLD_FALLBACK
+	# Load the slot's world state; prepare_load arms the player-spawn override and
+	# returns the saved level (or "" for an older save with no world blob).
+	var level: String = WorldState.prepare_load(slot)
+	if level == "":
+		level = WORLD_FALLBACK
 	_hide_confirm()
 	close()  # unpause so LevelManager's fade/awaits can run
 	LevelManager.load_level(level)

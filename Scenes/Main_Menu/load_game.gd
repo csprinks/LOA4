@@ -44,9 +44,15 @@ func _on_slot_pressed(slot: int) -> void:
 	PartyManager.reset()
 	PartyManager.initialize_party()  # loads the slot's party from disk
 
+	# Load the slot's world state; prepare_load arms the player-spawn override and
+	# returns the saved level (or "" for an older save with no world blob).
+	var target: String = WorldState.prepare_load(slot)
+	if target == "":
+		target = WORLD_SCENE
+
 	await FadeManager.fade_out()
 	queue_free()
-	LevelManager.load_level(WORLD_SCENE)
+	LevelManager.load_level(target)
 
 
 func _on_back_pressed() -> void:

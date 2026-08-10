@@ -23,7 +23,8 @@ var _used: bool = false
 
 func _ready():
 	add_to_group("interactable")
-	
+	add_to_group("persistent")  # WorldState saves/restores our opened state
+
 	# Create audio player if sound effect is assigned
 	if sound_effect:
 		_audio_player = AudioStreamPlayer3D.new()
@@ -70,6 +71,22 @@ func _execute_interaction():
 	# Mark as used
 	_used = true
 	is_opened = true
+
+#region Persistence (WorldState contract)
+func get_persistent_state() -> Dictionary:
+	return {"used": _used}
+
+# Restore an already-looted chest to its open pose WITHOUT re-granting contents.
+func apply_persistent_state(state: Dictionary) -> void:
+	if not state.get("used", false):
+		return
+	_used = true
+	is_opened = true
+	var anim_player = $AnimationPlayer
+	if anim_player and anim_player.has_animation("Chest_Open"):
+		anim_player.play("Chest_Open")
+		anim_player.advance(anim_player.current_animation_length)
+#endregion
 
 # Award crowns and items to the player, then display a summary of the loot.
 func _grant_contents() -> void:

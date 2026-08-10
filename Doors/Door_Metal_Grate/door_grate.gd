@@ -13,6 +13,7 @@ func _ready() -> void:
 	setup_audio_player()
 	ensure_door_closed()
 	add_to_group("map_door")  # shows a marker on the automap
+	add_to_group("persistent")  # WorldState saves/restores our open/closed state
 
 func setup_audio_player():
 	if audio_player == null:
@@ -53,3 +54,18 @@ func play_sound(sound: AudioStream):
 	if audio_player and sound:
 		audio_player.stream = sound
 		audio_player.play()
+
+#region Persistence (WorldState contract)
+func get_persistent_state() -> Dictionary:
+	return {"open": is_open}
+
+# Snap silently to the saved pose — no sound, and don't route through open()/close()
+# (those early-out on the current is_open and would play a transition).
+func apply_persistent_state(state: Dictionary) -> void:
+	if state.get("open", false):
+		animation_player.play("Open")
+		animation_player.advance(animation_player.current_animation_length)
+		is_open = true
+	else:
+		ensure_door_closed()
+#endregion

@@ -111,20 +111,26 @@ func _position_player_at_spawn(spawn_name: String) -> void:
 	if not persistent_player:
 		return
 
-	var spawn_point: Node = null
-	if current_level.has_method("get_player_spawn"):
-		spawn_point = current_level.get_player_spawn()
-	elif "player_spawn" in current_level and current_level.player_spawn:
-		spawn_point = current_level.player_spawn
-
-	if not spawn_point or not is_instance_valid(spawn_point):
-		spawn_point = current_level.find_child(spawn_name, true, false)
-
-	if spawn_point and is_instance_valid(spawn_point) and spawn_point.is_inside_tree():
-		persistent_player.global_transform = spawn_point.global_transform
+	# A game-load arms WorldState with the exact transform the player saved at, so
+	# loading drops them back where they were rather than at the level's spawn.
+	var override = WorldState.consume_spawn_override() if WorldState else null
+	if override != null:
+		persistent_player.global_transform = override
 	else:
-		persistent_player.global_transform.origin = Vector3.ZERO
-		push_warning("LevelManager: spawn point '" + spawn_name + "' not found, using origin")
+		var spawn_point: Node = null
+		if current_level.has_method("get_player_spawn"):
+			spawn_point = current_level.get_player_spawn()
+		elif "player_spawn" in current_level and current_level.player_spawn:
+			spawn_point = current_level.player_spawn
+
+		if not spawn_point or not is_instance_valid(spawn_point):
+			spawn_point = current_level.find_child(spawn_name, true, false)
+
+		if spawn_point and is_instance_valid(spawn_point) and spawn_point.is_inside_tree():
+			persistent_player.global_transform = spawn_point.global_transform
+		else:
+			persistent_player.global_transform.origin = Vector3.ZERO
+			push_warning("LevelManager: spawn point '" + spawn_name + "' not found, using origin")
 
 	# Clear any scripted-move lock (e.g. left over from a stair-climb transition)
 	# so the player always arrives grounded and controllable in the new level.

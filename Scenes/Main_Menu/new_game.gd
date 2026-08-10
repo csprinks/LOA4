@@ -77,6 +77,7 @@ func _start_new_game(slot: int) -> void:
 	GameState.current_save_slot = slot
 	GameState.new_game_requested = true
 	PartyManager.reset()
+	WorldState.reset()  # fresh world: don't inherit a prior session's interactive state
 	FadeManager.transition_to_scene(CHARACTER_CREATION)
 
 

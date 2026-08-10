@@ -61,6 +61,12 @@ func _build_party() -> void:
 
 	party_manager.reset()
 
+	# Fresh world for a brand-new game, so a new party never inherits a prior
+	# session's open doors / looted chests.
+	var world_state := get_node_or_null("/root/WorldState")
+	if world_state:
+		world_state.reset()
+
 	var new_party := []
 	var index := 0
 	for panel in _character_panels():
