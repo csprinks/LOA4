@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://g3u87s7abwnv"]
+
+[ext_resource type="Script" uid="uid://bunbijnxengfr" path="res://Rolling_Battle_Text/rolling_font.gd" id="1_8b4ww"]
+[ext_resource type="Texture2D" uid="uid://cm7wnpb83e5vi" path="res://Rolling_Battle_Text/Enemy.png" id="1_qcm7l"]
+[ext_resource type="FontFile" uid="uid://dq5o8wj35derq" path="res://Fonts/VeniceClassic.ttf" id="2_55p0b"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_8b4ww")
+font_size = 48
+font = ExtResource("2_55p0b")
+digit_spacing = 0.10000000000582077
+display_time = 1.5
+outline_size = 10
+outline_color = Color(0.3650379, 0.5226894, 0.8472856, 1)
+bottom_margin = 430
+bounce_height = 150.0
+bounce_duration = 0.1999999999970896
+bounce_count = 4
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qcm7l")
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
