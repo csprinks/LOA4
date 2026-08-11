@@ -89,6 +89,26 @@ func load_world(slot: int) -> Dictionary:
 	return {}
 
 
+# Permanently delete a slot's save: every file in slot_<n>/ (party, characters,
+# world) plus the now-empty directory.
+func delete_save(slot: int) -> void:
+	var slot_dir = SAVE_DIR + "slot_%d/" % slot
+	if not DirAccess.dir_exists_absolute(slot_dir):
+		return
+
+	var dir = DirAccess.open(slot_dir)
+	if dir:
+		dir.list_dir_begin()
+		var entry = dir.get_next()
+		while entry != "":
+			if not dir.current_is_dir():
+				dir.remove(entry)
+			entry = dir.get_next()
+		dir.list_dir_end()
+
+	DirAccess.remove_absolute(slot_dir)
+
+
 func party_save_exists(slot: int) -> bool:
 	var party_path = SAVE_DIR + "slot_%d/" % slot + PARTY_FILE
 	return FileAccess.file_exists(party_path)

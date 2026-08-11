@@ -4,7 +4,7 @@ extends Node
 ## as their systems are ported (save slots, party, level tracking).
 
 # Number of save slots the UI offers (Load Game screen builds one card per slot).
-const SLOT_COUNT: int = 3
+const SLOT_COUNT: int = 6
 
 var current_save_slot: int = 0
 var current_level: String = ""

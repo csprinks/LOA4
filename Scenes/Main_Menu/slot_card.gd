@@ -13,7 +13,10 @@ const CROWN_ICON := preload("res://Crowns/Crowns_Icon.png")
 # summary: { exists: bool, names: Array, crowns: int } from SaveSystem.get_slot_summary.
 # enabled: whether the card is selectable. Load Game enables only populated slots;
 #          New Game enables every slot. Disabled cards are dimmed and take no clicks.
-static func build(slot: int, summary: Dictionary, enabled: bool) -> Button:
+# show_delete: adds a "Delete" button (named "DeleteButton") to populated cards; it
+#          intercepts its own clicks so it doesn't trigger the card. The caller finds
+#          it via card.find_child("DeleteButton") and connects its `pressed`.
+static func build(slot: int, summary: Dictionary, enabled: bool, show_delete: bool = false) -> Button:
 	var exists: bool = summary.get("exists", false)
 
 	var card := Button.new()
@@ -84,5 +87,15 @@ static func build(slot: int, summary: Dictionary, enabled: bool) -> Button:
 		crowns_box.add_child(crowns_label)
 
 		row.add_child(crowns_box)
+
+	# Optional per-slot delete button (populated slots only). It keeps its default
+	# mouse_filter (STOP) so a click on it doesn't fall through to the card button.
+	if show_delete and exists:
+		var delete_btn := Button.new()
+		delete_btn.name = "DeleteButton"
+		delete_btn.text = "Delete"
+		delete_btn.custom_minimum_size = Vector2(120, 60)
+		delete_btn.add_theme_font_size_override("font_size", 20)
+		row.add_child(delete_btn)
 
 	return card

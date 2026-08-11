@@ -32,24 +32,25 @@ func _ready():
 		add_child(_audio_player)
 
 func interact():
-	# Prevent interaction if already used
-	if _used:
-		return
-	
 	# Get player reference
 	var player = _get_player_reference()
 	if not player:
 		return
-	
+
 	# Calculate distance to player
 	var distance = global_position.distance_to(player.global_position)
-	
+
 	# Use a more lenient distance check since clicks can be imprecise
 	var effective_distance = interaction_distance * PlayerInteraction.PROXIMITY_MULTIPLIER
 	if distance > effective_distance:
 		_display_text("Too far away!")
 		return
-	
+
+	# An already-opened chest reports that it's empty rather than doing nothing.
+	if _used:
+		_display_text("The chest is empty.")
+		return
+
 	_execute_interaction()
 
 func _execute_interaction():
