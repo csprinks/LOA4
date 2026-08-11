@@ -67,6 +67,12 @@ func _build_party() -> void:
 	if world_state:
 		world_state.reset()
 
+	# New games start with an empty shared backpack (loot comes from chests). This
+	# also clears any backpack left over from a game loaded earlier this session.
+	var inventory_manager := get_node_or_null("/root/InventoryManager")
+	if inventory_manager and inventory_manager.has_method("reset_inventory"):
+		inventory_manager.reset_inventory()
+
 	var new_party := []
 	var index := 0
 	for panel in _character_panels():

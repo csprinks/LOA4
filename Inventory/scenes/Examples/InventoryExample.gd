@@ -44,3 +44,34 @@ func AddItem(item: InventoryItem) -> bool:
 			slot.SetData(item)
 			return true
 	return false
+
+#region Persistence
+# Snapshot every slot to a JSON-safe array aligned to slot order ({} for blanks),
+# so item positions survive a save/load.
+func serialize() -> Array:
+	var out: Array = []
+	for slot in inventory:
+		if slot.IsBlank():
+			out.append({})
+		else:
+			out.append(EquipmentSerializer.item_to_dict(slot.GetData()))
+	return out
+
+# Rebuild the backpack from a serialize() array, replacing whatever is there.
+func deserialize(data: Array, events: Node) -> void:
+	for i in range(inventory.size()):
+		var slot := inventory[i]
+		var dict = data[i] if i < data.size() else {}
+		if dict is Dictionary and not dict.is_empty():
+			var item := EquipmentSerializer.item_from_dict(dict, events)
+			if item != null:
+				slot.SetData(item)
+				continue
+		# Empty dict, out-of-range, or an item whose resource no longer exists.
+		slot.SetData(slot.ClearData())
+
+# Empty every slot (used when starting a new game).
+func Clear() -> void:
+	for slot in inventory:
+		slot.SetData(slot.ClearData())
+#endregion

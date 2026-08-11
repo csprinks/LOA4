@@ -34,14 +34,28 @@ var is_moving: bool = false
 var _audio: AudioStreamPlayer3D
 var _tween: Tween
 
+# A restored position waiting to be applied on a physics frame (see
+# apply_persistent_state). null when there is nothing pending.
+var _pending_restore = null
+
 func _ready() -> void:
 	add_to_group("pushable_blocks")
 	add_to_group("interactable")
+	add_to_group("persistent")  # WorldState saves/restores our pushed position
 	_audio = get_node_or_null("AudioStreamPlayer3D")
 	snap_to_grid()
 	original_position = global_position
 	# Settle onto the floor in case it was placed over a gap.
 	_settle()
+	# Idle by default; only runs while a restore is pending.
+	set_physics_process(false)
+
+func _physics_process(_delta: float) -> void:
+	if _pending_restore != null:
+		global_position = _pending_restore
+		snap_to_grid()  # re-align x/z if the block was saved mid-slide
+		_pending_restore = null
+		set_physics_process(false)
 
 #region Interaction
 func interact() -> void:
@@ -188,4 +202,24 @@ func _show(msg: String) -> void:
 func _kill_tween() -> void:
 	if _tween and _tween.is_valid():
 		_tween.kill()
+#endregion
+
+#region Persistence (WorldState contract)
+# Persist where the block currently rests (including a spot it slid to or a pit it
+# dropped into). `original_position` is NOT saved — it's the authored home the R
+# key resets to, and _ready re-derives it from the scene each load.
+func get_persistent_state() -> Dictionary:
+	var p := global_position
+	return {"pos": [p.x, p.y, p.z]}
+
+func apply_persistent_state(state: Dictionary) -> void:
+	var arr = state.get("pos", null)
+	if arr is Array and arr.size() == 3:
+		# This is an AnimatableBody3D with sync_to_physics: the physics server owns
+		# its transform, so setting global_position from the idle-frame level-load
+		# signal gets reverted on the next tick (the push tween works precisely
+		# because it runs in the physics step). Defer the move to _physics_process
+		# so it lands on a physics frame and sticks.
+		_pending_restore = Vector3(arr[0], arr[1], arr[2])
+		set_physics_process(true)
 #endregion

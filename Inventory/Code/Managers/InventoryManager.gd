@@ -39,10 +39,29 @@ func _ready() -> void:
 	add_child(inspectorHelper)
 
 	call_deferred("HideUIOnStartup")
-	call_deferred("SeedRandomInventory")
+	# The backpack starts empty and is populated by the game flow: a new game
+	# leaves it empty (items come from chests/loot), and loading a save restores
+	# it via load_inventory(). (Previously this seeded 35 random items on every
+	# boot, which both clobbered loaded saves and could never persist.)
 
 func SeedRandomInventory() -> void:
 	inventoryInstance.LoadItems(GetRandomItems(35))
+
+#region Persistence
+# Snapshot the shared backpack for the save file (array of item dicts, blanks as {}).
+func serialize_inventory() -> Array:
+	return inventoryInstance.serialize() if inventoryInstance else []
+
+# Restore the shared backpack from a serialize_inventory() array.
+func load_inventory(data: Array) -> void:
+	if inventoryInstance:
+		inventoryInstance.deserialize(data, _inventoryEvents)
+
+# Empty the backpack (used when starting a new game).
+func reset_inventory() -> void:
+	if inventoryInstance:
+		inventoryInstance.Clear()
+#endregion
 
 func HideUIOnStartup() -> void:
 	if inspectorHelper:

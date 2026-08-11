@@ -77,7 +77,8 @@ func save_party():
 	var party_data = {
 		"characters": [],
 		"current_index": current_character_index,
-		"crowns": Crowns.get_crowns()
+		"crowns": Crowns.get_crowns(),
+		"inventory": InventoryManager.serialize_inventory()
 	}
 
 	for i in range(party.size()):
@@ -104,6 +105,9 @@ func load_from_save(save_data: Dictionary):
 		var character = SaveSystem.load_character(GameState.current_save_slot, char_index)
 		if character:
 			party.append(character)
+
+	# Restore the shared backpack (party-wide loot), replacing the empty boot state.
+	InventoryManager.load_inventory(save_data.get("inventory", []))
 
 	emit_signal("party_updated")
 

@@ -47,12 +47,20 @@ static func item_from_dict(data: Dictionary, inventory_events: Node) -> Inventor
 	if res == null:
 		return null
 
+	# Rebuild the correct runtime subtype. `is_weapon` is stored for equipped gear;
+	# for backpack items we also honor the resource's itemType so potions come back
+	# as usable Potion instances rather than inert generic items.
 	var item: InventoryItem
-	if data.get("is_weapon", false):
+	if data.get("is_weapon", false) or res.itemType == ItemTypes.WEAPON:
 		var weapon := InventoryWeapon.new()
 		if inventory_events:
 			weapon.SetInventoryEvents(inventory_events)
 		item = weapon
+	elif res.itemType == ItemTypes.POTION:
+		var potion_type := (res as PotionData).potionType if res is PotionData else PotionTypes.HEALTH
+		var potion := Potion.new(potion_type)
+		potion.SetInventoryEvents(inventory_events)
+		item = potion
 	else:
 		item = InventoryItem.new()
 
