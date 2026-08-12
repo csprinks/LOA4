@@ -119,6 +119,12 @@ func consume_item(item) -> void:
 #endregion
 
 #region Rewards
+# Public close-out for a turn-by-turn UI: awards rewards on WIN and emits
+# encounter_ended, exactly as run_to_completion() does at the end of a fight.
+# Call once, after the encounter status has settled to WIN / LOSE / FLED.
+func conclude() -> void:
+	_finish()
+
 func _finish() -> void:
 	var rewards := {"xp": 0, "crowns": 0, "loot": []}
 	if encounter.status == Encounter.Status.WIN:

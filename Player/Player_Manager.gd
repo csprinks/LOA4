@@ -16,6 +16,10 @@ var movement_system: PlayerMovement
 var free_look_system: PlayerFreeLook
 var interaction_system: PlayerInteraction
 
+# True while a battle is running: freezes grid movement, turning, free-look, and
+# world interaction so the combat overlay owns input. Set by CombatManager.
+var combat_locked: bool = false
+
 #region Initialization
 func _ready():
 	initialize_physics()
@@ -59,6 +63,10 @@ func connect_signals():
 
 #region Input Handling
 func _input(event):
+	# During combat the overlay owns input; the player body ignores everything.
+	if combat_locked:
+		return
+
 	# While free look is held it's modal: it owns all input until released.
 	if free_look_system and free_look_system.is_active:
 		free_look_system.handle_input(event)
@@ -74,6 +82,8 @@ func _input(event):
 
 func _physics_process(_delta: float) -> void:
 	movement_system.check_ground()
+	if combat_locked:
+		return
 	# Turning is a grid action; suppress it while the player is glancing around
 	# or while a scripted move (e.g. climbing stairs) owns the body.
 	if not (free_look_system and free_look_system.is_active) and movement_system.can_move:
@@ -109,6 +119,14 @@ func get_movement_system() -> PlayerMovement:
 
 func can_move() -> bool:
 	return movement_system.can_move if movement_system else false
+
+# Enter/leave the combat lock: freeze the body and suppress movement/interaction.
+func set_combat_locked(locked: bool) -> void:
+	combat_locked = locked
+	if movement_system:
+		movement_system.set_can_move(not locked)
+	if locked:
+		set_freeze_enabled(true)
 #endregion
 
 #region Cleanup

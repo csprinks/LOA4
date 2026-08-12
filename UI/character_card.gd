@@ -38,6 +38,11 @@ var _character: Character = null
 var _stat_value_labels: Dictionary = {}   # stat name -> Label
 var _slots: Dictionary = {}               # slot key -> InventoryContainer
 var _inventory_events: Node = null
+
+# Combat overlays (built lazily on first combat use): a gold turn highlight and a
+# RollingNumbers popup for damage/heal on this hero during a fight.
+var _combat_highlight: Panel = null
+var _combat_roller: RollingNumbers = null
 # True while we push saved equipment into the slots, so the resulting
 # slot_changed signals don't immediately write the same data straight back.
 var _restoring: bool = false
@@ -141,6 +146,64 @@ func _on_slot_changed(slot_key: String, slot: InventoryContainer) -> void:
 	if _restoring or not _character or not slot:
 		return
 	_character.set_equipment_slot(slot_key, EquipmentSerializer.item_to_dict(slot.GetData()))
+
+#region Combat hooks
+# The Character this card is currently bound to (null if empty/hidden). Lets the
+# combat overlay map an ally Combatant back to its HUD card.
+func get_bound_character() -> Character:
+	return _character
+
+func _ensure_combat_nodes() -> void:
+	if _combat_highlight == null:
+		_combat_highlight = Panel.new()
+		_combat_highlight.name = "CombatHighlight"
+		_combat_highlight.set_anchors_preset(Control.PRESET_FULL_RECT)
+		_combat_highlight.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var sb := StyleBoxFlat.new()
+		sb.draw_center = false
+		sb.set_border_width_all(4)
+		sb.border_color = Color(0.9059, 0.6980, 0.2588)
+		sb.set_corner_radius_all(8)
+		_combat_highlight.add_theme_stylebox_override("panel", sb)
+		_combat_highlight.visible = false
+		add_child(_combat_highlight)
+	if _combat_roller == null:
+		_combat_roller = RollingNumbers.new()
+		_combat_roller.set_anchors_preset(Control.PRESET_FULL_RECT)
+		_combat_roller.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_combat_roller.font = load("res://Fonts/VeniceClassic.ttf")
+		_combat_roller.font_size = 40
+		_combat_roller.display_time = 0.6
+		add_child(_combat_roller)
+
+# Show/hide the gold "it's this hero's turn" border.
+func set_combat_active(active: bool) -> void:
+	_ensure_combat_nodes()
+	_combat_highlight.visible = active
+
+func clear_combat() -> void:
+	if _combat_highlight:
+		_combat_highlight.visible = false
+
+# Refresh just the HP/AP readouts (combat writes wounds straight through to the
+# Character, so this is enough to keep the card live during a fight).
+func refresh_vitals() -> void:
+	if not _character or not is_node_ready():
+		return
+	var hp = _character.hit_points
+	_hp_bar.set_ratio(float(hp.current) / hp.max_value if hp.max_value > 0 else 0.0)
+	_hp_label.text = "%d/%d" % [hp.current, hp.max_value]
+	var ap = _character.action_points
+	_ap_bar.set_ratio(float(ap.current) / ap.max_value if ap.max_value > 0 else 0.0)
+	_ap_label.text = "%d/%d" % [ap.current, ap.max_value]
+
+# Float a damage/heal number over the portrait.
+func pop_number(amount: int, color: Color) -> void:
+	_ensure_combat_nodes()
+	var colors: Array[Color] = [color]   # RollingNumbers.digit_colors is typed
+	_combat_roller.digit_colors = colors
+	_combat_roller.spawn(amount)
+#endregion
 
 func _class_text(character: Character) -> String:
 	var primary: String = character.primary_class

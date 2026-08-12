@@ -31,6 +31,7 @@ LevelManager="*res://Globals/Level_Manager.gd"
 WorldState="*res://Globals/World_State.gd"
 AutomapManager="*res://Automap/Automap_Manager.gd"
 SystemMenu="*res://UI/system_menu.tscn"
+CombatManager="*res://Combat/combat_manager.gd"
 
 [display]
 
