@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Combat/monster_definition.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dj6ha53r542ry" path="res://Assets/CombatBattlers/Piranha Tree.png" id="2_sprite"]
+[ext_resource type="Resource" uid="uid://bcwg4tnqx8jfk" path="res://Inventory/Resources/Potions/healing.tres" id="3_potion"]
+[ext_resource type="Texture2D" uid="uid://dk0njuvs6nywm" path="res://Assets/CombatBattlers/BattlerPortraits/Piranha_Tree_P.png" id="4_portrait"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Piranha Tree"
+max_hp = 36
+max_action_points = 4
+might = 14
+finesse = 6
+awareness = 9
+fate = 7
+armor = 4
+damage_min = 5
+damage_max = 9
+is_ranged = false
+attack_ap_cost = 3
+default_row = 0
+xp_reward = 45
+crowns_reward = 6
+loot = Array[InventoryData]([ExtResource("3_potion")])
+sprite = ExtResource("2_sprite")
+portrait = ExtResource("4_portrait")

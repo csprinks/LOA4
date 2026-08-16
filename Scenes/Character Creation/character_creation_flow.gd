@@ -90,10 +90,10 @@ func _build_party() -> void:
 		character.primary_class = panel.get_primary_class()
 		character.secondary_class = panel.get_secondary_class()
 		character.apply_stat_data(panel.get_stat_data())
-		# Deed Points the player left unspent at creation carry into the game as
-		# the character's available pool for later stat growth.
-		if panel.has_method("deeds_remaining"):
-			character.available_deed_points = panel.deeds_remaining()
+		# Attribute Points the player left unspent at creation carry into the game
+		# as the character's available pool for later stat growth.
+		if panel.has_method("points_remaining"):
+			character.available_attribute_points = panel.points_remaining()
 		_equip_starting_gear(character)
 
 		new_party.append(character)

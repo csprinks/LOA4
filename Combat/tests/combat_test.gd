@@ -38,9 +38,9 @@ func _make_hero(hero_name: String, might: int, finesse: int, awareness: int) -> 
 	var c := Character.new()
 	c.character_name = hero_name
 	c.apply_stat_data({
-		"Might": {"base": might, "deeds_spent": 0, "points_per_deed": 1},
-		"Finesse": {"base": finesse, "deeds_spent": 0, "points_per_deed": 1},
-		"Awareness": {"base": awareness, "deeds_spent": 0, "points_per_deed": 1},
+		"Might": {"base": might, "points_spent": 0, "gain_per_point": 1},
+		"Finesse": {"base": finesse, "points_spent": 0, "gain_per_point": 1},
+		"Awareness": {"base": awareness, "points_spent": 0, "gain_per_point": 1},
 	})
 	return c
 

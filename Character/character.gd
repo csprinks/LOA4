@@ -36,10 +36,10 @@ var equipment: Dictionary = {}
 var primary_class: String = ""
 var secondary_class: String = ""
 
-# Deed Points available to spend on stat growth AFTER creation. Character
+# Attribute Points available to spend on stat growth AFTER creation. Character
 # creation uses its own fixed 10-point pool; this is a separate ongoing pool
 # (0 for a freshly created hero) earned through progression later.
-var available_deed_points: int = 0
+var available_attribute_points: int = 0
 
 var stats: Dictionary = {}
 
@@ -112,15 +112,16 @@ func reset_action_points() -> void:
 func get_stat(stat_name: String) -> Stat:
 	return stats.get(stat_name, null)
 
-# Apply Character Creation allocations: {name: {base, deeds_spent, points_per_deed}}.
+# Apply Character Creation allocations: {name: {base, points_spent, gain_per_point}}.
 func apply_stat_data(stat_data: Dictionary) -> void:
 	for stat_name in stats:
 		if stat_data.has(stat_name):
 			var d: Dictionary = stat_data[stat_name]
+			# Fall back to the pre-rename keys so old save files still load.
 			stats[stat_name].configure(
 				int(d.get("base", Stat.BASE_DEFAULT)),
-				int(d.get("deeds_spent", 0)),
-				int(d.get("points_per_deed", 1)))
+				int(d.get("points_spent", d.get("deeds_spent", 0))),
+				int(d.get("gain_per_point", d.get("points_per_deed", 1))))
 
 func _stats_to_dict() -> Dictionary:
 	var out := {}
@@ -166,7 +167,7 @@ func to_dict() -> Dictionary:
 
 		"primary_class": primary_class,
 		"secondary_class": secondary_class,
-		"available_deed_points": available_deed_points,
+		"available_attribute_points": available_attribute_points,
 		"stats": _stats_to_dict()
 	}
 
@@ -204,9 +205,10 @@ func from_dict(data: Dictionary) -> void:
 
 	primary_class = data.get("primary_class", "")
 	secondary_class = data.get("secondary_class", "")
-	available_deed_points = int(data.get("available_deed_points", 0))
+	# Fall back to the pre-rename key so old save files still load.
+	available_attribute_points = int(data.get("available_attribute_points", data.get("available_deed_points", 0)))
 
-	# Rebuild each stat from its saved {base, deeds_spent, points_per_deed}.
+	# Rebuild each stat from its saved {base, points_spent, gain_per_point}.
 	var stats_data = data.get("stats", {})
 	if typeof(stats_data) == TYPE_DICTIONARY:
 		for stat_name in stats:

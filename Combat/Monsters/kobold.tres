@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Combat/monster_definition.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dnm0a4h4wepdb" path="res://Assets/CombatBattlers/Kobold.png" id="2_sprite"]
+[ext_resource type="Texture2D" uid="uid://ug6mpi46vkcd" path="res://Assets/CombatBattlers/BattlerPortraits/Kobold_P.png" id="3_portrait"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Kobold"
+max_hp = 14
+max_action_points = 4
+might = 8
+finesse = 12
+awareness = 10
+fate = 6
+armor = 1
+damage_min = 2
+damage_max = 4
+is_ranged = false
+attack_ap_cost = 3
+default_row = 0
+xp_reward = 20
+crowns_reward = 3
+sprite = ExtResource("2_sprite")
+portrait = ExtResource("3_portrait")

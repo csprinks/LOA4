@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Combat/monster_definition.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d0i0x0wm2aweo" path="res://Assets/CombatBattlers/Goblin Thief.png" id="2_sprite"]
+[ext_resource type="Resource" uid="uid://c6ejotwjmyjje" path="res://Inventory/Resources/Potions/energy.tres" id="3_potion"]
+[ext_resource type="Texture2D" uid="uid://cy4bwufjkeynd" path="res://Assets/CombatBattlers/BattlerPortraits/Goblin_Thief_P.png" id="4_portrait"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Goblin Thief"
+max_hp = 16
+max_action_points = 5
+might = 9
+finesse = 15
+awareness = 13
+fate = 10
+armor = 1
+damage_min = 2
+damage_max = 5
+is_ranged = false
+attack_ap_cost = 3
+default_row = 0
+xp_reward = 28
+crowns_reward = 18
+loot = Array[InventoryData]([ExtResource("3_potion")])
+sprite = ExtResource("2_sprite")
+portrait = ExtResource("4_portrait")

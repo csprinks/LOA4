@@ -40,4 +40,8 @@ extends Resource
 @export var loot: Array[InventoryData] = []
 
 # --- Presentation (used later by the battle scene; ignored by the logic core) -
+# Full battler art, shown on the enemy card during a fight.
 @export var sprite: Texture2D
+# Small square portrait (~84x84) for the turn-order strip. Falls back to `sprite`
+# if left unset.
+@export var portrait: Texture2D

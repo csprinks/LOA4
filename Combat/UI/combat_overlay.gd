@@ -33,6 +33,18 @@ const ROW_SCALE := 0.82                              # each row back shrinks by 
 const CARD_W := 190.0
 const CARD_H := 262.0
 
+# --- Pacing (seconds) — beats between actions so combat is readable, not instant.
+const ENEMY_THINK_PAUSE := 0.5   # before an enemy commits to its action
+const POST_ACTION_PAUSE := 0.8   # after any action resolves, to read the result
+
+# --- Impact FX (when damage lands) ------------------------------------------
+const HIT_FLASH_SHADER := preload("res://Combat/UI/hit_flash.gdshader")
+const FLASH_START := 0.85         # initial flash strength, tweened to 0
+const FLASH_TIME := 0.22          # seconds for the red pulse to fade
+const SHAKE_INTENSITY := 9.0      # max pixel offset of the card shake
+const SHAKE_STEPS := 6            # jitters before settling back
+const SHAKE_STEP := 0.035         # seconds per jitter
+
 signal battle_finished(status: int)
 signal _player_decided(decision: Dictionary)
 
@@ -45,7 +57,7 @@ var round_number := 0
 # --- View bookkeeping --------------------------------------------------------
 var _enemy_views := {}      # Combatant -> { card, name_label, hp_label, button, roll }
 var _ally_cards := {}       # Combatant -> CharacterCard (from the live HUD)
-var _chip_views := {}       # Combatant -> Panel
+var _chip_views := {}       # Combatant -> { chip: Panel, entry: VBoxContainer }
 var _font: FontFile
 
 var _active_ally: Combatant = null
@@ -127,17 +139,30 @@ func _build_static_ui() -> void:
 	_root.theme = load("res://UI/game_theme.tres")
 	add_child(_root)
 
-	# --- Turn Order strip (top) ---
+	# --- Turn Order strip (top, centered so it always clears the automap on the
+	# left). A full-width CenterContainer keeps the row centered no matter how many
+	# combatants are in it; the title sits above the row.
+	var turn_order_center := CenterContainer.new()
+	turn_order_center.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	turn_order_center.offset_top = 16
+	turn_order_center.offset_bottom = 200
+	turn_order_center.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_root.add_child(turn_order_center)
+
+	var turn_order_col := VBoxContainer.new()
+	turn_order_col.add_theme_constant_override("separation", 6)
+	turn_order_col.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	turn_order_center.add_child(turn_order_col)
+
 	var top_label := _make_label("Turn Order", 26, GOLD)
-	top_label.position = Vector2(40, 24)
+	top_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	top_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_root.add_child(top_label)
+	turn_order_col.add_child(top_label)
 
 	_turn_order_box = HBoxContainer.new()
 	_turn_order_box.add_theme_constant_override("separation", 8)
-	_turn_order_box.position = Vector2(240, 20)
 	_turn_order_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_root.add_child(_turn_order_box)
+	turn_order_col.add_child(_turn_order_box)
 
 	# --- Combat log (LEFT — "what is happening") ---
 	var log_panel := Panel.new()
@@ -214,6 +239,11 @@ func _build_action_buttons() -> void:
 	_add_action_button("Attack", _on_attack_pressed)
 	_add_action_button("Flee", _on_flee_pressed)
 	_add_action_button("End Turn", _on_end_turn_pressed)
+	# DEV CHEAT: instantly win the fight. Tinted gold so it's obviously not a
+	# normal action. Only reachable on the player's turn (this bar is hidden the
+	# rest of the time), which keeps it at a safe point in the turn loop.
+	var auto_win := _add_action_button("Auto Win", _on_auto_win_pressed)
+	auto_win.modulate = GOLD
 
 
 func _add_action_button(text: String, handler: Callable) -> Button:
@@ -265,10 +295,30 @@ func _make_enemy_card(cb: Combatant) -> void:
 	card.add_theme_stylebox_override("panel", _card_style(CARD_BORDER))
 	holder.add_child(card)
 
+	# Battler art fills the card behind the text, aspect-kept so it isn't stretched.
+	# Inset a little so the panel's coloured border (front-row / target highlight)
+	# stays visible around it. A monster with no sprite just shows the empty panel.
+	var art := TextureRect.new()
+	art.set_anchors_preset(Control.PRESET_FULL_RECT)
+	art.offset_left = 6
+	art.offset_top = 6
+	art.offset_right = -6
+	art.offset_bottom = -6
+	art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if cb.monster and cb.monster.sprite:
+		art.texture = cb.monster.sprite
+		art.material = _make_flash_material()   # so the sprite can pulse red on a hit
+	card.add_child(art)
+
+	# Name AND HP both sit in the top strip, which is the only part never overlapped
+	# by the front row (back rows recede upward and are covered from the bottom). A
+	# spacer below pushes them up and lets the art fill the rest. Labels carry a
+	# black outline for contrast over the sprite.
 	var vbox := VBoxContainer.new()
 	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
-	vbox.add_theme_constant_override("separation", 6)
-	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	vbox.add_theme_constant_override("separation", 2)
 	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card.add_child(vbox)
 
@@ -281,6 +331,11 @@ func _make_enemy_card(cb: Combatant) -> void:
 	hp_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hp_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vbox.add_child(hp_label)
+
+	var spacer := Control.new()
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	vbox.add_child(spacer)
 
 	# Transparent full-card button captures target clicks (enabled only while
 	# targeting, so the board isn't clickable mid-resolution).
@@ -297,7 +352,7 @@ func _make_enemy_card(cb: Combatant) -> void:
 	card.add_child(roll)
 
 	_enemy_views[cb] = {
-		"holder": holder, "card": card, "name_label": name_label,
+		"holder": holder, "card": card, "art": art, "name_label": name_label,
 		"hp_label": hp_label, "button": btn, "roll": roll, "dead": false,
 		"bob": _start_bob(card),
 	}
@@ -424,40 +479,75 @@ func _is_reachable(cb: Combatant) -> bool:
 
 
 #region Turn order strip
+# Portrait texture for a turn-order chip: a hero's saved portrait, or a monster's
+# battler sprite. Null when neither resolves (the chip then shows just its colour).
+func _combatant_portrait(cb: Combatant) -> Texture2D:
+	if cb.is_ally:
+		if cb.character and cb.character.portrait != "" and ResourceLoader.exists(cb.character.portrait):
+			return load(cb.character.portrait)
+		return null
+	if cb.monster:
+		return cb.monster.portrait if cb.monster.portrait else cb.monster.sprite
+	return null
+
+
 func _build_turn_order(order: Array) -> void:
 	for child in _turn_order_box.get_children():
 		child.queue_free()
 	_chip_views.clear()
 
 	for cb in order:
+		# Each entry is a column: a portrait chip on top, the name below it.
+		var entry := VBoxContainer.new()
+		entry.add_theme_constant_override("separation", 2)
+		entry.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 		var chip := Panel.new()
-		chip.custom_minimum_size = Vector2(104, 104)
+		chip.custom_minimum_size = Vector2(84, 84)
 		chip.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		var base := ALLY_CHIP if cb.is_ally else ENEMY_CHIP
 		chip.add_theme_stylebox_override("panel", _chip_style(base, CARD_BORDER))
 
-		var label := _make_label(cb.display_name, 16, Color.WHITE)
-		label.set_anchors_preset(Control.PRESET_FULL_RECT)
+		# Portrait fills the chip (aspect-kept, so the chip's colour still shows in
+		# the margins and keeps ally/enemy readable at a glance).
+		var portrait := TextureRect.new()
+		portrait.set_anchors_preset(Control.PRESET_FULL_RECT)
+		portrait.offset_left = 3
+		portrait.offset_top = 3
+		portrait.offset_right = -3
+		portrait.offset_bottom = -3
+		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var tex := _combatant_portrait(cb)
+		if tex:
+			portrait.texture = tex
+		chip.add_child(portrait)
+
+		var label := _make_label(cb.display_name, 15, Color.WHITE)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label.custom_minimum_size = Vector2(84, 0)
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		chip.add_child(label)
 
-		_turn_order_box.add_child(chip)
-		_chip_views[cb] = chip
+		entry.add_child(chip)
+		entry.add_child(label)
+		_turn_order_box.add_child(entry)
+		_chip_views[cb] = {"chip": chip, "entry": entry}
 
 
 func _highlight_turn_order(actor: Combatant) -> void:
 	for cb in _chip_views.keys():
-		var chip: Panel = _chip_views[cb]
+		var view: Dictionary = _chip_views[cb]
+		var chip: Panel = view["chip"]
+		var entry: Control = view["entry"]
 		var base := ALLY_CHIP if cb.is_ally else ENEMY_CHIP
 		if cb == actor:
 			chip.add_theme_stylebox_override("panel", _chip_style(base, GOLD, 4))
-			chip.modulate = Color.WHITE
+			entry.modulate = Color.WHITE
 		else:
 			chip.add_theme_stylebox_override("panel", _chip_style(base, CARD_BORDER))
-			chip.modulate = Color(1, 1, 1, 0.6) if cb.is_downed else Color.WHITE
+			entry.modulate = Color(1, 1, 1, 0.6) if cb.is_downed else Color.WHITE
 #endregion
 
 
@@ -495,13 +585,13 @@ func _run_battle() -> void:
 
 
 func _take_enemy_turn(actor: Combatant) -> void:
-	await _sleep(0.5)
+	await _sleep(ENEMY_THINK_PAUSE)
 	var decision: Dictionary = ai_strategy.choose_action(actor, encounter, controller)
 	if decision.is_empty() or decision.get("action") == null:
 		return
 	var result := controller.apply_action(actor, decision["action"], decision.get("target"))
 	_narrate(result, actor)
-	await _sleep(0.5)
+	await _sleep(POST_ACTION_PAUSE)
 
 
 func _take_player_turn(actor: Combatant) -> void:
@@ -519,7 +609,7 @@ func _take_player_turn(actor: Combatant) -> void:
 		return
 	var result := controller.apply_action(actor, decision["action"], decision.get("target"))
 	_narrate(result, actor)
-	await _sleep(0.4)
+	await _sleep(POST_ACTION_PAUSE)
 
 
 func _conclude() -> void:
@@ -528,6 +618,10 @@ func _conclude() -> void:
 	_clear_party_combat()
 	controller.conclude()   # awards XP / crowns / loot on WIN and emits its signal
 	_refresh_party()
+	# XP / level / Attribute Points only change here (rewards land on conclude), so
+	# push those readouts to the HUD cards now.
+	for card in _ally_cards.values():
+		card.refresh_progression()
 	_refresh_enemies()
 
 	var text := ""
@@ -599,6 +693,18 @@ func _on_end_turn_pressed() -> void:
 	_player_decided.emit({})
 
 
+# DEV CHEAT: kill every living enemy, then hand control back as a plain pass. The
+# normal turn loop then sees the board is won, breaks, and runs _conclude() ->
+# CombatController reward payout — so this exercises the REAL reward path (XP,
+# crowns, loot) instead of bypassing it.
+func _on_auto_win_pressed() -> void:
+	_targeting = false
+	for enemy in encounter.living_enemies():
+		enemy.take_damage(enemy.current_hp + 9999)
+	encounter.refresh_status()
+	_player_decided.emit({})
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if _targeting and event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		_cancel_targeting()
@@ -617,14 +723,17 @@ func _narrate(result: Dictionary, actor: Combatant) -> void:
 				var dmg: int = result.get("damage", 0)
 				var crit: bool = result.get("crit", false)
 				_spawn_damage(defender, dmg)
+				_impact(defender)
 				var reroll := " (Fortune!)" if result.get("fortune_rerolled") else ""
 				_log("%s hits %s for [color=#ff6666]%d[/color]%s%s." % [
 					actor.display_name, defender.display_name, dmg,
 					" CRIT!" if crit else "", reroll])
+				_log(_attack_math(result))
 				if result.get("defender_downed"):
 					_log("[color=silver]%s is downed![/color]" % defender.display_name)
 			else:
 				_log("%s misses %s." % [actor.display_name, result["defender"].display_name])
+				_log(_attack_math(result))
 		"flee":
 			if result.get("success"):
 				_log("[color=gold]%s flees the battle![/color]" % actor.display_name)
@@ -638,6 +747,75 @@ func _narrate(result: Dictionary, actor: Combatant) -> void:
 				_log("%s uses an item (+%d HP)." % [actor.display_name, result["healed"]])
 			else:
 				_log("%s uses an item." % actor.display_name)
+
+
+# A dim, secondary log line spelling out the hit / damage math behind a resolved
+# attack, so the numbers being calculated are visible during play.
+#   hit%  = HIT_BASE + (accuracy − evasion) * HIT_PER_POINT   (clamped)
+#   dmg   = weapon_roll + floor(Might * MIGHT_SCALE)  [× CRIT_MULT]  − armor
+func _attack_math(result: Dictionary) -> String:
+	var head := "hit %d%% [acc %d − eva %d]" % [
+		result.get("hit_chance", 0), result.get("accuracy", 0), result.get("evasion", 0)]
+	if not result.get("hit"):
+		return "[color=#8a8a8a]    ↳ miss · %s[/color]" % head
+
+	var roll: int = result.get("weapon_roll", 0)
+	var might: int = result.get("might_bonus", 0)
+	var armor: int = result.get("armor", 0)
+	var after: int = result.get("after_armor", 0)
+	var dealt: int = result.get("damage", 0)
+	var dmg := ""
+	if result.get("crit"):
+		dmg = "(roll %d + might %d) ×%d CRIT = %d − armor %d = %d" % [
+			roll, might, int(CombatConstants.CRIT_MULTIPLIER),
+			result.get("raw_damage", 0), armor, after]
+	else:
+		dmg = "roll %d + might %d − armor %d = %d" % [roll, might, armor, after]
+	if dealt != after:
+		dmg += " → %d (reduced)" % dealt   # Defend / other mitigation in take_damage
+	return "[color=#8a8a8a]    ↳ %s · dmg: %s[/color]" % [head, dmg]
+
+
+# A fresh flash material per sprite, so pulsing one enemy doesn't pulse them all.
+func _make_flash_material() -> ShaderMaterial:
+	var mat := ShaderMaterial.new()
+	mat.shader = HIT_FLASH_SHADER
+	return mat
+
+
+# Impact reaction when damage lands on a combatant: shake the whole card and pulse
+# the battler art red. Enemies use their card view; heroes their HUD card.
+func _impact(cb: Combatant) -> void:
+	if _enemy_views.has(cb):
+		var view: Dictionary = _enemy_views[cb]
+		if view["dead"]:
+			return
+		_flash(view.get("art"))
+		_shake(view["holder"])
+	elif _ally_cards.has(cb):
+		_ally_cards[cb].hit_react()
+
+
+# Pulse a sprite red via its flash shader, fading back to normal.
+func _flash(art: CanvasItem) -> void:
+	if art == null or art.material == null:
+		return
+	var mat: ShaderMaterial = art.material
+	mat.set_shader_parameter("flash_amount", FLASH_START)
+	art.create_tween().tween_method(
+		func(v: float): mat.set_shader_parameter("flash_amount", v),
+		FLASH_START, 0.0, FLASH_TIME)
+
+
+# Jitter a node around its current position with decaying intensity, then settle.
+func _shake(node: Control) -> void:
+	var base := node.position
+	var t := node.create_tween()
+	for i in range(SHAKE_STEPS):
+		var damp := 1.0 - float(i) / float(SHAKE_STEPS)
+		var off := Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * SHAKE_INTENSITY * damp
+		t.tween_property(node, "position", base + off, SHAKE_STEP)
+	t.tween_property(node, "position", base, SHAKE_STEP)
 
 
 func _spawn_damage(cb: Combatant, amount: int) -> void:

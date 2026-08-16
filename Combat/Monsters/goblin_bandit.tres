@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Combat/monster_definition.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://djmn38wci5ryv" path="res://Assets/CombatBattlers/Goblin Bandit.png" id="2_sprite"]
+[ext_resource type="Resource" uid="uid://c5nhrj0s54yn0" path="res://Inventory/Resources/Weapons/sword_1h.tres" id="3_sword"]
+[ext_resource type="Texture2D" uid="uid://jik6inj2jrej" path="res://Assets/CombatBattlers/BattlerPortraits/Goblin_Bandit_P.png" id="4_portrait"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Goblin Bandit"
+max_hp = 20
+max_action_points = 5
+might = 12
+finesse = 13
+awareness = 11
+fate = 8
+armor = 2
+damage_min = 3
+damage_max = 6
+is_ranged = false
+attack_ap_cost = 3
+default_row = 0
+xp_reward = 32
+crowns_reward = 10
+loot = Array[InventoryData]([ExtResource("3_sword")])
+sprite = ExtResource("2_sprite")
+portrait = ExtResource("4_portrait")

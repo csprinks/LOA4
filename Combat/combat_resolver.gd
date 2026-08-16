@@ -31,12 +31,22 @@ func crit_chance_percent(attacker: Combatant) -> int:
 # effects are applied inside Combatant.take_damage.
 func resolve_attack(attacker: Combatant, defender: Combatant) -> Dictionary:
 	var chance := hit_chance_percent(attacker, defender)
+	# The intermediate terms are all recorded on the result so the battle log can
+	# show the full formula, not just the final number. Zeroed on a miss.
 	var result := {
 		"attacker": attacker,
 		"defender": defender,
+		"accuracy": attacker.accuracy,
+		"evasion": defender.evasion,
 		"hit_chance": chance,
+		"crit_chance": crit_chance_percent(attacker),
 		"hit": false,
 		"crit": false,
+		"weapon_roll": 0,
+		"might_bonus": 0,
+		"raw_damage": 0,
+		"armor": defender.armor,
+		"after_armor": 0,
 		"damage": 0,
 		"defender_downed": false,
 	}
@@ -49,12 +59,16 @@ func resolve_attack(attacker: Combatant, defender: Combatant) -> Dictionary:
 	var base := rng.randi_range(int(profile["min"]), int(profile["max"]))
 	var might_bonus := int(floor(attacker.might * CombatConstants.MIGHT_DAMAGE_SCALE))
 	var raw := base + might_bonus
+	result["weapon_roll"] = base
+	result["might_bonus"] = might_bonus
 
-	if rng.chance_percent(crit_chance_percent(attacker)):
+	if rng.chance_percent(result["crit_chance"]):
 		result["crit"] = true
 		raw = int(round(raw * CombatConstants.CRIT_MULTIPLIER))
+	result["raw_damage"] = raw
 
 	var after_armor: int = max(CombatConstants.MIN_DAMAGE, raw - defender.armor)
+	result["after_armor"] = after_armor
 	var dealt := defender.take_damage(after_armor)  # status effects apply here
 	result["damage"] = dealt
 	result["defender_downed"] = defender.is_downed

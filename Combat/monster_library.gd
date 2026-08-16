@@ -39,6 +39,8 @@ static func orc() -> MonsterDefinition:
 	m.default_row = 0
 	m.xp_reward = 40
 	m.crowns_reward = 8
+	# Sample loot: an Orc drops a healing potion into the shared backpack on death.
+	m.loot.append(preload("res://Inventory/Resources/Potions/healing.tres"))
 	return m
 
 # A ranged monster: placed in the back row, still able to hit any hero.
@@ -59,4 +61,6 @@ static func kobold_archer() -> MonsterDefinition:
 	m.default_row = 1
 	m.xp_reward = 25
 	m.crowns_reward = 4
+	# Sample loot: the archer drops an Action Points potion.
+	m.loot.append(preload("res://Inventory/Resources/Potions/action_points.tres"))
 	return m

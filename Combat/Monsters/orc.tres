@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Combat/monster_definition.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://xpqfuhn82e0n" path="res://Assets/CombatBattlers/Orc.png" id="2_sprite"]
+[ext_resource type="Resource" uid="uid://bcwg4tnqx8jfk" path="res://Inventory/Resources/Potions/healing.tres" id="3_potion"]
+[ext_resource type="Texture2D" uid="uid://c5ucwirrjeb6u" path="res://Assets/CombatBattlers/BattlerPortraits/Orc_P.png" id="4_portrait"]
+
+[resource]
+script = ExtResource("1_script")
+display_name = "Orc"
+max_hp = 28
+max_action_points = 5
+might = 15
+finesse = 9
+awareness = 8
+fate = 5
+armor = 3
+damage_min = 4
+damage_max = 8
+is_ranged = false
+attack_ap_cost = 3
+default_row = 0
+xp_reward = 40
+crowns_reward = 8
+loot = Array[InventoryData]([ExtResource("3_potion")])
+sprite = ExtResource("2_sprite")
+portrait = ExtResource("4_portrait")
