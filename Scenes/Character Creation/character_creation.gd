@@ -52,6 +52,7 @@ var _portrait_index := 0
 var _total_labels: Dictionary = {}
 var _spent_labels: Dictionary = {}
 var _gain_labels: Dictionary = {}
+var _hp_label: Label
 
 
 func _ready() -> void:
@@ -153,6 +154,12 @@ func _build() -> void:
 		grid.add_child(gain)
 
 
+	# Derived Hit Points -- updates live as Might is allocated so the player can
+	# see the payoff of investing in Might right away.
+	_hp_label = _label("HP: 0", 18)
+	col.add_child(_hp_label)
+
+
 func _make_class_option() -> OptionButton:
 	var ob := OptionButton.new()
 	ob.add_theme_font_size_override("font_size", FONT)
@@ -212,6 +219,19 @@ func _refresh() -> void:
 		_spent_labels[stat].text = str(points_spent[stat])
 		_gain_labels[stat].text = str(gain)
 	_atr_label.text = "Attribute Points (ATR): %d" % points_remaining()
+	_refresh_hp()
+
+
+# Mirrors Character's derived-HP formula at creation (level 1), reading its
+# constants directly so the preview can never drift from the real value. HP from
+# Might is a FLAT bonus per Attribute Point spent in Might, independent of class.
+func _refresh_hp() -> void:
+	if _hp_label == null:
+		return
+	var might_points := int(points_spent["Might"])
+	var hp := Character.HP_BASE + Character.HP_PER_LEVEL * (1 - 1) \
+		+ Character.HP_PER_MIGHT_POINT * might_points
+	_hp_label.text = "HP: %d  (+%d per point in Might)" % [hp, Character.HP_PER_MIGHT_POINT]
 
 
 # --- Portrait selection -----------------------------------------------------

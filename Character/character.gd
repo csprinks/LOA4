@@ -17,14 +17,17 @@ signal xp_gained(amount)
 const STAT_NAMES := ["Might", "Awareness", "Finesse", "Intellect", "Charm", "Fate"]
 
 # --- Derived max HP ---------------------------------------------------------
-# max_hp = HP_BASE + HP_PER_LEVEL * (level - 1) + HP_PER_MIGHT * Might.
-# "Gritty" tuning: a level-1 melee hero (Might ~13) has ~122 HP and ~464 by
-# level 20 -- more if Might is raised. HP is recomputed whenever level or Might
-# changes (creation, level-up, spending attribute points, loading a save). Kept
-# here as tunables so balancing never means hunting through logic.
-const HP_BASE := 70
+# max_hp = HP_BASE + HP_PER_LEVEL * (level - 1)
+#          + HP_PER_MIGHT_POINT * <Attribute Points spent in Might>.
+# The Might term is a FLAT +4 per Attribute Point invested in Might, independent
+# of the class Gain -- a point in Might is +4 HP whether it's off-class, primary,
+# or a double-Might build (it never doubles up). "Gritty" tuning: a level-1 hero
+# has ~110 HP with no Might investment, a bit more if Might is raised, and ~452
+# by level 20. Recomputed whenever level or Might changes (creation, level-up,
+# spending attribute points, loading a save). Tunables live here.
+const HP_BASE := 110
 const HP_PER_LEVEL := 18
-const HP_PER_MIGHT := 4
+const HP_PER_MIGHT_POINT := 4
 
 # Derived attributes
 var hit_points: HitPoints
@@ -101,11 +104,13 @@ func use_favor_points(cost: int) -> bool:
 #endregion
 
 #region Attributes
-# Max HP derived from the current level and Might (see the HP_* constants).
+# Max HP derived from the current level and Might investment (see the HP_*
+# constants). The Might term counts Attribute Points SPENT in Might (flat +4
+# each), not the class-multiplied Might total, so it never doubles up.
 func compute_max_hp() -> int:
 	var lvl: int = level_system.current_level if level_system else 1
-	var might_total: int = stats["Might"].total if stats.has("Might") else Stat.BASE_DEFAULT
-	return HP_BASE + HP_PER_LEVEL * (lvl - 1) + HP_PER_MIGHT * might_total
+	var might_points: int = stats["Might"].points_spent if stats.has("Might") else 0
+	return HP_BASE + HP_PER_LEVEL * (lvl - 1) + HP_PER_MIGHT_POINT * might_points
 
 # Recompute max HP and reconcile current HP. `fill` decides what happens to the
 # current value:
