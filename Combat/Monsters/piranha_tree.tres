@@ -8,15 +8,15 @@
 [resource]
 script = ExtResource("1_script")
 display_name = "Piranha Tree"
-max_hp = 36
+max_hp = 340
 max_action_points = 4
 might = 14
 finesse = 6
 awareness = 9
 fate = 7
 armor = 4
-damage_min = 5
-damage_max = 9
+damage_min = 12
+damage_max = 20
 is_ranged = false
 attack_ap_cost = 3
 default_row = 0

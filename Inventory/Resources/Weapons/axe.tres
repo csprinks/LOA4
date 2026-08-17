@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_qenuc")
 weaponType = 1
-minDamage = 2
-maxDamage = 6
+minDamage = 40
+maxDamage = 70
 ActionPointCost = 3
 itemName = "Axe"
 description = "An exquisite axe."

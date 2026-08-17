@@ -8,15 +8,15 @@
 [resource]
 script = ExtResource("1_script")
 display_name = "Goblin Bandit"
-max_hp = 20
+max_hp = 250
 max_action_points = 5
 might = 12
 finesse = 13
 awareness = 11
 fate = 8
 armor = 2
-damage_min = 3
-damage_max = 6
+damage_min = 9
+damage_max = 15
 is_ranged = false
 attack_ap_cost = 3
 default_row = 0

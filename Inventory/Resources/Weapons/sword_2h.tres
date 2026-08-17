@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_l0hyi")
 weaponType = 3
-minDamage = 3
-maxDamage = 12
+minDamage = 55
+maxDamage = 110
 ActionPointCost = 7
 itemName = "Two Handed Sword"
 description = "A large two handed sword."

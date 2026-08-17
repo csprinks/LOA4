@@ -7,15 +7,15 @@
 [resource]
 script = ExtResource("1_script")
 display_name = "Kobold"
-max_hp = 14
+max_hp = 220
 max_action_points = 4
 might = 8
 finesse = 12
 awareness = 10
 fate = 6
 armor = 1
-damage_min = 2
-damage_max = 4
+damage_min = 7
+damage_max = 12
 is_ranged = false
 attack_ap_cost = 3
 default_row = 0

@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_v5vcd")
 weaponType = 1
-minDamage = 2
-maxDamage = 6
+minDamage = 35
+maxDamage = 70
 ActionPointCost = 5
 itemName = "Cultist Mace"
 description = "An evil looking mace used by a cultist."

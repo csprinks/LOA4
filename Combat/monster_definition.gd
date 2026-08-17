@@ -9,7 +9,7 @@ extends Resource
 ## reads, plus the rewards granted when the monster dies.
 
 @export var display_name: String = "Monster"
-@export var max_hp: int = 20
+@export var max_hp: int = 200
 @export var max_action_points: int = 5
 
 # Combat stats -- the subset of the hero six-stat model that combat actually

@@ -8,15 +8,15 @@ extends RefCounted
 static func kobold() -> MonsterDefinition:
 	var m := MonsterDefinition.new()
 	m.display_name = "Kobold"
-	m.max_hp = 14
+	m.max_hp = 220
 	m.max_action_points = 4
 	m.might = 8
 	m.finesse = 12
 	m.awareness = 10
 	m.fate = 6
 	m.armor = 1
-	m.damage_min = 2
-	m.damage_max = 4
+	m.damage_min = 7
+	m.damage_max = 12
 	m.attack_ap_cost = 3
 	m.default_row = 0
 	m.xp_reward = 20
@@ -26,15 +26,15 @@ static func kobold() -> MonsterDefinition:
 static func orc() -> MonsterDefinition:
 	var m := MonsterDefinition.new()
 	m.display_name = "Orc"
-	m.max_hp = 28
+	m.max_hp = 340
 	m.max_action_points = 5
 	m.might = 15
 	m.finesse = 9
 	m.awareness = 8
 	m.fate = 5
 	m.armor = 3
-	m.damage_min = 4
-	m.damage_max = 8
+	m.damage_min = 14
+	m.damage_max = 22
 	m.attack_ap_cost = 3
 	m.default_row = 0
 	m.xp_reward = 40
@@ -47,15 +47,15 @@ static func orc() -> MonsterDefinition:
 static func kobold_archer() -> MonsterDefinition:
 	var m := MonsterDefinition.new()
 	m.display_name = "Kobold Archer"
-	m.max_hp = 12
+	m.max_hp = 180
 	m.max_action_points = 4
 	m.might = 7
 	m.finesse = 14
 	m.awareness = 12
 	m.fate = 7
 	m.armor = 0
-	m.damage_min = 3
-	m.damage_max = 6
+	m.damage_min = 8
+	m.damage_max = 13
 	m.is_ranged = true
 	m.attack_ap_cost = 3
 	m.default_row = 1

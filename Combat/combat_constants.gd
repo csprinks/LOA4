@@ -18,12 +18,15 @@ const HIT_MAX_PERCENT := 95
 # --- Damage -----------------------------------------------------------------
 # damage = weapon_roll + floor(might * MIGHT_DAMAGE_SCALE) - target_armor,
 # floored at MIN_DAMAGE so a landed hit always stings a little.
-const MIGHT_DAMAGE_SCALE := 0.5
+# Tuned so a level-1 melee hero (Might ~13, +39 flat) lands ~50-150 per hit:
+# a 1h sword (35-80 roll) totals ~74-119, heavier weapons more. Weapon damage
+# is the dominant term; Might adds a meaty, predictable chunk on top.
+const MIGHT_DAMAGE_SCALE := 3.0
 const MIN_DAMAGE := 1
 # Fallback weapon damage when a combatant has no weapon profile (an unarmed hero
-# with nothing in the primary slot).
-const UNARMED_MIN_DAMAGE := 2
-const UNARMED_MAX_DAMAGE := 5
+# with nothing in the primary slot). Weak, but still lands in the impact band.
+const UNARMED_MIN_DAMAGE := 15
+const UNARMED_MAX_DAMAGE := 35
 
 # --- Critical hits ----------------------------------------------------------
 # crit% = round(Fate * CRIT_PER_FATE), clamped to [0, CRIT_MAX_PERCENT]. A crit

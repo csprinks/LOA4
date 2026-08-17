@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_jla3p")
 weaponType = 1
-minDamage = 3
-maxDamage = 12
+minDamage = 50
+maxDamage = 100
 ActionPointCost = 5
 itemName = "Volcanic War Hammer"
 description = "A warhammer still glowing with its volcanic forging."

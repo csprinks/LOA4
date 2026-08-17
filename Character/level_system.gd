@@ -46,7 +46,7 @@ func _init(starting_level: int = 1, starting_xp: int = 0, starting_favor: int = 
 
 	# If starting with XP, make sure the level matches.
 	if starting_xp > 0:
-		calculate_level_from_xp()
+		current_level = calculate_level_from_xp()
 
 # Add XP and check for level up.
 func add_xp(amount: int) -> void:
@@ -75,15 +75,15 @@ func check_level_up() -> void:
 
 		level_up.emit(old_level, current_level, favor_gained)
 
-# Calculate level from current total XP.
+# Calculate the level implied by the current total XP. Pure: it must NOT mutate
+# current_level, or check_level_up's `new_level > current_level` comparison would
+# always be false (the bug that used to swallow every level-up signal).
 func calculate_level_from_xp() -> int:
 	if current_xp >= XP_CHART[max_level]["cumulative"]:
-		current_level = max_level
 		return max_level
 
 	for level in range(max_level, 0, -1):
 		if current_xp >= XP_CHART[level]["cumulative"]:
-			current_level = level
 			return level
 
 	return 1

@@ -8,15 +8,15 @@
 [resource]
 script = ExtResource("1_script")
 display_name = "Orc"
-max_hp = 28
+max_hp = 340
 max_action_points = 5
 might = 15
 finesse = 9
 awareness = 8
 fate = 5
 armor = 3
-damage_min = 4
-damage_max = 8
+damage_min = 14
+damage_max = 22
 is_ranged = false
 attack_ap_cost = 3
 default_row = 0

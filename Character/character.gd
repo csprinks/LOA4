@@ -16,6 +16,16 @@ signal xp_gained(amount)
 # Character Creation screen and any stat UI.
 const STAT_NAMES := ["Might", "Awareness", "Finesse", "Intellect", "Charm", "Fate"]
 
+# --- Derived max HP ---------------------------------------------------------
+# max_hp = HP_BASE + HP_PER_LEVEL * (level - 1) + HP_PER_MIGHT * Might.
+# "Gritty" tuning: a level-1 melee hero (Might ~13) has ~122 HP and ~464 by
+# level 20 -- more if Might is raised. HP is recomputed whenever level or Might
+# changes (creation, level-up, spending attribute points, loading a save). Kept
+# here as tunables so balancing never means hunting through logic.
+const HP_BASE := 70
+const HP_PER_LEVEL := 18
+const HP_PER_MIGHT := 4
+
 # Derived attributes
 var hit_points: HitPoints
 var action_points: ActionPoints
@@ -44,7 +54,6 @@ var available_attribute_points: int = 0
 var stats: Dictionary = {}
 
 func _init() -> void:
-	hit_points = HitPoints.new(100)
 	action_points = ActionPoints.new(5)
 	fortune_points = FortunePoints.new(1)
 	armor = Armor.new(0)
@@ -63,6 +72,10 @@ func _init() -> void:
 	level_system.level_up.connect(_on_level_up)
 	level_system.xp_gained.connect(_on_xp_gained)
 
+	# HP is derived from level + Might, so build it after both exist and start
+	# the hero at full health.
+	hit_points = HitPoints.new(compute_max_hp())
+
 	for slot in EQUIPMENT_SLOTS:
 		equipment[slot] = {}
 
@@ -76,6 +89,8 @@ func reward_xp(amount: int) -> void:
 	level_system.add_xp(amount)
 
 func _on_level_up(old_level: int, new_level: int, favor_gained: int) -> void:
+	# Higher level => higher max HP; grant the gained HP so leveling heals.
+	refresh_max_hp("delta")
 	leveled_up.emit(old_level, new_level, favor_gained)
 
 func _on_xp_gained(amount: int) -> void:
@@ -86,6 +101,30 @@ func use_favor_points(cost: int) -> bool:
 #endregion
 
 #region Attributes
+# Max HP derived from the current level and Might (see the HP_* constants).
+func compute_max_hp() -> int:
+	var lvl: int = level_system.current_level if level_system else 1
+	var might_total: int = stats["Might"].total if stats.has("Might") else Stat.BASE_DEFAULT
+	return HP_BASE + HP_PER_LEVEL * (lvl - 1) + HP_PER_MIGHT * might_total
+
+# Recompute max HP and reconcile current HP. `fill` decides what happens to the
+# current value:
+#   "full"  -> jump current up to the new max (fresh hero / character creation)
+#   "delta" -> add only the gained amount to current (level-up, raising Might)
+#   "keep"  -> leave current as-is, only clamped down to the new max (load)
+func refresh_max_hp(fill: String = "delta") -> void:
+	var old_max := hit_points.max_value
+	var new_max := compute_max_hp()
+	hit_points.set_max(new_max)
+	match fill:
+		"full":
+			hit_points.reset()
+		"delta":
+			if new_max > old_max:
+				hit_points.increase(new_max - old_max)
+		"keep":
+			pass
+
 func add_fortune_points(amount: int) -> void:
 	fortune_points.increase(amount)
 
@@ -122,6 +161,8 @@ func apply_stat_data(stat_data: Dictionary) -> void:
 				int(d.get("base", Stat.BASE_DEFAULT)),
 				int(d.get("points_spent", d.get("deeds_spent", 0))),
 				int(d.get("gain_per_point", d.get("points_per_deed", 1))))
+	# Might may have changed; recompute HP and start a freshly built hero full.
+	refresh_max_hp("full")
 
 func _stats_to_dict() -> Dictionary:
 	var out := {}
@@ -178,10 +219,12 @@ func from_dict(data: Dictionary) -> void:
 	character_name = data.get("character_name", "Unnamed Hero")
 	portrait = data.get("portrait", "res://Portraits/Portrait_1.png")
 
+	# Max HP is derived from level + Might, recomputed after those load below, so
+	# the stored max is ignored -- only the saved current (wound state) is kept.
+	# -1 means "no saved value"; the hero is then filled to the recomputed max.
+	var saved_hp_current := -1
 	if data.has("hit_points"):
-		var hp_data = data["hit_points"]
-		hit_points.set_max(hp_data.get("max", 100))
-		hit_points.set_current(hp_data.get("current", 100))
+		saved_hp_current = int(data["hit_points"].get("current", -1))
 
 	if data.has("action_points"):
 		var ap_data = data["action_points"]
@@ -215,6 +258,12 @@ func from_dict(data: Dictionary) -> void:
 			var sd = stats_data.get(stat_name, null)
 			if typeof(sd) == TYPE_DICTIONARY:
 				stats[stat_name].from_dict(sd)
+
+	# Level and Might are loaded now: derive max HP and restore the saved current
+	# (migrates older saves whose stored max predates this formula).
+	refresh_max_hp("keep")
+	if saved_hp_current >= 0:
+		hit_points.set_current(saved_hp_current)
 
 func from_json(json_string: String) -> void:
 	var data = JSON.parse_string(json_string)
