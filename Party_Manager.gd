@@ -1,10 +1,10 @@
 extends Node
 
 ## Holds the active party (up to 4 Characters), the selected hero index, and
-## coordinates persistence through SaveSystem. Save coherence rules (carried over
-## from LOA2): "Start New Game" builds a fresh party in memory without touching
-## the slot's existing save; hero switching never writes to disk; all disk saves
-## go through save_party() as a full snapshot.
+## coordinates persistence through SaveSystem. Save coherence rules: "Start New
+## Game" builds a fresh party in memory without touching the slot's existing
+## save; hero switching never writes to disk; all disk saves go through
+## save_party() as a full snapshot.
 
 var party: Array = []
 var current_character_index: int = 0

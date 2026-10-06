@@ -27,6 +27,11 @@ func _setup_level_with_manager() -> void:
 		return
 	# Standalone / first load: create the player if we don't have one yet.
 	if not LevelManager.get_player() or not is_instance_valid(LevelManager.get_player()):
+		# A level run on its own skipped the menus, so there are no heroes yet. Field
+		# a default party in memory (nothing is written to a save slot) so the HUD
+		# and fights work while testing.
+		if PartyManager.party.is_empty():
+			PartyManager.create_new_party(false)
 		LevelManager.call_deferred("create_player_at_spawn", "PlayerSpawn")
 
 func get_player_spawn() -> Node3D:

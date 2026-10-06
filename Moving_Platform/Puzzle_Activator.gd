@@ -18,6 +18,11 @@ var is_solved: bool = false
 var _audio_player: AudioStreamPlayer3D
 
 func _ready():
+	# WorldState saves/restores is_solved. Without that a solved puzzle forgets it
+	# was solved when you come back to the level, and setting the levers again
+	# would fire the doors a second time (toggling them shut).
+	add_to_group("persistent")
+
 	# Validate inputs
 	if levers.size() != required_states.size():
 		push_error("PuzzleActivator: Number of levers doesn't match required states!")
@@ -85,6 +90,15 @@ func is_puzzle_solved() -> bool:
 			return false
 	
 	return true
+
+#region Persistence (WorldState contract)
+func get_persistent_state() -> Dictionary:
+	return {"solved": is_solved}
+
+# Flag only: the doors and platforms it fired persist their own state.
+func apply_persistent_state(state: Dictionary) -> void:
+	is_solved = bool(state.get("solved", false))
+#endregion
 
 # Reset the puzzle (useful for level reset)
 func reset_puzzle():

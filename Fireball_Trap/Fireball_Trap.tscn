@@ -299,7 +299,6 @@ layers = 7
 material_override = SubResource("ShaderMaterial_ar4gt")
 cast_shadow = 0
 mesh = ExtResource("4_ejcx4")
-skeleton = NodePath("")
 
 [node name="Light" type="OmniLight3D" parent="FireBall/MeshInstance" unique_id=1998785659]
 light_color = Color(1, 0.54509807, 0, 1)

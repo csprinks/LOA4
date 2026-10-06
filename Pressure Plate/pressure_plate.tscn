@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cusjibj5wq67n"]
+[gd_scene format=3 uid="uid://cusjibj5wq67n"]
 
 [ext_resource type="Script" uid="uid://vbsuw5y87i68" path="res://Pressure Plate/pressure_plate.gd" id="1_bio82"]
 [ext_resource type="PackedScene" uid="uid://5peo4q8k6wrk" path="res://Pressure Plate/Pressure_Plate.glb" id="1_y048l"]
@@ -44,21 +44,19 @@ _data = {
 &"RESET": SubResource("Animation_bio82")
 }
 
-[node name="Pressure_Plate" type="Area3D" groups=["interactable"]]
+[node name="Pressure_Plate" type="Area3D" unique_id=1369156013 groups=["interactable"]]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 collision_layer = 519
 collision_mask = 519
 script = ExtResource("1_bio82")
 
-[node name="Pressure_Plate" parent="." instance=ExtResource("1_y048l")]
+[node name="Pressure_Plate" parent="." unique_id=218416619 instance=ExtResource("1_y048l")]
 
-[node name="Pressure_Plate_Housing" parent="." instance=ExtResource("2_bio82")]
+[node name="Pressure_Plate_Housing" parent="." unique_id=1973838583 instance=ExtResource("2_bio82")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["interactable"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2030112648 groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_y048l")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_118q2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=66542477]
+libraries/ = SubResource("AnimationLibrary_118q2")

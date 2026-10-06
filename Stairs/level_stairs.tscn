@@ -6,6 +6,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_trigger"]
 size = Vector3(2, 2, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_side"]
+size = Vector3(2, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_back"]
+size = Vector3(0.1, 1.1, 2)
+
 [node name="Stairs" type="Area3D" unique_id=1430534718]
 collision_layer = 0
 script = ExtResource("1_st")
@@ -14,3 +20,17 @@ script = ExtResource("1_st")
 shape = SubResource("BoxShape3D_trigger")
 
 [node name="Stairs" parent="." unique_id=1351498346 instance=ExtResource("2_glb")]
+
+[node name="Blockers" type="StaticBody3D" parent="."]
+
+[node name="SideA" type="CollisionShape3D" parent="Blockers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.95)
+shape = SubResource("BoxShape3D_side")
+
+[node name="SideB" type="CollisionShape3D" parent="Blockers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.95)
+shape = SubResource("BoxShape3D_side")
+
+[node name="Back" type="CollisionShape3D" parent="Blockers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, -0.45, 0)
+shape = SubResource("BoxShape3D_back")

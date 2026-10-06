@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://bm21gvuh6vevo"]
+[gd_scene format=3 uid="uid://bm21gvuh6vevo"]
 
 [ext_resource type="Shader" uid="uid://cgpfc6eba27ip" path="res://Fireball_Trap/Fire_Project/Fire_Drop_Shader.gdshader" id="2_ear7p"]
 [ext_resource type="ArrayMesh" uid="uid://b20m5hrabwl7r" path="res://Fireball_Trap/Fire_Project/Tear_Model.tres" id="3_3oo2k"]
@@ -482,37 +482,36 @@ material = SubResource("StandardMaterial3D_rh0km")
 sections = 2
 curve = SubResource("Curve_arjyu")
 
-[node name="Holder" type="Node3D"]
+[node name="Holder" type="Node3D" unique_id=273675847]
 
-[node name="Ground" type="MeshInstance3D" parent="."]
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=116495061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 material_override = SubResource("StandardMaterial3D_u6740")
 mesh = SubResource("PlaneMesh_xye4h")
 skeleton = NodePath("../..")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=771135682]
 transform = Transform3D(1, 0, 0, 0, 0.9315771, 0.36354393, 0, -0.36354393, 0.9315771, 2, 1, 2.4002643)
 current = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=524308582]
 environment = SubResource("Environment_u6740")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=1093338232]
 transform = Transform3D(0.5000002, -0.61237216, 0.6123726, 0, 0.707107, 0.70710653, -0.8660253, -0.35355338, 0.35355362, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Fire_Drop" type="MeshInstance3D" parent="."]
+[node name="Fire_Drop" type="MeshInstance3D" parent="." unique_id=1256752078]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2, 1.6813964, 0)
 material_override = SubResource("ShaderMaterial_ow41l")
 cast_shadow = 0
 mesh = ExtResource("3_3oo2k")
-skeleton = NodePath("")
 
-[node name="Light" type="OmniLight3D" parent="Fire_Drop"]
+[node name="Light" type="OmniLight3D" parent="Fire_Drop" unique_id=691653292]
 light_color = Color(1, 0.54509807, 0, 1)
 light_energy = 2.0
 
-[node name="Sparks" type="GPUParticles3D" parent="Fire_Drop"]
+[node name="Sparks" type="GPUParticles3D" parent="Fire_Drop" unique_id=420920817]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 cast_shadow = 0
 amount = 64
@@ -522,18 +521,17 @@ trail_lifetime = 0.05
 process_material = SubResource("ParticleProcessMaterial_08enn")
 draw_pass_1 = SubResource("RibbonTrailMesh_h2jv8")
 
-[node name="Fire_Drop2" type="MeshInstance3D" parent="."]
+[node name="Fire_Drop2" type="MeshInstance3D" parent="." unique_id=1523875272]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_fyxh7")
 cast_shadow = 0
 mesh = ExtResource("3_3oo2k")
-skeleton = NodePath("")
 
-[node name="Light" type="OmniLight3D" parent="Fire_Drop2"]
+[node name="Light" type="OmniLight3D" parent="Fire_Drop2" unique_id=233187285]
 light_color = Color(7.70092e-06, 0.7593809, 0.89030135, 1)
 light_energy = 2.0
 
-[node name="Sparks" type="GPUParticles3D" parent="Fire_Drop2"]
+[node name="Sparks" type="GPUParticles3D" parent="Fire_Drop2" unique_id=2036143000]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 cast_shadow = 0
 amount = 64
@@ -543,18 +541,17 @@ trail_lifetime = 0.05
 process_material = SubResource("ParticleProcessMaterial_7hhqn")
 draw_pass_1 = SubResource("RibbonTrailMesh_jw47b")
 
-[node name="Fire_Drop3" type="MeshInstance3D" parent="."]
+[node name="Fire_Drop3" type="MeshInstance3D" parent="." unique_id=78993181]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 4, 0, 0)
 material_override = SubResource("ShaderMaterial_e5ihn")
 cast_shadow = 0
 mesh = ExtResource("3_3oo2k")
-skeleton = NodePath("")
 
-[node name="Light" type="OmniLight3D" parent="Fire_Drop3"]
+[node name="Light" type="OmniLight3D" parent="Fire_Drop3" unique_id=1859208112]
 light_color = Color(0, 0.7607843, 0, 1)
 light_energy = 2.0
 
-[node name="Sparks" type="GPUParticles3D" parent="Fire_Drop3"]
+[node name="Sparks" type="GPUParticles3D" parent="Fire_Drop3" unique_id=1407407239]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 cast_shadow = 0
 amount = 64

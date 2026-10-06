@@ -249,11 +249,8 @@ func reset():
 	else:
 		is_active = false
 
-# NOTE: LOA2 had an _on_body_entered() + _physics_process() velocity pair here
-# meant to carry a rider, but CharacterBody3D has no body_entered signal and it
-# was never connected — velocity stayed zero. Dropped as dead code. The platform
-# moves purely by tweening global_position, so it acts as a sliding obstacle
-# (open/close a path), not an elevator you stand on.
+# NOTE: The platform moves purely by tweening global_position, so it acts as a
+# sliding obstacle (open/close a path), not an elevator you stand on.
 
 # Clean up tween when platform is removed
 func _exit_tree():

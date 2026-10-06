@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c42yf7cyjovai"]
+[gd_scene format=3 uid="uid://c42yf7cyjovai"]
 
 [ext_resource type="Script" uid="uid://c0mv81corn2l8" path="res://Doors/Door_Stone/door_stone.gd" id="1_o8ag6"]
 [ext_resource type="PackedScene" uid="uid://dswyb2e3klykh" path="res://Doors/Door_Stone/Door_Stone.glb" id="1_pedud"]
@@ -16,30 +16,30 @@ size = Vector3(1.3572998, 2.5705566, 0.48287964)
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8ag6"]
 size = Vector3(1.5, 2.5, 0.2)
 
-[node name="Door_Stone" type="Node3D"]
+[node name="Door_Stone" type="Node3D" unique_id=795942016]
 script = ExtResource("1_o8ag6")
 
-[node name="Door_Stone" parent="." instance=ExtResource("1_pedud")]
+[node name="Door_Stone" parent="." unique_id=350534119 instance=ExtResource("1_pedud")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=209321247]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00143155, 1.20207, -0.0182969)
 mesh = SubResource("PlaneMesh_55gdo")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1420500013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054118514, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=424617148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012634277, 1.3086641, -0.08531189)
 shape = SubResource("BoxShape3D_2jmt8")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1929370261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3943853, 0)
 
-[node name="SoundPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1982352402]
 
-[node name="InteractionArea" type="Area3D" parent="."]
+[node name="InteractionArea" type="Area3D" parent="." unique_id=1690138795]
 
-[node name="@CollisionShape3D@21015" type="CollisionShape3D" parent="InteractionArea"]
+[node name="@CollisionShape3D@21015" type="CollisionShape3D" parent="InteractionArea" unique_id=953750402]
 shape = SubResource("BoxShape3D_o8ag6")
 
-[node name="@AudioStreamPlayer3D@21016" type="AudioStreamPlayer3D" parent="."]
+[node name="@AudioStreamPlayer3D@21016" type="AudioStreamPlayer3D" parent="." unique_id=1025758126]

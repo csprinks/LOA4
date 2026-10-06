@@ -5,9 +5,9 @@ extends Node
 ## what makes a door you opened stay open when you walk back into a level, and what
 ## drops a loaded game back into the right level at the right spot.
 ##
-## Design mirrors AutomapManager's per-level cache: state is keyed by level scene
-## path and carried in memory across level transitions, then serialized to disk on
-## an explicit Save (through SaveSystem, alongside the party files).
+## State is a per-level cache: keyed by level scene path and carried in memory
+## across level transitions, then serialized to disk on an explicit Save (through
+## SaveSystem, alongside the party files).
 ##
 ## Interactives opt in with a tiny duck-typed contract:
 ##   - add themselves to group "persistent" in _ready()
@@ -22,6 +22,13 @@ const PERSISTENT_GROUP := "persistent"
 
 # level_path (String) -> { node_id (String) -> state (Dictionary) }
 var _level_states: Dictionary = {}
+
+# Things that dropped into a level from another one (a push block through a pit
+# trap) and are spawned there whenever it loads:
+# level_path (String) -> [ { "scene": String, "pos": [x, y, z] } ]
+# Each becomes a child of the level root named "Fallen_<index>", so from then on
+# its own persistent state (where it was pushed to) is kept like any other node's.
+var _level_arrivals: Dictionary = {}
 
 # Where the player is, for game-load restore.
 var player_level: String = ""
@@ -77,7 +84,10 @@ func _capture_level(level: Node) -> void:
 # Apply any saved state to the matching nodes under a freshly loaded level.
 func _restore_level(level: Node) -> void:
 	var level_path := _level_path_of(level)
-	if level_path == "" or not _level_states.has(level_path):
+	if level_path == "":
+		return
+	_spawn_arrivals(level, level_path)
+	if not _level_states.has(level_path):
 		return
 
 	var states: Dictionary = _level_states[level_path]
@@ -87,6 +97,27 @@ func _restore_level(level: Node) -> void:
 		var node_id := str(level.get_path_to(node))
 		if states.has(node_id):
 			node.apply_persistent_state(states[node_id])
+
+# Record that an instance of `scene_path` has dropped into `level_path` at `pos`.
+func add_arrival(level_path: String, scene_path: String, pos: Vector3) -> void:
+	if level_path == "" or scene_path == "":
+		return
+	if not _level_arrivals.has(level_path):
+		_level_arrivals[level_path] = []
+	_level_arrivals[level_path].append({"scene": scene_path, "pos": [pos.x, pos.y, pos.z]})
+
+func _spawn_arrivals(level: Node, level_path: String) -> void:
+	var arrivals: Array = _level_arrivals.get(level_path, [])
+	for i in arrivals.size():
+		var scene = load(String(arrivals[i].get("scene", "")))
+		var pos = arrivals[i].get("pos", null)
+		if not (scene is PackedScene) or not (pos is Array) or pos.size() != 3:
+			continue
+		var node: Node = scene.instantiate()
+		node.name = "Fallen_%d" % i
+		if node is Node3D:
+			node.position = Vector3(pos[0], pos[1], pos[2])   # before _ready reads it
+		level.add_child(node)
 
 # Persistent-group nodes that are descendants of `level` (group membership is
 # global, so filter by ancestry — during a transition both levels can briefly
@@ -141,6 +172,8 @@ func to_dict() -> Dictionary:
 		"player_position": [player_position.x, player_position.y, player_position.z],
 		"player_yaw": player_yaw,
 		"levels": levels,
+		"arrivals": _level_arrivals.duplicate(true),
+		"automap": AutomapManager.to_dict(),
 	}
 #endregion
 
@@ -160,6 +193,14 @@ func from_dict(data: Dictionary) -> void:
 	if levels is Dictionary:
 		for level_path in levels:
 			_level_states[level_path] = (levels[level_path] as Dictionary).duplicate(true)
+
+	var arrivals = data.get("arrivals", {})
+	if arrivals is Dictionary:
+		_level_arrivals = arrivals.duplicate(true)
+
+	var automap = data.get("automap", {})
+	if automap is Dictionary:
+		AutomapManager.from_dict(automap)
 
 # Load a slot's world blob into memory and arm the spawn override. Returns the
 # level scene path to load, or "" when the slot has no world save (caller falls
@@ -187,7 +228,9 @@ func consume_spawn_override():
 
 func reset() -> void:
 	_level_states.clear()
+	_level_arrivals.clear()
 	player_level = ""
 	player_position = Vector3.ZERO
 	player_yaw = 0.0
 	_spawn_override = null
+	AutomapManager.forget_all()   # the explored map is part of the world

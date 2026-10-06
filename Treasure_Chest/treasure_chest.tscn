@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxqdrktwjh40n"]
+[gd_scene format=3 uid="uid://cxqdrktwjh40n"]
 
 [ext_resource type="Script" uid="uid://c8tyh3hoyl75f" path="res://Treasure_Chest/Treasure_Chest.gd" id="1_7x7ia"]
 [ext_resource type="PackedScene" uid="uid://co4b85oq5vjm2" path="res://Treasure_Chest/Chest_Top.glb" id="1_kerte"]
@@ -45,23 +45,21 @@ _data = {
 &"RESET": SubResource("Animation_0l8cu")
 }
 
-[node name="Treasure_Chest" type="StaticBody3D" groups=["interactable", "map_chest"]]
+[node name="Treasure_Chest" type="StaticBody3D" unique_id=1245555 groups=["interactable"]]
 script = ExtResource("1_7x7ia")
 sound_effect = ExtResource("15_0ixuo")
 
-[node name="Hinge" type="Node3D" parent="."]
+[node name="Hinge" type="Node3D" parent="." unique_id=1298084555]
 transform = Transform3D(0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 0, 0, 1, -0.366801, 0.615618, 0)
 
-[node name="Chest_Top" parent="Hinge" instance=ExtResource("1_kerte")]
+[node name="Chest_Top" parent="Hinge" unique_id=1055012172 instance=ExtResource("1_kerte")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362122, -0.627213, 0)
 
-[node name="Chest_Bottom" parent="." instance=ExtResource("2_plqsk")]
+[node name="Chest_Bottom" parent="." unique_id=1754766212 instance=ExtResource("2_plqsk")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1116970981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_6e610")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_a05m2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=976855777]
+libraries/ = SubResource("AnimationLibrary_a05m2")

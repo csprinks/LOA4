@@ -1,9 +1,8 @@
 extends Node
 
-## Owns the persistent player and swaps levels under it (LOA4 port of LOA2's
-## LevelManager, trimmed). The player scene embeds the HUD (UI_Main), so when the
-## player is reparented into a new level the HUD and its PartyManager wiring ride
-## along automatically — LOA2's separate UI-await / character-load steps are gone.
+## Owns the persistent player and swaps levels under it. The player scene embeds
+## the HUD (UI_Main), so when the player is reparented into a new level the HUD
+## and its PartyManager wiring ride along automatically.
 
 signal level_loaded(level_node: Node)
 signal level_unloading(level_node: Node)
@@ -14,8 +13,10 @@ var persistent_player: Player = null
 var is_loading_level: bool = false
 
 # Load a new level and carry the persistent player into it. The screen only fades
-# back in once the player is positioned at the new level's spawn.
-func load_level(level_path: String, player_spawn_name: String = "PlayerSpawn") -> void:
+# back in once the player is positioned at the new level's spawn. `spawn_transform`
+# (a Transform3D), if given, places the player there instead of at a named marker
+# (a pit trap lands the party on the cell below it).
+func load_level(level_path: String, player_spawn_name: String = "PlayerSpawn", spawn_transform = null) -> void:
 	if is_loading_level:
 		push_warning("LevelManager: load_level ignored - a load is already in progress")
 		return
@@ -67,7 +68,7 @@ func load_level(level_path: String, player_spawn_name: String = "PlayerSpawn") -
 
 	# LevelManager owns player spawning on the managed path (player_loading.gd
 	# stands down while is_loading_level is true).
-	await create_player_at_spawn(player_spawn_name)
+	await create_player_at_spawn(player_spawn_name, spawn_transform)
 
 	# Let the level run any content hook now that the player is present.
 	if current_level.has_method("initialize_level_specific_content"):
@@ -81,7 +82,7 @@ func load_level(level_path: String, player_spawn_name: String = "PlayerSpawn") -
 
 # Create or reparent the persistent player and position it at the level's spawn.
 # Idempotent: reuses the existing player across transitions.
-func create_player_at_spawn(spawn_name: String = "PlayerSpawn") -> void:
+func create_player_at_spawn(spawn_name: String = "PlayerSpawn", spawn_transform = null) -> void:
 	if not current_level or not is_instance_valid(current_level):
 		push_error("LevelManager: cannot spawn player - no current level set")
 		return
@@ -102,29 +103,37 @@ func create_player_at_spawn(spawn_name: String = "PlayerSpawn") -> void:
 		await persistent_player.ready
 	await get_tree().process_frame
 
-	_position_player_at_spawn(spawn_name)
+	_position_player_at_spawn(spawn_name, spawn_transform)
 
 	emit_signal("player_loaded", persistent_player)
 
 # Position the player on the level's spawn point (falls back to origin).
-func _position_player_at_spawn(spawn_name: String) -> void:
+func _position_player_at_spawn(spawn_name: String, spawn_transform = null) -> void:
 	if not persistent_player:
 		return
+
+	# Arrive at rest: a party that fell through a pit trap is still falling.
+	persistent_player.set_freeze_enabled(true)
+	persistent_player.linear_velocity = Vector3.ZERO
+	persistent_player.angular_velocity = Vector3.ZERO
 
 	# A game-load arms WorldState with the exact transform the player saved at, so
 	# loading drops them back where they were rather than at the level's spawn.
 	var override = WorldState.consume_spawn_override() if WorldState else null
 	if override != null:
 		persistent_player.global_transform = override
+	elif spawn_transform is Transform3D:
+		persistent_player.global_transform = spawn_transform
 	else:
-		var spawn_point: Node = null
-		if current_level.has_method("get_player_spawn"):
-			spawn_point = current_level.get_player_spawn()
-		elif "player_spawn" in current_level and current_level.player_spawn:
-			spawn_point = current_level.player_spawn
+		# The marker asked for by name wins (stairs/doors arrive at a specific one);
+		# the level's own default spawn is only the fallback.
+		var spawn_point: Node = current_level.find_child(spawn_name, true, false)
 
 		if not spawn_point or not is_instance_valid(spawn_point):
-			spawn_point = current_level.find_child(spawn_name, true, false)
+			if current_level.has_method("get_player_spawn"):
+				spawn_point = current_level.get_player_spawn()
+			elif "player_spawn" in current_level and current_level.player_spawn:
+				spawn_point = current_level.player_spawn
 
 		if spawn_point and is_instance_valid(spawn_point) and spawn_point.is_inside_tree():
 			persistent_player.global_transform = spawn_point.global_transform

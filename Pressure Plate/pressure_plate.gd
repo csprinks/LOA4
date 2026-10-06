@@ -7,6 +7,13 @@ signal tile_deactivated
 # Export an array of MovingBlockPlatform nodes to control
 @export var connected_platforms: Array[MovingBlockPlatform] = []
 
+## Doors this plate holds open: they open while the party or a push block is on
+## the plate and close again when it is clear.
+@export var connected_doors: Array[DoorGrate] = []
+## Leave the doors open once the plate has been pressed (a one-way trigger)
+## instead of closing them when it is released.
+@export var doors_stay_open: bool = false
+
 var is_active = false
 var is_cooldown = false
 
@@ -239,7 +246,19 @@ func set_platforms_direction(should_reverse: bool):
 			# Only set reverse direction - the signal handlers handle activation
 			platform.set_reverse_direction(should_reverse)
 
+# Every activation / deactivation path ends in activate_tile() / deactivate_tile(),
+# so the doors are driven from there. open() and close() ignore a door already in
+# that state, so a door shared with a lever or another plate is not toggled twice.
+func _set_doors_open(open: bool) -> void:
+	for door in connected_doors:
+		if door and is_instance_valid(door):
+			if open:
+				door.open()
+			else:
+				door.close()
+
 func activate_tile():
+	_set_doors_open(true)
 	# Add your tile activation logic here
 	# For example: change material, play sound, trigger animation, etc.
 	# You could change the mesh material to indicate activation
@@ -249,6 +268,8 @@ func activate_tile():
 		pass
 
 func deactivate_tile():
+	if not doors_stay_open:
+		_set_doors_open(false)
 	# Add your tile deactivation logic here
 	# For example: revert material, stop sound, reset animation, etc.
 	var mesh = get_node_or_null("MeshInstance3D")

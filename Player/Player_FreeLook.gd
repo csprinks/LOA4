@@ -3,7 +3,7 @@ extends Node
 
 ## Hold the right mouse button while standing still to glance around the current
 ## tile (up/down, left/right) without changing the grid facing. Releasing eases
-## the view back to centre. Adapted from LOA2 (automap-state dependency removed).
+## the view back to centre.
 
 # How far the view can swing from centre, in degrees.
 const YAW_LIMIT := 80.0    # left / right

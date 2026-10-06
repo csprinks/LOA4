@@ -1,9 +1,7 @@
 extends Node
 
-## GDScript replacement for LOA2's C# RandomNumberManager. Same public API
-## (GetRandomNumber) so the inventory generation code that calls it needs no
-## changes. Returns an int when both bounds are ints, otherwise a float -
-## matching the two C# overloads.
+## Shared random number source (used by inventory generation). GetRandomNumber
+## returns an int when both bounds are ints, otherwise a float.
 
 @export var deterministic_seed: int = 0
 @export var use_deterministic_seed: bool = false

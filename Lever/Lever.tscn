@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://doce5nb77f6j7"]
+[gd_scene format=3 uid="uid://doce5nb77f6j7"]
 
 [ext_resource type="Script" uid="uid://mkwoiwugm8iy" path="res://Lever/lever.gd" id="1_7fpqd"]
 [ext_resource type="PackedScene" uid="uid://ddo25eo0ipcny" path="res://Lever/Lever_Housing.glb" id="1_p6rsu"]
@@ -64,25 +64,23 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_7fpqd"]
 size = Vector3(0.3, 1.1, 0.5057373)
 
-[node name="Lever" type="StaticBody3D" groups=["interactable"]]
+[node name="Lever" type="StaticBody3D" unique_id=167554444 groups=["interactable"]]
 collision_layer = 4
 script = ExtResource("1_7fpqd")
 sound_effect = ExtResource("4_eacmo")
 
-[node name="Lever_Housing" parent="." instance=ExtResource("1_p6rsu")]
+[node name="Lever_Housing" parent="." unique_id=1965363288 instance=ExtResource("1_p6rsu")]
 
-[node name="Lever_Handle" parent="." instance=ExtResource("2_7fpqd")]
+[node name="Lever_Handle" parent="." unique_id=377643079 instance=ExtResource("2_7fpqd")]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_eacmo")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1044095485]
+libraries/ = SubResource("AnimationLibrary_eacmo")
 
-[node name="SFXLever" type="AudioStreamPlayer3D" parent="."]
+[node name="SFXLever" type="AudioStreamPlayer3D" parent="." unique_id=2090008213]
 unique_name_in_owner = true
 stream = ExtResource("4_eacmo")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=338141734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003326416, 0.063016295, 0.2380422)
 shape = SubResource("BoxShape3D_7fpqd")

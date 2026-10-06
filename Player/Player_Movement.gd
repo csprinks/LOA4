@@ -2,8 +2,7 @@ extends Node
 class_name PlayerMovement
 
 ## Grid-based first-person movement: discrete 2-unit steps and 90-degree turns,
-## both eased with tweens. Adapted from LOA2; teleporter and hazard hooks will be
-## re-added in the level-mechanics and traps phases.
+## both eased with tweens.
 
 signal movement_started(direction: Vector3)
 signal movement_finished()
@@ -154,6 +153,10 @@ func set_can_move(value: bool):
 func begin_scripted_move():
 	scripted_move = true
 	can_move = false
+	# Drop any grid step still in flight so it doesn't fight the scripted tween.
+	if movement_tween and movement_tween.is_valid():
+		movement_tween.kill()
+	is_moving = false
 	player_body.set_freeze_enabled(true)
 
 # Hand control back after a scripted move; the next check_ground re-grounds.

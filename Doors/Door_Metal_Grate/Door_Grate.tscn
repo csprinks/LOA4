@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh4fy1hr0hgkw"]
+[gd_scene format=3 uid="uid://bh4fy1hr0hgkw"]
 
 [ext_resource type="Script" uid="uid://0pw2k1eoowv0" path="res://Doors/Door_Metal_Grate/door_grate.gd" id="1_3gl2d"]
 [ext_resource type="PackedScene" uid="uid://bil75b3tyjex4" path="res://Doors/Door_Metal_Grate/Door_Grate.glb" id="1_233pl"]
@@ -53,57 +53,55 @@ _data = {
 &"RESET": SubResource("Animation_f2dcw")
 }
 
-[node name="Door_Grate" type="Node3D"]
+[node name="Door_Grate" type="Node3D" unique_id=751156984]
 script = ExtResource("1_3gl2d")
 open_sound = ExtResource("2_3gl2d")
 close_sound = ExtResource("2_3gl2d")
 
-[node name="Door_Grate2" parent="." instance=ExtResource("1_233pl")]
+[node name="Door_Grate2" parent="." unique_id=1798227360 instance=ExtResource("1_233pl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8704, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door_Grate2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_Grate2" unique_id=1177074104]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Grate2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Grate2/StaticBody3D" unique_id=1571088159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000499994)
 shape = SubResource("BoxShape3D_finic")
 
-[node name="Border" type="Node3D" parent="."]
+[node name="Border" type="Node3D" parent="." unique_id=1737425476]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Border"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Border" unique_id=1765448195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 mesh = SubResource("BoxMesh_juf1x")
 skeleton = NodePath("../../Door_Grate")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Border"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Border" unique_id=1515405447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 mesh = SubResource("BoxMesh_juf1x")
 skeleton = NodePath("../../Door_Grate")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Border"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Border" unique_id=70878040]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_juf1x")
 skeleton = NodePath("../../Door_Grate")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Border"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Border" unique_id=665444630]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_juf1x")
 skeleton = NodePath("../../Door_Grate")
 
-[node name="Door_Grate" type="Area3D" parent="."]
+[node name="Door_Grate" type="Area3D" parent="." unique_id=568833998]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Grate"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Grate" unique_id=1439734449]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0526123)
 visible = false
 shape = SubResource("BoxShape3D_mfyob")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=895681113]
 root_node = NodePath("../Door_Grate")
-libraries = {
-&"": SubResource("AnimationLibrary_2h2tc")
-}
+libraries/ = SubResource("AnimationLibrary_2h2tc")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=472462546]
 stream = ExtResource("2_wfsva")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1456402261]

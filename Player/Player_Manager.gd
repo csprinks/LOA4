@@ -3,9 +3,7 @@ extends RigidBody3D
 class_name Player
 
 ## Lean first-person grid-crawler player. Orchestrates the movement and free-look
-## subsystems. Adapted from LOA2's componentized player; the automap camera, HUD,
-## character data, interaction, and signal-manager layers are re-added in their
-## own porting phases.
+## subsystems.
 
 signal player_moved(direction)
 

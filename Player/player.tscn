@@ -1,47 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://loa4player0001"]
+[gd_scene format=3 uid="uid://bscolm17bsh8k"]
 
-[ext_resource type="Script" path="res://Player/Player_Manager.gd" id="1_player"]
-[ext_resource type="PackedScene" uid="uid://loa4uimain0001" path="res://UI/UI_Main.tscn" id="2_hud"]
+[ext_resource type="Script" uid="uid://cr2klp537wgjm" path="res://Player/Player_Manager.gd" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://bsctiydb6sh8k" path="res://UI/UI_Main.tscn" id="2_hud"]
 [ext_resource type="Script" uid="uid://de81y4c5xtyc4" path="res://Player/RC_Detection.gd" id="3_rcdet"]
 [ext_resource type="Script" path="res://Automap/automap.gd" id="4_automap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_body"]
-size = Vector3(1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
 albedo_color = Color(0, 0.592157, 1, 1)
 
-[node name="Player" type="RigidBody3D" node_paths=PackedStringArray("player_camera") groups=["player", "player_global"]]
-collision_layer = 1
+[node name="Player" type="RigidBody3D" unique_id=1691268293 node_paths=PackedStringArray("player_camera") groups=["player", "player_global"]]
 collision_mask = 2
 freeze = true
 script = ExtResource("1_player")
 player_camera = NodePath("Camera_Controller/Player_Camera")
 
-[node name="Camera_Controller" type="Node3D" parent="."]
+[node name="Camera_Controller" type="Node3D" parent="." unique_id=804984127]
 
-[node name="Player_Camera" type="Camera3D" parent="Camera_Controller"]
+[node name="Player_Camera" type="Camera3D" parent="Camera_Controller" unique_id=880131049]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.9993909, 0.034899496, 0, -0.034899496, 0.9993909, 0, 0.159383, 0.281204)
-cull_mask = 524287
 current = true
 fov = 90.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1486390835]
 shape = SubResource("BoxShape3D_body")
 
-[node name="Player_Mesh" type="MeshInstance3D" parent="."]
+[node name="Player_Mesh" type="MeshInstance3D" parent="." unique_id=852691053]
 visible = false
 material_override = SubResource("StandardMaterial3D_body")
 
-[node name="RC_Detection_Facing" type="RayCast3D" parent="."]
+[node name="RC_Detection_Facing" type="RayCast3D" parent="." unique_id=1298101712]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0)
 collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 script = ExtResource("3_rcdet")
 
-[node name="UI_Main" parent="." instance=ExtResource("2_hud")]
+[node name="UI_Main" parent="." unique_id=347432993 instance=ExtResource("2_hud")]
 
-[node name="Automap" type="Node3D" parent="."]
+[node name="Automap" type="CanvasLayer" parent="."]
 script = ExtResource("4_automap")
