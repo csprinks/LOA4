@@ -3,7 +3,7 @@ extends Node2D
 ## Coordinates the Character Creation screen: gathers each hero panel's choices
 ## into the party on "Start Game" and returns to the Main Menu otherwise.
 ##
-## LOA4: "Start Game" drops straight into the walkable test room (no Library scene
+## "Start Game" drops straight into the walkable test room (no Library scene
 ## yet); "Return to Main Menu" goes back to the Main Menu scene.
 
 const NEXT_SCENE := "res://Scenes/Test_Environment/Test_Environment.tscn"
@@ -45,7 +45,11 @@ func _on_start_game_pressed() -> void:
 	# Hand off to LevelManager, which spawns the persistent player (HUD embedded)
 	# into the first level. Then drop this creation screen; LevelManager runs its
 	# fade + load as an autoload coroutine independent of this node.
-	LevelManager.load_level(NEXT_SCENE)
+	# A new game starts on the first floor of the campaign module (chosen in the
+	# Level Editor); until one is set and built, it falls back to the test room.
+	var start := ModuleLibrary.campaign_start_scene()
+	GameState.editor_test_module = ""
+	LevelManager.load_level(start if start != "" else NEXT_SCENE)
 	queue_free()
 
 

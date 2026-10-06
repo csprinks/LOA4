@@ -6,6 +6,7 @@ extends Node2D
 ##   Load Game → open the slot picker (disabled when no slot has a save).
 ##   Options   → placeholder (flashes a "coming soon" note for now).
 ##   Tutorial  → placeholder (same).
+##   Level Editor → build the game's modules (floors, doors, puzzles, fights).
 ##   Quit      → exit to the desktop.
 ##
 ## Visual style matches Character Creation: solid brown background + the shared
@@ -13,6 +14,7 @@ extends Node2D
 
 const NEW_GAME := "res://Scenes/Main_Menu/new_game.tscn"
 const LOAD_GAME := "res://Scenes/Main_Menu/load_game.tscn"
+const LEVEL_EDITOR := "res://Scenes/Level_Editor/level_editor.tscn"
 
 @onready var _load_button: Button = %LoadGameButton
 @onready var _flash_label: Label = %FlashLabel
@@ -23,10 +25,13 @@ func _ready() -> void:
 	_load_button.pressed.connect(_on_load_game_pressed)
 	%OptionsButton.pressed.connect(_on_placeholder_pressed.bind("Options"))
 	%TutorialButton.pressed.connect(_on_placeholder_pressed.bind("Tutorial"))
+	%LevelEditorButton.pressed.connect(_go_to_scene.bind(LEVEL_EDITOR))
 	%QuitButton.pressed.connect(_on_quit_pressed)
 
 	# Nothing to load until a party has been saved to at least one slot.
 	_load_button.disabled = not SaveSystem.any_save_exists(GameState.SLOT_COUNT)
+
+	GameState.editor_test_module = ""   # back at the menu: no longer test-playing a module
 
 	_flash_label.modulate.a = 0.0
 	%NewGameButton.grab_focus()
