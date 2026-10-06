@@ -2,12 +2,12 @@ extends CanvasLayer
 class_name Automap
 
 ## Automap HUD: a child of the player, so it rides level transitions. Shows an
-## always-on minimap in the top-left corner; "toggle_automap" (M) or the corner
+## always-on minimap in the top-right corner; "toggle_automap" (M) or the corner
 ## button grows that same panel into a large centred map (animated) of everything
 ## explored on this level. The map itself is drawn by AutomapView.
 
 const MINI_SIZE := 200.0             # minimap square, px
-const MINI_MARGIN := 14.0            # gap from the screen's top-left corner
+const MINI_MARGIN := 14.0            # gap from the screen's top-right corner
 const LARGE_FRACTION := 0.88         # enlarged square, as a fraction of the short screen side
 const EXPAND_TIME := 0.35
 const DIM_ALPHA := 0.6               # backdrop darkening behind the enlarged map
@@ -44,7 +44,7 @@ func _set_expand(v: float) -> void:
 	_expand = v
 	var screen := get_viewport().get_visible_rect().size
 	var side := minf(screen.x, screen.y) * LARGE_FRACTION
-	var mini_pos := Vector2(MINI_MARGIN, MINI_MARGIN)
+	var mini_pos := Vector2(screen.x - MINI_SIZE - MINI_MARGIN, MINI_MARGIN)
 	var large_pos := (screen - Vector2(side, side)) * 0.5
 	_panel.position = mini_pos.lerp(large_pos, v)
 	_panel.size = Vector2(MINI_SIZE, MINI_SIZE).lerp(Vector2(side, side), v)
@@ -85,7 +85,7 @@ func _build_ui() -> void:
 	_panel.add_child(rim)
 	rim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
-	# Enlarge / shrink button, pinned to the panel's bottom-right corner.
+	# Enlarge / shrink button, pinned to the panel's bottom-left corner.
 	_toggle = Button.new()
 	_toggle.focus_mode = Control.FOCUS_NONE   # never steals Space/Enter from the game
 	_toggle.tooltip_text = "Toggle map (M)"
@@ -96,11 +96,11 @@ func _build_ui() -> void:
 	_toggle.pressed.connect(toggle_expanded)
 	_toggle.draw.connect(_draw_toggle_icon)
 	_panel.add_child(_toggle)
-	_toggle.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	_toggle.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	var pad := FRAME_INSET + 4.0
-	_toggle.offset_left = -TOGGLE_SIZE - pad
+	_toggle.offset_left = pad
 	_toggle.offset_top = -TOGGLE_SIZE - pad
-	_toggle.offset_right = -pad
+	_toggle.offset_right = TOGGLE_SIZE + pad
 	_toggle.offset_bottom = -pad
 
 	_set_expand(0.0)

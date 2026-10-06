@@ -19,25 +19,22 @@ script = ExtResource("1_ctrl")
 
 [node name="Crowns" parent="UI_Main_Control" unique_id=708737970 instance=ExtResource("2_crowns")]
 layout_mode = 1
-anchor_left = 0.91197914
+anchor_left = 0.00625
 anchor_top = 0.016296297
-anchor_right = 0.99375
+anchor_right = 0.08802086
 anchor_bottom = 0.0862963
-grow_horizontal = 0
 grow_vertical = 1
 
 [node name="Cards" type="VBoxContainer" parent="UI_Main_Control" unique_id=1705318292]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.78
-anchor_top = 0.02
-anchor_right = 0.995
+anchor_top = 0.095
 anchor_bottom = 0.98
-grow_horizontal = 0
+offset_left = 10.0
+offset_right = 354.0
 grow_vertical = 2
-theme_override_constants/separation = 22
-alignment = 1
+theme_override_constants/separation = 10
 
 [node name="CharacterCard" parent="UI_Main_Control/Cards" unique_id=1815877498 instance=ExtResource("3_card")]
 layout_mode = 2
@@ -58,13 +55,16 @@ size_flags_horizontal = 3
 [node name="Inventory_Button" type="TextureButton" parent="UI_Main_Control" unique_id=1978070840]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
+offset_left = -84.0
 offset_top = -84.0
-offset_right = 84.0
+offset_right = -20.0
 offset_bottom = -20.0
+grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("5_invicon")

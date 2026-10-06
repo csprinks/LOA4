@@ -23,13 +23,14 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [node name="CharacterCard" type="Control" unique_id=263139480]
-custom_minimum_size = Vector2(400, 204)
+custom_minimum_size = Vector2(344, 176)
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("2_theme")
 script = ExtResource("1_card")
 
 [node name="Panel" type="Panel" parent="." unique_id=1371196432]
+self_modulate = Color(1, 1, 1, 0.7)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,30 +45,75 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 14
-theme_override_constants/margin_right = 22
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
 
-[node name="Row" type="HBoxContainer" parent="Panel/Margin" unique_id=1154359866]
+[node name="Col" type="VBoxContainer" parent="Panel/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 2
 
-[node name="LeftCol" type="VBoxContainer" parent="Panel/Margin/Row" unique_id=1038378597]
+[node name="NameRow" type="HBoxContainer" parent="Panel/Margin/Col" unique_id=1701209085]
 layout_mode = 2
-theme_override_constants/separation = 6
+theme_override_constants/separation = 10
 
-[node name="Portrait" type="TextureRect" parent="Panel/Margin/Row/LeftCol" unique_id=1250107427]
+[node name="NameLabel" type="Label" parent="Panel/Margin/Col/NameRow" unique_id=1007089682]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.914, 0.784, 0.467, 1)
+theme_override_font_sizes/font_size = 22
+text = "Name"
+clip_text = true
+
+[node name="XPLabel" type="Label" parent="Panel/Margin/Col/NameRow" unique_id=233113998]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
+theme_override_font_sizes/font_size = 14
+text = "XP 0"
+
+[node name="ATRLabel" type="Label" parent="Panel/Margin/Col/NameRow" unique_id=1544463204]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
+theme_override_font_sizes/font_size = 14
+text = "ATR 0"
+
+[node name="LevelLabel" type="Label" parent="Panel/Margin/Col/NameRow" unique_id=347788563]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0.925, 0.66, 1)
+theme_override_font_sizes/font_size = 16
+text = "Lv 1"
+
+[node name="ClassLabel" type="Label" parent="Panel/Margin/Col" unique_id=786268302]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
+theme_override_font_sizes/font_size = 13
+text = "Class"
+clip_text = true
+
+[node name="Body" type="HBoxContainer" parent="Panel/Margin/Col"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Portrait" type="TextureRect" parent="Panel/Margin/Col/Body" unique_id=1250107427]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+size_flags_vertical = 4
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("5_portrait")
 
-[node name="Frame" type="Panel" parent="Panel/Margin/Row/LeftCol/Portrait"]
+[node name="Frame" type="Panel" parent="Panel/Margin/Col/Body/Portrait"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,144 +123,111 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_portrait")
 
-[node name="Weapons" type="HBoxContainer" parent="Panel/Margin/Row/LeftCol" unique_id=383240870]
+[node name="Right" type="VBoxContainer" parent="Panel/Margin/Col/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="Slots" type="HBoxContainer" parent="Panel/Margin/Col/Body/Right" unique_id=383240870]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="PrimarySlot" parent="Panel/Margin/Row/LeftCol/Weapons" unique_id=1555342643 node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
+[node name="PrimarySlot" parent="Panel/Margin/Col/Body/Right/Slots" unique_id=1555342643 node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(34, 34)
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
+expand_mode = 1
 slotRequirement = 13
 _otherWeaponSlot = NodePath("../SecondarySlot")
 
-[node name="SecondarySlot" parent="Panel/Margin/Row/LeftCol/Weapons" unique_id=1210195997 node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
+[node name="SecondarySlot" parent="Panel/Margin/Col/Body/Right/Slots" unique_id=1210195997 node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(34, 34)
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
+expand_mode = 1
 slotRequirement = 14
 _otherWeaponSlot = NodePath("../PrimarySlot")
 
-[node name="Info" type="VBoxContainer" parent="Panel/Margin/Row" unique_id=1554632253]
+[node name="Consumable1Slot" parent="Panel/Margin/Col/Body/Right/Slots" instance=ExtResource("4_slot")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 3
+expand_mode = 1
+consumablesOnly = true
 
-[node name="NameRow" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=1701209085]
+[node name="Consumable2Slot" parent="Panel/Margin/Col/Body/Right/Slots" instance=ExtResource("4_slot")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+expand_mode = 1
+consumablesOnly = true
+
+[node name="HPRow" type="HBoxContainer" parent="Panel/Margin/Col/Body/Right" unique_id=1836847915]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="NameLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow" unique_id=1007089682]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.914, 0.784, 0.467, 1)
-theme_override_font_sizes/font_size = 26
-text = "Name"
-clip_text = true
-
-[node name="LevelLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow" unique_id=347788563]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(1, 0.925, 0.66, 1)
-theme_override_font_sizes/font_size = 20
-text = "Lv 1"
-
-[node name="ClassLabel" type="Label" parent="Panel/Margin/Row/Info" unique_id=786268302]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
-theme_override_font_sizes/font_size = 16
-text = "Class"
-
-[node name="Rule" type="HSeparator" parent="Panel/Margin/Row/Info"]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="HPRow" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=1836847915]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="HPTag" type="Label" parent="Panel/Margin/Row/Info/HPRow" unique_id=1429814433]
-custom_minimum_size = Vector2(26, 0)
+[node name="HPTag" type="Label" parent="Panel/Margin/Col/Body/Right/HPRow" unique_id=1429814433]
+custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.914, 0.784, 0.467, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "HP"
 
-[node name="HPBar" parent="Panel/Margin/Row/Info/HPRow" unique_id=653035441 instance=ExtResource("3_bar")]
+[node name="HPBar" parent="Panel/Margin/Col/Body/Right/HPRow" unique_id=653035441 instance=ExtResource("3_bar")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 14)
+custom_minimum_size = Vector2(60, 12)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="HPLabel" type="Label" parent="Panel/Margin/Row/Info/HPRow" unique_id=9206428]
+[node name="HPLabel" type="Label" parent="Panel/Margin/Col/Body/Right/HPRow" unique_id=9206428]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(58, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "100/100"
 horizontal_alignment = 2
 
-[node name="APRow" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=1662023500]
+[node name="APRow" type="HBoxContainer" parent="Panel/Margin/Col/Body/Right" unique_id=1662023500]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="APTag" type="Label" parent="Panel/Margin/Row/Info/APRow" unique_id=1781952206]
-custom_minimum_size = Vector2(26, 0)
+[node name="APTag" type="Label" parent="Panel/Margin/Col/Body/Right/APRow" unique_id=1781952206]
+custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.914, 0.784, 0.467, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "AP"
 
-[node name="APBar" parent="Panel/Margin/Row/Info/APRow" unique_id=1698426703 instance=ExtResource("3_bar")]
+[node name="APBar" parent="Panel/Margin/Col/Body/Right/APRow" unique_id=1698426703 instance=ExtResource("3_bar")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 14)
+custom_minimum_size = Vector2(60, 12)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 stripe_color = Color(0.33, 0.68, 0.22, 1)
 gap_color = Color(0.1, 0.3, 0.08, 1)
 
-[node name="APLabel" type="Label" parent="Panel/Margin/Row/Info/APRow" unique_id=145582735]
+[node name="APLabel" type="Label" parent="Panel/Margin/Col/Body/Right/APRow" unique_id=145582735]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(58, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "5/5"
-horizontal_alignment = 2
-
-[node name="Progress" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=338465775]
-layout_mode = 2
-size_flags_vertical = 10
-theme_override_constants/separation = 6
-
-[node name="XPLabel" type="Label" parent="Panel/Margin/Row/Info/Progress" unique_id=233113998]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
-theme_override_font_sizes/font_size = 15
-text = "XP 0"
-
-[node name="ATRLabel" type="Label" parent="Panel/Margin/Row/Info/Progress" unique_id=1544463204]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
-theme_override_font_sizes/font_size = 15
-text = "ATR 0"
 horizontal_alignment = 2
 
 [node name="ArmorPanel" type="Panel" parent="." unique_id=1475533219]
 unique_name_in_owner = true
 visible = false
+self_modulate = Color(1, 1, 1, 0.7)
 layout_mode = 1
-offset_left = -164.0
-offset_right = -8.0
-offset_bottom = 224.0
-grow_horizontal = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 8.0
+offset_right = 232.0
+offset_bottom = 156.0
 
 [node name="Margin" type="MarginContainer" parent="ArmorPanel" unique_id=1160510550]
 layout_mode = 1
@@ -232,7 +245,7 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
-columns = 2
+columns = 3
 
 [node name="HeadSlot" parent="ArmorPanel/Margin/Grid" unique_id=797904666 instance=ExtResource("4_slot")]
 unique_name_in_owner = true

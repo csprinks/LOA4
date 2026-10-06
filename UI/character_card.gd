@@ -1,8 +1,9 @@
 class_name CharacterCard
 extends Control
 
-## A single hero's HUD card: portrait, name, classes, level, HP/AP bars, and the
-## two equipped hand slots (primary/secondary weapon). Bound to a
+## A single hero's HUD card: name, XP / Attribute Points / level, classes, portrait,
+## the equipped hand slots (primary/secondary weapon) plus two consumable quick
+## slots, and the HP/AP bars beneath them. Bound to a
 ## Character by set_character(); hides itself when passed null.
 ##
 ## Equipped items are mirrored onto the character's save data (equipment dict) so
@@ -24,6 +25,7 @@ extends Control
 # card scene. Weapons live on the card; the armor slots live in the ArmorPanel.
 const EQUIP_SLOT_NAMES := {
 	"primary": "PrimarySlot", "secondary": "SecondarySlot",
+	"consumable1": "Consumable1Slot", "consumable2": "Consumable2Slot",
 	"head": "HeadSlot", "chest": "ChestSlot", "hands": "HandsSlot",
 	"feet": "FeetSlot", "neck": "NeckSlot", "ring": "RingSlot",
 }

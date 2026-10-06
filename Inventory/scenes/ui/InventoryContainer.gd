@@ -16,6 +16,9 @@ signal slot_changed
 @export_enum("NONE", "ARM", "CHEST", "EAR", "FEET", "HANDS", "HEAD", "LEGS", "NECK", "RING", "WRIST", "WEAPON_1H", "WEAPON_2H", "WEAPON_PRIMARY", "WEAPON_SECONDARY")
 var slotRequirement: int = Requires.NONE
 
+# Quick slots on a hero's card: hold consumables (potions, scrolls) and nothing else.
+@export var consumablesOnly: bool = false
+
 @export_group("Default Background Icons")
 @export var blankIcon: Texture2D
 
@@ -38,6 +41,7 @@ const SLOT_ICONS := {
 	Requires.WEAPON_PRIMARY: preload("res://UI/Skin/slots/weapon.svg"),
 	Requires.WEAPON_SECONDARY: preload("res://UI/Skin/slots/shield.svg"),
 }
+const CONSUMABLE_ICON := preload("res://UI/Skin/slots/potion.svg")
 
 @export_group("Reference to other Weapon Slot Nodes if Applicable")
 @export var _otherWeaponSlot: InventoryContainer
@@ -75,10 +79,18 @@ func _ready() -> void:
 func IsBlank() -> bool:
 	return _item._resourceData.isBlank
 
+static func IsConsumable(item: InventoryItem) -> bool:
+	if item == null or item._resourceData == null or item._resourceData.isBlank:
+		return false
+	var data := item._resourceData
+	return data is PotionData or data.itemType == ItemTypes.POTION or data.itemType == ItemTypes.SCROLL
+
 # The silhouette only shows while the slot is empty, so it never sits behind an
 # equipped item's own icon.
 func SetSlotIcon() -> void:
-	if IsBlank() and SLOT_ICONS.has(slotRequirement):
+	if IsBlank() and consumablesOnly:
+		texture = CONSUMABLE_ICON
+	elif IsBlank() and SLOT_ICONS.has(slotRequirement):
 		texture = SLOT_ICONS[slotRequirement]
 	else:
 		texture = SLOT_FRAME
@@ -155,6 +167,15 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	var dragVariant: DragInventoryVariant = data
 
 	if dragVariant.item == null:
+		return false
+
+	# Consumable-only slots take nothing but consumables -- whether dropped in
+	# directly, or swapped back in by a drag out of one onto an occupied slot.
+	var source := dragVariant.myContainer
+	if (consumablesOnly and not IsConsumable(dragVariant.item)) \
+			or (not IsBlank() and source != null and source.consumablesOnly and not IsConsumable(_item)):
+		if dragVariant.item != _item:
+			UpdateDragStatusColor(false, dragVariant)
 		return false
 
 	if _item._resourceData.isBlank:

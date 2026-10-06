@@ -37,8 +37,9 @@ var portrait: String = "res://Portraits/Portrait_1.png"
 
 # Equipped items, keyed by slot. Each value is a dict produced by
 # EquipmentSerializer.item_to_dict ({} means the slot is empty). The character
-# card UI keeps this in sync with the on-screen equip slots (hands + armor).
-const EQUIPMENT_SLOTS := ["primary", "secondary", "head", "chest", "hands", "feet", "neck", "ring"]
+# card UI keeps this in sync with the on-screen equip slots (hands, the two
+# consumable quick slots, and armor).
+const EQUIPMENT_SLOTS := ["primary", "secondary", "consumable1", "consumable2", "head", "chest", "hands", "feet", "neck", "ring"]
 var equipment: Dictionary = {}
 
 # Choices made on the Character Creation screen.

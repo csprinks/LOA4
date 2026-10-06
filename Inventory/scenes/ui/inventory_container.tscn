@@ -27,6 +27,7 @@ offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_3orkr")
+expand_mode = 1
 
 [node name="stacktext" type="Label" parent="." unique_id=1472279152]
 layout_mode = 1

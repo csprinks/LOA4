@@ -28,7 +28,7 @@ const HP_COLOR := Color(0.95, 0.47, 0.40)
 const DAMAGE_COLOR := Color(1, 0.75, 0.2)
 const HEAL_COLOR := Color(0.4, 1.0, 0.4)
 
-const ENEMY_AREA := Rect2(380, 150, 1080, 540)       # x, y, w, h — clears the right HUD cards
+const ENEMY_AREA := Rect2(460, 150, 1080, 540)       # x, y, w, h — clears the left HUD cards
 const ROW_SCALE := 0.82                              # each row back shrinks by this
 const CARD_W := 190.0
 const CARD_H := 262.0
@@ -168,9 +168,9 @@ func _build_static_ui() -> void:
 	_turn_order_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	turn_order_col.add_child(_turn_order_box)
 
-	# --- Combat log (LEFT — "what is happening") ---
+	# --- Combat log (RIGHT, under the minimap — "what is happening") ---
 	var log_panel := Panel.new()
-	log_panel.position = Vector2(24, 470)
+	log_panel.position = Vector2(1556, 470)
 	log_panel.size = Vector2(340, 470)
 	log_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_root.add_child(log_panel)
@@ -195,17 +195,17 @@ func _build_static_ui() -> void:
 	_enemy_area.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_root.add_child(_enemy_area)
 
-	# --- Action bar + targeting bar (bottom-left, clear of the HUD cards) ---
+	# --- Action bar + targeting bar (bottom, clear of the HUD cards) ---
 	_action_bar = HBoxContainer.new()
 	_action_bar.add_theme_constant_override("separation", 12)
-	_action_bar.position = Vector2(400, 950)
+	_action_bar.position = Vector2(460, 950)
 	_action_bar.visible = false
 	_root.add_child(_action_bar)
 	_build_action_buttons()
 
 	_target_bar = HBoxContainer.new()
 	_target_bar.add_theme_constant_override("separation", 12)
-	_target_bar.position = Vector2(400, 950)
+	_target_bar.position = Vector2(460, 950)
 	_target_bar.visible = false
 	_root.add_child(_target_bar)
 	var target_hint := _make_label("Choose a target", 24, UIStyle.CREAM)
@@ -219,7 +219,7 @@ func _build_static_ui() -> void:
 
 	# --- End banner (hidden until the fight ends) ---
 	_banner = Panel.new()
-	_banner.position = Vector2(560, 400)
+	_banner.position = Vector2(700, 400)
 	_banner.size = Vector2(600, 240)
 	_banner.visible = false
 	_root.add_child(_banner)
