@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/dungeon/torch/BP_Torch_Stand.gltf" id="1_8snys"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_880wh"]
+size = Vector3(1.2324547, 2.72, 1.2307113)
+
+[node name="cf_torch_stand" type="Node3D" unique_id=1086158059]
+
+[node name="Model" type="Node3D" parent="." unique_id=910945616 instance=ExtResource("1_8snys")]
+transform = Transform3D(2.9053621, 0, 0, 0, 2.9053621, 0, 0, 0, 2.9053621, 0, 0.0031958984, 0)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=1357122176 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=26774819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36, 0)
+shape = SubResource("BoxShape3D_880wh")
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=1411109589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8700001, 0)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 2.2
+omni_range = 9.0

@@ -1,0 +1,13 @@
+Source art for the grass / teleporter / sky toolbar icons.
+
+The .svg files here are the editable originals; the .png files one folder up
+(grass.png, teleporter.png, sky.png) are what world.gd's _icon() actually loads.
+To re-render after editing an SVG, run this from a Godot 4 SceneTree script:
+
+	var img := Image.new()
+	img.load_svg_from_string(FileAccess.open(path, FileAccess.READ).get_as_text(), 4.0)
+	img.save_png(out_path)   # 64 viewBox * 4 = 256px, matching the other icons
+
+Dropping a hand-made 256x256 PNG over the one in assets/images/icons/ works too —
+_icon() just loads the file by name and falls back to the procedural _make_*_icon()
+drawing in world.gd when it is missing.

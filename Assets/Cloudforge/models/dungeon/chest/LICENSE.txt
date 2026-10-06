@@ -1,0 +1,28 @@
+Treasure Chest Set - Low Poly Hand Painted
+by Bitgem (artists: Andy Wang, Matthias Andre)
+
+Source:  https://www.cgtrader.com/free-3d-models/furniture/other/low-poly-treasure-chest-set
+Model ID: 790998, published 2017-10-12, downloaded as a free model.
+
+Licence: CGTrader Royalty Free License, No AI.
+
+  Commercial use in a game is permitted. Redistribution is not, unless the art is
+  an "Incorporated Product" - i.e. it cannot be extracted and used on its own
+  (terms sections 21A.6 and 21B).
+
+  Section 21A.3 additionally requires "all commercially reasonable measures to
+  prevent the end user from gaining access to the Product". A normal Godot export
+  (.pck, or embedded in the executable) satisfies this. Shipping these files
+  loose beside the executable does not, and neither would a public repository -
+  this repo was made private on 2026-09-16 partly for that reason.
+
+  The licence also forbids using the art to train machine learning models.
+
+Conversion notes (2026-09-16): the source .fbx files were baked to glTF, splitting
+each chest into a static "base" and a "lid" under a "lid_pivot" node placed at the
+rig's hinge bone. The 2048x2048 .tga maps were resized to 1024 and packed - albedo
+kept its alpha for the cobwebs, roughness and metallic combined into one ORM map,
+and the sparse emissive map kept as-is. The large and epic chests were duplicated
+from the medium one by the original artists, who left the old gold and cobweb
+meshes displaced along X rather than refitting them; those were slid back onto the
+chest centreline during conversion.

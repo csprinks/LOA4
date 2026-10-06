@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/dungeon/chest/epic.gltf" id="1_f5nw4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbahs"]
+size = Vector3(1.4398143, 1.4236703, 1.215504)
+
+[node name="cf_chest_epic" type="Node3D" unique_id=1679677522]
+
+[node name="Model" type="Node3D" parent="." unique_id=208832720 instance=ExtResource("1_f5nw4")]
+transform = Transform3D(2.3488, 0, 0, 0, 2.3488, 0, 0, 0, 2.3488, 0, 0.0035232, 0.009747458)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=2006452205 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1922798538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71183515, 0)
+shape = SubResource("BoxShape3D_qbahs")

@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/barrel/barrel_broken.gltf" id="1_35iqm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ef68h"]
+size = Vector3(1.3765917, 1.0117648, 1.6)
+
+[node name="cf_barrel_broken" type="Node3D" unique_id=2120020442]
+
+[node name="Model" type="Node3D" parent="." unique_id=55850174 instance=ExtResource("1_35iqm")]
+transform = Transform3D(1.2128563, 0, 0, 0, 1.2128563, 0, 0, 0, 1.2128563, 0.08350484, 2.0639327e-05, 0.14452836)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=587309664 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=2126725458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5058824, 0)
+shape = SubResource("BoxShape3D_ef68h")

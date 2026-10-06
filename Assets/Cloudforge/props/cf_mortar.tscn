@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/pottery/mortar.gltf" id="1_1j8vf"]
+
+[node name="cf_mortar" type="Node3D" unique_id=1719703906]
+
+[node name="Model" type="Node3D" parent="." unique_id=19015262 instance=ExtResource("1_1j8vf")]
+transform = Transform3D(2.128, 0, 0, 0, 2.128, 0, 0, 0, 2.128, -0.5426415, 0, 0)

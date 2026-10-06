@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/dungeon/chest/medium.gltf" id="1_b5myt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynrs6"]
+size = Vector3(1.1401075, 0.90650755, 0.93676066)
+
+[node name="cf_chest_medium" type="Node3D" unique_id=1639231942]
+
+[node name="Model" type="Node3D" parent="." unique_id=1847967341 instance=ExtResource("1_b5myt")]
+transform = Transform3D(2.3488, 0, 0, 0, 2.3488, 0, 0, 0, 2.3488, 0.0044627255, 0.01150912, -0.023047889)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=1321156117 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1746893563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45325378, 0)
+shape = SubResource("BoxShape3D_ynrs6")

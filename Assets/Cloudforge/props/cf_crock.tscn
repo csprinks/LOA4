@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/pottery/crock.gltf" id="1_bxela"]
+
+[node name="cf_crock" type="Node3D" unique_id=871276105]
+
+[node name="Model" type="Node3D" parent="." unique_id=131491052 instance=ExtResource("1_bxela")]
+transform = Transform3D(2.128, 0, 0, 0, 2.128, 0, 0, 0, 2.128, 0.52516, 0, 0)

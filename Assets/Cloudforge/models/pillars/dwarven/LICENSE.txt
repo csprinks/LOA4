@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dwarven Pillar
+* source:	https://sketchfab.com/3d-models/dwarven-pillar-61fce2271dad4bffbf85c5e489b0ee2d
+* author:	Mikołaj Michalak (https://sketchfab.com/M_Michalak)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dwarven Pillar" (https://sketchfab.com/3d-models/dwarven-pillar-61fce2271dad4bffbf85c5e489b0ee2d) by Mikołaj Michalak (https://sketchfab.com/M_Michalak) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

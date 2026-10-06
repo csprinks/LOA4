@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/pillars/temple_tall/temple_tall.gltf" id="1_fwd0x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ijtu0"]
+size = Vector3(0.8181819, 3, 0.8181819)
+
+[node name="cf_pillar_temple_tall" type="Node3D" unique_id=404485382]
+
+[node name="Model" type="Node3D" parent="." unique_id=370921644 instance=ExtResource("1_fwd0x")]
+transform = Transform3D(0.3409091, 0, 0, 0, 0.3409091, 0, 0, 0, 0.3409091, 0, 1.5, 0)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=517869050 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1390417338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_ijtu0")

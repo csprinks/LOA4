@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/minotaur/minotaur.gltf" id="1_6o8sh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_firla"]
+size = Vector3(1.0972736, 2.8, 1.1320108)
+
+[node name="cf_minotaur" type="Node3D" unique_id=1456611340]
+
+[node name="Model" type="Node3D" parent="." unique_id=1941140899 instance=ExtResource("1_6o8sh")]
+transform = Transform3D(0.0013083809, 0, 0, 0, 0.0013083809, 0, 0, 0, 0.0013083809, 0.0003336036, 0.86669767, -0.13689546)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=1515136648 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1537757082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+shape = SubResource("BoxShape3D_firla")

@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/dungeon/chest/large.gltf" id="1_1w2bt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hb7p1"]
+size = Vector3(1.3049933, 1.1804787, 1.0414579)
+
+[node name="cf_chest_large" type="Node3D" unique_id=21912416]
+
+[node name="Model" type="Node3D" parent="." unique_id=434769389 instance=ExtResource("1_1w2bt")]
+transform = Transform3D(2.3488, 0, 0, 0, 2.3488, 0, 0, 0, 2.3488, 0, 0.00305344, 0.008220799)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=1065717581 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1628658215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59023935, 0)
+shape = SubResource("BoxShape3D_hb7p1")

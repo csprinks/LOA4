@@ -1,0 +1,11 @@
+Model Information:
+* title:	Griffon statue
+* source:	https://sketchfab.com/3d-models/griffon-statue-2cd29b9448f6425e9008aa26aa9bc321
+* author:	feivelyn (https://sketchfab.com/feivelyn)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Griffon statue" (https://sketchfab.com/3d-models/griffon-statue-2cd29b9448f6425e9008aa26aa9bc321) by feivelyn (https://sketchfab.com/feivelyn) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

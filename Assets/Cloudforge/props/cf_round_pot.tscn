@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/pottery/round_pot.gltf" id="1_2j3fj"]
+
+[node name="cf_round_pot" type="Node3D" unique_id=346816393]
+
+[node name="Model" type="Node3D" parent="." unique_id=1746717783 instance=ExtResource("1_2j3fj")]
+transform = Transform3D(2.128, 0, 0, 0, 2.128, 0, 0, 0, 2.128, 4.4860315, -0.001964502, 0)

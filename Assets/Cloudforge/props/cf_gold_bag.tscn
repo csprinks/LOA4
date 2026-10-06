@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/goldbag/goldbag.gltf" id="1_hafsh"]
+
+[node name="cf_gold_bag" type="Node3D" unique_id=974234007]
+
+[node name="Model" type="Node3D" parent="." unique_id=1204956060 instance=ExtResource("1_hafsh")]
+transform = Transform3D(0.66688895, 0, 0, 0, 0.66688895, 0, 0, 0, 0.66688895, -3.974968e-08, 0.3998666, 6.668009e-05)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	BookShelf Art Nouveau
+* source:	https://sketchfab.com/3d-models/bookshelf-art-nouveau-a917f1bb22124b63a4ac2938de40c46a
+* author:	MightyPinecone (https://sketchfab.com/Mighty.Pinecone)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "BookShelf Art Nouveau" (https://sketchfab.com/3d-models/bookshelf-art-nouveau-a917f1bb22124b63a4ac2938de40c46a) by MightyPinecone (https://sketchfab.com/Mighty.Pinecone) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

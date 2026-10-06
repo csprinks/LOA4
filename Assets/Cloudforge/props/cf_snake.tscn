@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/snake/snake.gltf" id="1_hxjxs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mrp4"]
+size = Vector3(1.7, 2.1984658, 1.699999)
+
+[node name="cf_snake" type="Node3D" unique_id=285834596]
+
+[node name="Model" type="Node3D" parent="." unique_id=661340486 instance=ExtResource("1_hxjxs")]
+transform = Transform3D(0.23787092, 0, 0, 0, 0.23787092, 0, 0, 0, 0.23787092, -1.0832154e-05, 0.011596642, 1.5652746e-05)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=545855545 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=2133843967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0992329, 0)
+shape = SubResource("BoxShape3D_3mrp4")

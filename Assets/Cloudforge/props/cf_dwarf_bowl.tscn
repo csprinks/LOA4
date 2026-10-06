@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/vessels/bowl.gltf" id="1_am5lj"]
+
+[node name="cf_dwarf_bowl" type="Node3D" unique_id=876633525]
+
+[node name="Model" type="Node3D" parent="." unique_id=1818069847 instance=ExtResource("1_am5lj")]
+transform = Transform3D(0.35967627, 0, 0, 0, 0.35967627, 0, 0, 0, 0.35967627, 0.00071936473, 0.2086482, -0.0010071106)

@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/pottery/tall_jar.gltf" id="1_mgyxn"]
+
+[node name="cf_tall_jar" type="Node3D" unique_id=1732574782]
+
+[node name="Model" type="Node3D" parent="." unique_id=1078324429 instance=ExtResource("1_mgyxn")]
+transform = Transform3D(2.128, 0, 0, 0, 2.128, 0, 0, 0, 2.128, 3.6302779, -0.00042559998, 1.5854836e-08)

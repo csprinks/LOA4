@@ -1,0 +1,73 @@
+Music by: Bensound.com/royalty-free-music
+License code: GWJFKIYYXAIPKAQH
+Artist: : Aventure
+
+https://www.cgtrader.com/designers/knock-knock?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/3dmagic24?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/rickardosanchez?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/sigma17?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/bsmercantile5?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/axinovium?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/vnmsady82?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/green-butter?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/gustavo-belemmi?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/earthless188?utm_source=credit&utm_source=credit_item_page
+
+https://www.cgtrader.com/designers/julioo?utm_source=credit&utm_source=credit_item_page
+
+Grass field prop pack (grass patch foliage) by alpha17 (contact: alpha17@outlook.pt)d
+
+Volumetric cloud sky shader adapted from "AAA Fake Volumetric Clouds" by Velvet
+
+Katana Studios (CC0) — https://godotshaders.com/shader/aaa-fake-volumetric-clouds/
+
+https://www.cgtrader.com/designers/dorindmitrii?utm_source=credit&utm_source=credit_item_page
+
+Block textures from Poliigon (https://www.poliigon.com):
+  StoneQuartzite 8060, MetalSteelBrushed 7174, GroundDirtWeedsPatchy 004,
+  GrassPatchyGround 4585
+
+https://www.cgtrader.com/designers/rimrimovski?utm_source=credit&utm_source=credit_item_page
+
+Music: Son of a Rocket by Kevin MacLeod http://incompetech.com
+License: Creative Commons — Attribution 4.0 International — CC BY 4.0
+Free Download / Stream: https://links.al/EjS
+Music promoted by Audio Library: https://links.al/youtube
+
+Music (assets/audio/music/, renamed):
+  menu.mp3       "Imaginatarium" by Ian Aisling
+  play.mp3       "Neverland" by Aaron Paul
+
+Music from #Uppbeat
+https://uppbeat.io/t/aaron-paul-low/neverland
+License code: ZIVLOLOGXGHDTXEI
+
+Music from #Uppbeat
+https://uppbeat.io/music/tracks/ian-aisling/imaginatarium
+License code: UGMCNMEDQQ6QIWYF
+
+
+
+Sound effects: "Free Sounds Pack" by (Not A Placeholder)
+  (assets/audio/sfx/, downmixed to mono and renamed; sources listed in scripts/sfx.gd notes)
+
+Sound effects (assets/audio/sfx/, renamed):
+  coin.mp3       "Coin bag clink" by Danijel Zambo
+  coin_big.mp3   "Retro arcade game coin pickup" by JAM FX
+  heart.mp3      "Notification alert glass twinkle" by Soundroll
+  goal.mp3       "Arcade game victory chime" by Epic Stock Media
+  goals_met.mp3  "Game UI achievement unlocked alert" by Vadi Sound
+  teleport.mp3   "Sci-fi whoosh teleporting" by Vadi Sound
+
+First-person camera feel (head bob, jump and landing kicks, sprint FOV in
+scripts/player.gd) adapted from "Quality Godot First Person Controller v2"
+by Colormatic Studios, MIT license.

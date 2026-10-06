@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/dungeon/wall_torch/wall_torch.glb" id="1_bjpqv"]
+
+[node name="cf_wall_sconce" type="Node3D" unique_id=969796369]
+
+[node name="Model" type="Node3D" parent="." unique_id=1229716119 instance=ExtResource("1_bjpqv")]
+transform = Transform3D(2.236414, 0, 0, 0, 2.236414, 0, 0, 0, 2.236414, -3.3325165e-07, 5.3320264e-07, -1.1830433e-06)
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=1141239527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0.30067393)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 1.8
+omni_range = 8.0

@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/barrel/crate_broken.gltf" id="1_4udhg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_htm6o"]
+size = Vector3(1.5975218, 1.4000489, 1.6)
+
+[node name="cf_crate_broken" type="Node3D" unique_id=2057926015]
+
+[node name="Model" type="Node3D" parent="." unique_id=654891370 instance=ExtResource("1_4udhg")]
+transform = Transform3D(1.3043123, 0, 0, 0, 1.3043123, 0, 0, 0, 1.3043123, -0.16599499, -3.0864e-05, 0.103993095)
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=1298663164 groups=["automap_ignore"]]
+
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=270695593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7000244, 0)
+shape = SubResource("BoxShape3D_htm6o")
