@@ -12,7 +12,6 @@ var is_open: bool = false
 func _ready() -> void:
 	setup_audio_player()
 	ensure_door_closed()
-	add_to_group("map_door")  # shows a marker on the automap
 	add_to_group("persistent")  # WorldState saves/restores our open/closed state
 
 func setup_audio_player():
