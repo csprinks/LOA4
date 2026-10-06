@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Combat/encounter_trigger.gd" id="1_enc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trigger"]
+size = Vector3(1.2, 2, 1.2)
+
+[node name="EncounterTrigger" type="Area3D"]
+collision_layer = 0
+script = ExtResource("1_enc")
+
+[node name="TriggerShape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_trigger")

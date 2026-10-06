@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcmbtovl0scene"]
+[gd_scene format=3 uid="uid://bcrdr7juq6q"]
 
-[ext_resource type="Script" uid="uid://dcmbtovl0overlay" path="res://Combat/UI/combat_overlay.gd" id="1_ovl"]
+[ext_resource type="Script" uid="uid://bcrdr7gfrbxay" path="res://Combat/UI/combat_overlay.gd" id="1_ovl"]
 
-[node name="CombatOverlay" type="CanvasLayer"]
+[node name="CombatOverlay" type="CanvasLayer" unique_id=491238394]
 layer = 40
 script = ExtResource("1_ovl")

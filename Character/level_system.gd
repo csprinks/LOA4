@@ -1,10 +1,9 @@
 class_name LevelSystem
 extends RefCounted
 
-## Character leveling: XP thresholds, level-up, and Favor Points. Ported from
-## LOA2's XP_Chart.gd; changed from `extends Node` to `extends RefCounted` — it
-## is created with .new() and never added to the tree, so as a Node it leaked
-## (Nodes aren't ref-counted, so it was never freed with its owning Character).
+## Character leveling: XP thresholds, level-up, and Favor Points. A RefCounted
+## (not a Node): it is created with .new() and never added to the tree, so it is
+## freed with its owning Character.
 
 const XP_CHART = {
 	1: {"xp_to_next": 1000, "cumulative": 0},
@@ -77,7 +76,7 @@ func check_level_up() -> void:
 
 # Calculate the level implied by the current total XP. Pure: it must NOT mutate
 # current_level, or check_level_up's `new_level > current_level` comparison would
-# always be false (the bug that used to swallow every level-up signal).
+# always be false and no level-up signal would ever fire.
 func calculate_level_from_xp() -> int:
 	if current_xp >= XP_CHART[max_level]["cumulative"]:
 		return max_level

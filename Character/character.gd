@@ -4,10 +4,6 @@ extends RefCounted
 ## A single playable hero: identity, the six stats, derived attributes (HP/AP/FP/
 ## armor), leveling, class choices, and equipped hand items. Serializes to/from a
 ## plain dict for the SaveSystem.
-##
-## Ported from LOA2, where this was split across a thin `Character` proxy and a
-## `CharacterManager`. The proxy forwarded every call one-to-one with no
-## polymorphism benefit, so the two were merged into this single class.
 
 signal leveled_up(old_level, new_level, favor_gained)
 signal xp_gained(amount)

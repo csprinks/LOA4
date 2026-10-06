@@ -16,15 +16,15 @@ extends CanvasLayer
 ## apply_action so an ally's turn can pause for the player's click. Placeholder art.
 
 # --- Palette / layout tunables ----------------------------------------------
-const CARD_COLOR := Color(0.06, 0.06, 0.07, 0.92)
-const CARD_BORDER := Color(0.45, 0.45, 0.48)
-const FRONT_BORDER := Color(1, 1, 1)                 # front (meleeable) row
+const CARD_COLOR := Color(0.05, 0.035, 0.025, 0.92)
+const CARD_BORDER := UIStyle.GOLD_DIM
+const FRONT_BORDER := UIStyle.GOLD                   # front (meleeable) row
 const TARGET_BORDER := Color(0.36, 0.92, 0.45)       # selectable target
 const DEAD_MODULATE := Color(0.35, 0.25, 0.25, 0.55)
-const GOLD := Color(0.9059, 0.6980, 0.2588)
-const ALLY_CHIP := Color(0.20, 0.30, 0.45)
-const ENEMY_CHIP := Color(0.42, 0.20, 0.20)
-const HP_COLOR := Color(0.90, 0.42, 0.40)
+const GOLD := UIStyle.GOLD
+const ALLY_CHIP := Color(0.10, 0.16, 0.24)
+const ENEMY_CHIP := Color(0.26, 0.09, 0.08)
+const HP_COLOR := Color(0.95, 0.47, 0.40)
 const DAMAGE_COLOR := Color(1, 0.75, 0.2)
 const HEAL_COLOR := Color(0.4, 1.0, 0.4)
 
@@ -62,6 +62,10 @@ var _font: FontFile
 
 var _active_ally: Combatant = null
 var _targeting := false
+# True only while we're blocked on the active hero's own decision (action bar /
+# targeting). Potion drops onto a portrait are accepted only in this window, so a
+# potion always spends the hero whose turn it currently is.
+var _awaiting_player := false
 
 # Enemy formation: the frontmost (meleeable) row value and how many monsters it
 # holds. As front-row monsters die, back-row monsters are promoted forward to keep
@@ -88,7 +92,7 @@ func begin(enc: Encounter, ctrl: CombatController, player: Node) -> void:
 	encounter = enc
 	controller = ctrl
 	ai_strategy = ctrl.ai_strategy
-	_font = load("res://Fonts/VeniceClassic.ttf")
+	_font = UIStyle.font()
 
 	_build_static_ui()
 	_find_ally_cards(player)
@@ -139,9 +143,9 @@ func _build_static_ui() -> void:
 	_root.theme = load("res://UI/game_theme.tres")
 	add_child(_root)
 
-	# --- Turn Order strip (top, centered so it always clears the automap on the
-	# left). A full-width CenterContainer keeps the row centered no matter how many
-	# combatants are in it; the title sits above the row.
+	# --- Turn Order strip (top, centered). A full-width CenterContainer keeps the
+	# row centered no matter how many combatants are in it; the title sits above
+	# the row.
 	var turn_order_center := CenterContainer.new()
 	turn_order_center.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	turn_order_center.offset_top = 16
@@ -175,11 +179,12 @@ func _build_static_ui() -> void:
 	_log_label.bbcode_enabled = true
 	_log_label.scroll_following = true
 	_log_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+	# Inset so the text clears the panel's ornate frame.
+	_log_label.offset_left = 10
+	_log_label.offset_top = 10
+	_log_label.offset_right = -10
+	_log_label.offset_bottom = -10
 	_log_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_log_label.add_theme_constant_override("margin_left", 12)
-	_log_label.add_theme_constant_override("margin_top", 12)
-	_log_label.add_theme_constant_override("margin_right", 12)
-	_log_label.add_theme_constant_override("margin_bottom", 12)
 	_log_label.add_theme_font_size_override("normal_font_size", 18)
 	log_panel.add_child(_log_label)
 
@@ -203,7 +208,7 @@ func _build_static_ui() -> void:
 	_target_bar.position = Vector2(400, 950)
 	_target_bar.visible = false
 	_root.add_child(_target_bar)
-	var target_hint := _make_label("Choose a target", 24, Color.WHITE)
+	var target_hint := _make_label("Choose a target", 24, UIStyle.CREAM)
 	target_hint.custom_minimum_size = Vector2(0, 56)
 	_target_bar.add_child(target_hint)
 	var cancel := Button.new()
@@ -322,7 +327,7 @@ func _make_enemy_card(cb: Combatant) -> void:
 	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card.add_child(vbox)
 
-	var name_label := _make_label(cb.display_name, 22, Color.WHITE)
+	var name_label := _make_label(cb.display_name, 22, UIStyle.GOLD_BRIGHT)
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vbox.add_child(name_label)
@@ -524,7 +529,7 @@ func _build_turn_order(order: Array) -> void:
 			portrait.texture = tex
 		chip.add_child(portrait)
 
-		var label := _make_label(cb.display_name, 15, Color.WHITE)
+		var label := _make_label(cb.display_name, 15, UIStyle.CREAM)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.custom_minimum_size = Vector2(84, 0)
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -543,7 +548,7 @@ func _highlight_turn_order(actor: Combatant) -> void:
 		var entry: Control = view["entry"]
 		var base := ALLY_CHIP if cb.is_ally else ENEMY_CHIP
 		if cb == actor:
-			chip.add_theme_stylebox_override("panel", _chip_style(base, GOLD, 4))
+			chip.add_theme_stylebox_override("panel", _chip_style(base, UIStyle.GOLD_BRIGHT, 4))
 			entry.modulate = Color.WHITE
 		else:
 			chip.add_theme_stylebox_override("panel", _chip_style(base, CARD_BORDER))
@@ -600,7 +605,9 @@ func _take_player_turn(actor: Combatant) -> void:
 	_show_action_bar(actor)
 	_log("[color=silver]%s's turn.[/color]" % actor.display_name)
 
+	_awaiting_player = true
 	var decision: Dictionary = await _player_decided
+	_awaiting_player = false
 	_hide_action_bar()
 	_targeting = false
 	_refresh_enemies()
@@ -609,6 +616,12 @@ func _take_player_turn(actor: Combatant) -> void:
 		return
 	var result := controller.apply_action(actor, decision["action"], decision.get("target"))
 	_narrate(result, actor)
+	# A potion action carries the backpack slot it came from; remove one on a
+	# successful use (the action itself passes item=null so the controller doesn't
+	# also try to consume it).
+	var source_container = decision.get("source_container")
+	if source_container != null and not result.is_empty() and source_container.has_method("ConsumeOne"):
+		source_container.ConsumeOne()
 	await _sleep(POST_ACTION_PAUSE)
 
 
@@ -683,6 +696,57 @@ func _on_enemy_clicked(cb: Combatant) -> void:
 	for other in _enemy_views.keys():
 		_enemy_views[other]["button"].disabled = true
 	_player_decided.emit({"action": AttackAction.new(), "target": cb})
+
+
+# A potion was dropped on a hero's portrait (routed here via CombatManager). The
+# ACTIVE hero uses it on `target_character` as this turn's action, for 2 AP. Only
+# valid while we're waiting on that hero's decision. Returns true when accepted;
+# consumption happens on resolution in _take_player_turn.
+func try_use_potion(target_character, item, source_container) -> bool:
+	if not _awaiting_player or _active_ally == null:
+		return false
+	if item == null or not (item._resourceData is PotionData):
+		return false
+
+	var target := _ally_for_character(target_character)
+	if target == null:
+		return false
+
+	var potion: PotionData = item._resourceData
+	if _active_ally.action_points < CombatConstants.AP_COST_ITEM:
+		_log("[color=silver]%s hasn't the AP for a potion.[/color]" % _active_ally.display_name)
+		return false
+
+	# Don't let the player burn a turn (and the potion) on a no-op.
+	if potion.potionType == PotionTypes.HEALTH and target.current_hp >= target.max_hp:
+		_log("[color=silver]%s is already at full health.[/color]" % target.display_name)
+		return false
+	if potion.potionType != PotionTypes.HEALTH and potion.potionType != PotionTypes.ACTION_POINTS:
+		return false   # MANA / ENERGY have no pool yet
+
+	# If the player was mid-targeting (had clicked Attack), drop out of it cleanly
+	# so the enemy target buttons don't stay live after this action resolves.
+	if _targeting:
+		_targeting = false
+		for cb in _enemy_views.keys():
+			_enemy_views[cb]["button"].disabled = true
+
+	# item=null so the controller doesn't also try to consume it; the overlay
+	# consumes from source_container on resolution.
+	var action := ItemAction.new(potion.potionType, potion.amount, null)
+	_awaiting_player = false
+	_player_decided.emit({
+		"action": action, "target": target, "source_container": source_container,
+	})
+	return true
+
+
+# The living/downed ally Combatant bound to a given Character, or null.
+func _ally_for_character(character) -> Combatant:
+	for ally in encounter.allies:
+		if ally.character == character:
+			return ally
+	return null
 
 
 func _on_flee_pressed() -> void:
@@ -858,8 +922,8 @@ func _make_label(text: String, size: int, color: Color) -> Label:
 	l.add_theme_font_override("font", _font)
 	l.add_theme_font_size_override("font_size", size)
 	l.add_theme_color_override("font_color", color)
-	l.add_theme_color_override("font_outline_color", Color.BLACK)
-	l.add_theme_constant_override("outline_size", 3)
+	l.add_theme_color_override("font_outline_color", UIStyle.OUTLINE)
+	l.add_theme_constant_override("outline_size", 5)
 	return l
 
 
@@ -874,23 +938,11 @@ func _make_roller() -> RollingNumbers:
 
 
 func _card_style(border: Color) -> StyleBoxFlat:
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = CARD_COLOR
-	sb.set_border_width_all(3)
-	sb.border_color = border
-	sb.set_corner_radius_all(10)
-	sb.content_margin_left = 8
-	sb.content_margin_right = 8
-	sb.content_margin_top = 8
-	sb.content_margin_bottom = 8
-	return sb
+	return UIStyle.frame(border, 3, 10, CARD_COLOR)
 
 
 func _chip_style(bg: Color, border: Color, width: int = 2) -> StyleBoxFlat:
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = bg
-	sb.set_border_width_all(width)
-	sb.border_color = border
-	sb.set_corner_radius_all(6)
+	var sb := UIStyle.frame(border, width, 6, bg)
+	sb.set_content_margin_all(0)
 	return sb
 #endregion

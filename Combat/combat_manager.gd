@@ -23,6 +23,15 @@ func is_active() -> bool:
 	return _active
 
 
+# A potion was dropped on a hero's portrait during a fight. Hand it to the live
+# overlay, which spends the active hero's turn/AP and consumes it on resolution.
+# Returns true only when the overlay accepts it (right turn, enough AP, useful).
+func request_potion_use(target_character, item, source_container) -> bool:
+	if _overlay and _overlay.has_method("try_use_potion"):
+		return bool(_overlay.try_use_potion(target_character, item, source_container))
+	return false
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if _active:
 		return
@@ -78,6 +87,18 @@ func _on_battle_finished(status: int) -> void:
 		player.set_combat_locked(false)
 	_active = false
 	combat_ended.emit(status)
+
+
+# Drop a fight in progress without resolving it (leaving a test-play for the Level
+# Editor). No rewards, no combat_ended signal.
+func abort() -> void:
+	if _overlay:
+		_overlay.queue_free()
+		_overlay = null
+	var player := get_tree().get_first_node_in_group("player")
+	if player and player.has_method("set_combat_locked"):
+		player.set_combat_locked(false)
+	_active = false
 
 
 # Make sure there's a party to fight with. In normal play one always exists; this
