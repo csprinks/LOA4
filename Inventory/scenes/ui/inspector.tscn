@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://cxl47xrwv584s"]
 
-[ext_resource type="Script" path="res://Inventory/Code/UI/InspectorHelper.gd" id="1_4pfup"]
-[ext_resource type="Texture2D" uid="uid://m8ba4fhn5gjg" path="res://Inventory/Images/blank_inventory.png" id="2_e45dj"]
+[ext_resource type="Script" uid="uid://bg74imuu0gpds" path="res://Inventory/Code/UI/InspectorHelper.gd" id="1_4pfup"]
+[ext_resource type="Texture2D" path="res://UI/Skin/slot.svg" id="2_e45dj"]
+[ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="4_theme"]
 [ext_resource type="Texture2D" uid="uid://dgsfdykbvhtdo" path="res://Inventory/Images/AIIcons/blank_icon.png" id="3_e45dj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_icon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hvmo7"]
 
-[node name="Inspector" type="CanvasLayer" node_paths=PackedStringArray("panelContainer", "itemImage", "itemName", "itemType", "itemArmor", "itemValue", "chargesValue", "attribute_one", "attribute_two", "attribute_three")]
+[node name="Inspector" type="CanvasLayer" unique_id=1437730790 node_paths=PackedStringArray("panelContainer", "itemImage", "itemName", "itemType", "itemArmor", "itemValue", "chargesValue", "attribute_one", "attribute_two", "attribute_three")]
 layer = 11
 script = ExtResource("1_4pfup")
 panelContainer = NodePath("Control/PanelContainer")
@@ -23,104 +26,117 @@ attribute_one = NodePath("Control/PanelContainer/MarginContainer/VBoxContainer2/
 attribute_two = NodePath("Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer4/Attribute2")
 attribute_three = NodePath("Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer5/Attribute3")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1205074030]
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 361.0
 offset_bottom = 211.0
 mouse_filter = 2
+theme = ExtResource("4_theme")
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
-self_modulate = Color(0.036364745, 0.14975959, 0.29283664, 1)
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=922343038]
 z_index = 10
 layout_mode = 0
-mouse_filter = 2
 offset_left = 2.0
 offset_right = 360.0
 offset_bottom = 209.0
+mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer" unique_id=298934679]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer" unique_id=826246110]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1901832615]
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=184091788]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=746718864]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_icon")
 
-[node name="Background" type="TextureRect" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/PanelContainer2"]
+[node name="Background" type="TextureRect" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=684437303]
 layout_mode = 2
 texture = ExtResource("2_e45dj")
 
-[node name="ItemImage" type="TextureRect" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/PanelContainer2"]
+[node name="ItemImage" type="TextureRect" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=552227832]
 layout_mode = 2
 texture = ExtResource("3_e45dj")
 
-[node name="HSeparator" type="HSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1247739320]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxTexture_hvmo7")
 
-[node name="ItemName" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
+[node name="ItemName" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1862544081]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "Item Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2" unique_id=212410209]
 layout_mode = 2
 
-[node name="ItemType" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="ItemType" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=243200887]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
 text = "Item Type"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2" unique_id=903035131]
 layout_mode = 2
 
-[node name="Attribute1" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer3"]
+[node name="Attribute1" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer3" unique_id=820229677]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.55, 0.85, 0.5, 1)
 text = "+99 Attribute"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2" unique_id=70355024]
 layout_mode = 2
 
-[node name="Attribute2" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer4"]
+[node name="Attribute2" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer4" unique_id=1421483555]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.55, 0.85, 0.5, 1)
 text = "+99 Attribute"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2" unique_id=812011051]
 layout_mode = 2
 
-[node name="Attribute3" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer5"]
+[node name="Attribute3" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer5" unique_id=2084566532]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.55, 0.85, 0.5, 1)
 text = "+99 Attribute"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1693629792]
 layout_mode = 2
 
-[node name="Armor" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Armor" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" unique_id=1021122352]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 size_flags_horizontal = 3
 text = "Armor"
 
-[node name="Charges" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Charges" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" unique_id=1540533659]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 size_flags_horizontal = 3
 text = "Charges"
 
-[node name="ItemValue" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+[node name="ItemValue" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" unique_id=1613239021]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 size_flags_horizontal = 3
 text = "Value"

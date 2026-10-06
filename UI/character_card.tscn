@@ -1,19 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://loa4charcard01"]
+[gd_scene format=3 uid="uid://bscbhmt4sjt8k"]
 
-[ext_resource type="Script" path="res://UI/character_card.gd" id="1_card"]
-[ext_resource type="Theme" path="res://UI/game_theme.tres" id="2_theme"]
-[ext_resource type="PackedScene" uid="uid://loa4statbar0001" path="res://UI/stat_bar.tscn" id="3_bar"]
+[ext_resource type="Script" uid="uid://cmbk4vsew2swy" path="res://UI/character_card.gd" id="1_card"]
+[ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" uid="uid://b3hix55i7uuo3" path="res://UI/stat_bar.tscn" id="3_bar"]
 [ext_resource type="PackedScene" uid="uid://01dod7fbq1lb" path="res://Inventory/scenes/ui/inventory_container.tscn" id="4_slot"]
+[ext_resource type="Script" uid="uid://dd5jebrp4ebkg" path="res://UI/hero_portrait.gd" id="5_portrait"]
 
-[node name="CharacterCard" type="Control"]
-custom_minimum_size = Vector2(360, 150)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_portrait"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.914, 0.784, 0.467, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="CharacterCard" type="Control" unique_id=263139480]
+custom_minimum_size = Vector2(400, 204)
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("2_theme")
 script = ExtResource("1_card")
 
-[node name="Panel" type="Panel" parent="."]
-self_modulate = Color(1, 1, 1, 0.8)
+[node name="Panel" type="Panel" parent="." unique_id=1371196432]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,219 +37,236 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Margin" type="MarginContainer" parent="Panel"]
+[node name="Margin" type="MarginContainer" parent="Panel" unique_id=2004547129]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 16
 
-[node name="Row" type="HBoxContainer" parent="Panel/Margin"]
+[node name="Row" type="HBoxContainer" parent="Panel/Margin" unique_id=1154359866]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 12
 
-[node name="LeftCol" type="VBoxContainer" parent="Panel/Margin/Row"]
+[node name="LeftCol" type="VBoxContainer" parent="Panel/Margin/Row" unique_id=1038378597]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 6
 
-[node name="Portrait" type="TextureRect" parent="Panel/Margin/Row/LeftCol"]
+[node name="Portrait" type="TextureRect" parent="Panel/Margin/Row/LeftCol" unique_id=1250107427]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(72, 72)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("5_portrait")
 
-[node name="Weapons" type="HBoxContainer" parent="Panel/Margin/Row/LeftCol"]
+[node name="Frame" type="Panel" parent="Panel/Margin/Row/LeftCol/Portrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_portrait")
+
+[node name="Weapons" type="HBoxContainer" parent="Panel/Margin/Row/LeftCol" unique_id=383240870]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="PrimarySlot" parent="Panel/Margin/Row/LeftCol/Weapons" node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
+[node name="PrimarySlot" parent="Panel/Margin/Row/LeftCol/Weapons" unique_id=1555342643 node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 slotRequirement = 13
 _otherWeaponSlot = NodePath("../SecondarySlot")
 
-[node name="SecondarySlot" parent="Panel/Margin/Row/LeftCol/Weapons" node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
+[node name="SecondarySlot" parent="Panel/Margin/Row/LeftCol/Weapons" unique_id=1210195997 node_paths=PackedStringArray("_otherWeaponSlot") instance=ExtResource("4_slot")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 slotRequirement = 14
 _otherWeaponSlot = NodePath("../PrimarySlot")
 
-[node name="Info" type="VBoxContainer" parent="Panel/Margin/Row"]
+[node name="Info" type="VBoxContainer" parent="Panel/Margin/Row" unique_id=1554632253]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 3
 
-[node name="NameRow" type="HBoxContainer" parent="Panel/Margin/Row/Info"]
+[node name="NameRow" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=1701209085]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="NameLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow"]
+[node name="NameLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow" unique_id=1007089682]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.914, 0.784, 0.467, 1)
+theme_override_font_sizes/font_size = 26
 text = "Name"
+clip_text = true
 
-[node name="Corner" type="VBoxContainer" parent="Panel/Margin/Row/Info/NameRow"]
+[node name="LevelLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow" unique_id=347788563]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_constants/separation = 0
-
-[node name="XPLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow/Corner"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "XP 0"
-horizontal_alignment = 2
-
-[node name="ATRLabel" type="Label" parent="Panel/Margin/Row/Info/NameRow/Corner"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "ATR 0"
-horizontal_alignment = 2
-
-[node name="ClassLabel" type="Label" parent="Panel/Margin/Row/Info"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Class"
-
-[node name="LevelLabel" type="Label" parent="Panel/Margin/Row/Info"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 0.925, 0.66, 1)
+theme_override_font_sizes/font_size = 20
 text = "Lv 1"
 
-[node name="HPRow" type="HBoxContainer" parent="Panel/Margin/Row/Info"]
+[node name="ClassLabel" type="Label" parent="Panel/Margin/Row/Info" unique_id=786268302]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
+theme_override_font_sizes/font_size = 16
+text = "Class"
+
+[node name="Rule" type="HSeparator" parent="Panel/Margin/Row/Info"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="HPTag" type="Label" parent="Panel/Margin/Row/Info/HPRow"]
-custom_minimum_size = Vector2(30, 0)
+[node name="HPRow" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=1836847915]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_constants/separation = 6
+
+[node name="HPTag" type="Label" parent="Panel/Margin/Row/Info/HPRow" unique_id=1429814433]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.914, 0.784, 0.467, 1)
+theme_override_font_sizes/font_size = 16
 text = "HP"
 
-[node name="HPBar" parent="Panel/Margin/Row/Info/HPRow" instance=ExtResource("3_bar")]
+[node name="HPBar" parent="Panel/Margin/Row/Info/HPRow" unique_id=653035441 instance=ExtResource("3_bar")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 12)
+custom_minimum_size = Vector2(60, 14)
 layout_mode = 2
-size_flags_horizontal = 1
+size_flags_horizontal = 3
 size_flags_vertical = 4
-stripe_color = Color(0.85, 0.15, 0.15, 1)
-gap_color = Color(0.12, 0, 0, 0.35)
 
-[node name="HPLabel" type="Label" parent="Panel/Margin/Row/Info/HPRow"]
+[node name="HPLabel" type="Label" parent="Panel/Margin/Row/Info/HPRow" unique_id=9206428]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "100/100"
+horizontal_alignment = 2
 
-[node name="APRow" type="HBoxContainer" parent="Panel/Margin/Row/Info"]
+[node name="APRow" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=1662023500]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="APTag" type="Label" parent="Panel/Margin/Row/Info/APRow"]
-custom_minimum_size = Vector2(30, 0)
+[node name="APTag" type="Label" parent="Panel/Margin/Row/Info/APRow" unique_id=1781952206]
+custom_minimum_size = Vector2(26, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.914, 0.784, 0.467, 1)
+theme_override_font_sizes/font_size = 16
 text = "AP"
 
-[node name="APBar" parent="Panel/Margin/Row/Info/APRow" instance=ExtResource("3_bar")]
+[node name="APBar" parent="Panel/Margin/Row/Info/APRow" unique_id=1698426703 instance=ExtResource("3_bar")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 12)
+custom_minimum_size = Vector2(60, 14)
 layout_mode = 2
-size_flags_horizontal = 1
+size_flags_horizontal = 3
 size_flags_vertical = 4
-stripe_color = Color(0.2, 0.75, 0.25, 1)
-gap_color = Color(0, 0.12, 0, 0.35)
+stripe_color = Color(0.33, 0.68, 0.22, 1)
+gap_color = Color(0.1, 0.3, 0.08, 1)
 
-[node name="APLabel" type="Label" parent="Panel/Margin/Row/Info/APRow"]
+[node name="APLabel" type="Label" parent="Panel/Margin/Row/Info/APRow" unique_id=145582735]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "5/5"
+horizontal_alignment = 2
 
-[node name="StatsGrid" type="GridContainer" parent="Panel/Margin/Row/Info"]
+[node name="StatsGrid" type="GridContainer" parent="Panel/Margin/Row/Info" unique_id=1714523496]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/h_separation = 12
+size_flags_vertical = 6
+theme_override_constants/h_separation = 14
 theme_override_constants/v_separation = 2
 columns = 3
 
-[node name="ArmorPanel" type="Panel" parent="."]
+[node name="Progress" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=338465775]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="XPLabel" type="Label" parent="Panel/Margin/Row/Info/Progress" unique_id=233113998]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
+theme_override_font_sizes/font_size = 15
+text = "XP 0"
+
+[node name="ATRLabel" type="Label" parent="Panel/Margin/Row/Info/Progress" unique_id=1544463204]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.61, 0.48, 1)
+theme_override_font_sizes/font_size = 15
+text = "ATR 0"
+horizontal_alignment = 2
+
+[node name="ArmorPanel" type="Panel" parent="." unique_id=1475533219]
 unique_name_in_owner = true
 visible = false
-self_modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_left = -152.0
-offset_top = 0.0
-offset_right = -6.0
-offset_bottom = 212.0
+offset_left = -164.0
+offset_right = -8.0
+offset_bottom = 224.0
 grow_horizontal = 0
 
-[node name="Margin" type="MarginContainer" parent="ArmorPanel"]
+[node name="Margin" type="MarginContainer" parent="ArmorPanel" unique_id=1160510550]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="Grid" type="GridContainer" parent="ArmorPanel/Margin"]
+[node name="Grid" type="GridContainer" parent="ArmorPanel/Margin" unique_id=1219392738]
 layout_mode = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 2
 
-[node name="HeadSlot" parent="ArmorPanel/Margin/Grid" instance=ExtResource("4_slot")]
+[node name="HeadSlot" parent="ArmorPanel/Margin/Grid" unique_id=797904666 instance=ExtResource("4_slot")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 slotRequirement = 6
 
-[node name="ChestSlot" parent="ArmorPanel/Margin/Grid" instance=ExtResource("4_slot")]
+[node name="ChestSlot" parent="ArmorPanel/Margin/Grid" unique_id=523331574 instance=ExtResource("4_slot")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 slotRequirement = 2
 
-[node name="HandsSlot" parent="ArmorPanel/Margin/Grid" instance=ExtResource("4_slot")]
+[node name="HandsSlot" parent="ArmorPanel/Margin/Grid" unique_id=1944308847 instance=ExtResource("4_slot")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 slotRequirement = 5
 
-[node name="FeetSlot" parent="ArmorPanel/Margin/Grid" instance=ExtResource("4_slot")]
+[node name="FeetSlot" parent="ArmorPanel/Margin/Grid" unique_id=639745079 instance=ExtResource("4_slot")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 slotRequirement = 4
 
-[node name="NeckSlot" parent="ArmorPanel/Margin/Grid" instance=ExtResource("4_slot")]
+[node name="NeckSlot" parent="ArmorPanel/Margin/Grid" unique_id=328129427 instance=ExtResource("4_slot")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 slotRequirement = 8
 
-[node name="RingSlot" parent="ArmorPanel/Margin/Grid" instance=ExtResource("4_slot")]
+[node name="RingSlot" parent="ArmorPanel/Margin/Grid" unique_id=2049912219 instance=ExtResource("4_slot")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 slotRequirement = 9

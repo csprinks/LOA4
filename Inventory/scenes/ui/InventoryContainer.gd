@@ -17,11 +17,27 @@ signal slot_changed
 var slotRequirement: int = Requires.NONE
 
 @export_group("Default Background Icons")
-@export var helmetIcon: Texture2D
-@export var chestIcon: Texture2D
-@export var pantsIcon: Texture2D
-@export var handIcon: Texture2D
 @export var blankIcon: Texture2D
+
+# Slot backgrounds: the plain frame, plus one frame-with-silhouette per equipment
+# requirement so an empty equip slot shows what belongs in it.
+const SLOT_FRAME := preload("res://UI/Skin/slot.svg")
+const SLOT_ICONS := {
+	Requires.ARM: preload("res://UI/Skin/slots/arm.svg"),
+	Requires.CHEST: preload("res://UI/Skin/slots/chest.svg"),
+	Requires.EAR: preload("res://UI/Skin/slots/ear.svg"),
+	Requires.FEET: preload("res://UI/Skin/slots/feet.svg"),
+	Requires.HANDS: preload("res://UI/Skin/slots/hands.svg"),
+	Requires.HEAD: preload("res://UI/Skin/slots/head.svg"),
+	Requires.LEGS: preload("res://UI/Skin/slots/legs.svg"),
+	Requires.NECK: preload("res://UI/Skin/slots/neck.svg"),
+	Requires.RING: preload("res://UI/Skin/slots/ring.svg"),
+	Requires.WRIST: preload("res://UI/Skin/slots/wrist.svg"),
+	Requires.WEAPON_1H: preload("res://UI/Skin/slots/weapon.svg"),
+	Requires.WEAPON_2H: preload("res://UI/Skin/slots/two_handed.svg"),
+	Requires.WEAPON_PRIMARY: preload("res://UI/Skin/slots/weapon.svg"),
+	Requires.WEAPON_SECONDARY: preload("res://UI/Skin/slots/shield.svg"),
+}
 
 @export_group("Reference to other Weapon Slot Nodes if Applicable")
 @export var _otherWeaponSlot: InventoryContainer
@@ -59,18 +75,13 @@ func _ready() -> void:
 func IsBlank() -> bool:
 	return _item._resourceData.isBlank
 
+# The silhouette only shows while the slot is empty, so it never sits behind an
+# equipped item's own icon.
 func SetSlotIcon() -> void:
-	match slotRequirement:
-		Requires.CHEST:
-			texture = chestIcon
-		Requires.HEAD:
-			texture = helmetIcon
-		Requires.FEET:
-			texture = pantsIcon
-		Requires.WEAPON_1H, Requires.WEAPON_2H, Requires.WEAPON_PRIMARY, Requires.WEAPON_SECONDARY:
-			texture = handIcon
-		_:
-			pass
+	if IsBlank() and SLOT_ICONS.has(slotRequirement):
+		texture = SLOT_ICONS[slotRequirement]
+	else:
+		texture = SLOT_FRAME
 
 func SetData(item: InventoryItem) -> void:
 	_item = item
@@ -283,6 +294,23 @@ func OnMouseExited() -> void:
 	_mouseExited = true
 	SetColor(_default_Color)
 	_inventoryEvents.EmitCloseInspector()
+
+# Remove a single unit of this slot's item — used when a consumable (potion) is
+# spent by dragging it onto a hero. Decrements a stack, or empties the slot when
+# the last unit is used, refreshing the icon and stack count either way so the
+# backpack reflects the change immediately.
+func ConsumeOne() -> void:
+	if _item == null or _item._resourceData == null or _item._resourceData.isBlank:
+		return
+
+	if _item.quantity > 1:
+		_item.quantity -= 1
+		equippedItemTextureRect.texture = _item._resourceData.icon
+		UpdateStackText()
+	else:
+		SetData(ClearData())
+
+	slot_changed.emit()
 
 func GetData() -> InventoryItem:
 	return _item

@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://d025pitfucrqr"]
 
-[ext_resource type="Theme" path="res://UI/game_theme.tres" id="1_rneq6"]
-[ext_resource type="Script" path="res://Crowns/crowns_ui.gd" id="1_vq725"]
+[ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="1_rneq6"]
+[ext_resource type="Script" uid="uid://dqbqfbpg664mn" path="res://Crowns/crowns_ui.gd" id="1_vq725"]
 [ext_resource type="Texture2D" uid="uid://dmlunk8wd361c" path="res://Crowns/Crowns_Icon.png" id="2_rneq6"]
 
-[node name="Crowns_UI" type="Control" node_paths=PackedStringArray("crowns_label")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill"]
+bg_color = Color(0.07, 0.05, 0.035, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.784, 0.588, 0.235, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[node name="Crowns_UI" type="Control" unique_id=428915732 node_paths=PackedStringArray("crowns_label")]
 layout_mode = 3
 anchor_right = 0.08541667
 anchor_bottom = 0.05925926
@@ -14,21 +26,38 @@ script = ExtResource("1_vq725")
 crowns_label = NodePath("Crowns/Crowns_Label")
 metadata/_edit_use_anchors_ = true
 
-[node name="Crowns" type="HBoxContainer" parent="."]
+[node name="Back" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_right = 164.0
-offset_bottom = 64.0
-theme = ExtResource("1_rneq6")
+anchor_right = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill")
 
-[node name="TextureRect" type="TextureRect" parent="Crowns"]
-custom_minimum_size = Vector2(64, 64)
+[node name="Crowns" type="HBoxContainer" parent="." unique_id=353825616]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = -18.0
+offset_bottom = 52.0
+theme = ExtResource("1_rneq6")
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="Crowns" unique_id=303365818]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 tooltip_text = "Crowns -
 The currency of the realm"
 texture = ExtResource("2_rneq6")
 expand_mode = 1
 
-[node name="Crowns_Label" type="Label" parent="Crowns"]
+[node name="Crowns_Label" type="Label" parent="Crowns" unique_id=462978078]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.925, 0.66, 1)
+theme_override_font_sizes/font_size = 28
 text = "00000"
+horizontal_alignment = 2

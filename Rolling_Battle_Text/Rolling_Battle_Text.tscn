@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://g3u87s7abwnv"]
+[gd_scene format=3 uid="uid://g3u87s7abwnv"]
 
 [ext_resource type="Script" uid="uid://bunbijnxengfr" path="res://Rolling_Battle_Text/rolling_font.gd" id="1_8b4ww"]
 [ext_resource type="Texture2D" uid="uid://cm7wnpb83e5vi" path="res://Rolling_Battle_Text/Enemy.png" id="1_qcm7l"]
-[ext_resource type="FontFile" uid="uid://dq5o8wj35derq" path="res://Fonts/VeniceClassic.ttf" id="2_55p0b"]
+[ext_resource type="FontFile" path="res://Fonts/KingthingsFoundation.ttf" id="2_55p0b"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=259012509]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,7 @@ bounce_height = 150.0
 bounce_duration = 0.1999999999970896
 bounce_count = 4
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1555218804]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15

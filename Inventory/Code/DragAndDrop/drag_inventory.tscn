@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://sa6mtqpyuhgv"]
 
-[ext_resource type="Script" path="res://Inventory/Code/DragAndDrop/DragInventory.gd" id="1_ieme3"]
+[ext_resource type="Script" uid="uid://canvwkf3snjxn" path="res://Inventory/Code/DragAndDrop/DragInventory.gd" id="1_ieme3"]
 
-[node name="DragInventory" type="Control"]
+[node name="DragInventory" type="Control" unique_id=769980100]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

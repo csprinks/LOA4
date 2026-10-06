@@ -5,11 +5,11 @@ extends Control
 ## width tracks a 0-1 ratio; stripe/gap colours are set per instance (red for HP,
 ## green for AP). Used by CharacterCard in place of a plain ProgressBar.
 
-@export var stripe_color: Color = Color(0.85, 0.15, 0.15, 1.0):
+@export var stripe_color: Color = Color(0.78, 0.16, 0.13, 1.0):
 	set(value):
 		stripe_color = value
 		_apply_colors()
-@export var gap_color: Color = Color(0.12, 0.0, 0.0, 0.35):
+@export var gap_color: Color = Color(0.35, 0.05, 0.04, 1.0):
 	set(value):
 		gap_color = value
 		_apply_colors()

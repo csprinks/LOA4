@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="65%">
+      <stop offset="0" stop-color="#4a3319"/>
+      <stop offset="0.6" stop-color="#22170d"/>
+      <stop offset="1" stop-color="#0c0805"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9b563"/>
+      <stop offset="1" stop-color="#6f5020"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="9" fill="url(#bg)" stroke="url(#gold)" stroke-width="1.6"/>
+  <rect x="5.5" y="5.5" width="53" height="53" rx="6" fill="none" stroke="#000000" stroke-opacity="0.55" stroke-width="1.2"/>
+  <g transform="translate(17.184 14) scale(0.7528)" fill="#b08a45" fill-opacity="0.5" stroke="#d9b563" stroke-opacity="0.75" stroke-width="1.461" stroke-linejoin="round">
+    <path d="M31.58,12.04c-.37,0-.74-.03-1.12-.08-1.56-2.09-3.63-3.8-5.99-4.96-.09-.44-.13-.9-.13-1.39,0-3.09,2.52-5.61,5.61-5.61,2.74,0,5.12,2.04,5.54,4.75.03.14.65,3.16,2.88,3.16.38,0,.72-.1,1-.23-1.11,1.63-3.61,4.37-7.78,4.37Z"/>
+    <path d="M17.2,15.38l-13.8,5.97c.14-3.51,1.58-6.79,4.08-9.27,2.6-2.57,6.05-3.99,9.71-3.99s7.11,1.42,9.71,3.99c2.51,2.48,3.95,5.76,4.08,9.27l-13.8-5.97Z"/>
+    <polygon points="3.39 40.25 3.39 35.94 17.21 41.36 31.01 35.9 31.01 40.25 17.2 47.82 3.39 40.25"/>
+    <polygon points="0 31.65 0 25.83 6.75 22.91 6.75 34.29 0 31.65"/>
+    <polygon points="9.49 35.37 9.49 21.73 15.84 18.98 15.84 37.86 9.49 35.37"/>
+    <polygon points="18.57 18.98 24.9 21.72 24.9 35.35 18.57 37.85 18.57 18.98"/>
+    <polygon points="27.62 22.9 34.4 25.83 34.4 31.59 27.62 34.27 27.62 22.9"/>
+  </g>
+</svg>

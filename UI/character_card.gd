@@ -80,7 +80,7 @@ func _build_stat_labels() -> void:
 		return
 	for stat_name in Character.STAT_NAMES:
 		var label := Label.new()
-		label.add_theme_font_size_override("font_size", 14)
+		label.add_theme_font_size_override("font_size", 16)
 		label.text = "%s --" % STAT_ABBREV.get(stat_name, stat_name)
 		_stats_grid.add_child(label)
 		_stat_value_labels[stat_name] = label
@@ -151,6 +151,60 @@ func _on_slot_changed(slot_key: String, slot: InventoryContainer) -> void:
 		return
 	_character.set_equipment_slot(slot_key, EquipmentSerializer.item_to_dict(slot.GetData()))
 
+#region Potions (drag-and-drop use)
+# Colors for the floating number popped over the portrait when a potion lands.
+const POTION_HEAL_COLOR := Color(0.4, 1.0, 0.4)
+const POTION_AP_COLOR := Color(0.45, 0.8, 1.0)
+
+# A potion was dropped on this hero's portrait (see HeroPortrait). Returns true
+# when we commit to consuming it, false to bounce it back to the backpack.
+#
+# In combat the CombatManager/overlay owns the rules: the potion is the ACTIVE
+# hero's action for the turn (2 AP), so we hand off and let it validate turn/AP
+# and consume on resolution. Out of combat it applies straight to this hero.
+func try_receive_potion(item: InventoryItem, source_container: InventoryContainer) -> bool:
+	if _character == null or item == null or source_container == null:
+		return false
+	if not (item._resourceData is PotionData):
+		return false
+
+	var combat := get_node_or_null("/root/CombatManager")
+	if combat and combat.has_method("is_active") and combat.is_active():
+		if combat.has_method("request_potion_use"):
+			return bool(combat.request_potion_use(_character, item, source_container))
+		return false
+
+	return _use_potion_out_of_combat(item._resourceData as PotionData, source_container)
+
+# Apply a potion directly to this hero (exploration, no turn/AP economy). Only
+# consumes the potion when it actually does something, so a health potion isn't
+# wasted on a hero already at full HP.
+func _use_potion_out_of_combat(potion: PotionData, source_container: InventoryContainer) -> bool:
+	match potion.potionType:
+		PotionTypes.HEALTH:
+			var hp = _character.hit_points
+			if hp.current >= hp.max_value:
+				return false   # already full — don't waste the potion
+			var before: int = hp.current
+			_character.heal(potion.amount)
+			pop_number(hp.current - before, POTION_HEAL_COLOR)
+		PotionTypes.ACTION_POINTS:
+			var ap = _character.action_points
+			if ap.current >= ap.max_value:
+				return false
+			var before: int = ap.current
+			_character.restore_action_points(potion.amount)
+			pop_number(ap.current - before, POTION_AP_COLOR)
+		_:
+			# MANA / ENERGY have no matching pool on Character yet — leave the
+			# potion in the backpack rather than consuming it for nothing.
+			return false
+
+	source_container.ConsumeOne()
+	refresh_vitals()
+	return true
+#endregion
+
 #region Combat hooks
 # The Character this card is currently bound to (null if empty/hidden). Lets the
 # combat overlay map an ally Combatant back to its HUD card.
@@ -163,19 +217,14 @@ func _ensure_combat_nodes() -> void:
 		_combat_highlight.name = "CombatHighlight"
 		_combat_highlight.set_anchors_preset(Control.PRESET_FULL_RECT)
 		_combat_highlight.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		var sb := StyleBoxFlat.new()
-		sb.draw_center = false
-		sb.set_border_width_all(4)
-		sb.border_color = Color(0.9059, 0.6980, 0.2588)
-		sb.set_corner_radius_all(8)
-		_combat_highlight.add_theme_stylebox_override("panel", sb)
+		_combat_highlight.add_theme_stylebox_override("panel", UIStyle.outline(UIStyle.GOLD_BRIGHT, 4, 10))
 		_combat_highlight.visible = false
 		add_child(_combat_highlight)
 	if _combat_roller == null:
 		_combat_roller = RollingNumbers.new()
 		_combat_roller.set_anchors_preset(Control.PRESET_FULL_RECT)
 		_combat_roller.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_combat_roller.font = load("res://Fonts/VeniceClassic.ttf")
+		_combat_roller.font = UIStyle.font()
 		_combat_roller.font_size = 40
 		_combat_roller.display_time = 0.6
 		add_child(_combat_roller)

@@ -36,7 +36,7 @@ var _bottom_label: Label
 
 func _ready() -> void:
 	layer = 100   # above the combat overlay (40) and the HUD
-	_font = load("res://Fonts/VeniceClassic.ttf")
+	_font = UIStyle.font()
 
 	_root = Control.new()
 	_root.set_anchors_preset(Control.PRESET_FULL_RECT)

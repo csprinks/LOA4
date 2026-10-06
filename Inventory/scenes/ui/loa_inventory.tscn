@@ -1,40 +1,41 @@
 [gd_scene format=3 uid="uid://hdxuy81wguj3"]
 
-[ext_resource type="Script" path="res://Inventory/scenes/Examples/InventoryExample.gd" id="1_fxkr8"]
+[ext_resource type="Script" uid="uid://cx4q84vxd4nqx" path="res://Inventory/scenes/Examples/InventoryExample.gd" id="1_fxkr8"]
 [ext_resource type="PackedScene" uid="uid://01dod7fbq1lb" path="res://Inventory/scenes/ui/inventory_container.tscn" id="2_7dfi7"]
 [ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="3_theme"]
 
-[node name="InventoryExample" type="CanvasLayer" node_paths=PackedStringArray("inventoryPanel", "inventoryGridContainer", "menuButton")]
+[node name="InventoryExample" type="CanvasLayer" unique_id=879983234 node_paths=PackedStringArray("inventoryPanel", "inventoryGridContainer", "menuButton")]
 layer = 10
 script = ExtResource("1_fxkr8")
 inventoryPanel = NodePath("Panel")
 inventoryGridContainer = NodePath("Panel/VBoxContainer/GridContainer")
 menuButton = NodePath("Panel/MenuButton")
 
-[node name="Panel" type="Panel" parent="."]
-theme = ExtResource("3_theme")
+[node name="Panel" type="Panel" parent="." unique_id=821252712]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -481.0
-offset_top = 140.0
-offset_right = 276.0
-offset_bottom = 922.0
+offset_left = -486.0
+offset_top = 104.0
+offset_right = 281.0
+offset_bottom = 936.0
 grow_horizontal = 2
+theme = ExtResource("3_theme")
 
-[node name="MenuButton" type="Button" parent="Panel"]
+[node name="MenuButton" type="Button" parent="Panel" unique_id=144719384]
 layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -150.0
-offset_top = 12.0
-offset_right = -14.0
-offset_bottom = 56.0
+offset_left = -176.0
+offset_top = 26.0
+offset_right = -36.0
+offset_bottom = 70.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 22
 text = "Menu"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=253791229]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,312 +49,317 @@ offset_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=899627517]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "INVENTORY"
+theme_override_colors/font_color = Color(0.914, 0.784, 0.467, 1)
+theme_override_font_sizes/font_size = 40
+text = "Inventory"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer"]
+[node name="Rule" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer" unique_id=1869540668]
 layout_mode = 2
 columns = 10
 
-[node name="inventory_container" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container" parent="Panel/VBoxContainer/GridContainer" unique_id=1644156986 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container2" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container2" parent="Panel/VBoxContainer/GridContainer" unique_id=1338407571 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container3" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container3" parent="Panel/VBoxContainer/GridContainer" unique_id=591655167 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container4" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container4" parent="Panel/VBoxContainer/GridContainer" unique_id=1339118921 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container5" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container5" parent="Panel/VBoxContainer/GridContainer" unique_id=1794497619 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container6" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container6" parent="Panel/VBoxContainer/GridContainer" unique_id=1386882794 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container7" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container7" parent="Panel/VBoxContainer/GridContainer" unique_id=1563090073 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container8" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container8" parent="Panel/VBoxContainer/GridContainer" unique_id=1527199484 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container9" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container9" parent="Panel/VBoxContainer/GridContainer" unique_id=1613733981 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container10" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container10" parent="Panel/VBoxContainer/GridContainer" unique_id=551736890 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container11" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container11" parent="Panel/VBoxContainer/GridContainer" unique_id=405839458 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container12" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container12" parent="Panel/VBoxContainer/GridContainer" unique_id=1519741911 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container13" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container13" parent="Panel/VBoxContainer/GridContainer" unique_id=1079381301 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container14" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container14" parent="Panel/VBoxContainer/GridContainer" unique_id=1770838838 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container15" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container15" parent="Panel/VBoxContainer/GridContainer" unique_id=468705196 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container16" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container16" parent="Panel/VBoxContainer/GridContainer" unique_id=1321503724 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container17" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container17" parent="Panel/VBoxContainer/GridContainer" unique_id=2058920441 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container18" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container18" parent="Panel/VBoxContainer/GridContainer" unique_id=1744096673 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container19" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container19" parent="Panel/VBoxContainer/GridContainer" unique_id=1994686206 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container20" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container20" parent="Panel/VBoxContainer/GridContainer" unique_id=799305184 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container21" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container21" parent="Panel/VBoxContainer/GridContainer" unique_id=736945151 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container22" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container22" parent="Panel/VBoxContainer/GridContainer" unique_id=646366726 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container23" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container23" parent="Panel/VBoxContainer/GridContainer" unique_id=1684118545 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container24" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container24" parent="Panel/VBoxContainer/GridContainer" unique_id=1238246531 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container25" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container25" parent="Panel/VBoxContainer/GridContainer" unique_id=466006511 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container26" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container26" parent="Panel/VBoxContainer/GridContainer" unique_id=1877533683 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container27" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container27" parent="Panel/VBoxContainer/GridContainer" unique_id=682901450 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container28" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container28" parent="Panel/VBoxContainer/GridContainer" unique_id=1398069169 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container29" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container29" parent="Panel/VBoxContainer/GridContainer" unique_id=1604706950 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container30" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container30" parent="Panel/VBoxContainer/GridContainer" unique_id=409706622 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container31" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container31" parent="Panel/VBoxContainer/GridContainer" unique_id=1574278091 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container32" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container32" parent="Panel/VBoxContainer/GridContainer" unique_id=1166307462 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container33" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container33" parent="Panel/VBoxContainer/GridContainer" unique_id=1439346772 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container34" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container34" parent="Panel/VBoxContainer/GridContainer" unique_id=1528606551 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container35" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container35" parent="Panel/VBoxContainer/GridContainer" unique_id=1996372568 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container36" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container36" parent="Panel/VBoxContainer/GridContainer" unique_id=1366048612 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container37" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container37" parent="Panel/VBoxContainer/GridContainer" unique_id=528005260 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container38" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container38" parent="Panel/VBoxContainer/GridContainer" unique_id=143593103 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container39" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container39" parent="Panel/VBoxContainer/GridContainer" unique_id=1725370633 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container40" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container40" parent="Panel/VBoxContainer/GridContainer" unique_id=1213224953 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container41" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container41" parent="Panel/VBoxContainer/GridContainer" unique_id=1328989153 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container42" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container42" parent="Panel/VBoxContainer/GridContainer" unique_id=1113544127 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container43" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container43" parent="Panel/VBoxContainer/GridContainer" unique_id=1546949902 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container44" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container44" parent="Panel/VBoxContainer/GridContainer" unique_id=1090144656 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container45" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container45" parent="Panel/VBoxContainer/GridContainer" unique_id=474340324 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container46" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container46" parent="Panel/VBoxContainer/GridContainer" unique_id=1395637558 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container47" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container47" parent="Panel/VBoxContainer/GridContainer" unique_id=649166970 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container48" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container48" parent="Panel/VBoxContainer/GridContainer" unique_id=624330013 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container49" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container49" parent="Panel/VBoxContainer/GridContainer" unique_id=163400102 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container50" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container50" parent="Panel/VBoxContainer/GridContainer" unique_id=553574482 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container51" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container51" parent="Panel/VBoxContainer/GridContainer" unique_id=151018261 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container52" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container52" parent="Panel/VBoxContainer/GridContainer" unique_id=483901063 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container53" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container53" parent="Panel/VBoxContainer/GridContainer" unique_id=1689727664 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container54" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container54" parent="Panel/VBoxContainer/GridContainer" unique_id=777395078 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container55" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container55" parent="Panel/VBoxContainer/GridContainer" unique_id=423626693 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container56" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container56" parent="Panel/VBoxContainer/GridContainer" unique_id=1698681316 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container57" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container57" parent="Panel/VBoxContainer/GridContainer" unique_id=400963589 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container58" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container58" parent="Panel/VBoxContainer/GridContainer" unique_id=1303907374 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container59" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container59" parent="Panel/VBoxContainer/GridContainer" unique_id=2052815890 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container60" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container60" parent="Panel/VBoxContainer/GridContainer" unique_id=1029358261 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container61" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container61" parent="Panel/VBoxContainer/GridContainer" unique_id=1502843769 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container62" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container62" parent="Panel/VBoxContainer/GridContainer" unique_id=1014470347 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container63" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container63" parent="Panel/VBoxContainer/GridContainer" unique_id=872108058 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container64" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container64" parent="Panel/VBoxContainer/GridContainer" unique_id=321491448 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container65" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container65" parent="Panel/VBoxContainer/GridContainer" unique_id=1137979862 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container66" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container66" parent="Panel/VBoxContainer/GridContainer" unique_id=56609116 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container67" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container67" parent="Panel/VBoxContainer/GridContainer" unique_id=1716969208 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container68" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container68" parent="Panel/VBoxContainer/GridContainer" unique_id=1061944934 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container69" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container69" parent="Panel/VBoxContainer/GridContainer" unique_id=836603478 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container70" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container70" parent="Panel/VBoxContainer/GridContainer" unique_id=1637512568 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container71" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container71" parent="Panel/VBoxContainer/GridContainer" unique_id=128398617 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container72" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container72" parent="Panel/VBoxContainer/GridContainer" unique_id=993422258 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container73" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container73" parent="Panel/VBoxContainer/GridContainer" unique_id=2140643691 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container74" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container74" parent="Panel/VBoxContainer/GridContainer" unique_id=1700392101 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container75" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container75" parent="Panel/VBoxContainer/GridContainer" unique_id=1959235741 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container76" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container76" parent="Panel/VBoxContainer/GridContainer" unique_id=1252198344 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container77" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container77" parent="Panel/VBoxContainer/GridContainer" unique_id=1259084339 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container78" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container78" parent="Panel/VBoxContainer/GridContainer" unique_id=1448124322 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container79" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container79" parent="Panel/VBoxContainer/GridContainer" unique_id=113661289 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container80" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container80" parent="Panel/VBoxContainer/GridContainer" unique_id=1532545873 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container81" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container81" parent="Panel/VBoxContainer/GridContainer" unique_id=2104598230 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container82" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container82" parent="Panel/VBoxContainer/GridContainer" unique_id=181877174 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container83" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container83" parent="Panel/VBoxContainer/GridContainer" unique_id=16238000 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container84" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container84" parent="Panel/VBoxContainer/GridContainer" unique_id=1183978375 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container85" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container85" parent="Panel/VBoxContainer/GridContainer" unique_id=1371988354 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container86" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container86" parent="Panel/VBoxContainer/GridContainer" unique_id=951644112 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container87" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container87" parent="Panel/VBoxContainer/GridContainer" unique_id=6661875 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container88" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container88" parent="Panel/VBoxContainer/GridContainer" unique_id=78890906 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container89" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container89" parent="Panel/VBoxContainer/GridContainer" unique_id=1192225543 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container90" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container90" parent="Panel/VBoxContainer/GridContainer" unique_id=1964915857 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container91" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container91" parent="Panel/VBoxContainer/GridContainer" unique_id=1061182811 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container92" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container92" parent="Panel/VBoxContainer/GridContainer" unique_id=381543387 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container93" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container93" parent="Panel/VBoxContainer/GridContainer" unique_id=393271051 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container94" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container94" parent="Panel/VBoxContainer/GridContainer" unique_id=2056588368 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container95" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container95" parent="Panel/VBoxContainer/GridContainer" unique_id=331175582 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container96" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container96" parent="Panel/VBoxContainer/GridContainer" unique_id=660729455 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container97" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container97" parent="Panel/VBoxContainer/GridContainer" unique_id=1486139071 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container98" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container98" parent="Panel/VBoxContainer/GridContainer" unique_id=1046119605 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container99" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container99" parent="Panel/VBoxContainer/GridContainer" unique_id=938482291 instance=ExtResource("2_7dfi7")]
 layout_mode = 2
 
-[node name="inventory_container100" parent="Panel/VBoxContainer/GridContainer" instance=ExtResource("2_7dfi7")]
+[node name="inventory_container100" parent="Panel/VBoxContainer/GridContainer" unique_id=1929335846 instance=ExtResource("2_7dfi7")]
 layout_mode = 2

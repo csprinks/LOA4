@@ -12,8 +12,8 @@ gradient = SubResource("Gradient_stripe")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bar"]
 shader = ExtResource("2_shader")
-shader_parameter/color_gap = Color(0.61960787, 0.10980392, 0.5176471, 1)
-shader_parameter/color_stripe = Color(0.85, 0.15, 0.15, 1)
+shader_parameter/color_gap = Color(0.35, 0.05, 0.04, 1)
+shader_parameter/color_stripe = Color(0.78, 0.16, 0.13, 1)
 shader_parameter/stripe_gradient = SubResource("GradientTexture1D_stripe")
 shader_parameter/divisions = 1.375
 shader_parameter/speed = 0.2
@@ -26,7 +26,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.60339975, 0.3990504, 0.2091938, 1)
+border_color = Color(0.784, 0.588, 0.235, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -49,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.4)
+color = Color(0.03, 0.02, 0.015, 0.85)
 
 [node name="Fill" type="ColorRect" parent="." unique_id=1737664199]
 unique_name_in_owner = true
@@ -61,7 +61,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Border" type="Panel" parent="."]
+[node name="Border" type="Panel" parent="." unique_id=2000232794]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

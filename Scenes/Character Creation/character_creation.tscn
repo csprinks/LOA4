@@ -1,26 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://clvv5e1p7s4lv"]
+[gd_scene format=3 uid="uid://clvv5e1p7s4lv"]
 
-[ext_resource type="Script" path="res://Scenes/Character Creation/character_creation_flow.gd" id="1_flow"]
+[ext_resource type="Script" uid="uid://bffpj6lfnt32u" path="res://Scenes/Character Creation/character_creation_flow.gd" id="1_flow"]
 [ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="2_theme"]
-[ext_resource type="PackedScene" uid="uid://loa4herocreate1" path="res://Scenes/Character Creation/hero_creation_panel.tscn" id="3_panel"]
+[ext_resource type="PackedScene" uid="uid://b243g060s4n23" path="res://Scenes/Character Creation/hero_creation_panel.tscn" id="3_panel"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=1238433254]
 script = ExtResource("1_flow")
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=1511493399]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1874067719]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.47753555, 0.32320508, 0.21712852, 1)
+color = Color(0.055, 0.04, 0.03, 1)
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=237725875]
 
-[node name="Root" type="Control" parent="UI"]
+[node name="Root" type="Control" parent="UI" unique_id=1273347276]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_theme")
 
-[node name="Title" type="Label" parent="UI/Root"]
+[node name="Title" type="Label" parent="UI/Root" unique_id=1558895569]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -43,7 +43,7 @@ theme_override_font_sizes/font_size = 40
 text = "Create Your Party"
 horizontal_alignment = 1
 
-[node name="Panels" type="HBoxContainer" parent="UI/Root"]
+[node name="Panels" type="HBoxContainer" parent="UI/Root" unique_id=1202044948]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
@@ -55,23 +55,23 @@ grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Hero1" parent="UI/Root/Panels" instance=ExtResource("3_panel")]
+[node name="Hero1" parent="UI/Root/Panels" unique_id=1874007406 instance=ExtResource("3_panel")]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Hero2" parent="UI/Root/Panels" instance=ExtResource("3_panel")]
+[node name="Hero2" parent="UI/Root/Panels" unique_id=322653594 instance=ExtResource("3_panel")]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Hero3" parent="UI/Root/Panels" instance=ExtResource("3_panel")]
+[node name="Hero3" parent="UI/Root/Panels" unique_id=1086937356 instance=ExtResource("3_panel")]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Hero4" parent="UI/Root/Panels" instance=ExtResource("3_panel")]
+[node name="Hero4" parent="UI/Root/Panels" unique_id=973155276 instance=ExtResource("3_panel")]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="MainMenuButton" type="Button" parent="UI/Root"]
+[node name="MainMenuButton" type="Button" parent="UI/Root" unique_id=862143541]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -85,7 +85,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 22
 text = "Return to Main Menu"
 
-[node name="StartButton" type="Button" parent="UI/Root"]
+[node name="StartButton" type="Button" parent="UI/Root" unique_id=563842893]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3

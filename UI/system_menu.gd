@@ -47,6 +47,47 @@ func _ready() -> void:
 	if events and events.has_signal("ShowSystemMenu"):
 		events.ShowSystemMenu.connect(open)
 
+	_build_editor_bar()
+
+
+#region Level Editor test-play
+# While a module is being test-played from the Level Editor, a small always-visible
+# button (and F10) takes you straight back to it.
+const EDITOR_SCENE := "res://Scenes/Level_Editor/level_editor.tscn"
+var _editor_bar: Button
+
+func _build_editor_bar() -> void:
+	_editor_bar = Button.new()
+	_editor_bar.text = "◀ Back to Level Editor (F10)"
+	_editor_bar.theme = _root.theme
+	_editor_bar.add_theme_font_size_override("font_size", 18)
+	_editor_bar.focus_mode = Control.FOCUS_NONE
+	_editor_bar.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	_editor_bar.position.y = 10
+	_editor_bar.visible = false
+	_editor_bar.pressed.connect(return_to_editor)
+	add_child(_editor_bar)
+
+func _process(_delta: float) -> void:
+	var testing := GameState.editor_test_module != "" and LevelManager.has_current_level()
+	if _editor_bar.visible != testing:
+		_editor_bar.visible = testing
+		if testing:
+			_editor_bar.reset_size()
+			_editor_bar.position.x = (get_viewport().get_visible_rect().size.x - _editor_bar.size.x) * 0.5
+
+func return_to_editor() -> void:
+	if GameState.editor_test_module == "" or LevelManager.is_loading_level:
+		return
+	close()
+	CombatManager.abort()
+	GameState.editor_open_module = GameState.editor_test_module
+	GameState.editor_test_module = ""
+	WorldState.reset()
+	LevelManager.cleanup()
+	get_tree().change_scene_to_file(EDITOR_SCENE)
+#endregion
+
 
 func open() -> void:
 	if _root.visible:
@@ -65,6 +106,11 @@ func close() -> void:
 
 # Esc backs out one layer at a time (confirm → picker → main → closed).
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F10 \
+			and GameState.editor_test_module != "":
+		return_to_editor()
+		get_viewport().set_input_as_handled()
+		return
 	if not _root.visible:
 		return
 	if event.is_action_pressed("ui_cancel"):

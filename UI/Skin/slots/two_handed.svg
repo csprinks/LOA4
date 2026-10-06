@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="65%">
+      <stop offset="0" stop-color="#4a3319"/>
+      <stop offset="0.6" stop-color="#22170d"/>
+      <stop offset="1" stop-color="#0c0805"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9b563"/>
+      <stop offset="1" stop-color="#6f5020"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="9" fill="url(#bg)" stroke="url(#gold)" stroke-width="1.6"/>
+  <rect x="5.5" y="5.5" width="53" height="53" rx="6" fill="none" stroke="#000000" stroke-opacity="0.55" stroke-width="1.2"/>
+  <g transform="translate(16.421 14) scale(0.4479)" fill="#b08a45" fill-opacity="0.5" stroke="#d9b563" stroke-opacity="0.75" stroke-width="2.456" stroke-linejoin="round">
+    <polygon points="29.62 58.29 65.93 21.98 64.61 3.33 67.94 0 69.57 23.25 32.07 60.75 29.62 58.29"/>
+    <polygon points="0 73.33 13.03 60.3 3.86 51.12 9.51 45.47 15.99 51.95 59.89 8.05 60.56 20.06 22.33 58.29 34.91 70.87 29.26 76.52 20.08 67.35 7.05 80.38 0 73.33"/>
+  </g>
+</svg>

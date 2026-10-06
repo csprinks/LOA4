@@ -1,25 +1,25 @@
 [gd_scene format=3 uid="uid://bscmfai246h8k"]
 
-[ext_resource type="Script" path="res://Scenes/Main_Menu/new_game.gd" id="1_new"]
+[ext_resource type="Script" uid="uid://bo6gw4ojdwjny" path="res://Scenes/Main_Menu/new_game.gd" id="1_new"]
 [ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="2_theme"]
 
-[node name="NewGame" type="Node2D"]
+[node name="NewGame" type="Node2D" unique_id=1396873587]
 script = ExtResource("1_new")
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=1665602676]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1452579458]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.47753555, 0.32320508, 0.21712852, 1)
+color = Color(0.055, 0.04, 0.03, 1)
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=2062536808]
 
-[node name="Root" type="Control" parent="UI"]
+[node name="Root" type="Control" parent="UI" unique_id=282545210]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,8 +28,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_theme")
 
-[node name="Title" type="Label" parent="UI/Root"]
+[node name="Title" type="Label" parent="UI/Root" unique_id=1362105540]
 layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -400.0
@@ -45,8 +46,9 @@ text = "New Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Prompt" type="Label" parent="UI/Root"]
+[node name="Prompt" type="Label" parent="UI/Root" unique_id=652227321]
 layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -400.0
@@ -60,9 +62,10 @@ text = "Choose a slot for your new game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlotsContainer" type="VBoxContainer" parent="UI/Root"]
+[node name="SlotsContainer" type="VBoxContainer" parent="UI/Root" unique_id=1729095119]
 unique_name_in_owner = true
 layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -76,7 +79,7 @@ grow_vertical = 2
 theme_override_constants/separation = 18
 alignment = 1
 
-[node name="BackButton" type="Button" parent="UI/Root"]
+[node name="BackButton" type="Button" parent="UI/Root" unique_id=1874220588]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -90,7 +93,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 22
 text = "Back"
 
-[node name="ConfirmOverlay" type="Control" parent="UI/Root"]
+[node name="ConfirmOverlay" type="Control" parent="UI/Root" unique_id=2140626183]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -100,7 +103,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Dim" type="ColorRect" parent="UI/Root/ConfirmOverlay"]
+[node name="Dim" type="ColorRect" parent="UI/Root/ConfirmOverlay" unique_id=1723520409]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,8 +112,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6)
 
-[node name="Dialog" type="PanelContainer" parent="UI/Root/ConfirmOverlay"]
+[node name="Dialog" type="PanelContainer" parent="UI/Root/ConfirmOverlay" unique_id=1016607279]
 layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -122,42 +126,42 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Margin" type="MarginContainer" parent="UI/Root/ConfirmOverlay/Dialog"]
+[node name="Margin" type="MarginContainer" parent="UI/Root/ConfirmOverlay/Dialog" unique_id=1211394468]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 28
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 24
 
-[node name="VBox" type="VBoxContainer" parent="UI/Root/ConfirmOverlay/Dialog/Margin"]
+[node name="VBox" type="VBoxContainer" parent="UI/Root/ConfirmOverlay/Dialog/Margin" unique_id=204654083]
 layout_mode = 2
 theme_override_constants/separation = 26
 alignment = 1
 
-[node name="ConfirmText" type="Label" parent="UI/Root/ConfirmOverlay/Dialog/Margin/VBox"]
+[node name="ConfirmText" type="Label" parent="UI/Root/ConfirmOverlay/Dialog/Margin/VBox" unique_id=941110351]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.18, 0.11, 0.06, 1)
+theme_override_colors/font_color = Color(0.93, 0.87, 0.74, 1)
 theme_override_font_sizes/font_size = 26
 text = "This slot already has a saved party."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ButtonRow" type="HBoxContainer" parent="UI/Root/ConfirmOverlay/Dialog/Margin/VBox"]
+[node name="ButtonRow" type="HBoxContainer" parent="UI/Root/ConfirmOverlay/Dialog/Margin/VBox" unique_id=1807038496]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ConfirmCancel" type="Button" parent="UI/Root/ConfirmOverlay/Dialog/Margin/VBox/ButtonRow"]
+[node name="ConfirmCancel" type="Button" parent="UI/Root/ConfirmOverlay/Dialog/Margin/VBox/ButtonRow" unique_id=1185902834]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(190, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
 
-[node name="ConfirmYes" type="Button" parent="UI/Root/ConfirmOverlay/Dialog/Margin/VBox/ButtonRow"]
+[node name="ConfirmYes" type="Button" parent="UI/Root/ConfirmOverlay/Dialog/Margin/VBox/ButtonRow" unique_id=1753184203]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(190, 52)
 layout_mode = 2

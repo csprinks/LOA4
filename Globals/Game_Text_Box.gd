@@ -40,15 +40,23 @@ func _ready():
 	rich_text_label.fit_content = false
 	
 	# Set custom font
-	var custom_font = load("res://Fonts/VeniceClassic.ttf")
+	var custom_font = UIStyle.font()
 	if custom_font:
 		rich_text_label.add_theme_font_override("normal_font", custom_font)
+	rich_text_label.add_theme_color_override("default_color", UIStyle.CREAM)
+	rich_text_label.add_theme_color_override("font_outline_color", UIStyle.OUTLINE)
+	rich_text_label.add_theme_constant_override("outline_size", 4)
+
+	# Dark gold-edged backing so messages read over any part of the world.
+	var backing := UIStyle.frame(UIStyle.GOLD_DIM, 1, 8, Color(UIStyle.PANEL_BG, 0.72))
+	backing.set_content_margin_all(14)
+	rich_text_label.add_theme_stylebox_override("normal", backing)
 	
 	# Set custom font size
 	rich_text_label.add_theme_font_size_override("normal_font_size", 24)
 	
 	# Set fixed size and center it at the bottom of the screen
-	rich_text_label.size = Vector2(500, 175)
+	rich_text_label.size = Vector2(640, 88)
 	update_textbox_position()
 	
 	# Connect signals
@@ -74,7 +82,7 @@ func _ready():
 func update_textbox_position():
 	var viewport_size = get_viewport().get_visible_rect().size
 	rich_text_label.position = Vector2(
-		(viewport_size.x - 500) / 2,  # Center horizontally
+		(viewport_size.x - rich_text_label.size.x) / 2,  # Center horizontally
 		viewport_size.y - 130  # Position near bottom with some margin
 	)
 
