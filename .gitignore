@@ -34,3 +34,6 @@ obj/
 # Backup files (e.g. csproj snapshots)
 *.old
 *.old.*
+
+# Bandit Village asset pack: large (590 MB) and not referenced by the project yet.
+/Assets/BanditVillage/
