@@ -1,8 +1,8 @@
 class_name CharacterCard
 extends Control
 
-## A single hero's HUD card: portrait, name, classes, level, HP/AP bars, the six
-## stats, and the two equipped hand slots (primary/secondary weapon). Bound to a
+## A single hero's HUD card: portrait, name, classes, level, HP/AP bars, and the
+## two equipped hand slots (primary/secondary weapon). Bound to a
 ## Character by set_character(); hides itself when passed null.
 ##
 ## Equipped items are mirrored onto the character's save data (equipment dict) so
@@ -18,13 +18,7 @@ extends Control
 @onready var _hp_label: Label = %HPLabel
 @onready var _ap_bar: StatBar = %APBar
 @onready var _ap_label: Label = %APLabel
-@onready var _stats_grid: GridContainer = %StatsGrid
 @onready var _armor_panel: Panel = %ArmorPanel
-
-const STAT_ABBREV := {
-	"Might": "MIG", "Awareness": "AWR", "Finesse": "FIN",
-	"Intellect": "INT", "Charm": "CHM", "Fate": "FAT",
-}
 
 # Equipment slot key -> the unique node name of its InventoryContainer in the
 # card scene. Weapons live on the card; the armor slots live in the ArmorPanel.
@@ -35,7 +29,6 @@ const EQUIP_SLOT_NAMES := {
 }
 
 var _character: Character = null
-var _stat_value_labels: Dictionary = {}   # stat name -> Label
 var _slots: Dictionary = {}               # slot key -> InventoryContainer
 var _inventory_events: Node = null
 
@@ -52,8 +45,9 @@ var _flash_mat: ShaderMaterial = null
 var _restoring: bool = false
 
 func _ready() -> void:
-	_build_stat_labels()
 	_setup_equipment_slots()
+	_atr_label.mouse_filter = Control.MOUSE_FILTER_STOP
+	_atr_label.gui_input.connect(_on_atr_input)
 	# Reflect whatever was assigned before _ready (or hide if none).
 	set_character(_character)
 
@@ -74,17 +68,6 @@ func _on_toggle_inventory() -> void:
 	if _armor_panel:
 		_armor_panel.visible = not _armor_panel.visible
 
-# Build one "ABBR value" label per stat once, so set_character only updates text.
-func _build_stat_labels() -> void:
-	if not _stats_grid or not _stat_value_labels.is_empty():
-		return
-	for stat_name in Character.STAT_NAMES:
-		var label := Label.new()
-		label.add_theme_font_size_override("font_size", 16)
-		label.text = "%s --" % STAT_ABBREV.get(stat_name, stat_name)
-		_stats_grid.add_child(label)
-		_stat_value_labels[stat_name] = label
-
 func set_character(character: Character) -> void:
 	_character = character
 
@@ -101,7 +84,7 @@ func set_character(character: Character) -> void:
 	_class_label.text = _class_text(character)
 	_level_label.text = "Lv %d" % character.level_system.current_level
 	_xp_label.text = "XP %d" % character.level_system.current_xp
-	_atr_label.text = "ATR %d" % character.available_attribute_points
+	_refresh_atr()
 
 	if character.portrait != "" and ResourceLoader.exists(character.portrait):
 		_portrait.texture = load(character.portrait)
@@ -113,11 +96,6 @@ func set_character(character: Character) -> void:
 	var ap = character.action_points
 	_ap_bar.set_ratio(float(ap.current) / ap.max_value if ap.max_value > 0 else 0.0)
 	_ap_label.text = "%d/%d" % [ap.current, ap.max_value]
-
-	for stat_name in Character.STAT_NAMES:
-		var stat = character.get_stat(stat_name)
-		if _stat_value_labels.has(stat_name) and stat:
-			_stat_value_labels[stat_name].text = "%s %d" % [STAT_ABBREV.get(stat_name, stat_name), stat.total]
 
 	_restore_equipment()
 
@@ -150,6 +128,36 @@ func _on_slot_changed(slot_key: String, slot: InventoryContainer) -> void:
 	if _restoring or not _character or not slot:
 		return
 	_character.set_equipment_slot(slot_key, EquipmentSerializer.item_to_dict(slot.GetData()))
+
+#region Attribute Points (level-up spending)
+# The ATR readout doubles as the way in to the Level Up panel: it lights up gold
+# and becomes clickable while this hero has Attribute Points to spend.
+func _refresh_atr() -> void:
+	var points: int = _character.available_attribute_points
+	var spendable := points > 0
+	_atr_label.text = ("ATR %d +" if spendable else "ATR %d") % points
+	_atr_label.add_theme_color_override("font_color", UIStyle.GOLD_BRIGHT if spendable else UIStyle.MUTED)
+	_atr_label.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND if spendable else Control.CURSOR_ARROW
+	_atr_label.tooltip_text = "Spend Attribute Points" if spendable else ""
+
+func _on_atr_input(event: InputEvent) -> void:
+	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		return
+	if _character == null or _character.available_attribute_points <= 0:
+		return
+	# Stats feed the fight in progress, so no spending mid-combat.
+	var combat := get_node_or_null("/root/CombatManager")
+	if combat and combat.has_method("is_active") and combat.is_active():
+		return
+	var panel := LevelUpPanel.open_for(_character, self)
+	panel.closed.connect(_on_level_up_panel_closed)
+
+func _on_level_up_panel_closed(applied: bool) -> void:
+	if not applied or _character == null:
+		return
+	refresh_vitals()
+	_refresh_atr()
+#endregion
 
 #region Potions (drag-and-drop use)
 # Colors for the floating number popped over the portrait when a potion lands.
@@ -246,7 +254,7 @@ func refresh_progression() -> void:
 		return
 	_level_label.text = "Lv %d" % _character.level_system.current_level
 	_xp_label.text = "XP %d" % _character.level_system.current_xp
-	_atr_label.text = "ATR %d" % _character.available_attribute_points
+	_refresh_atr()
 
 # Refresh just the HP/AP readouts (combat writes wounds straight through to the
 # Character, so this is enough to keep the card live during a fight).

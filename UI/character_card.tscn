@@ -186,16 +186,9 @@ theme_override_font_sizes/font_size = 16
 text = "5/5"
 horizontal_alignment = 2
 
-[node name="StatsGrid" type="GridContainer" parent="Panel/Margin/Row/Info" unique_id=1714523496]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_constants/h_separation = 14
-theme_override_constants/v_separation = 2
-columns = 3
-
 [node name="Progress" type="HBoxContainer" parent="Panel/Margin/Row/Info" unique_id=338465775]
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_constants/separation = 6
 
 [node name="XPLabel" type="Label" parent="Panel/Margin/Row/Info/Progress" unique_id=233113998]

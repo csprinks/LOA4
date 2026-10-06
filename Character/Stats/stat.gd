@@ -30,6 +30,11 @@ func configure(base_value: int, points: int, gain: int) -> void:
 	gain_per_point = gain
 	changed.emit(total)
 
+# Invest further Attribute Points (level-up spending).
+func add_points(points: int) -> void:
+	points_spent += points
+	changed.emit(total)
+
 func to_dict() -> Dictionary:
 	return {
 		"base": base,

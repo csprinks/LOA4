@@ -47,7 +47,9 @@ var secondary_class: String = ""
 
 # Attribute Points available to spend on stat growth AFTER creation. Character
 # creation uses its own fixed 10-point pool; this is a separate ongoing pool
-# (0 for a freshly created hero) earned through progression later.
+# (whatever creation left unspent) that grows by ATTRIBUTE_POINTS_PER_LEVEL on
+# every level-up and is spent through the Level Up panel (UI/level_up_panel.gd).
+const ATTRIBUTE_POINTS_PER_LEVEL := 2
 var available_attribute_points: int = 0
 
 var stats: Dictionary = {}
@@ -88,6 +90,7 @@ func reward_xp(amount: int) -> void:
 	level_system.add_xp(amount)
 
 func _on_level_up(old_level: int, new_level: int, favor_gained: int) -> void:
+	available_attribute_points += (new_level - old_level) * ATTRIBUTE_POINTS_PER_LEVEL
 	# Higher level => higher max HP; grant the gained HP so leveling heals.
 	refresh_max_hp("delta")
 	leveled_up.emit(old_level, new_level, favor_gained)
@@ -164,6 +167,27 @@ func apply_stat_data(stat_data: Dictionary) -> void:
 				int(d.get("gain_per_point", d.get("points_per_deed", 1))))
 	# Might may have changed; recompute HP and start a freshly built hero full.
 	refresh_max_hp("full")
+
+# Spend Attribute Points from the ongoing pool: {stat name: points}. Each point
+# raises the stat by the Gain fixed at creation. All-or-nothing: returns false
+# (changing nothing) if the allocation is invalid or exceeds the pool.
+func spend_attribute_points(allocation: Dictionary) -> bool:
+	var cost := 0
+	for stat_name in allocation:
+		var points := int(allocation[stat_name])
+		if points < 0 or not stats.has(stat_name):
+			return false
+		cost += points
+	if cost == 0 or cost > available_attribute_points:
+		return false
+
+	for stat_name in allocation:
+		if int(allocation[stat_name]) > 0:
+			stats[stat_name].add_points(int(allocation[stat_name]))
+	available_attribute_points -= cost
+	# Might may have risen; grant the gained HP like a level-up does.
+	refresh_max_hp("delta")
+	return true
 
 func _stats_to_dict() -> Dictionary:
 	var out := {}
