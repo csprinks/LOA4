@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://fqw8466u1tci"]
+
+[ext_resource type="Script" path="res://addons/level_painter/blocks/textured_wall.gd" id="1_textured"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_wall"]
+albedo_color = Color(0.36, 0.31, 0.26, 1)
+roughness = 0.95
+
+[node name="WallPanel" type="Node3D" unique_id=1569933788]
+script = ExtResource("1_textured")
+
+[node name="Mesh" type="CSGBox3D" parent="." unique_id=1074071964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+use_collision = true
+size = Vector3(2, 3, 0.2)
+material = SubResource("Mat_wall")

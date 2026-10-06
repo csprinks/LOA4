@@ -1,0 +1,692 @@
+[gd_resource type="Resource" script_class="TileCatalog" format=3]
+
+[ext_resource type="Script" path="res://addons/level_painter/tile_catalog.gd" id="1_1raec"]
+[ext_resource type="Script" path="res://addons/level_painter/tile_def.gd" id="2_mbpkg"]
+
+[sub_resource type="Resource" id="Resource_yle3v"]
+script = ExtResource("2_mbpkg")
+id = 1
+display_name = "Stone Floor"
+color = Color(0.62, 0.55, 0.42, 1)
+scene_path = "res://addons/level_painter/blocks/floor_tile.tscn"
+
+[sub_resource type="Resource" id="Resource_704fh"]
+script = ExtResource("2_mbpkg")
+id = 2
+display_name = "Pit"
+color = Color(0.16, 0.13, 0.2, 1)
+scene_path = "res://addons/level_painter/blocks/floor_tile.tscn"
+y_offset = -2.0
+
+[sub_resource type="Resource" id="Resource_ni5ue"]
+script = ExtResource("2_mbpkg")
+id = 1
+kind = 1
+display_name = "Wall"
+color = Color(0.35, 0.3, 0.25, 1)
+scene_path = "res://addons/level_painter/blocks/wall_panel.tscn"
+params = Array[Dictionary]([{
+"default": "",
+"label": "Texture",
+"name": "wall_texture",
+"type": "wall_texture"
+}])
+
+[sub_resource type="Resource" id="Resource_uqygv"]
+script = ExtResource("2_mbpkg")
+id = 2
+kind = 1
+display_name = "Stone Door"
+color = Color(0.55, 0.75, 0.95, 1)
+scene_path = "res://Doors/Door_Stone/door_stone.tscn"
+blocks = false
+params = Array[Dictionary]([{
+"default": "",
+"label": "Leads to floor",
+"name": "leads_to_floor",
+"type": "floor_link"
+}, {
+"default": "",
+"label": "Arrive at",
+"name": "arrive_at",
+"type": "arrival"
+}, {
+"default": "",
+"label": "Scene (if no floor chosen)",
+"name": "target_scene_path",
+"type": "scene_path"
+}, {
+"default": "PlayerSpawn",
+"label": "Marker (if no floor chosen)",
+"name": "target_spawn_marker_name",
+"type": "string"
+}])
+wall_backed = true
+
+[sub_resource type="Resource" id="Resource_b2x0x"]
+script = ExtResource("2_mbpkg")
+id = 3
+kind = 1
+display_name = "Grate Door"
+color = Color(0.45, 0.85, 0.95, 1)
+scene_path = "res://Doors/Door_Metal_Grate/Door_Grate.tscn"
+y_offset = 1.0
+blocks = false
+
+[sub_resource type="Resource" id="Resource_pgv3x"]
+script = ExtResource("2_mbpkg")
+name_id = &"chest"
+kind = 2
+display_name = "Treasure Chest"
+color = Color(0.95, 0.8, 0.3, 1)
+scene_path = "res://Treasure_Chest/treasure_chest.tscn"
+facing_offset = 90
+params = Array[Dictionary]([{
+"default": 0,
+"label": "Crowns",
+"name": "crowns_reward",
+"type": "int"
+}, {
+"browse": "res://Inventory/Resources",
+"default": [],
+"label": "Items inside",
+"name": "contents",
+"type": "resource_list"
+}])
+
+[sub_resource type="Resource" id="Resource_ytfht"]
+script = ExtResource("2_mbpkg")
+name_id = &"lever"
+kind = 2
+display_name = "Lever"
+color = Color(0.8, 0.8, 0.85, 1)
+scene_path = "res://Lever/Lever.tscn"
+y_offset = 1.0
+facing_offset = 180
+params = Array[Dictionary]([{
+"default": 0,
+"label": "In a puzzle, must be",
+"name": "puzzle_required_state",
+"options": ["Up (pulled)", "Down (left alone)"],
+"painter_only": true,
+"type": "enum"
+}])
+link_rules = Array[Dictionary]([{
+"many": true,
+"property": "connected_doors",
+"target": "edge:3"
+}, {
+"many": true,
+"property": "connected_platforms",
+"target": "obj:moving_platform",
+"target_set": {
+"activation_type": 1
+}
+}, {
+"target": "obj:puzzle",
+"target_append": "levers",
+"target_append_value": {
+"default": 0,
+"param": "puzzle_required_state",
+"property": "required_states"
+}
+}])
+wall_mounted = true
+
+[sub_resource type="Resource" id="Resource_sw4up"]
+script = ExtResource("2_mbpkg")
+name_id = &"puzzle"
+kind = 2
+display_name = "Lever Puzzle"
+color = Color(0.95, 0.55, 0.95, 1)
+scene_path = "res://Moving_Platform/puzzle_activator.tscn"
+params = Array[Dictionary]([{
+"default": "puzzle",
+"label": "Name",
+"name": "puzzle_id",
+"type": "string"
+}, {
+"default": true,
+"label": "Announce when solved",
+"name": "show_success_message",
+"type": "bool"
+}])
+link_rules = Array[Dictionary]([{
+"many": true,
+"property": "doors_to_open",
+"target": "edge:3"
+}, {
+"many": true,
+"property": "platforms_to_activate",
+"target": "obj:moving_platform",
+"target_ref": "puzzle_activator",
+"target_set": {
+"activation_type": 2
+}
+}])
+
+[sub_resource type="Resource" id="Resource_wp4xt"]
+script = ExtResource("2_mbpkg")
+name_id = &"stairs"
+kind = 2
+display_name = "Stairs"
+color = Color(0.7, 0.55, 0.9, 1)
+scene_path = "res://Stairs/level_stairs.tscn"
+y_offset = 1.0
+params = Array[Dictionary]([{
+"default": "",
+"label": "Leads to floor",
+"name": "leads_to_floor",
+"type": "floor_link"
+}, {
+"default": "",
+"label": "Arrive at",
+"name": "arrive_at",
+"type": "arrival"
+}, {
+"default": "",
+"label": "Prompt text",
+"name": "prompt_text",
+"type": "string"
+}, {
+"default": "",
+"label": "Scene (if no floor chosen)",
+"name": "target_scene_path",
+"type": "scene_path"
+}, {
+"default": "PlayerSpawn",
+"label": "Marker (if no floor chosen)",
+"name": "target_spawn_marker_name",
+"type": "string"
+}])
+arrival_local = Vector3(1, 0, 0)
+
+[sub_resource type="Resource" id="Resource_svhas"]
+script = ExtResource("2_mbpkg")
+name_id = &"spike_trap"
+kind = 2
+display_name = "Spike Trap"
+color = Color(0.9, 0.35, 0.35, 1)
+scene_path = "res://Spike_Trap/spike_trap.tscn"
+
+[sub_resource type="Resource" id="Resource_7qike"]
+script = ExtResource("2_mbpkg")
+name_id = &"fireball_trap"
+kind = 2
+display_name = "Fireball Trap"
+color = Color(0.95, 0.55, 0.25, 1)
+scene_path = "res://Fireball_Trap/Fireball_Trap.tscn"
+y_offset = 1.0
+
+[sub_resource type="Resource" id="Resource_ysscy"]
+script = ExtResource("2_mbpkg")
+name_id = &"pit_trap"
+kind = 2
+display_name = "Pit Trap"
+color = Color(0.5, 0.32, 0.2, 1)
+scene_path = "res://Pit_Trap/pit_trap.tscn"
+params = Array[Dictionary]([{
+"default": "",
+"label": "Drops to floor",
+"name": "leads_to_floor",
+"type": "floor_link"
+}, {
+"default": "",
+"label": "Land at",
+"name": "arrive_at",
+"type": "arrival"
+}, {
+"default": 10,
+"label": "Fall damage, least (rolled per hero)",
+"name": "fall_damage_min",
+"type": "int"
+}, {
+"default": 30,
+"label": "Fall damage, most",
+"name": "fall_damage_max",
+"type": "int"
+}, {
+"default": true,
+"label": "A push block sets it off and falls through",
+"name": "opened_by_blocks",
+"type": "bool"
+}, {
+"default": "The floor gives way beneath you!",
+"label": "Message when it opens",
+"name": "message",
+"type": "string"
+}, {
+"default": "",
+"label": "Scene (if no floor chosen)",
+"name": "target_scene_path",
+"type": "scene_path"
+}, {
+"default": "PlayerSpawn",
+"label": "Marker (if no floor chosen)",
+"name": "target_spawn_marker_name",
+"type": "string"
+}])
+is_pit = true
+
+[sub_resource type="Resource" id="Resource_5lpvx"]
+script = ExtResource("2_mbpkg")
+name_id = &"push_block"
+kind = 2
+display_name = "Push Block"
+color = Color(0.6, 0.6, 0.55, 1)
+scene_path = "res://Push_Block/push_block.tscn"
+y_offset = 1.0
+
+[sub_resource type="Resource" id="Resource_dskru"]
+script = ExtResource("2_mbpkg")
+name_id = &"pressure_plate"
+kind = 2
+display_name = "Pressure Plate"
+color = Color(0.55, 0.85, 0.6, 1)
+scene_path = "res://Pressure Plate/pressure_plate.tscn"
+params = Array[Dictionary]([{
+"default": false,
+"label": "Doors stay open once pressed",
+"name": "doors_stay_open",
+"type": "bool"
+}])
+link_rules = Array[Dictionary]([{
+"many": true,
+"property": "connected_doors",
+"target": "edge:3"
+}, {
+"many": true,
+"property": "connected_platforms",
+"target": "obj:moving_platform",
+"target_ref": "pressure_plate",
+"target_set": {
+"activation_type": 3
+}
+}])
+
+[sub_resource type="Resource" id="Resource_6grsi"]
+script = ExtResource("2_mbpkg")
+name_id = &"moving_platform"
+kind = 2
+display_name = "Moving Platform"
+color = Color(0.45, 0.6, 0.95, 1)
+scene_path = "res://Moving_Platform/moving_platform.tscn"
+y_offset = 1.0
+params = Array[Dictionary]([{
+"default": [3, 6],
+"label": "Path (0 up, 1 down, 2 -X, 3 +X, 4 +Z, 5 -Z, 6 pause)",
+"name": "movement_sequence",
+"type": "int_list"
+}, {
+"default": 2.0,
+"label": "Speed",
+"name": "move_speed",
+"type": "float"
+}, {
+"default": true,
+"label": "Loop",
+"name": "loop_movement",
+"type": "bool"
+}, {
+"default": 0,
+"label": "Activated by",
+"name": "activation_type",
+"options": ["Always moving", "Lever toggle", "Lever puzzle", "Pressure plate"],
+"type": "enum"
+}])
+
+[sub_resource type="Resource" id="Resource_eerxq"]
+script = ExtResource("2_mbpkg")
+name_id = &"wall_lock"
+kind = 2
+display_name = "Wall Lock"
+color = Color(0.85, 0.7, 0.4, 1)
+scene_path = "res://Wall_Locks/wall_lock_basic.tscn"
+y_offset = 1.2
+facing_offset = 90
+link_rules = Array[Dictionary]([{
+"many": false,
+"property": "target_door",
+"target": "edge:3"
+}])
+wall_mounted = true
+
+[sub_resource type="Resource" id="Resource_62ko1"]
+script = ExtResource("2_mbpkg")
+name_id = &"encounter"
+kind = 2
+display_name = "Monster Encounter"
+color = Color(0.85, 0.2, 0.25, 1)
+scene_path = "res://Combat/encounter_trigger.tscn"
+y_offset = 1.0
+params = Array[Dictionary]([{
+"browse": "res://Combat/Monsters",
+"default": [],
+"label": "Front row monsters",
+"name": "front_row",
+"type": "resource_list"
+}, {
+"browse": "res://Combat/Monsters",
+"default": [],
+"label": "Back row monsters",
+"name": "back_row",
+"type": "resource_list"
+}, {
+"default": true,
+"label": "Only once (gone after a win)",
+"name": "one_shot",
+"type": "bool"
+}])
+
+[sub_resource type="Resource" id="Resource_ug2ka"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_table"
+kind = 2
+display_name = "Trestle Table"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_table.tscn"
+
+[sub_resource type="Resource" id="Resource_itxq1"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_bookshelf"
+kind = 2
+display_name = "Bookshelf"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_bookshelf.tscn"
+facing_offset = 180
+wall_mounted = true
+
+[sub_resource type="Resource" id="Resource_k5ymw"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_fountain"
+kind = 2
+display_name = "Water Fountain"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_fountain.tscn"
+
+[sub_resource type="Resource" id="Resource_f1tif"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_griffon"
+kind = 2
+display_name = "Griffon Statue"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_griffon.tscn"
+
+[sub_resource type="Resource" id="Resource_j2dsf"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_minotaur"
+kind = 2
+display_name = "Minotaur Statue"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_minotaur.tscn"
+
+[sub_resource type="Resource" id="Resource_5t33r"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_snake"
+kind = 2
+display_name = "Snake Statue"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_snake.tscn"
+
+[sub_resource type="Resource" id="Resource_nvxga"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_pillar_stone"
+kind = 2
+display_name = "Stone Pillar"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_pillar_stone.tscn"
+
+[sub_resource type="Resource" id="Resource_ut7us"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_pillar_medieval"
+kind = 2
+display_name = "Medieval Pillar"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_pillar_medieval.tscn"
+
+[sub_resource type="Resource" id="Resource_rfvfe"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_pillar_dwarven"
+kind = 2
+display_name = "Dwarven Pillar"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_pillar_dwarven.tscn"
+
+[sub_resource type="Resource" id="Resource_2vi7g"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_pillar_decorative"
+kind = 2
+display_name = "Decorative Pillar"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_pillar_decorative.tscn"
+
+[sub_resource type="Resource" id="Resource_p2nob"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_pillar_temple"
+kind = 2
+display_name = "Temple Pillar"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_pillar_temple.tscn"
+
+[sub_resource type="Resource" id="Resource_ewcml"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_pillar_temple_tall"
+kind = 2
+display_name = "Tall Temple Pillar"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_pillar_temple_tall.tscn"
+
+[sub_resource type="Resource" id="Resource_0akbc"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_torch_stand"
+kind = 2
+display_name = "Torch Stand"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_torch_stand.tscn"
+
+[sub_resource type="Resource" id="Resource_2aoi5"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_wall_sconce"
+kind = 2
+display_name = "Wall Sconce"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_wall_sconce.tscn"
+y_offset = 1.3
+facing_offset = 180
+wall_mounted = true
+
+[sub_resource type="Resource" id="Resource_sgwgy"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_chandelier"
+kind = 2
+display_name = "Candle Chandelier"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_chandelier.tscn"
+
+[sub_resource type="Resource" id="Resource_fq4t4"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_crate"
+kind = 2
+display_name = "Wooden Crate"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_crate.tscn"
+
+[sub_resource type="Resource" id="Resource_h6qjb"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_crate_broken"
+kind = 2
+display_name = "Broken Crate"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_crate_broken.tscn"
+
+[sub_resource type="Resource" id="Resource_yp8jt"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_barrel"
+kind = 2
+display_name = "Barrel"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_barrel.tscn"
+
+[sub_resource type="Resource" id="Resource_l034y"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_barrel_broken"
+kind = 2
+display_name = "Broken Barrel"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_barrel_broken.tscn"
+
+[sub_resource type="Resource" id="Resource_fse8v"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_gold_bag"
+kind = 2
+display_name = "Bag of Gold"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_gold_bag.tscn"
+
+[sub_resource type="Resource" id="Resource_2qxo7"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_chest_small"
+kind = 2
+display_name = "Small Chest (prop)"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_chest_small.tscn"
+
+[sub_resource type="Resource" id="Resource_tsm6i"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_chest_medium"
+kind = 2
+display_name = "Chest (prop)"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_chest_medium.tscn"
+
+[sub_resource type="Resource" id="Resource_ch3kc"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_chest_large"
+kind = 2
+display_name = "Large Chest (prop)"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_chest_large.tscn"
+
+[sub_resource type="Resource" id="Resource_oyvnb"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_chest_epic"
+kind = 2
+display_name = "Epic Chest (prop)"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_chest_epic.tscn"
+
+[sub_resource type="Resource" id="Resource_yv1oh"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_dwarf_bowl"
+kind = 2
+display_name = "Dwarven Bowl"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_dwarf_bowl.tscn"
+
+[sub_resource type="Resource" id="Resource_g026d"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_dwarf_cup"
+kind = 2
+display_name = "Dwarven Cup"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_dwarf_cup.tscn"
+
+[sub_resource type="Resource" id="Resource_h6p3v"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_runic_vase"
+kind = 2
+display_name = "Runic Vase"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_runic_vase.tscn"
+
+[sub_resource type="Resource" id="Resource_c6rv0"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_runic_plate"
+kind = 2
+display_name = "Runic Plate"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_runic_plate.tscn"
+
+[sub_resource type="Resource" id="Resource_o5scq"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_round_pot"
+kind = 2
+display_name = "Round Pot"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_round_pot.tscn"
+
+[sub_resource type="Resource" id="Resource_2ixnx"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_tall_jar"
+kind = 2
+display_name = "Tall Jar"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_tall_jar.tscn"
+
+[sub_resource type="Resource" id="Resource_evn2s"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_jug"
+kind = 2
+display_name = "Jug"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_jug.tscn"
+
+[sub_resource type="Resource" id="Resource_v7mm1"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_bottle"
+kind = 2
+display_name = "Bottle"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_bottle.tscn"
+
+[sub_resource type="Resource" id="Resource_j6hx1"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_crock"
+kind = 2
+display_name = "Crock"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_crock.tscn"
+
+[sub_resource type="Resource" id="Resource_88rlt"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_lidded_pot"
+kind = 2
+display_name = "Lidded Pot"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_lidded_pot.tscn"
+
+[sub_resource type="Resource" id="Resource_chgru"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_bowl"
+kind = 2
+display_name = "Handled Bowl"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_bowl.tscn"
+
+[sub_resource type="Resource" id="Resource_xyy70"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_cup"
+kind = 2
+display_name = "Cup"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_cup.tscn"
+
+[sub_resource type="Resource" id="Resource_80nsj"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_plate"
+kind = 2
+display_name = "Plate"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_plate.tscn"
+
+[sub_resource type="Resource" id="Resource_cnjem"]
+script = ExtResource("2_mbpkg")
+name_id = &"cf_mortar"
+kind = 2
+display_name = "Mortar & Pestle"
+color = Color(0.72, 0.62, 0.5, 1)
+scene_path = "res://Assets/Cloudforge/props/cf_mortar.tscn"
+
+[resource]
+script = ExtResource("1_1raec")
+tiles = Array[ExtResource("2_mbpkg")]([SubResource("Resource_yle3v"), SubResource("Resource_704fh"), SubResource("Resource_ni5ue"), SubResource("Resource_uqygv"), SubResource("Resource_b2x0x"), SubResource("Resource_pgv3x"), SubResource("Resource_ytfht"), SubResource("Resource_sw4up"), SubResource("Resource_wp4xt"), SubResource("Resource_svhas"), SubResource("Resource_7qike"), SubResource("Resource_ysscy"), SubResource("Resource_5lpvx"), SubResource("Resource_dskru"), SubResource("Resource_6grsi"), SubResource("Resource_eerxq"), SubResource("Resource_62ko1"), SubResource("Resource_ug2ka"), SubResource("Resource_itxq1"), SubResource("Resource_k5ymw"), SubResource("Resource_f1tif"), SubResource("Resource_j2dsf"), SubResource("Resource_5t33r"), SubResource("Resource_nvxga"), SubResource("Resource_ut7us"), SubResource("Resource_rfvfe"), SubResource("Resource_2vi7g"), SubResource("Resource_p2nob"), SubResource("Resource_ewcml"), SubResource("Resource_0akbc"), SubResource("Resource_2aoi5"), SubResource("Resource_sgwgy"), SubResource("Resource_fq4t4"), SubResource("Resource_h6qjb"), SubResource("Resource_yp8jt"), SubResource("Resource_l034y"), SubResource("Resource_fse8v"), SubResource("Resource_2qxo7"), SubResource("Resource_tsm6i"), SubResource("Resource_ch3kc"), SubResource("Resource_oyvnb"), SubResource("Resource_yv1oh"), SubResource("Resource_g026d"), SubResource("Resource_h6p3v"), SubResource("Resource_c6rv0"), SubResource("Resource_o5scq"), SubResource("Resource_2ixnx"), SubResource("Resource_evn2s"), SubResource("Resource_v7mm1"), SubResource("Resource_j6hx1"), SubResource("Resource_88rlt"), SubResource("Resource_chgru"), SubResource("Resource_xyy70"), SubResource("Resource_80nsj"), SubResource("Resource_cnjem")])
