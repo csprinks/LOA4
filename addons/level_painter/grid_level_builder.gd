@@ -171,8 +171,12 @@ static func _place_edge(data: GridLevelData, catalog: TileCatalog, parent: Node,
 		lintel.position = pos + Vector3.UP * def.clear_height
 		lintel.rotation.y = yaw
 		lintel.scale.y = (WALL_HEIGHT - def.clear_height) / WALL_HEIGHT
-		lintel.set(WallTextures.PARAM, _neighbour_wall_texture(data, tag, a, b))
+		var texture := _neighbour_wall_texture(data, tag, a, b)
+		lintel.set(WallTextures.PARAM, texture)
 		_own(lintel, own)
+		# The door's own stonework (the grate's surround) matches the wall too.
+		if WallTextures.PARAM in node:
+			node.set(WallTextures.PARAM, texture)
 	_own(node, own)
 
 ## The texture for wall built over a doorway on edge (tag, a, b): one painted on

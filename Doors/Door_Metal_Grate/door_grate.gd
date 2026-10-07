@@ -4,6 +4,10 @@ class_name DoorGrate
 @export var open_sound: AudioStream
 @export var close_sound: AudioStream
 
+## Name of a WallTextures set the stone surround wears ("" = its plain stone). The
+## Level Painter sets it to the texture of the wall the grate is set in.
+@export var wall_texture: String = ""
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
@@ -11,8 +15,20 @@ var is_open: bool = false
 
 func _ready() -> void:
 	setup_audio_player()
+	apply_wall_texture()
 	ensure_door_closed()
 	add_to_group("persistent")  # WorldState saves/restores our open/closed state
+
+# Dress the surround in the wall's texture. The grooves keep their own dark faces.
+func apply_wall_texture() -> void:
+	if wall_texture == "":
+		return
+	for piece_name in ["JambLeft", "JambRight", "Head", "Sill"]:
+		var piece := get_node_or_null("Border/Surround/" + piece_name) as CSGBox3D
+		# The sill lies flat on the floor, so it takes the level-facing variant.
+		var material := WallTextures.material(wall_texture, piece_name == "Sill")
+		if piece and material:
+			piece.material = material
 
 func setup_audio_player():
 	if audio_player == null:

@@ -1195,962 +1195,962 @@ ambient_light_source = 2
 ambient_light_color = Color(0.5, 0.5, 0.55, 1)
 ambient_light_energy = 0.6
 
-[node name="Upper_Halls" type="Node3D" unique_id=449500342 node_paths=PackedStringArray("player_spawn")]
+[node name="Upper_Halls" type="Node3D" unique_id=862518477 node_paths=PackedStringArray("player_spawn")]
 script = ExtResource("1_8m8b2")
 player_spawn = NodePath("PlayerSpawn")
 metadata/_grid_level_data = SubResource("Resource_8m8b2")
 metadata/_painted_links = [["Objects/lever_1_6", "connected_doors", "Walls/Grate_Door_H_3_5"], ["Objects/pressure_plate_4_8", "connected_doors", "Walls/Grate_Door_V_7_7"], ["Objects/wall_lock_14_10", "target_door", "Walls/Grate_Door_H_12_11"], ["Objects/puzzle_14_16", "levers", "Objects/lever_10_13"], ["Objects/puzzle_14_16", "levers", "Objects/lever_11_13"], ["Objects/puzzle_14_16", "levers", "Objects/lever_13_13"], ["Objects/puzzle_14_16", "doors_to_open", "Walls/Grate_Door_V_15_15"]]
 
-[node name="Floors" type="Node3D" parent="." unique_id=1779093693]
+[node name="Floors" type="Node3D" parent="." unique_id=868561374]
 
 [node name="Floor_2_2" type="Node3D" parent="Floors" unique_id=489223058 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_3_2" type="Node3D" parent="Floors" unique_id=720409620 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_2" type="Node3D" parent="Floors" unique_id=1773958255 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_4_2" type="Node3D" parent="Floors" unique_id=1463752302 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_2" type="Node3D" parent="Floors" unique_id=307680294 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_2_3" type="Node3D" parent="Floors" unique_id=86092639 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_3" type="Node3D" parent="Floors" unique_id=1326352491 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_3_3" type="Node3D" parent="Floors" unique_id=1784463915 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_3" type="Node3D" parent="Floors" unique_id=877293655 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_4_3" type="Node3D" parent="Floors" unique_id=361571709 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_3" type="Node3D" parent="Floors" unique_id=785805487 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_8_3" type="Node3D" parent="Floors" unique_id=1614027334 instance=ExtResource("3_q2wjq")]
+[node name="Floor_8_3" type="Node3D" parent="Floors" unique_id=258823009 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 6)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_2_4" type="Node3D" parent="Floors" unique_id=104222246 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_4" type="Node3D" parent="Floors" unique_id=1600941940 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_3_4" type="Node3D" parent="Floors" unique_id=1418399129 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_4" type="Node3D" parent="Floors" unique_id=1735196457 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_4_4" type="Node3D" parent="Floors" unique_id=409215375 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_4" type="Node3D" parent="Floors" unique_id=1102215874 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles131"
 
-[node name="Floor_8_4" type="Node3D" parent="Floors" unique_id=1871366206 instance=ExtResource("3_q2wjq")]
+[node name="Floor_8_4" type="Node3D" parent="Floors" unique_id=395505393 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_10_4" type="Node3D" parent="Floors" unique_id=397454980 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_4" type="Node3D" parent="Floors" unique_id=447282770 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_11_4" type="Node3D" parent="Floors" unique_id=1769857020 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_4" type="Node3D" parent="Floors" unique_id=663262166 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_12_4" type="Node3D" parent="Floors" unique_id=1122513563 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_4" type="Node3D" parent="Floors" unique_id=636613149 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_13_4" type="Node3D" parent="Floors" unique_id=1105320377 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_4" type="Node3D" parent="Floors" unique_id=907748564 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_14_4" type="Node3D" parent="Floors" unique_id=1548741149 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_4" type="Node3D" parent="Floors" unique_id=884716346 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_15_4" type="Node3D" parent="Floors" unique_id=773036608 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_4" type="Node3D" parent="Floors" unique_id=1583865343 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_16_4" type="Node3D" parent="Floors" unique_id=1459342913 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_4" type="Node3D" parent="Floors" unique_id=634593093 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_17_4" type="Node3D" parent="Floors" unique_id=1596575234 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_4" type="Node3D" parent="Floors" unique_id=862443094 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_1_5" type="Node3D" parent="Floors" unique_id=888820109 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_5" type="Node3D" parent="Floors" unique_id=544570174 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_2_5" type="Node3D" parent="Floors" unique_id=574191643 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_5" type="Node3D" parent="Floors" unique_id=1240797770 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_3_5" type="Node3D" parent="Floors" unique_id=789081570 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_5" type="Node3D" parent="Floors" unique_id=1998170801 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_4_5" type="Node3D" parent="Floors" unique_id=1307573625 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_5" type="Node3D" parent="Floors" unique_id=1505754260 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_5_5" type="Node3D" parent="Floors" unique_id=195246956 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_5" type="Node3D" parent="Floors" unique_id=303130492 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_6_5" type="Node3D" parent="Floors" unique_id=356154851 instance=ExtResource("3_q2wjq")]
+[node name="Floor_6_5" type="Node3D" parent="Floors" unique_id=304985756 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_8_5" type="Node3D" parent="Floors" unique_id=1537071753 instance=ExtResource("3_q2wjq")]
+[node name="Floor_8_5" type="Node3D" parent="Floors" unique_id=1541960516 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_10_5" type="Node3D" parent="Floors" unique_id=114659024 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_5" type="Node3D" parent="Floors" unique_id=972673704 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_11_5" type="Node3D" parent="Floors" unique_id=1341887868 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_5" type="Node3D" parent="Floors" unique_id=524269894 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_12_5" type="Node3D" parent="Floors" unique_id=1348203108 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_5" type="Node3D" parent="Floors" unique_id=1496084526 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_13_5" type="Node3D" parent="Floors" unique_id=130910436 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_5" type="Node3D" parent="Floors" unique_id=1187994790 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_14_5" type="Node3D" parent="Floors" unique_id=1914817875 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_5" type="Node3D" parent="Floors" unique_id=383216464 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_15_5" type="Node3D" parent="Floors" unique_id=1389969346 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_5" type="Node3D" parent="Floors" unique_id=1386604415 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_16_5" type="Node3D" parent="Floors" unique_id=265330384 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_5" type="Node3D" parent="Floors" unique_id=1546341423 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_17_5" type="Node3D" parent="Floors" unique_id=1298468908 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_5" type="Node3D" parent="Floors" unique_id=1812385651 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_1_6" type="Node3D" parent="Floors" unique_id=1118665947 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_6" type="Node3D" parent="Floors" unique_id=1534059141 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_2_6" type="Node3D" parent="Floors" unique_id=350794568 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_6" type="Node3D" parent="Floors" unique_id=622195765 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_3_6" type="Node3D" parent="Floors" unique_id=1765848814 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_6" type="Node3D" parent="Floors" unique_id=1666380971 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_4_6" type="Node3D" parent="Floors" unique_id=514530191 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_6" type="Node3D" parent="Floors" unique_id=1925751317 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_5_6" type="Node3D" parent="Floors" unique_id=949482420 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_6" type="Node3D" parent="Floors" unique_id=840232632 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_6_6" type="Node3D" parent="Floors" unique_id=1772701344 instance=ExtResource("3_q2wjq")]
+[node name="Floor_6_6" type="Node3D" parent="Floors" unique_id=832837869 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_8_6" type="Node3D" parent="Floors" unique_id=1140140339 instance=ExtResource("3_q2wjq")]
+[node name="Floor_8_6" type="Node3D" parent="Floors" unique_id=260673590 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_10_6" type="Node3D" parent="Floors" unique_id=1310759512 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_6" type="Node3D" parent="Floors" unique_id=364040224 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_11_6" type="Node3D" parent="Floors" unique_id=1414840949 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_6" type="Node3D" parent="Floors" unique_id=1725655942 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_12_6" type="Node3D" parent="Floors" unique_id=43412257 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_6" type="Node3D" parent="Floors" unique_id=958538584 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_13_6" type="Node3D" parent="Floors" unique_id=616119611 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_6" type="Node3D" parent="Floors" unique_id=1952890599 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_14_6" type="Node3D" parent="Floors" unique_id=282645046 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_6" type="Node3D" parent="Floors" unique_id=1072485091 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_15_6" type="Node3D" parent="Floors" unique_id=1692434928 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_6" type="Node3D" parent="Floors" unique_id=1140724892 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_16_6" type="Node3D" parent="Floors" unique_id=1672510299 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_6" type="Node3D" parent="Floors" unique_id=830120090 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_17_6" type="Node3D" parent="Floors" unique_id=302408102 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_6" type="Node3D" parent="Floors" unique_id=886098896 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_1_7" type="Node3D" parent="Floors" unique_id=708986641 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_7" type="Node3D" parent="Floors" unique_id=1096374773 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_2_7" type="Node3D" parent="Floors" unique_id=411931065 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_7" type="Node3D" parent="Floors" unique_id=681763955 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_3_7" type="Node3D" parent="Floors" unique_id=1006262776 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_7" type="Node3D" parent="Floors" unique_id=882616495 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_4_7" type="Node3D" parent="Floors" unique_id=2069868155 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_7" type="Node3D" parent="Floors" unique_id=881203017 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_5_7" type="Node3D" parent="Floors" unique_id=1675443896 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_7" type="Node3D" parent="Floors" unique_id=267070466 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_6_7" type="Node3D" parent="Floors" unique_id=891308896 instance=ExtResource("3_q2wjq")]
+[node name="Floor_6_7" type="Node3D" parent="Floors" unique_id=806528396 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_7_7" type="Node3D" parent="Floors" unique_id=1892368432 instance=ExtResource("3_q2wjq")]
+[node name="Floor_7_7" type="Node3D" parent="Floors" unique_id=871489979 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_8_7" type="Node3D" parent="Floors" unique_id=56144854 instance=ExtResource("3_q2wjq")]
+[node name="Floor_8_7" type="Node3D" parent="Floors" unique_id=1104211148 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_9_7" type="Node3D" parent="Floors" unique_id=319038087 instance=ExtResource("3_q2wjq")]
+[node name="Floor_9_7" type="Node3D" parent="Floors" unique_id=986383705 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_10_7" type="Node3D" parent="Floors" unique_id=1924877504 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_7" type="Node3D" parent="Floors" unique_id=782670183 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_11_7" type="Node3D" parent="Floors" unique_id=1397165938 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_7" type="Node3D" parent="Floors" unique_id=1923660263 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_12_7" type="Node3D" parent="Floors" unique_id=1831152305 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_7" type="Node3D" parent="Floors" unique_id=110369613 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_13_7" type="Node3D" parent="Floors" unique_id=232090214 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_7" type="Node3D" parent="Floors" unique_id=1554589694 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_14_7" type="Node3D" parent="Floors" unique_id=159406438 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_7" type="Node3D" parent="Floors" unique_id=1698783466 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_15_7" type="Node3D" parent="Floors" unique_id=756892871 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_7" type="Node3D" parent="Floors" unique_id=861692438 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_16_7" type="Node3D" parent="Floors" unique_id=1555299303 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_7" type="Node3D" parent="Floors" unique_id=376988716 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_17_7" type="Node3D" parent="Floors" unique_id=829941153 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_7" type="Node3D" parent="Floors" unique_id=2096843570 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_1_8" type="Node3D" parent="Floors" unique_id=1005001158 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_8" type="Node3D" parent="Floors" unique_id=1889770032 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_2_8" type="Node3D" parent="Floors" unique_id=904604571 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_8" type="Node3D" parent="Floors" unique_id=1210533778 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_3_8" type="Node3D" parent="Floors" unique_id=2080615020 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_8" type="Node3D" parent="Floors" unique_id=1740189338 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_4_8" type="Node3D" parent="Floors" unique_id=1869116881 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_8" type="Node3D" parent="Floors" unique_id=181574698 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_5_8" type="Node3D" parent="Floors" unique_id=981158186 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_8" type="Node3D" parent="Floors" unique_id=573074362 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_6_8" type="Node3D" parent="Floors" unique_id=946614620 instance=ExtResource("3_q2wjq")]
+[node name="Floor_6_8" type="Node3D" parent="Floors" unique_id=1311471634 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_8_8" type="Node3D" parent="Floors" unique_id=1808410241 instance=ExtResource("3_q2wjq")]
+[node name="Floor_8_8" type="Node3D" parent="Floors" unique_id=1100520817 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_10_8" type="Node3D" parent="Floors" unique_id=784579316 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_8" type="Node3D" parent="Floors" unique_id=806246718 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_11_8" type="Node3D" parent="Floors" unique_id=6400819 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_8" type="Node3D" parent="Floors" unique_id=1474803724 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_12_8" type="Node3D" parent="Floors" unique_id=820020434 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_8" type="Node3D" parent="Floors" unique_id=2057128854 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_13_8" type="Node3D" parent="Floors" unique_id=68206365 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_8" type="Node3D" parent="Floors" unique_id=366132568 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_14_8" type="Node3D" parent="Floors" unique_id=1361429335 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_8" type="Node3D" parent="Floors" unique_id=1821739508 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_15_8" type="Node3D" parent="Floors" unique_id=1312119470 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_8" type="Node3D" parent="Floors" unique_id=1982436018 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_16_8" type="Node3D" parent="Floors" unique_id=1691570461 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_8" type="Node3D" parent="Floors" unique_id=2000334921 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_17_8" type="Node3D" parent="Floors" unique_id=1458436227 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_8" type="Node3D" parent="Floors" unique_id=1045025637 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_1_9" type="Node3D" parent="Floors" unique_id=602141712 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_9" type="Node3D" parent="Floors" unique_id=2048433780 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_2_9" type="Node3D" parent="Floors" unique_id=1764748050 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_9" type="Node3D" parent="Floors" unique_id=409473928 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_3_9" type="Node3D" parent="Floors" unique_id=1027820111 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_9" type="Node3D" parent="Floors" unique_id=9961703 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_4_9" type="Node3D" parent="Floors" unique_id=2008584227 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_9" type="Node3D" parent="Floors" unique_id=1707799278 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_5_9" type="Node3D" parent="Floors" unique_id=1285162644 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_9" type="Node3D" parent="Floors" unique_id=1668253261 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_6_9" type="Node3D" parent="Floors" unique_id=858875881 instance=ExtResource("3_q2wjq")]
+[node name="Floor_6_9" type="Node3D" parent="Floors" unique_id=919515474 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_8_9" type="Node3D" parent="Floors" unique_id=703125985 instance=ExtResource("3_q2wjq")]
+[node name="Floor_8_9" type="Node3D" parent="Floors" unique_id=967160680 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_10_9" type="Node3D" parent="Floors" unique_id=1901038751 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_9" type="Node3D" parent="Floors" unique_id=263415126 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_11_9" type="Node3D" parent="Floors" unique_id=591648815 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_9" type="Node3D" parent="Floors" unique_id=1707500349 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_12_9" type="Node3D" parent="Floors" unique_id=847676412 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_9" type="Node3D" parent="Floors" unique_id=16105576 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_13_9" type="Node3D" parent="Floors" unique_id=1082281773 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_9" type="Node3D" parent="Floors" unique_id=144399159 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_14_9" type="Node3D" parent="Floors" unique_id=1191150805 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_9" type="Node3D" parent="Floors" unique_id=1143911198 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_15_9" type="Node3D" parent="Floors" unique_id=1051582805 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_9" type="Node3D" parent="Floors" unique_id=34810823 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_16_9" type="Node3D" parent="Floors" unique_id=879680997 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_9" type="Node3D" parent="Floors" unique_id=2073958926 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_17_9" type="Node3D" parent="Floors" unique_id=987891650 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_9" type="Node3D" parent="Floors" unique_id=4516562 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_3_10" type="Node3D" parent="Floors" unique_id=1117708570 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_10" type="Node3D" parent="Floors" unique_id=149228450 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_4_10" type="Node3D" parent="Floors" unique_id=1740399023 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_10" type="Node3D" parent="Floors" unique_id=975438130 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_10_10" type="Node3D" parent="Floors" unique_id=138197472 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_10" type="Node3D" parent="Floors" unique_id=1519303516 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_11_10" type="Node3D" parent="Floors" unique_id=102861320 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_10" type="Node3D" parent="Floors" unique_id=160602706 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_12_10" type="Node3D" parent="Floors" unique_id=1088014807 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_10" type="Node3D" parent="Floors" unique_id=1993026887 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_13_10" type="Node3D" parent="Floors" unique_id=1230844688 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_10" type="Node3D" parent="Floors" unique_id=1677389629 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_14_10" type="Node3D" parent="Floors" unique_id=1807753235 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_10" type="Node3D" parent="Floors" unique_id=1545042026 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_15_10" type="Node3D" parent="Floors" unique_id=1103674792 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_10" type="Node3D" parent="Floors" unique_id=968689527 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_16_10" type="Node3D" parent="Floors" unique_id=920377278 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_10" type="Node3D" parent="Floors" unique_id=1305911720 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_17_10" type="Node3D" parent="Floors" unique_id=191291585 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_10" type="Node3D" parent="Floors" unique_id=861933062 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "GrassPatchyGround4585"
 
-[node name="Floor_3_11" type="Node3D" parent="Floors" unique_id=133120961 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_11" type="Node3D" parent="Floors" unique_id=1359006493 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_4_11" type="Node3D" parent="Floors" unique_id=1980938018 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_11" type="Node3D" parent="Floors" unique_id=601439895 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles074"
 
-[node name="Floor_8_11" type="Node3D" parent="Floors" unique_id=927233752 instance=ExtResource("3_q2wjq")]
+[node name="Floor_8_11" type="Node3D" parent="Floors" unique_id=1664048588 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles058"
 
-[node name="Floor_12_11" type="Node3D" parent="Floors" unique_id=1573286047 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_11" type="Node3D" parent="Floors" unique_id=1355164469 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_1_12" type="Node3D" parent="Floors" unique_id=2140272997 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_12" type="Node3D" parent="Floors" unique_id=693512387 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_2_12" type="Node3D" parent="Floors" unique_id=949123005 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_12" type="Node3D" parent="Floors" unique_id=1563513511 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_3_12" type="Node3D" parent="Floors" unique_id=201983613 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_12" type="Node3D" parent="Floors" unique_id=40400921 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_4_12" type="Node3D" parent="Floors" unique_id=406875205 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_12" type="Node3D" parent="Floors" unique_id=1746474777 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_5_12" type="Node3D" parent="Floors" unique_id=1552968981 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_12" type="Node3D" parent="Floors" unique_id=1393411646 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_12_12" type="Node3D" parent="Floors" unique_id=1093006332 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_12" type="Node3D" parent="Floors" unique_id=1604944471 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_1_13" type="Node3D" parent="Floors" unique_id=1490129443 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_13" type="Node3D" parent="Floors" unique_id=65303726 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_2_13" type="Node3D" parent="Floors" unique_id=1923000423 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_13" type="Node3D" parent="Floors" unique_id=823229907 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_3_13" type="Node3D" parent="Floors" unique_id=1533041676 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_13" type="Node3D" parent="Floors" unique_id=580070691 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_4_13" type="Node3D" parent="Floors" unique_id=734091600 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_13" type="Node3D" parent="Floors" unique_id=2039910081 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_5_13" type="Node3D" parent="Floors" unique_id=242069054 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_13" type="Node3D" parent="Floors" unique_id=216758620 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_10_13" type="Node3D" parent="Floors" unique_id=632619044 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_13" type="Node3D" parent="Floors" unique_id=1433200033 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_11_13" type="Node3D" parent="Floors" unique_id=732728868 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_13" type="Node3D" parent="Floors" unique_id=1846180866 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_12_13" type="Node3D" parent="Floors" unique_id=147673508 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_13" type="Node3D" parent="Floors" unique_id=1768611375 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_13_13" type="Node3D" parent="Floors" unique_id=1923419964 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_13" type="Node3D" parent="Floors" unique_id=1976922051 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_14_13" type="Node3D" parent="Floors" unique_id=33343889 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_13" type="Node3D" parent="Floors" unique_id=343174774 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_1_14" type="Node3D" parent="Floors" unique_id=649447557 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_14" type="Node3D" parent="Floors" unique_id=895448585 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_2_14" type="Node3D" parent="Floors" unique_id=2070032587 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_14" type="Node3D" parent="Floors" unique_id=1642587130 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_3_14" type="Node3D" parent="Floors" unique_id=2037976545 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_14" type="Node3D" parent="Floors" unique_id=613537876 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_4_14" type="Node3D" parent="Floors" unique_id=1585111833 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_14" type="Node3D" parent="Floors" unique_id=933254767 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_5_14" type="Node3D" parent="Floors" unique_id=885478161 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_14" type="Node3D" parent="Floors" unique_id=1085138094 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_10_14" type="Node3D" parent="Floors" unique_id=466557117 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_14" type="Node3D" parent="Floors" unique_id=1617615670 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_11_14" type="Node3D" parent="Floors" unique_id=892601443 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_14" type="Node3D" parent="Floors" unique_id=1898362924 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_12_14" type="Node3D" parent="Floors" unique_id=1829433680 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_14" type="Node3D" parent="Floors" unique_id=1902258358 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_13_14" type="Node3D" parent="Floors" unique_id=559295696 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_14" type="Node3D" parent="Floors" unique_id=890222020 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_14_14" type="Node3D" parent="Floors" unique_id=1078313988 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_14" type="Node3D" parent="Floors" unique_id=1360267783 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_15_14" type="Node3D" parent="Floors" unique_id=2008933547 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_14" type="Node3D" parent="Floors" unique_id=402879739 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_16_14" type="Node3D" parent="Floors" unique_id=1087773940 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_14" type="Node3D" parent="Floors" unique_id=52549341 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_17_14" type="Node3D" parent="Floors" unique_id=963945874 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_14" type="Node3D" parent="Floors" unique_id=675940273 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_1_15" type="Node3D" parent="Floors" unique_id=867561017 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_15" type="Node3D" parent="Floors" unique_id=1079415035 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_2_15" type="Node3D" parent="Floors" unique_id=1643872902 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_15" type="Node3D" parent="Floors" unique_id=445558211 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_3_15" type="Node3D" parent="Floors" unique_id=1920312259 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_15" type="Node3D" parent="Floors" unique_id=1555237143 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_4_15" type="Node3D" parent="Floors" unique_id=775534227 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_15" type="Node3D" parent="Floors" unique_id=1789531176 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_5_15" type="Node3D" parent="Floors" unique_id=1577397489 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_15" type="Node3D" parent="Floors" unique_id=1153260108 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_10_15" type="Node3D" parent="Floors" unique_id=1960613397 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_15" type="Node3D" parent="Floors" unique_id=581914177 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_11_15" type="Node3D" parent="Floors" unique_id=1122748240 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_15" type="Node3D" parent="Floors" unique_id=483729656 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_12_15" type="Node3D" parent="Floors" unique_id=1074113179 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_15" type="Node3D" parent="Floors" unique_id=793250550 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_13_15" type="Node3D" parent="Floors" unique_id=306216723 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_15" type="Node3D" parent="Floors" unique_id=715281894 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_14_15" type="Node3D" parent="Floors" unique_id=2079850324 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_15" type="Node3D" parent="Floors" unique_id=573022736 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_15_15" type="Node3D" parent="Floors" unique_id=1186872205 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_15" type="Node3D" parent="Floors" unique_id=1283176825 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_16_15" type="Node3D" parent="Floors" unique_id=2104394436 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_15" type="Node3D" parent="Floors" unique_id=1617062168 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_17_15" type="Node3D" parent="Floors" unique_id=825296679 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_15" type="Node3D" parent="Floors" unique_id=1153993608 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_1_16" type="Node3D" parent="Floors" unique_id=1308112766 instance=ExtResource("3_q2wjq")]
+[node name="Floor_1_16" type="Node3D" parent="Floors" unique_id=1218080525 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_2_16" type="Node3D" parent="Floors" unique_id=1063502369 instance=ExtResource("3_q2wjq")]
+[node name="Floor_2_16" type="Node3D" parent="Floors" unique_id=200577539 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_3_16" type="Node3D" parent="Floors" unique_id=1980724490 instance=ExtResource("3_q2wjq")]
+[node name="Floor_3_16" type="Node3D" parent="Floors" unique_id=1831585256 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_4_16" type="Node3D" parent="Floors" unique_id=1194437632 instance=ExtResource("3_q2wjq")]
+[node name="Floor_4_16" type="Node3D" parent="Floors" unique_id=1588764296 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_5_16" type="Node3D" parent="Floors" unique_id=504141209 instance=ExtResource("3_q2wjq")]
+[node name="Floor_5_16" type="Node3D" parent="Floors" unique_id=1018143933 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor019"
 
-[node name="Floor_10_16" type="Node3D" parent="Floors" unique_id=1644491412 instance=ExtResource("3_q2wjq")]
+[node name="Floor_10_16" type="Node3D" parent="Floors" unique_id=954357428 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_11_16" type="Node3D" parent="Floors" unique_id=761979497 instance=ExtResource("3_q2wjq")]
+[node name="Floor_11_16" type="Node3D" parent="Floors" unique_id=2106884888 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_12_16" type="Node3D" parent="Floors" unique_id=115085565 instance=ExtResource("3_q2wjq")]
+[node name="Floor_12_16" type="Node3D" parent="Floors" unique_id=782635188 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_13_16" type="Node3D" parent="Floors" unique_id=88972216 instance=ExtResource("3_q2wjq")]
+[node name="Floor_13_16" type="Node3D" parent="Floors" unique_id=490667648 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_14_16" type="Node3D" parent="Floors" unique_id=674177480 instance=ExtResource("3_q2wjq")]
+[node name="Floor_14_16" type="Node3D" parent="Floors" unique_id=511339660 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_15_16" type="Node3D" parent="Floors" unique_id=670028595 instance=ExtResource("3_q2wjq")]
+[node name="Floor_15_16" type="Node3D" parent="Floors" unique_id=180363517 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_16_16" type="Node3D" parent="Floors" unique_id=316558985 instance=ExtResource("3_q2wjq")]
+[node name="Floor_16_16" type="Node3D" parent="Floors" unique_id=743938786 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Floor_17_16" type="Node3D" parent="Floors" unique_id=76444479 instance=ExtResource("3_q2wjq")]
+[node name="Floor_17_16" type="Node3D" parent="Floors" unique_id=1608707977 instance=ExtResource("3_q2wjq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Tiles098"
 
-[node name="Walls" type="Node3D" parent="." unique_id=337835108]
+[node name="Walls" type="Node3D" parent="." unique_id=1914003555]
 
 [node name="Wall_V_2_2" type="Node3D" parent="Walls" unique_id=1569933788 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0, 4)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_V_5_2" type="Node3D" parent="Walls" unique_id=385517453 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_5_2" type="Node3D" parent="Walls" unique_id=1701126041 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 0, 4)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_V_2_3" type="Node3D" parent="Walls" unique_id=366450990 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_2_3" type="Node3D" parent="Walls" unique_id=1541570886 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0, 6)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_V_5_3" type="Node3D" parent="Walls" unique_id=1879600192 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_5_3" type="Node3D" parent="Walls" unique_id=475216281 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 0, 6)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_V_8_3" type="Node3D" parent="Walls" unique_id=427971086 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_8_3" type="Node3D" parent="Walls" unique_id=577490769 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 6)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_9_3" type="Node3D" parent="Walls" unique_id=560804022 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_9_3" type="Node3D" parent="Walls" unique_id=191170192 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 6)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_2_4" type="Node3D" parent="Walls" unique_id=1366838795 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_2_4" type="Node3D" parent="Walls" unique_id=1019284619 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_V_5_4" type="Node3D" parent="Walls" unique_id=1752381761 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_5_4" type="Node3D" parent="Walls" unique_id=1955667119 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_V_8_4" type="Node3D" parent="Walls" unique_id=2141815800 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_8_4" type="Node3D" parent="Walls" unique_id=885296065 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_9_4" type="Node3D" parent="Walls" unique_id=1992991980 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_9_4" type="Node3D" parent="Walls" unique_id=1289782077 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_10_4" type="Node3D" parent="Walls" unique_id=885811968 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_4" type="Node3D" parent="Walls" unique_id=1315009248 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_18_4" type="Node3D" parent="Walls" unique_id=1335598914 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_4" type="Node3D" parent="Walls" unique_id=1450557551 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 8)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_1_5" type="Node3D" parent="Walls" unique_id=1694375688 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_5" type="Node3D" parent="Walls" unique_id=1758175878 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_7_5" type="Node3D" parent="Walls" unique_id=1585243432 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_7_5" type="Node3D" parent="Walls" unique_id=655883163 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_8_5" type="Node3D" parent="Walls" unique_id=1999418769 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_8_5" type="Node3D" parent="Walls" unique_id=1936507839 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_9_5" type="Node3D" parent="Walls" unique_id=1930681341 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_9_5" type="Node3D" parent="Walls" unique_id=863277917 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_10_5" type="Node3D" parent="Walls" unique_id=876210827 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_5" type="Node3D" parent="Walls" unique_id=2113696263 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_18_5" type="Node3D" parent="Walls" unique_id=1559161122 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_5" type="Node3D" parent="Walls" unique_id=943603639 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 10)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_1_6" type="Node3D" parent="Walls" unique_id=916502897 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_6" type="Node3D" parent="Walls" unique_id=1388344402 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_7_6" type="Node3D" parent="Walls" unique_id=1131022366 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_7_6" type="Node3D" parent="Walls" unique_id=1279353095 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_8_6" type="Node3D" parent="Walls" unique_id=651502004 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_8_6" type="Node3D" parent="Walls" unique_id=218077014 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_9_6" type="Node3D" parent="Walls" unique_id=2140566751 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_9_6" type="Node3D" parent="Walls" unique_id=100905852 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_10_6" type="Node3D" parent="Walls" unique_id=222115111 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_6" type="Node3D" parent="Walls" unique_id=396079245 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_18_6" type="Node3D" parent="Walls" unique_id=1996064365 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_6" type="Node3D" parent="Walls" unique_id=2141661340 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 12)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_1_7" type="Node3D" parent="Walls" unique_id=659673214 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_7" type="Node3D" parent="Walls" unique_id=1622701550 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
@@ -2160,501 +2160,505 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13, 
 script = ExtResource("7_eml05")
 open_sound = ExtResource("8_08qiu")
 close_sound = ExtResource("8_08qiu")
+wall_texture = "Bricks082C"
 
-[node name="Lintel_V_7_7" type="Node3D" parent="Walls" unique_id=312441740 instance=ExtResource("5_o8hlh")]
+[node name="Lintel_V_7_7" type="Node3D" parent="Walls" unique_id=1852123741 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.33333334, 0, -1, 0, -4.371139e-08, 13, 2, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_18_7" type="Node3D" parent="Walls" unique_id=589643715 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_7" type="Node3D" parent="Walls" unique_id=433620134 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 14)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_1_8" type="Node3D" parent="Walls" unique_id=1416556705 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_8" type="Node3D" parent="Walls" unique_id=801386138 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_7_8" type="Node3D" parent="Walls" unique_id=809644728 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_7_8" type="Node3D" parent="Walls" unique_id=1470784357 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_8_8" type="Node3D" parent="Walls" unique_id=648283361 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_8_8" type="Node3D" parent="Walls" unique_id=1576501 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_9_8" type="Node3D" parent="Walls" unique_id=1224342069 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_9_8" type="Node3D" parent="Walls" unique_id=1208252231 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_10_8" type="Node3D" parent="Walls" unique_id=29834511 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_8" type="Node3D" parent="Walls" unique_id=2052021738 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_18_8" type="Node3D" parent="Walls" unique_id=1673210707 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_8" type="Node3D" parent="Walls" unique_id=646666253 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 16)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_1_9" type="Node3D" parent="Walls" unique_id=633003342 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_9" type="Node3D" parent="Walls" unique_id=1397481895 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_7_9" type="Node3D" parent="Walls" unique_id=169810767 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_7_9" type="Node3D" parent="Walls" unique_id=1657634109 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_8_9" type="Node3D" parent="Walls" unique_id=1169742330 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_8_9" type="Node3D" parent="Walls" unique_id=1222068460 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_9_9" type="Node3D" parent="Walls" unique_id=1510438700 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_9_9" type="Node3D" parent="Walls" unique_id=137927152 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_10_9" type="Node3D" parent="Walls" unique_id=909659983 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_9" type="Node3D" parent="Walls" unique_id=149091528 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_18_9" type="Node3D" parent="Walls" unique_id=576806194 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_9" type="Node3D" parent="Walls" unique_id=1538211166 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 18)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_3_10" type="Node3D" parent="Walls" unique_id=1329089175 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_3_10" type="Node3D" parent="Walls" unique_id=1413886442 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_5_10" type="Node3D" parent="Walls" unique_id=856308222 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_5_10" type="Node3D" parent="Walls" unique_id=743688522 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_8_10" type="Node3D" parent="Walls" unique_id=2052257299 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_8_10" type="Node3D" parent="Walls" unique_id=1041020923 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_9_10" type="Node3D" parent="Walls" unique_id=1445401393 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_9_10" type="Node3D" parent="Walls" unique_id=1542848092 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_10_10" type="Node3D" parent="Walls" unique_id=1850908176 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_10" type="Node3D" parent="Walls" unique_id=1983497121 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_18_10" type="Node3D" parent="Walls" unique_id=1317023378 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_10" type="Node3D" parent="Walls" unique_id=1232968178 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 20)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_V_3_11" type="Node3D" parent="Walls" unique_id=1100005325 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_3_11" type="Node3D" parent="Walls" unique_id=483307596 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_5_11" type="Node3D" parent="Walls" unique_id=668322157 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_5_11" type="Node3D" parent="Walls" unique_id=531688444 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_V_8_11" type="Node3D" parent="Walls" unique_id=1856003863 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_8_11" type="Node3D" parent="Walls" unique_id=1196801712 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_9_11" type="Node3D" parent="Walls" unique_id=430858155 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_9_11" type="Node3D" parent="Walls" unique_id=477119958 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_V_12_11" type="Node3D" parent="Walls" unique_id=1220158893 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_12_11" type="Node3D" parent="Walls" unique_id=150582644 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 23, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_13_11" type="Node3D" parent="Walls" unique_id=37188737 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_13_11" type="Node3D" parent="Walls" unique_id=95012718 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25, 0, 22)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_1_12" type="Node3D" parent="Walls" unique_id=1759271532 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_12" type="Node3D" parent="Walls" unique_id=755317026 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_6_12" type="Node3D" parent="Walls" unique_id=82416800 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_6_12" type="Node3D" parent="Walls" unique_id=561295597 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_12_12" type="Node3D" parent="Walls" unique_id=864907776 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_12_12" type="Node3D" parent="Walls" unique_id=1950521248 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 23, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_13_12" type="Node3D" parent="Walls" unique_id=136973118 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_13_12" type="Node3D" parent="Walls" unique_id=992865119 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25, 0, 24)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_1_13" type="Node3D" parent="Walls" unique_id=1502550475 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_13" type="Node3D" parent="Walls" unique_id=215469930 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_6_13" type="Node3D" parent="Walls" unique_id=882829431 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_6_13" type="Node3D" parent="Walls" unique_id=1365893947 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_10_13" type="Node3D" parent="Walls" unique_id=46363724 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_13" type="Node3D" parent="Walls" unique_id=1161759472 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_15_13" type="Node3D" parent="Walls" unique_id=1230574785 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_15_13" type="Node3D" parent="Walls" unique_id=777401192 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29, 0, 26)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_1_14" type="Node3D" parent="Walls" unique_id=789904278 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_14" type="Node3D" parent="Walls" unique_id=1621120599 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_6_14" type="Node3D" parent="Walls" unique_id=1571860386 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_6_14" type="Node3D" parent="Walls" unique_id=1475060038 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_10_14" type="Node3D" parent="Walls" unique_id=434273884 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_14" type="Node3D" parent="Walls" unique_id=2045761404 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_15_14" type="Node3D" parent="Walls" unique_id=649129944 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_15_14" type="Node3D" parent="Walls" unique_id=1995918109 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_18_14" type="Node3D" parent="Walls" unique_id=2132191712 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_14" type="Node3D" parent="Walls" unique_id=650665355 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 28)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_1_15" type="Node3D" parent="Walls" unique_id=1886453469 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_15" type="Node3D" parent="Walls" unique_id=606688663 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_6_15" type="Node3D" parent="Walls" unique_id=394569185 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_6_15" type="Node3D" parent="Walls" unique_id=1456888330 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_10_15" type="Node3D" parent="Walls" unique_id=8506854 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_15" type="Node3D" parent="Walls" unique_id=374101153 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Grate_Door_V_15_15" type="Node3D" parent="Walls" unique_id=1682070243 instance=ExtResource("6_jixxl")]
+[node name="Grate_Door_V_15_15" type="Node3D" parent="Walls" unique_id=396570332 instance=ExtResource("6_jixxl")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29, 1, 30)
 script = ExtResource("7_eml05")
 open_sound = ExtResource("8_08qiu")
 close_sound = ExtResource("8_08qiu")
+wall_texture = "Bricks102"
 
-[node name="Lintel_V_15_15" type="Node3D" parent="Walls" unique_id=121156780 instance=ExtResource("5_o8hlh")]
+[node name="Lintel_V_15_15" type="Node3D" parent="Walls" unique_id=1925341940 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.33333334, 0, -1, 0, -4.371139e-08, 29, 2, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_18_15" type="Node3D" parent="Walls" unique_id=1983058356 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_15" type="Node3D" parent="Walls" unique_id=2013275932 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 30)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_1_16" type="Node3D" parent="Walls" unique_id=709548797 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_1_16" type="Node3D" parent="Walls" unique_id=56763473 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_6_16" type="Node3D" parent="Walls" unique_id=1281422518 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_6_16" type="Node3D" parent="Walls" unique_id=1699447327 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_V_10_16" type="Node3D" parent="Walls" unique_id=129069101 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_10_16" type="Node3D" parent="Walls" unique_id=492014386 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_15_16" type="Node3D" parent="Walls" unique_id=1886973558 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_15_16" type="Node3D" parent="Walls" unique_id=114586573 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_V_18_16" type="Node3D" parent="Walls" unique_id=1641792389 instance=ExtResource("5_o8hlh")]
+[node name="Wall_V_18_16" type="Node3D" parent="Walls" unique_id=1843942985 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 35, 0, 32)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_2_2" type="Node3D" parent="Walls" unique_id=1307890263 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_2_2" type="Node3D" parent="Walls" unique_id=376506710 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_H_3_2" type="Node3D" parent="Walls" unique_id=1688957301 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_3_2" type="Node3D" parent="Walls" unique_id=1947521031 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_H_4_2" type="Node3D" parent="Walls" unique_id=79708435 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_4_2" type="Node3D" parent="Walls" unique_id=317581891 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3)
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Wall_H_8_3" type="Node3D" parent="Walls" unique_id=1444492035 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_8_3" type="Node3D" parent="Walls" unique_id=635030075 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 5)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_H_10_4" type="Node3D" parent="Walls" unique_id=870495315 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_10_4" type="Node3D" parent="Walls" unique_id=267685123 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 7)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_11_4" type="Node3D" parent="Walls" unique_id=557482653 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_11_4" type="Node3D" parent="Walls" unique_id=1450627936 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 7)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_12_4" type="Node3D" parent="Walls" unique_id=1677155029 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_12_4" type="Node3D" parent="Walls" unique_id=1577255114 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 7)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_13_4" type="Node3D" parent="Walls" unique_id=432412965 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_13_4" type="Node3D" parent="Walls" unique_id=690632429 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 7)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_14_4" type="Node3D" parent="Walls" unique_id=734874575 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_14_4" type="Node3D" parent="Walls" unique_id=2128150978 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 7)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_15_4" type="Node3D" parent="Walls" unique_id=1049701966 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_15_4" type="Node3D" parent="Walls" unique_id=1583154157 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 7)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_16_4" type="Node3D" parent="Walls" unique_id=1179324569 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_16_4" type="Node3D" parent="Walls" unique_id=1424539874 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 7)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_17_4" type="Node3D" parent="Walls" unique_id=385643834 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_17_4" type="Node3D" parent="Walls" unique_id=390663857 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 7)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_1_5" type="Node3D" parent="Walls" unique_id=88282941 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_1_5" type="Node3D" parent="Walls" unique_id=975272468 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 9)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_2_5" type="Node3D" parent="Walls" unique_id=402953754 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_2_5" type="Node3D" parent="Walls" unique_id=1413100256 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 9)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Grate_Door_H_3_5" type="Node3D" parent="Walls" unique_id=1622649649 instance=ExtResource("6_jixxl")]
+[node name="Grate_Door_H_3_5" type="Node3D" parent="Walls" unique_id=486216702 instance=ExtResource("6_jixxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 9)
 script = ExtResource("7_eml05")
 open_sound = ExtResource("8_08qiu")
 close_sound = ExtResource("8_08qiu")
+wall_texture = "Bricks082C"
 
-[node name="Lintel_H_3_5" type="Node3D" parent="Walls" unique_id=1538419834 instance=ExtResource("5_o8hlh")]
+[node name="Lintel_H_3_5" type="Node3D" parent="Walls" unique_id=5773491 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 0.33333334, 0, 0, 0, 1, 6, 2, 9)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_4_5" type="Node3D" parent="Walls" unique_id=570095832 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_4_5" type="Node3D" parent="Walls" unique_id=831968049 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 9)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_5_5" type="Node3D" parent="Walls" unique_id=1080075258 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_5_5" type="Node3D" parent="Walls" unique_id=2116397172 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 9)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_6_5" type="Node3D" parent="Walls" unique_id=1958363707 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_6_5" type="Node3D" parent="Walls" unique_id=1500235371 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 9)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_7_7" type="Node3D" parent="Walls" unique_id=1976763456 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_7_7" type="Node3D" parent="Walls" unique_id=1137057511 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 13)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_9_7" type="Node3D" parent="Walls" unique_id=304066463 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_9_7" type="Node3D" parent="Walls" unique_id=962077094 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 13)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_H_7_8" type="Node3D" parent="Walls" unique_id=826521197 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_7_8" type="Node3D" parent="Walls" unique_id=1649966831 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 15)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_9_8" type="Node3D" parent="Walls" unique_id=1954074771 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_9_8" type="Node3D" parent="Walls" unique_id=2011525054 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 15)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_H_1_10" type="Node3D" parent="Walls" unique_id=1865764122 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_1_10" type="Node3D" parent="Walls" unique_id=1197627363 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 19)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_2_10" type="Node3D" parent="Walls" unique_id=1215718532 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_2_10" type="Node3D" parent="Walls" unique_id=710305750 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 19)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_5_10" type="Node3D" parent="Walls" unique_id=1279995767 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_5_10" type="Node3D" parent="Walls" unique_id=673914183 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 19)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_6_10" type="Node3D" parent="Walls" unique_id=678708979 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_6_10" type="Node3D" parent="Walls" unique_id=1156176906 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 19)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Wall_H_10_11" type="Node3D" parent="Walls" unique_id=1537710533 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_10_11" type="Node3D" parent="Walls" unique_id=337230861 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 21)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_11_11" type="Node3D" parent="Walls" unique_id=1604011327 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_11_11" type="Node3D" parent="Walls" unique_id=535773987 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 21)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Grate_Door_H_12_11" type="Node3D" parent="Walls" unique_id=1890497775 instance=ExtResource("6_jixxl")]
+[node name="Grate_Door_H_12_11" type="Node3D" parent="Walls" unique_id=1927387790 instance=ExtResource("6_jixxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1, 21)
 script = ExtResource("7_eml05")
 open_sound = ExtResource("8_08qiu")
 close_sound = ExtResource("8_08qiu")
+wall_texture = "Bricks089"
 
-[node name="Lintel_H_12_11" type="Node3D" parent="Walls" unique_id=1222695157 instance=ExtResource("5_o8hlh")]
+[node name="Lintel_H_12_11" type="Node3D" parent="Walls" unique_id=325227163 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 0.33333334, 0, 0, 0, 1, 24, 2, 21)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_13_11" type="Node3D" parent="Walls" unique_id=721215780 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_13_11" type="Node3D" parent="Walls" unique_id=2343738 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 21)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_14_11" type="Node3D" parent="Walls" unique_id=1257365342 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_14_11" type="Node3D" parent="Walls" unique_id=1570128605 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 21)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_15_11" type="Node3D" parent="Walls" unique_id=981279323 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_15_11" type="Node3D" parent="Walls" unique_id=1716124399 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 21)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_16_11" type="Node3D" parent="Walls" unique_id=592041620 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_16_11" type="Node3D" parent="Walls" unique_id=1905589768 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 21)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_17_11" type="Node3D" parent="Walls" unique_id=1019921178 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_17_11" type="Node3D" parent="Walls" unique_id=1740961688 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 21)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Wall_H_1_12" type="Node3D" parent="Walls" unique_id=1875375542 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_1_12" type="Node3D" parent="Walls" unique_id=101342627 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 23)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_H_2_12" type="Node3D" parent="Walls" unique_id=1878899446 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_2_12" type="Node3D" parent="Walls" unique_id=580166726 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 23)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_H_5_12" type="Node3D" parent="Walls" unique_id=279589772 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_5_12" type="Node3D" parent="Walls" unique_id=1688718610 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 23)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_H_8_12" type="Node3D" parent="Walls" unique_id=1748256675 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_8_12" type="Node3D" parent="Walls" unique_id=730641258 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 23)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Wall_H_10_13" type="Node3D" parent="Walls" unique_id=1193536687 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_10_13" type="Node3D" parent="Walls" unique_id=2021490620 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 25)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_11_13" type="Node3D" parent="Walls" unique_id=1808759433 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_11_13" type="Node3D" parent="Walls" unique_id=2142670552 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 25)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_13_13" type="Node3D" parent="Walls" unique_id=1166328317 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_13_13" type="Node3D" parent="Walls" unique_id=638211434 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 25)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_14_13" type="Node3D" parent="Walls" unique_id=896036817 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_14_13" type="Node3D" parent="Walls" unique_id=796095789 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 25)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_15_14" type="Node3D" parent="Walls" unique_id=783147959 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_15_14" type="Node3D" parent="Walls" unique_id=1002942203 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 27)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_16_14" type="Node3D" parent="Walls" unique_id=1440840861 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_16_14" type="Node3D" parent="Walls" unique_id=77452439 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 27)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_17_14" type="Node3D" parent="Walls" unique_id=1075049346 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_17_14" type="Node3D" parent="Walls" unique_id=1327975673 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 27)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_1_17" type="Node3D" parent="Walls" unique_id=105269298 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_1_17" type="Node3D" parent="Walls" unique_id=1386825693 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_H_2_17" type="Node3D" parent="Walls" unique_id=1122937462 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_2_17" type="Node3D" parent="Walls" unique_id=1099119761 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
@@ -2665,62 +2669,62 @@ script = ExtResource("10_3bt1g")
 target_scene_path = "res://Modules/Showcase/floors/floor_cellar.tscn"
 target_spawn_marker_name = "Arrive_Stone_Door_H_3_17"
 
-[node name="WallBack_H_3_17" type="Node3D" parent="Walls" unique_id=1745520202 instance=ExtResource("5_o8hlh")]
+[node name="WallBack_H_3_17" type="Node3D" parent="Walls" unique_id=577336364 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_H_4_17" type="Node3D" parent="Walls" unique_id=1727245683 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_4_17" type="Node3D" parent="Walls" unique_id=862788533 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_H_5_17" type="Node3D" parent="Walls" unique_id=665106649 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_5_17" type="Node3D" parent="Walls" unique_id=1125222418 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Wall_H_10_17" type="Node3D" parent="Walls" unique_id=505376851 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_10_17" type="Node3D" parent="Walls" unique_id=346602658 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_11_17" type="Node3D" parent="Walls" unique_id=1054229004 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_11_17" type="Node3D" parent="Walls" unique_id=62975357 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_12_17" type="Node3D" parent="Walls" unique_id=1113261261 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_12_17" type="Node3D" parent="Walls" unique_id=1477479402 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_13_17" type="Node3D" parent="Walls" unique_id=980482615 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_13_17" type="Node3D" parent="Walls" unique_id=981384436 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_14_17" type="Node3D" parent="Walls" unique_id=594893496 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_14_17" type="Node3D" parent="Walls" unique_id=1614640929 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_15_17" type="Node3D" parent="Walls" unique_id=1893389648 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_15_17" type="Node3D" parent="Walls" unique_id=881022402 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_16_17" type="Node3D" parent="Walls" unique_id=1386110955 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_16_17" type="Node3D" parent="Walls" unique_id=194771487 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Wall_H_17_17" type="Node3D" parent="Walls" unique_id=326822788 instance=ExtResource("5_o8hlh")]
+[node name="Wall_H_17_17" type="Node3D" parent="Walls" unique_id=1825358901 instance=ExtResource("5_o8hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 33)
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_2_2" type="CSGBox3D" parent="Walls" unique_id=1700731442]
+[node name="Post_2_2" type="CSGBox3D" parent="Walls" unique_id=1990657247]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 3)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2728,7 +2732,7 @@ material = SubResource("StandardMaterial3D_x11op")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Post_5_2" type="CSGBox3D" parent="Walls" unique_id=1138629232]
+[node name="Post_5_2" type="CSGBox3D" parent="Walls" unique_id=1273356589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, 3)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2736,7 +2740,7 @@ material = SubResource("StandardMaterial3D_q2wjq")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Post_8_3" type="CSGBox3D" parent="Walls" unique_id=1907249220]
+[node name="Post_8_3" type="CSGBox3D" parent="Walls" unique_id=1836752911]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.5, 5)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2744,7 +2748,7 @@ material = SubResource("StandardMaterial3D_3h862")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Post_9_3" type="CSGBox3D" parent="Walls" unique_id=1864850406]
+[node name="Post_9_3" type="CSGBox3D" parent="Walls" unique_id=735495395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.5, 5)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2752,7 +2756,7 @@ material = SubResource("StandardMaterial3D_o8hlh")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Post_10_4" type="CSGBox3D" parent="Walls" unique_id=463975445]
+[node name="Post_10_4" type="CSGBox3D" parent="Walls" unique_id=781780941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1.5, 7)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2760,7 +2764,7 @@ material = SubResource("StandardMaterial3D_jixxl")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Post_18_4" type="CSGBox3D" parent="Walls" unique_id=797005642]
+[node name="Post_18_4" type="CSGBox3D" parent="Walls" unique_id=33211018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.5, 7)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2768,7 +2772,7 @@ material = SubResource("StandardMaterial3D_eml05")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Post_1_5" type="CSGBox3D" parent="Walls" unique_id=420916532]
+[node name="Post_1_5" type="CSGBox3D" parent="Walls" unique_id=1523154811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 9)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2776,7 +2780,7 @@ material = SubResource("StandardMaterial3D_08qiu")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_2_5" type="CSGBox3D" parent="Walls" unique_id=628532381]
+[node name="Post_2_5" type="CSGBox3D" parent="Walls" unique_id=1846559614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 9)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2784,7 +2788,7 @@ material = SubResource("StandardMaterial3D_mb455")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_5_5" type="CSGBox3D" parent="Walls" unique_id=77660276]
+[node name="Post_5_5" type="CSGBox3D" parent="Walls" unique_id=608074656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, 9)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2792,7 +2796,7 @@ material = SubResource("StandardMaterial3D_3bt1g")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_7_5" type="CSGBox3D" parent="Walls" unique_id=2013155989]
+[node name="Post_7_5" type="CSGBox3D" parent="Walls" unique_id=941065077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, 9)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2800,7 +2804,7 @@ material = SubResource("StandardMaterial3D_jnn07")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_7_7" type="CSGBox3D" parent="Walls" unique_id=125611500]
+[node name="Post_7_7" type="CSGBox3D" parent="Walls" unique_id=1863123019]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, 13)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2808,7 +2812,7 @@ material = SubResource("StandardMaterial3D_4fwjl")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_8_7" type="CSGBox3D" parent="Walls" unique_id=430352792]
+[node name="Post_8_7" type="CSGBox3D" parent="Walls" unique_id=69520194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.5, 13)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2816,7 +2820,7 @@ material = SubResource("StandardMaterial3D_5xsw5")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_9_7" type="CSGBox3D" parent="Walls" unique_id=1266259261]
+[node name="Post_9_7" type="CSGBox3D" parent="Walls" unique_id=1127958363]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.5, 13)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2824,7 +2828,7 @@ material = SubResource("StandardMaterial3D_4j472")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Post_10_7" type="CSGBox3D" parent="Walls" unique_id=628003283]
+[node name="Post_10_7" type="CSGBox3D" parent="Walls" unique_id=1761814206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1.5, 13)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2832,7 +2836,7 @@ material = SubResource("StandardMaterial3D_h6w17")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Post_7_8" type="CSGBox3D" parent="Walls" unique_id=926762677]
+[node name="Post_7_8" type="CSGBox3D" parent="Walls" unique_id=630599417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, 15)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2840,7 +2844,7 @@ material = SubResource("StandardMaterial3D_s6ixd")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_8_8" type="CSGBox3D" parent="Walls" unique_id=2138609287]
+[node name="Post_8_8" type="CSGBox3D" parent="Walls" unique_id=2006315485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.5, 15)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2848,7 +2852,7 @@ material = SubResource("StandardMaterial3D_3u76j")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_9_8" type="CSGBox3D" parent="Walls" unique_id=694171931]
+[node name="Post_9_8" type="CSGBox3D" parent="Walls" unique_id=1743824019]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.5, 15)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2856,7 +2860,7 @@ material = SubResource("StandardMaterial3D_jngrd")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Post_10_8" type="CSGBox3D" parent="Walls" unique_id=245527924]
+[node name="Post_10_8" type="CSGBox3D" parent="Walls" unique_id=620851498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1.5, 15)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2864,7 +2868,7 @@ material = SubResource("StandardMaterial3D_npk5t")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Post_1_10" type="CSGBox3D" parent="Walls" unique_id=803864367]
+[node name="Post_1_10" type="CSGBox3D" parent="Walls" unique_id=1792525731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 19)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2872,7 +2876,7 @@ material = SubResource("StandardMaterial3D_2q5rg")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_3_10" type="CSGBox3D" parent="Walls" unique_id=1316451692]
+[node name="Post_3_10" type="CSGBox3D" parent="Walls" unique_id=1670491155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 19)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2880,7 +2884,7 @@ material = SubResource("StandardMaterial3D_rr37s")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_5_10" type="CSGBox3D" parent="Walls" unique_id=207018755]
+[node name="Post_5_10" type="CSGBox3D" parent="Walls" unique_id=1171160644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, 19)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2888,7 +2892,7 @@ material = SubResource("StandardMaterial3D_3wvbn")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_7_10" type="CSGBox3D" parent="Walls" unique_id=1719800414]
+[node name="Post_7_10" type="CSGBox3D" parent="Walls" unique_id=877320304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.5, 19)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2896,7 +2900,7 @@ material = SubResource("StandardMaterial3D_3kp5e")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks082C"
 
-[node name="Post_10_11" type="CSGBox3D" parent="Walls" unique_id=991200995]
+[node name="Post_10_11" type="CSGBox3D" parent="Walls" unique_id=794608540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1.5, 21)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2904,7 +2908,7 @@ material = SubResource("StandardMaterial3D_kx6ln")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Post_12_11" type="CSGBox3D" parent="Walls" unique_id=1767450290]
+[node name="Post_12_11" type="CSGBox3D" parent="Walls" unique_id=2105440549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1.5, 21)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2912,7 +2916,7 @@ material = SubResource("StandardMaterial3D_cq38y")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Post_13_11" type="CSGBox3D" parent="Walls" unique_id=1282059325]
+[node name="Post_13_11" type="CSGBox3D" parent="Walls" unique_id=1033360992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.5, 21)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2920,7 +2924,7 @@ material = SubResource("StandardMaterial3D_drf3m")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Post_18_11" type="CSGBox3D" parent="Walls" unique_id=1907770078]
+[node name="Post_18_11" type="CSGBox3D" parent="Walls" unique_id=1122797307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.5, 21)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2928,7 +2932,7 @@ material = SubResource("StandardMaterial3D_au1l6")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks089"
 
-[node name="Post_1_12" type="CSGBox3D" parent="Walls" unique_id=862398084]
+[node name="Post_1_12" type="CSGBox3D" parent="Walls" unique_id=829137158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 23)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2936,7 +2940,7 @@ material = SubResource("StandardMaterial3D_03dyf")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Post_3_12" type="CSGBox3D" parent="Walls" unique_id=504643051]
+[node name="Post_3_12" type="CSGBox3D" parent="Walls" unique_id=1713729653]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 23)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2944,7 +2948,7 @@ material = SubResource("StandardMaterial3D_gdycl")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Post_5_12" type="CSGBox3D" parent="Walls" unique_id=1325737134]
+[node name="Post_5_12" type="CSGBox3D" parent="Walls" unique_id=820107765]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, 23)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2952,7 +2956,7 @@ material = SubResource("StandardMaterial3D_xgory")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Post_6_12" type="CSGBox3D" parent="Walls" unique_id=397521902]
+[node name="Post_6_12" type="CSGBox3D" parent="Walls" unique_id=1186186431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.5, 23)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2960,7 +2964,7 @@ material = SubResource("StandardMaterial3D_tqvac")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Post_8_12" type="CSGBox3D" parent="Walls" unique_id=1401569656]
+[node name="Post_8_12" type="CSGBox3D" parent="Walls" unique_id=1214833748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.5, 23)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2968,7 +2972,7 @@ material = SubResource("StandardMaterial3D_pb3na")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Post_9_12" type="CSGBox3D" parent="Walls" unique_id=1779803978]
+[node name="Post_9_12" type="CSGBox3D" parent="Walls" unique_id=1297154448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.5, 23)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2976,7 +2980,7 @@ material = SubResource("StandardMaterial3D_tb0el")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks076C"
 
-[node name="Post_10_13" type="CSGBox3D" parent="Walls" unique_id=1464536545]
+[node name="Post_10_13" type="CSGBox3D" parent="Walls" unique_id=283705671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1.5, 25)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2984,7 +2988,7 @@ material = SubResource("StandardMaterial3D_qnxdh")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_12_13" type="CSGBox3D" parent="Walls" unique_id=638251630]
+[node name="Post_12_13" type="CSGBox3D" parent="Walls" unique_id=1318324016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1.5, 25)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -2992,7 +2996,7 @@ material = SubResource("StandardMaterial3D_4mt7f")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_13_13" type="CSGBox3D" parent="Walls" unique_id=359375333]
+[node name="Post_13_13" type="CSGBox3D" parent="Walls" unique_id=177606980]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.5, 25)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3000,7 +3004,7 @@ material = SubResource("StandardMaterial3D_c8ija")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_15_13" type="CSGBox3D" parent="Walls" unique_id=907185746]
+[node name="Post_15_13" type="CSGBox3D" parent="Walls" unique_id=256783590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1.5, 25)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3008,7 +3012,7 @@ material = SubResource("StandardMaterial3D_g2xkx")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_15_14" type="CSGBox3D" parent="Walls" unique_id=1302829128]
+[node name="Post_15_14" type="CSGBox3D" parent="Walls" unique_id=1271161460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1.5, 27)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3016,7 +3020,7 @@ material = SubResource("StandardMaterial3D_yejpv")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_18_14" type="CSGBox3D" parent="Walls" unique_id=280457757]
+[node name="Post_18_14" type="CSGBox3D" parent="Walls" unique_id=385959356]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.5, 27)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3024,7 +3028,7 @@ material = SubResource("StandardMaterial3D_slfk6")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_1_17" type="CSGBox3D" parent="Walls" unique_id=866501466]
+[node name="Post_1_17" type="CSGBox3D" parent="Walls" unique_id=182493682]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 33)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3032,7 +3036,7 @@ material = SubResource("StandardMaterial3D_x1lw3")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Post_6_17" type="CSGBox3D" parent="Walls" unique_id=894786528]
+[node name="Post_6_17" type="CSGBox3D" parent="Walls" unique_id=597911214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.5, 33)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3040,7 +3044,7 @@ material = SubResource("StandardMaterial3D_cmk7v")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks075A"
 
-[node name="Post_10_17" type="CSGBox3D" parent="Walls" unique_id=1509764303]
+[node name="Post_10_17" type="CSGBox3D" parent="Walls" unique_id=166439142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1.5, 33)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3048,7 +3052,7 @@ material = SubResource("StandardMaterial3D_istvl")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_15_17" type="CSGBox3D" parent="Walls" unique_id=1843922593]
+[node name="Post_15_17" type="CSGBox3D" parent="Walls" unique_id=1685835577]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1.5, 33)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3056,7 +3060,7 @@ material = SubResource("StandardMaterial3D_h0w27")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Post_18_17" type="CSGBox3D" parent="Walls" unique_id=1782958988]
+[node name="Post_18_17" type="CSGBox3D" parent="Walls" unique_id=1282945970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.5, 33)
 use_collision = true
 size = Vector3(0.26, 3, 0.26)
@@ -3064,7 +3068,7 @@ material = SubResource("StandardMaterial3D_xatdm")
 script = ExtResource("4_3h862")
 wall_texture = "Bricks102"
 
-[node name="Objects" type="Node3D" parent="." unique_id=327820773]
+[node name="Objects" type="Node3D" parent="." unique_id=1962473806]
 
 [node name="cf_pillar_stone_1_5" type="Node3D" parent="Objects" unique_id=2053159524 instance=ExtResource("31_tqvac")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
@@ -3111,7 +3115,7 @@ reset_sound = ExtResource("28_03dyf")
 [node name="cf_wall_sconce_2_12" type="Node3D" parent="Objects" unique_id=1717984868 instance=ExtResource("20_2q5rg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 23.1)
 
-[node name="chest_3_2" type="StaticBody3D" parent="Objects" unique_id=72837075 groups=["interactable"] instance=ExtResource("11_jnn07")]
+[node name="chest_3_2" type="StaticBody3D" parent="Objects" unique_id=363771219 groups=["interactable"] instance=ExtResource("11_jnn07")]
 transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 6, 0, 4)
 script = ExtResource("12_4fwjl")
 sound_effect = ExtResource("13_5xsw5")
@@ -3134,7 +3138,7 @@ collision_mask = 519
 script = ExtResource("30_xgory")
 connected_doors = [NodePath("../../Walls/Grate_Door_V_7_7")]
 
-[node name="cf_wall_sconce_5_5" type="Node3D" parent="Objects" unique_id=382159532 instance=ExtResource("20_2q5rg")]
+[node name="cf_wall_sconce_5_5" type="Node3D" parent="Objects" unique_id=1458078348 instance=ExtResource("20_2q5rg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 9.1)
 
 [node name="cf_barrel_5_12" type="Node3D" parent="Objects" unique_id=1696330282 instance=ExtResource("21_rr37s")]
@@ -3143,13 +3147,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 24)
 [node name="cf_bookshelf_5_13" type="Node3D" parent="Objects" unique_id=1553277638 instance=ExtResource("17_3u76j")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.9, 0, 26)
 
-[node name="cf_torch_stand_5_16" type="Node3D" parent="Objects" unique_id=416641302 instance=ExtResource("19_npk5t")]
+[node name="cf_torch_stand_5_16" type="Node3D" parent="Objects" unique_id=2028057317 instance=ExtResource("19_npk5t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 32)
 
-[node name="cf_pillar_stone_6_5" type="Node3D" parent="Objects" unique_id=1925398883 instance=ExtResource("31_tqvac")]
+[node name="cf_pillar_stone_6_5" type="Node3D" parent="Objects" unique_id=891016226 instance=ExtResource("31_tqvac")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 10)
 
-[node name="cf_pillar_medieval_6_9" type="Node3D" parent="Objects" unique_id=1521765277 instance=ExtResource("32_pb3na")]
+[node name="cf_pillar_medieval_6_9" type="Node3D" parent="Objects" unique_id=1400965870 instance=ExtResource("32_pb3na")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 18)
 
 [node name="fireball_trap_8_3" type="Node3D" parent="Objects" unique_id=1443374452 node_paths=PackedStringArray("fireball_entity", "collision_sound", "collision_particle_emitter_1", "collision_particle_emitter_2", "collision_particle_emitter_3") instance=ExtResource("42_istvl")]
@@ -3161,13 +3165,13 @@ collision_particle_emitter_1 = NodePath("FireBall/Debris")
 collision_particle_emitter_2 = NodePath("FireBall/Smoke")
 collision_particle_emitter_3 = NodePath("FireBall/Fire")
 
-[node name="pit_trap_8_10" type="Node3D" parent="Objects" unique_id=287135038 instance=ExtResource("44_xatdm")]
+[node name="pit_trap_8_10" type="Node3D" parent="Objects" unique_id=267101600 instance=ExtResource("44_xatdm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 20)
 script = ExtResource("45_i1aw8")
 wall_texture = "Tiles058"
 target_scene_path = "res://Modules/Showcase/floors/floor_cellar.tscn"
 
-[node name="chest_8_11" type="StaticBody3D" parent="Objects" unique_id=1010249285 groups=["interactable"] instance=ExtResource("11_jnn07")]
+[node name="chest_8_11" type="StaticBody3D" parent="Objects" unique_id=1000435925 groups=["interactable"] instance=ExtResource("11_jnn07")]
 transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, 16, 0, 22)
 script = ExtResource("12_4fwjl")
 sound_effect = ExtResource("13_5xsw5")
@@ -3177,25 +3181,25 @@ crowns_reward = 40
 [node name="cf_griffon_10_4" type="Node3D" parent="Objects" unique_id=657175897 instance=ExtResource("51_xxvjy")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, 8)
 
-[node name="cf_griffon_10_10" type="Node3D" parent="Objects" unique_id=415137570 instance=ExtResource("51_xxvjy")]
+[node name="cf_griffon_10_10" type="Node3D" parent="Objects" unique_id=321026677 instance=ExtResource("51_xxvjy")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, 20)
 
-[node name="lever_10_13" type="StaticBody3D" parent="Objects" unique_id=784869385 groups=["interactable"] instance=ExtResource("24_kx6ln")]
+[node name="lever_10_13" type="StaticBody3D" parent="Objects" unique_id=1612304131 groups=["interactable"] instance=ExtResource("24_kx6ln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 25.1)
 collision_layer = 4
 script = ExtResource("25_cq38y")
 sound_effect = ExtResource("8_08qiu")
 
-[node name="cf_bookshelf_10_15" type="Node3D" parent="Objects" unique_id=674444207 instance=ExtResource("17_3u76j")]
+[node name="cf_bookshelf_10_15" type="Node3D" parent="Objects" unique_id=271804668 instance=ExtResource("17_3u76j")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.1, 0, 30)
 
-[node name="encounter_11_7" type="Area3D" parent="Objects" unique_id=877262698 instance=ExtResource("46_wrkq5")]
+[node name="encounter_11_7" type="Area3D" parent="Objects" unique_id=546002386 instance=ExtResource("46_wrkq5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1, 14)
 collision_layer = 0
 script = ExtResource("47_0jasw")
 front_row = Array[ExtResource("48_fmeee")]([ExtResource("49_4mmri"), ExtResource("49_4mmri")])
 
-[node name="lever_11_13" type="StaticBody3D" parent="Objects" unique_id=1886091490 groups=["interactable"] instance=ExtResource("24_kx6ln")]
+[node name="lever_11_13" type="StaticBody3D" parent="Objects" unique_id=13572813 groups=["interactable"] instance=ExtResource("24_kx6ln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1, 25.1)
 collision_layer = 4
 script = ExtResource("25_cq38y")
@@ -3213,7 +3217,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 32)
 [node name="cf_fountain_13_7" type="Node3D" parent="Objects" unique_id=968308217 instance=ExtResource("50_tkyg0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 14)
 
-[node name="lever_13_13" type="StaticBody3D" parent="Objects" unique_id=705374957 groups=["interactable"] instance=ExtResource("24_kx6ln")]
+[node name="lever_13_13" type="StaticBody3D" parent="Objects" unique_id=1285457448 groups=["interactable"] instance=ExtResource("24_kx6ln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 1, 25.1)
 collision_layer = 4
 script = ExtResource("25_cq38y")
@@ -3225,7 +3229,7 @@ collision_layer = 4
 script = ExtResource("57_gt5bb")
 target_door = NodePath("../../Walls/Grate_Door_H_12_11")
 
-[node name="puzzle_14_16" type="Node3D" parent="Objects" unique_id=1212206205 node_paths=PackedStringArray("levers", "doors_to_open") instance=ExtResource("58_onxih")]
+[node name="puzzle_14_16" type="Node3D" parent="Objects" unique_id=859425097 node_paths=PackedStringArray("levers", "doors_to_open") instance=ExtResource("58_onxih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 32)
 script = ExtResource("59_8vqmu")
 puzzle_id = "showcase_levers"
@@ -3233,19 +3237,19 @@ levers = [NodePath("../lever_10_13"), NodePath("../lever_11_13"), NodePath("../l
 required_states = Array[int]([0, 1, 0])
 doors_to_open = [NodePath("../../Walls/Grate_Door_V_15_15")]
 
-[node name="cf_pillar_temple_15_5" type="Node3D" parent="Objects" unique_id=810715787 instance=ExtResource("54_fnl7c")]
+[node name="cf_pillar_temple_15_5" type="Node3D" parent="Objects" unique_id=1899023573 instance=ExtResource("54_fnl7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 10)
 
-[node name="cf_pillar_temple_tall_15_9" type="Node3D" parent="Objects" unique_id=899033391 instance=ExtResource("55_baxrn")]
+[node name="cf_pillar_temple_tall_15_9" type="Node3D" parent="Objects" unique_id=1852674511 instance=ExtResource("55_baxrn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 18)
 
-[node name="cf_wall_sconce_16_14" type="Node3D" parent="Objects" unique_id=1489666574 instance=ExtResource("20_2q5rg")]
+[node name="cf_wall_sconce_16_14" type="Node3D" parent="Objects" unique_id=1041921012 instance=ExtResource("20_2q5rg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 1.5, 27.1)
 
 [node name="cf_minotaur_17_4" type="Node3D" parent="Objects" unique_id=942709396 instance=ExtResource("52_ub134")]
 transform = Transform3D(1.1924881e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924881e-08, 34, 0, 8)
 
-[node name="cf_torch_stand_17_7" type="Node3D" parent="Objects" unique_id=1556387793 instance=ExtResource("19_npk5t")]
+[node name="cf_torch_stand_17_7" type="Node3D" parent="Objects" unique_id=654735737 instance=ExtResource("19_npk5t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 14)
 
 [node name="cf_snake_17_10" type="Node3D" parent="Objects" unique_id=774787782 instance=ExtResource("53_0n755")]
@@ -3259,642 +3263,642 @@ target_scene_path = "res://Modules/Showcase/floors/floor_cellar.tscn"
 target_spawn_marker_name = "Arrive_stairs_17_15"
 prompt_text = "Descend to the cellar"
 
-[node name="Ceilings" type="Node3D" parent="." unique_id=1247531013]
+[node name="Ceilings" type="Node3D" parent="." unique_id=878007928]
 
-[node name="Ceiling_1_5" type="CSGBox3D" parent="Ceilings" unique_id=1304637486]
+[node name="Ceiling_1_5" type="CSGBox3D" parent="Ceilings" unique_id=1496409910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 10)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_1_6" type="CSGBox3D" parent="Ceilings" unique_id=82464189]
+[node name="Ceiling_1_6" type="CSGBox3D" parent="Ceilings" unique_id=277666206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 12)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_1_7" type="CSGBox3D" parent="Ceilings" unique_id=1105245070]
+[node name="Ceiling_1_7" type="CSGBox3D" parent="Ceilings" unique_id=942606112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_1_8" type="CSGBox3D" parent="Ceilings" unique_id=1561026375]
+[node name="Ceiling_1_8" type="CSGBox3D" parent="Ceilings" unique_id=59124128]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 16)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_1_9" type="CSGBox3D" parent="Ceilings" unique_id=1281397579]
+[node name="Ceiling_1_9" type="CSGBox3D" parent="Ceilings" unique_id=922813513]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 18)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_1_12" type="CSGBox3D" parent="Ceilings" unique_id=1785004345]
+[node name="Ceiling_1_12" type="CSGBox3D" parent="Ceilings" unique_id=1699218327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 24)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_1_13" type="CSGBox3D" parent="Ceilings" unique_id=1014223097]
+[node name="Ceiling_1_13" type="CSGBox3D" parent="Ceilings" unique_id=717400080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_1_14" type="CSGBox3D" parent="Ceilings" unique_id=1593867573]
+[node name="Ceiling_1_14" type="CSGBox3D" parent="Ceilings" unique_id=1213240615]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_1_15" type="CSGBox3D" parent="Ceilings" unique_id=601084148]
+[node name="Ceiling_1_15" type="CSGBox3D" parent="Ceilings" unique_id=1140895472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_1_16" type="CSGBox3D" parent="Ceilings" unique_id=575486230]
+[node name="Ceiling_1_16" type="CSGBox3D" parent="Ceilings" unique_id=209125260]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_2_2" type="CSGBox3D" parent="Ceilings" unique_id=1071705109]
+[node name="Ceiling_2_2" type="CSGBox3D" parent="Ceilings" unique_id=771451594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 4)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_2_3" type="CSGBox3D" parent="Ceilings" unique_id=1277189453]
+[node name="Ceiling_2_3" type="CSGBox3D" parent="Ceilings" unique_id=1921269512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 6)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_2_4" type="CSGBox3D" parent="Ceilings" unique_id=212698764]
+[node name="Ceiling_2_4" type="CSGBox3D" parent="Ceilings" unique_id=31612961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 8)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_2_5" type="CSGBox3D" parent="Ceilings" unique_id=109665798]
+[node name="Ceiling_2_5" type="CSGBox3D" parent="Ceilings" unique_id=1007047739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 10)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_2_6" type="CSGBox3D" parent="Ceilings" unique_id=1344072177]
+[node name="Ceiling_2_6" type="CSGBox3D" parent="Ceilings" unique_id=1638097703]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 12)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_2_7" type="CSGBox3D" parent="Ceilings" unique_id=62283885]
+[node name="Ceiling_2_7" type="CSGBox3D" parent="Ceilings" unique_id=1605119146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_2_8" type="CSGBox3D" parent="Ceilings" unique_id=1871132673]
+[node name="Ceiling_2_8" type="CSGBox3D" parent="Ceilings" unique_id=1063100066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 16)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_2_9" type="CSGBox3D" parent="Ceilings" unique_id=1869497143]
+[node name="Ceiling_2_9" type="CSGBox3D" parent="Ceilings" unique_id=856355295]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 18)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_2_12" type="CSGBox3D" parent="Ceilings" unique_id=1407369358]
+[node name="Ceiling_2_12" type="CSGBox3D" parent="Ceilings" unique_id=125373146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 24)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_2_13" type="CSGBox3D" parent="Ceilings" unique_id=478433101]
+[node name="Ceiling_2_13" type="CSGBox3D" parent="Ceilings" unique_id=863027848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_2_14" type="CSGBox3D" parent="Ceilings" unique_id=1823557083]
+[node name="Ceiling_2_14" type="CSGBox3D" parent="Ceilings" unique_id=538002334]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_2_15" type="CSGBox3D" parent="Ceilings" unique_id=981177546]
+[node name="Ceiling_2_15" type="CSGBox3D" parent="Ceilings" unique_id=704369299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_2_16" type="CSGBox3D" parent="Ceilings" unique_id=538580364]
+[node name="Ceiling_2_16" type="CSGBox3D" parent="Ceilings" unique_id=1493786675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_3_2" type="CSGBox3D" parent="Ceilings" unique_id=1422881686]
+[node name="Ceiling_3_2" type="CSGBox3D" parent="Ceilings" unique_id=83439059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 4)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_3_3" type="CSGBox3D" parent="Ceilings" unique_id=1773875971]
+[node name="Ceiling_3_3" type="CSGBox3D" parent="Ceilings" unique_id=1666887555]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 6)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_3_4" type="CSGBox3D" parent="Ceilings" unique_id=1747466564]
+[node name="Ceiling_3_4" type="CSGBox3D" parent="Ceilings" unique_id=1152899909]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 8)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_3_5" type="CSGBox3D" parent="Ceilings" unique_id=1362229429]
+[node name="Ceiling_3_5" type="CSGBox3D" parent="Ceilings" unique_id=1961700969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 10)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_3_6" type="CSGBox3D" parent="Ceilings" unique_id=1064764139]
+[node name="Ceiling_3_6" type="CSGBox3D" parent="Ceilings" unique_id=321097806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 12)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_3_7" type="CSGBox3D" parent="Ceilings" unique_id=479078761]
+[node name="Ceiling_3_7" type="CSGBox3D" parent="Ceilings" unique_id=300155424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_3_8" type="CSGBox3D" parent="Ceilings" unique_id=490512015]
+[node name="Ceiling_3_8" type="CSGBox3D" parent="Ceilings" unique_id=196784196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 16)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_3_9" type="CSGBox3D" parent="Ceilings" unique_id=1162086771]
+[node name="Ceiling_3_9" type="CSGBox3D" parent="Ceilings" unique_id=589293191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 18)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_3_10" type="CSGBox3D" parent="Ceilings" unique_id=1847076387]
+[node name="Ceiling_3_10" type="CSGBox3D" parent="Ceilings" unique_id=1907035898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 20)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_3_11" type="CSGBox3D" parent="Ceilings" unique_id=800591957]
+[node name="Ceiling_3_11" type="CSGBox3D" parent="Ceilings" unique_id=111408995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 22)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_3_12" type="CSGBox3D" parent="Ceilings" unique_id=1496246032]
+[node name="Ceiling_3_12" type="CSGBox3D" parent="Ceilings" unique_id=1448845796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 24)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_3_13" type="CSGBox3D" parent="Ceilings" unique_id=81457727]
+[node name="Ceiling_3_13" type="CSGBox3D" parent="Ceilings" unique_id=1194038124]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_3_14" type="CSGBox3D" parent="Ceilings" unique_id=1246680924]
+[node name="Ceiling_3_14" type="CSGBox3D" parent="Ceilings" unique_id=1060580906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_3_15" type="CSGBox3D" parent="Ceilings" unique_id=1945146277]
+[node name="Ceiling_3_15" type="CSGBox3D" parent="Ceilings" unique_id=1242747156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_3_16" type="CSGBox3D" parent="Ceilings" unique_id=1334487041]
+[node name="Ceiling_3_16" type="CSGBox3D" parent="Ceilings" unique_id=2022713991]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_4_2" type="CSGBox3D" parent="Ceilings" unique_id=204797198]
+[node name="Ceiling_4_2" type="CSGBox3D" parent="Ceilings" unique_id=630427677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 4)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_4_3" type="CSGBox3D" parent="Ceilings" unique_id=681467596]
+[node name="Ceiling_4_3" type="CSGBox3D" parent="Ceilings" unique_id=1702133907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 6)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_4_4" type="CSGBox3D" parent="Ceilings" unique_id=1453325316]
+[node name="Ceiling_4_4" type="CSGBox3D" parent="Ceilings" unique_id=953445786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 8)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "Metal046B"
 
-[node name="Ceiling_4_5" type="CSGBox3D" parent="Ceilings" unique_id=1049117841]
+[node name="Ceiling_4_5" type="CSGBox3D" parent="Ceilings" unique_id=967338362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 10)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_4_6" type="CSGBox3D" parent="Ceilings" unique_id=966422351]
+[node name="Ceiling_4_6" type="CSGBox3D" parent="Ceilings" unique_id=781720246]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 12)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_4_7" type="CSGBox3D" parent="Ceilings" unique_id=203829870]
+[node name="Ceiling_4_7" type="CSGBox3D" parent="Ceilings" unique_id=823985670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_4_8" type="CSGBox3D" parent="Ceilings" unique_id=10376064]
+[node name="Ceiling_4_8" type="CSGBox3D" parent="Ceilings" unique_id=299163976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 16)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_4_9" type="CSGBox3D" parent="Ceilings" unique_id=1761340314]
+[node name="Ceiling_4_9" type="CSGBox3D" parent="Ceilings" unique_id=2089092513]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 18)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_4_10" type="CSGBox3D" parent="Ceilings" unique_id=1270609865]
+[node name="Ceiling_4_10" type="CSGBox3D" parent="Ceilings" unique_id=972139313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 20)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_4_11" type="CSGBox3D" parent="Ceilings" unique_id=347753004]
+[node name="Ceiling_4_11" type="CSGBox3D" parent="Ceilings" unique_id=1779696143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 22)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_4_12" type="CSGBox3D" parent="Ceilings" unique_id=1809149159]
+[node name="Ceiling_4_12" type="CSGBox3D" parent="Ceilings" unique_id=988914632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 24)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_4_13" type="CSGBox3D" parent="Ceilings" unique_id=1181795878]
+[node name="Ceiling_4_13" type="CSGBox3D" parent="Ceilings" unique_id=1884684740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_4_14" type="CSGBox3D" parent="Ceilings" unique_id=949659190]
+[node name="Ceiling_4_14" type="CSGBox3D" parent="Ceilings" unique_id=2112823525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_4_15" type="CSGBox3D" parent="Ceilings" unique_id=1975756105]
+[node name="Ceiling_4_15" type="CSGBox3D" parent="Ceilings" unique_id=1391866995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_4_16" type="CSGBox3D" parent="Ceilings" unique_id=1953896418]
+[node name="Ceiling_4_16" type="CSGBox3D" parent="Ceilings" unique_id=403103554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_5_5" type="CSGBox3D" parent="Ceilings" unique_id=1952285212]
+[node name="Ceiling_5_5" type="CSGBox3D" parent="Ceilings" unique_id=1711308168]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 10)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_5_6" type="CSGBox3D" parent="Ceilings" unique_id=1463212882]
+[node name="Ceiling_5_6" type="CSGBox3D" parent="Ceilings" unique_id=1184160195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 12)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_5_7" type="CSGBox3D" parent="Ceilings" unique_id=63557999]
+[node name="Ceiling_5_7" type="CSGBox3D" parent="Ceilings" unique_id=1320115648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_5_8" type="CSGBox3D" parent="Ceilings" unique_id=408153354]
+[node name="Ceiling_5_8" type="CSGBox3D" parent="Ceilings" unique_id=1161642641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 16)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_5_9" type="CSGBox3D" parent="Ceilings" unique_id=202333247]
+[node name="Ceiling_5_9" type="CSGBox3D" parent="Ceilings" unique_id=329697740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 18)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_5_12" type="CSGBox3D" parent="Ceilings" unique_id=1653427790]
+[node name="Ceiling_5_12" type="CSGBox3D" parent="Ceilings" unique_id=1776720137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 24)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_5_13" type="CSGBox3D" parent="Ceilings" unique_id=695333422]
+[node name="Ceiling_5_13" type="CSGBox3D" parent="Ceilings" unique_id=91272497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_5_14" type="CSGBox3D" parent="Ceilings" unique_id=1479054624]
+[node name="Ceiling_5_14" type="CSGBox3D" parent="Ceilings" unique_id=1935897366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_5_15" type="CSGBox3D" parent="Ceilings" unique_id=866398533]
+[node name="Ceiling_5_15" type="CSGBox3D" parent="Ceilings" unique_id=2115285998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_5_16" type="CSGBox3D" parent="Ceilings" unique_id=1127223224]
+[node name="Ceiling_5_16" type="CSGBox3D" parent="Ceilings" unique_id=255904155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 script = ExtResource("4_3h862")
 wall_texture = "WoodFloor048"
 
-[node name="Ceiling_6_5" type="CSGBox3D" parent="Ceilings" unique_id=1882843319]
+[node name="Ceiling_6_5" type="CSGBox3D" parent="Ceilings" unique_id=1830774258]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.1, 10)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_6_6" type="CSGBox3D" parent="Ceilings" unique_id=784226489]
+[node name="Ceiling_6_6" type="CSGBox3D" parent="Ceilings" unique_id=1233805783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.1, 12)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_6_7" type="CSGBox3D" parent="Ceilings" unique_id=1534824386]
+[node name="Ceiling_6_7" type="CSGBox3D" parent="Ceilings" unique_id=717827799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_6_8" type="CSGBox3D" parent="Ceilings" unique_id=539274699]
+[node name="Ceiling_6_8" type="CSGBox3D" parent="Ceilings" unique_id=574487726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.1, 16)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_6_9" type="CSGBox3D" parent="Ceilings" unique_id=887250817]
+[node name="Ceiling_6_9" type="CSGBox3D" parent="Ceilings" unique_id=1339000895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.1, 18)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_7_7" type="CSGBox3D" parent="Ceilings" unique_id=1218095375]
+[node name="Ceiling_7_7" type="CSGBox3D" parent="Ceilings" unique_id=182468281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_3" type="CSGBox3D" parent="Ceilings" unique_id=505588822]
+[node name="Ceiling_8_3" type="CSGBox3D" parent="Ceilings" unique_id=901921025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 6)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_4" type="CSGBox3D" parent="Ceilings" unique_id=1884124482]
+[node name="Ceiling_8_4" type="CSGBox3D" parent="Ceilings" unique_id=985650761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 8)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_5" type="CSGBox3D" parent="Ceilings" unique_id=1522123827]
+[node name="Ceiling_8_5" type="CSGBox3D" parent="Ceilings" unique_id=918351935]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 10)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_6" type="CSGBox3D" parent="Ceilings" unique_id=514754148]
+[node name="Ceiling_8_6" type="CSGBox3D" parent="Ceilings" unique_id=1578956954]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 12)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_7" type="CSGBox3D" parent="Ceilings" unique_id=1448162642]
+[node name="Ceiling_8_7" type="CSGBox3D" parent="Ceilings" unique_id=1040296859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_8" type="CSGBox3D" parent="Ceilings" unique_id=1709906189]
+[node name="Ceiling_8_8" type="CSGBox3D" parent="Ceilings" unique_id=1607989354]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 16)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_9" type="CSGBox3D" parent="Ceilings" unique_id=1806550960]
+[node name="Ceiling_8_9" type="CSGBox3D" parent="Ceilings" unique_id=1477385195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 18)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_10" type="CSGBox3D" parent="Ceilings" unique_id=634176129]
+[node name="Ceiling_8_10" type="CSGBox3D" parent="Ceilings" unique_id=799278772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 20)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_8_11" type="CSGBox3D" parent="Ceilings" unique_id=1401477316]
+[node name="Ceiling_8_11" type="CSGBox3D" parent="Ceilings" unique_id=1902670169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.1, 22)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_9_7" type="CSGBox3D" parent="Ceilings" unique_id=1548434110]
+[node name="Ceiling_9_7" type="CSGBox3D" parent="Ceilings" unique_id=1760606711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3.1, 14)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_10_13" type="CSGBox3D" parent="Ceilings" unique_id=379509520]
+[node name="Ceiling_10_13" type="CSGBox3D" parent="Ceilings" unique_id=2132102848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_10_14" type="CSGBox3D" parent="Ceilings" unique_id=1355920680]
+[node name="Ceiling_10_14" type="CSGBox3D" parent="Ceilings" unique_id=2017789307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_10_15" type="CSGBox3D" parent="Ceilings" unique_id=1212646493]
+[node name="Ceiling_10_15" type="CSGBox3D" parent="Ceilings" unique_id=1324315512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_10_16" type="CSGBox3D" parent="Ceilings" unique_id=283453012]
+[node name="Ceiling_10_16" type="CSGBox3D" parent="Ceilings" unique_id=223267300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_11_13" type="CSGBox3D" parent="Ceilings" unique_id=1788458726]
+[node name="Ceiling_11_13" type="CSGBox3D" parent="Ceilings" unique_id=491802713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_11_14" type="CSGBox3D" parent="Ceilings" unique_id=1667845323]
+[node name="Ceiling_11_14" type="CSGBox3D" parent="Ceilings" unique_id=350033265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_11_15" type="CSGBox3D" parent="Ceilings" unique_id=1323494610]
+[node name="Ceiling_11_15" type="CSGBox3D" parent="Ceilings" unique_id=429900740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_11_16" type="CSGBox3D" parent="Ceilings" unique_id=761899813]
+[node name="Ceiling_11_16" type="CSGBox3D" parent="Ceilings" unique_id=1468624349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_12_11" type="CSGBox3D" parent="Ceilings" unique_id=235449367]
+[node name="Ceiling_12_11" type="CSGBox3D" parent="Ceilings" unique_id=935879839]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.1, 22)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_12_12" type="CSGBox3D" parent="Ceilings" unique_id=157179906]
+[node name="Ceiling_12_12" type="CSGBox3D" parent="Ceilings" unique_id=2126456984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.1, 24)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_12_13" type="CSGBox3D" parent="Ceilings" unique_id=498237274]
+[node name="Ceiling_12_13" type="CSGBox3D" parent="Ceilings" unique_id=2029520629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_12_14" type="CSGBox3D" parent="Ceilings" unique_id=93373210]
+[node name="Ceiling_12_14" type="CSGBox3D" parent="Ceilings" unique_id=794755734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_12_15" type="CSGBox3D" parent="Ceilings" unique_id=416750304]
+[node name="Ceiling_12_15" type="CSGBox3D" parent="Ceilings" unique_id=926401528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_12_16" type="CSGBox3D" parent="Ceilings" unique_id=903170815]
+[node name="Ceiling_12_16" type="CSGBox3D" parent="Ceilings" unique_id=452279218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_13_13" type="CSGBox3D" parent="Ceilings" unique_id=1262289460]
+[node name="Ceiling_13_13" type="CSGBox3D" parent="Ceilings" unique_id=1877082387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_13_14" type="CSGBox3D" parent="Ceilings" unique_id=1275847890]
+[node name="Ceiling_13_14" type="CSGBox3D" parent="Ceilings" unique_id=1469732415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_13_15" type="CSGBox3D" parent="Ceilings" unique_id=1601015444]
+[node name="Ceiling_13_15" type="CSGBox3D" parent="Ceilings" unique_id=1953025522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_13_16" type="CSGBox3D" parent="Ceilings" unique_id=2111507284]
+[node name="Ceiling_13_16" type="CSGBox3D" parent="Ceilings" unique_id=610462530]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_14_13" type="CSGBox3D" parent="Ceilings" unique_id=1317525998]
+[node name="Ceiling_14_13" type="CSGBox3D" parent="Ceilings" unique_id=815471672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 3.1, 26)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_14_14" type="CSGBox3D" parent="Ceilings" unique_id=164370361]
+[node name="Ceiling_14_14" type="CSGBox3D" parent="Ceilings" unique_id=601978443]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_14_15" type="CSGBox3D" parent="Ceilings" unique_id=1285565189]
+[node name="Ceiling_14_15" type="CSGBox3D" parent="Ceilings" unique_id=1706424826]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_14_16" type="CSGBox3D" parent="Ceilings" unique_id=1148998110]
+[node name="Ceiling_14_16" type="CSGBox3D" parent="Ceilings" unique_id=552981364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_15_14" type="CSGBox3D" parent="Ceilings" unique_id=433183342]
+[node name="Ceiling_15_14" type="CSGBox3D" parent="Ceilings" unique_id=2081274175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_15_15" type="CSGBox3D" parent="Ceilings" unique_id=2442442]
+[node name="Ceiling_15_15" type="CSGBox3D" parent="Ceilings" unique_id=844482941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_15_16" type="CSGBox3D" parent="Ceilings" unique_id=1417371519]
+[node name="Ceiling_15_16" type="CSGBox3D" parent="Ceilings" unique_id=1425735200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_16_14" type="CSGBox3D" parent="Ceilings" unique_id=913176670]
+[node name="Ceiling_16_14" type="CSGBox3D" parent="Ceilings" unique_id=317723063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_16_15" type="CSGBox3D" parent="Ceilings" unique_id=263481408]
+[node name="Ceiling_16_15" type="CSGBox3D" parent="Ceilings" unique_id=451776573]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_16_16" type="CSGBox3D" parent="Ceilings" unique_id=1573885785]
+[node name="Ceiling_16_16" type="CSGBox3D" parent="Ceilings" unique_id=1512242283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_17_14" type="CSGBox3D" parent="Ceilings" unique_id=265351729]
+[node name="Ceiling_17_14" type="CSGBox3D" parent="Ceilings" unique_id=123512510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 3.1, 28)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_17_15" type="CSGBox3D" parent="Ceilings" unique_id=141643664]
+[node name="Ceiling_17_15" type="CSGBox3D" parent="Ceilings" unique_id=1890228830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 3.1, 30)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="Ceiling_17_16" type="CSGBox3D" parent="Ceilings" unique_id=1121419495]
+[node name="Ceiling_17_16" type="CSGBox3D" parent="Ceilings" unique_id=1578126182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 3.1, 32)
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_i1aw8")
 
-[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1811210921]
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=537780418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 30)
 
-[node name="Arrivals" type="Node3D" parent="." unique_id=1225334777]
+[node name="Arrivals" type="Node3D" parent="." unique_id=137863593]
 
-[node name="Arrive_stairs_17_15" type="Marker3D" parent="Arrivals" unique_id=1811356410]
+[node name="Arrive_stairs_17_15" type="Marker3D" parent="Arrivals" unique_id=1477303709]
 transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 32, 0.5, 30)
 
-[node name="Arrive_Stone_Door_H_3_17" type="Marker3D" parent="Arrivals" unique_id=1967839995]
+[node name="Arrive_Stone_Door_H_3_17" type="Marker3D" parent="Arrivals" unique_id=2067332972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 32)
 
-[node name="Sun" type="DirectionalLight3D" parent="." unique_id=7899972]
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=221532968]
 transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992362355]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=784269646]
 environment = SubResource("Environment_wrkq5")
 script = ExtResource("63_lf805")
 sky_settings = {
