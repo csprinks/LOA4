@@ -289,7 +289,7 @@ func _on_campaign_pressed() -> void:
 	if m.is_empty():
 		return
 	ModuleLibrary.set_campaign("" if m.campaign else m.id)
-	_browser_status.text = ("New Game no longer starts in a module (it uses the test room)." if m.campaign
+	_browser_status.text = ("New Game no longer starts in a module (it uses the Showcase level)." if m.campaign
 		else "New Game now starts in '%s'.%s" % [m.name, "" if m.built else " Play or Test Play it once to build it."])
 	_refresh_modules(m.id)
 

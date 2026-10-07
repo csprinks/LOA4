@@ -1,43 +1,95 @@
 extends Node2D
 
-## Coordinates the Character Creation screen: gathers each hero panel's choices
-## into the party on "Start Game" and returns to the Main Menu otherwise.
+## The Character Creation screen: builds the party one hero at a time on a single
+## CharacterSheet (in creation mode). A roster strip along the top shows all four
+## heroes and jumps between them; "Start Game" unlocks once every hero has chosen
+## their free starting skills.
 ##
-## "Start Game" drops straight into the walkable test room (no Library scene
+## "Start Game" drops into the Showcase level when no campaign is set (no Library scene
 ## yet); "Return to Main Menu" goes back to the Main Menu scene.
 
-const NEXT_SCENE := "res://Scenes/Test_Environment/Test_Environment.tscn"
+const NEXT_SCENE := "res://Modules/Showcase/floors/floor_upper.tscn"
 const MENU_SCENE := "res://Scenes/Main_Menu/main_menu.tscn"
+const PARTY_SIZE := 4
 
 # Starter hand gear so new heroes have something in their equip slots. Temporary
 # until the backpack UI lets players pick their own gear.
 const STARTING_PRIMARY := "res://Inventory/Resources/Weapons/sword_1h.tres"
 const STARTING_SECONDARY := "res://Inventory/Resources/Weapons/shield.tres"
 
+var _heroes: Array = []            # the party being built (Character)
+var _current := 0
+var _sheet: CharacterSheet
+var _roster_buttons: Array = []    # one Button per hero, same order as _heroes
+
+@onready var _start_button: Button = %StartButton
+
 
 func _ready() -> void:
-	var start_button := get_node_or_null("%StartButton") as Button
-	if start_button:
-		start_button.pressed.connect(_on_start_game_pressed)
+	_start_button.pressed.connect(_on_start_game_pressed)
+	(%MainMenuButton as Button).pressed.connect(_on_main_menu_pressed)
 
-	var menu_button := get_node_or_null("%MainMenuButton") as Button
-	if menu_button:
-		menu_button.pressed.connect(_on_main_menu_pressed)
+	var group := ButtonGroup.new()
+	for i in PARTY_SIZE:
+		_heroes.append(_new_hero(i))
+
+		var button := Button.new()
+		button.toggle_mode = true
+		button.button_group = group
+		button.custom_minimum_size = Vector2(330, 0)
+		button.expand_icon = true
+		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		button.add_theme_constant_override("icon_max_width", 64)
+		button.add_theme_font_size_override("font_size", 18)
+		button.pressed.connect(_select_hero.bind(i))
+		_roster_buttons.append(button)
+		%Roster.add_child(button)
+
+	_sheet = CharacterSheet.new()
+	_sheet.creation_mode = true
+	_sheet.changed.connect(_refresh_roster)
+	%SheetHolder.add_child(_sheet)
+
+	_select_hero(0)
 
 
-# The hero panels run character_creation.gd; find them wherever they sit in the
-# tree (they live in an HBoxContainer under the UI layer), in tree order.
-func _character_panels() -> Array:
-	var panels := []
-	_collect_panels(self, panels)
-	return panels
+func _new_hero(index: int) -> Character:
+	var character := Character.new()
+	character.character_name = ""
+	character.portrait = "res://Portraits/Portrait_%d.png" % (index + 1)
+	_equip_starting_gear(character)
+	return character
 
-func _collect_panels(node: Node, panels: Array) -> void:
-	for child in node.get_children():
-		if child.has_method("get_stat_data"):
-			panels.append(child)
+
+func _select_hero(index: int) -> void:
+	_current = index
+	_sheet.bind(_heroes[index])
+	_refresh_roster()
+
+
+func _display_name(index: int) -> String:
+	var hero_name: String = _heroes[index].character_name
+	return hero_name if hero_name != "" else "Hero %d" % (index + 1)
+
+
+func _refresh_roster() -> void:
+	var all_ready := true
+	for i in PARTY_SIZE:
+		var hero: Character = _heroes[i]
+		var button: Button = _roster_buttons[i]
+		var owed: int = hero.skills.free_picks_left
+		var status := "Choose %d free skill%s" % [owed, "" if owed == 1 else "s"]
+		if owed == 0:
+			status = "Ready  (%d ATR unspent)" % hero.available_attribute_points
 		else:
-			_collect_panels(child, panels)
+			all_ready = false
+		button.text = "%s\n%s" % [_display_name(i), status]
+		button.set_pressed_no_signal(i == _current)
+		if hero.portrait != "" and ResourceLoader.exists(hero.portrait):
+			button.icon = load(hero.portrait)
+
+	_start_button.disabled = not all_ready
+	_start_button.tooltip_text = "" if all_ready else "Every hero must choose their free starting skills."
 
 
 func _on_start_game_pressed() -> void:
@@ -46,7 +98,7 @@ func _on_start_game_pressed() -> void:
 	# into the first level. Then drop this creation screen; LevelManager runs its
 	# fade + load as an autoload coroutine independent of this node.
 	# A new game starts on the first floor of the campaign module (chosen in the
-	# Level Editor); until one is set and built, it falls back to the test room.
+	# Level Editor); until one is set and built, it falls back to the Showcase level.
 	var start := ModuleLibrary.campaign_start_scene()
 	GameState.editor_test_module = ""
 	LevelManager.load_level(start if start != "" else NEXT_SCENE)
@@ -77,33 +129,12 @@ func _build_party() -> void:
 	if inventory_manager and inventory_manager.has_method("reset_inventory"):
 		inventory_manager.reset_inventory()
 
-	var new_party := []
-	var index := 0
-	for panel in _character_panels():
-		var character := Character.new()
+	# The sheet already wrote every choice onto the heroes; only unnamed ones
+	# still need a name.
+	for i in PARTY_SIZE:
+		_heroes[i].character_name = _display_name(i)
 
-		var hero_name: String = panel.get_hero_name()
-		if hero_name == "":
-			hero_name = "Hero %d" % (index + 1)
-		character.character_name = hero_name
-
-		var portrait: String = panel.get_portrait_path()
-		if portrait != "":
-			character.portrait = portrait
-
-		character.primary_class = panel.get_primary_class()
-		character.secondary_class = panel.get_secondary_class()
-		character.apply_stat_data(panel.get_stat_data())
-		# Attribute Points the player left unspent at creation carry into the game
-		# as the character's available pool for later stat growth.
-		if panel.has_method("points_remaining"):
-			character.available_attribute_points = panel.points_remaining()
-		_equip_starting_gear(character)
-
-		new_party.append(character)
-		index += 1
-
-	party_manager.party = new_party
+	party_manager.party = _heroes
 	party_manager.current_character_index = 0
 	# Mark initialized so downstream systems keep this party instead of replacing
 	# it with a default one. Clear the new-game flag so initialize_party() (if it

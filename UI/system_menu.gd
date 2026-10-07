@@ -13,7 +13,7 @@ extends CanvasLayer
 ##   Options → placeholder.
 ##   Quit    → quit to desktop (confirms first).
 
-const WORLD_FALLBACK := "res://Scenes/Test_Environment/Test_Environment.tscn"
+const WORLD_FALLBACK := "res://Modules/Showcase/floors/floor_upper.tscn"
 
 @onready var _root: Control = %Root
 @onready var _main_panel: Control = %MainPanel

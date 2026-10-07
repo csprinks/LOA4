@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Character/Skills/skill_definition.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+id = "intellect_2"
+display_name = "Analyze"
+description = "Study a foe and lay its nature bare."
+attribute = "Intellect"
+position = 2

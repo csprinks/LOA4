@@ -1,7 +1,7 @@
 class_name LevelSystem
 extends RefCounted
 
-## Character leveling: XP thresholds, level-up, and Favor Points. A RefCounted
+## Character leveling: XP thresholds and level-up. A RefCounted
 ## (not a Node): it is created with .new() and never added to the tree, so it is
 ## freed with its owning Character.
 
@@ -28,20 +28,16 @@ const XP_CHART = {
 	20: {"xp_to_next": 0, "cumulative": 154700},  # Max level
 }
 
-const FAVOR_POINTS_PER_LEVEL: int = 10
-
-signal level_up(old_level, new_level, favor_points)
+signal level_up(old_level, new_level)
 signal xp_gained(amount)
 
 var current_level: int = 1
 var current_xp: int = 0
 var max_level: int = 20
-var favor_points: int = 0
 
-func _init(starting_level: int = 1, starting_xp: int = 0, starting_favor: int = 25) -> void:
+func _init(starting_level: int = 1, starting_xp: int = 0) -> void:
 	current_level = clamp(starting_level, 1, max_level)
 	current_xp = starting_xp
-	favor_points = starting_favor
 
 	# If starting with XP, make sure the level matches.
 	if starting_xp > 0:
@@ -66,13 +62,8 @@ func check_level_up() -> void:
 
 	if new_level > current_level:
 		var old_level = current_level
-		var levels_gained = new_level - current_level
-		var favor_gained = levels_gained * FAVOR_POINTS_PER_LEVEL
-
 		current_level = new_level
-		favor_points += favor_gained
-
-		level_up.emit(old_level, current_level, favor_gained)
+		level_up.emit(old_level, current_level)
 
 # Calculate the level implied by the current total XP. Pure: it must NOT mutate
 # current_level, or check_level_up's `new_level > current_level` comparison would
@@ -104,18 +95,3 @@ func get_level_progress() -> float:
 	var gained_xp = current_xp - current_level_xp
 
 	return float(gained_xp) / float(xp_needed)
-
-func get_favor_points() -> int:
-	return favor_points
-
-# Spend Favor Points (returns true if successful).
-func spend_favor_points(amount: int) -> bool:
-	if amount <= 0 or amount > favor_points:
-		return false
-
-	favor_points -= amount
-	return true
-
-# Add Favor Points (debug/rewards).
-func add_favor_points(amount: int) -> void:
-	favor_points += amount

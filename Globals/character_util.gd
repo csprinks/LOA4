@@ -25,8 +25,7 @@ static func get_character_stats_summary(character: Character) -> Dictionary:
 		"level": character.level_system.current_level,
 		"hp": "%d/%d" % [character.hit_points.current, character.hit_points.max_value],
 		"ap": "%d/%d" % [character.action_points.current, character.action_points.max_value],
-		"fp": character.fortune_points.current,
-		"favor": character.level_system.favor_points
+		"fp": character.fortune_points.current
 	}
 
 # Validation functions

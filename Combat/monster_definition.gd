@@ -5,7 +5,7 @@ extends Resource
 ## Combat/Monsters/ (or build them in code via MonsterLibrary). A Combatant wraps
 ## an instance of this to fight, and several Combatants can share one definition
 ## (a group of identical Kobolds). Deliberately lighter than the hero Character:
-## no equipment slots, no XP chart, no favor points -- just the numbers combat
+## no equipment slots, no XP chart -- just the numbers combat
 ## reads, plus the rewards granted when the monster dies.
 
 @export var display_name: String = "Monster"

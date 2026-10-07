@@ -1,17 +1,18 @@
 class_name CharacterCard
 extends Control
 
-## A single hero's HUD card: name, XP / Attribute Points / level, classes, portrait,
+## A single hero's HUD card: name, XP / Attribute Points / level, title, portrait,
 ## the equipped hand slots (primary/secondary weapon) plus two consumable quick
 ## slots, and the HP/AP bars beneath them. Bound to a
-## Character by set_character(); hides itself when passed null.
+## Character by set_character(); hides itself when passed null. Clicking the
+## portrait or the ATR readout opens the hero's character sheet.
 ##
 ## Equipped items are mirrored onto the character's save data (equipment dict) so
 ## they persist across hero switches and save/load.
 
 @onready var _portrait: TextureRect = %Portrait
 @onready var _name_label: Label = %NameLabel
-@onready var _class_label: Label = %ClassLabel
+@onready var _title_label: Label = %TitleLabel
 @onready var _level_label: Label = %LevelLabel
 @onready var _xp_label: Label = %XPLabel
 @onready var _atr_label: Label = %ATRLabel
@@ -49,7 +50,11 @@ var _restoring: bool = false
 func _ready() -> void:
 	_setup_equipment_slots()
 	_atr_label.mouse_filter = Control.MOUSE_FILTER_STOP
-	_atr_label.gui_input.connect(_on_atr_input)
+	_atr_label.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	_atr_label.gui_input.connect(_on_sheet_click)
+	_portrait.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	_portrait.tooltip_text = "Character sheet (C)"
+	_portrait.gui_input.connect(_on_sheet_click)
 	# Reflect whatever was assigned before _ready (or hide if none).
 	set_character(_character)
 
@@ -83,7 +88,7 @@ func set_character(character: Character) -> void:
 		return
 
 	_name_label.text = character.character_name
-	_class_label.text = _class_text(character)
+	_title_label.text = character.title
 	_level_label.text = "Lv %d" % character.level_system.current_level
 	_xp_label.text = "XP %d" % character.level_system.current_xp
 	_refresh_atr()
@@ -131,34 +136,28 @@ func _on_slot_changed(slot_key: String, slot: InventoryContainer) -> void:
 		return
 	_character.set_equipment_slot(slot_key, EquipmentSerializer.item_to_dict(slot.GetData()))
 
-#region Attribute Points (level-up spending)
-# The ATR readout doubles as the way in to the Level Up panel: it lights up gold
-# and becomes clickable while this hero has Attribute Points to spend.
+#region Character sheet
+# The ATR readout lights up gold while this hero has skills to pick or Attribute
+# Points to spend. It and the portrait both open the character sheet.
 func _refresh_atr() -> void:
 	var points: int = _character.available_attribute_points
-	var spendable := points > 0
+	var spendable := points > 0 or _character.skills.free_picks_left > 0
 	_atr_label.text = ("ATR %d +" if spendable else "ATR %d") % points
 	_atr_label.add_theme_color_override("font_color", UIStyle.GOLD_BRIGHT if spendable else UIStyle.MUTED)
-	_atr_label.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND if spendable else Control.CURSOR_ARROW
-	_atr_label.tooltip_text = "Spend Attribute Points" if spendable else ""
+	_atr_label.tooltip_text = "Spend Attribute Points" if spendable else "Character sheet (C)"
 
-func _on_atr_input(event: InputEvent) -> void:
-	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+func _on_sheet_click(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		open_sheet()
+
+func open_sheet() -> void:
+	if _character == null:
 		return
-	if _character == null or _character.available_attribute_points <= 0:
-		return
-	# Stats feed the fight in progress, so no spending mid-combat.
+	# Stats feed the fight in progress, so no skill spending mid-combat.
 	var combat := get_node_or_null("/root/CombatManager")
 	if combat and combat.has_method("is_active") and combat.is_active():
 		return
-	var panel := LevelUpPanel.open_for(_character, self)
-	panel.closed.connect(_on_level_up_panel_closed)
-
-func _on_level_up_panel_closed(applied: bool) -> void:
-	if not applied or _character == null:
-		return
-	refresh_vitals()
-	_refresh_atr()
+	CharacterSheetPanel.open_for(_character, self)
 #endregion
 
 #region Potions (drag-and-drop use)
@@ -311,14 +310,3 @@ func _shake_card() -> void:
 		t.tween_property(panel, "position", base + off, 0.035)
 	t.tween_property(panel, "position", base, 0.035)
 #endregion
-
-func _class_text(character: Character) -> String:
-	var primary: String = character.primary_class
-	var secondary: String = character.secondary_class
-	if primary != "" and secondary != "":
-		return "%s / %s" % [primary, secondary]
-	if primary != "":
-		return primary
-	if secondary != "":
-		return secondary
-	return "No class"

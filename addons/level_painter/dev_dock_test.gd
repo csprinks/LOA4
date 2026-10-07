@@ -111,7 +111,7 @@ func _initialize() -> void:
 		for x in 4:
 			pdata.set_floor(x, z, 1)
 	pdata.set_object(0, 0, &"stairs", 0)
-	pdata.set_object_param(0, 0, "target_scene_path", "res://Scenes/Test_Environment/Test_Environment_2.tscn")
+	pdata.set_object_param(0, 0, "target_scene_path", "res://Modules/Showcase/floors/floor_cellar.tscn")
 	pdata.set_object_param(0, 0, "prompt_text", "You descend...")
 	pdata.set_object(3, 3, &"chest", 1)   # facing East
 	pdata.set_object_param(3, 3, "crowns_reward", 250)
@@ -121,7 +121,7 @@ func _initialize() -> void:
 	var stairs_node = proot.get_node("Objects/stairs_0_0")
 	var chest_node = proot.get_node("Objects/chest_3_3")
 	_check("stairs target_scene_path applied",
-		stairs_node.get("target_scene_path") == "res://Scenes/Test_Environment/Test_Environment_2.tscn")
+		stairs_node.get("target_scene_path") == "res://Modules/Showcase/floors/floor_cellar.tscn")
 	_check("stairs prompt_text applied", stairs_node.get("prompt_text") == "You descend...")
 	_check("stairs y_offset lifts base to floor", absf(stairs_node.position.y - 1.0) < 0.001)
 	_check("chest crowns_reward applied", chest_node.get("crowns_reward") == 250)
@@ -162,13 +162,13 @@ func _initialize() -> void:
 		for x in 4:
 			ddata.set_floor(x, z, 1)
 	ddata.set_edge_h(1, 2, 2)   # Stone Door (edge id 2) on horizontal edge (1, 2)
-	ddata.set_edge_param("H", 1, 2, "target_scene_path", "res://Scenes/Test_Environment/Test_Environment.tscn")
+	ddata.set_edge_param("H", 1, 2, "target_scene_path", "res://Modules/Showcase/floors/floor_upper.tscn")
 	var droot = Build.build(ddata, cat, null)
 	var door_node = droot.get_node_or_null("Walls/Stone_Door_H_1_2")
 	_check("stone door edge instanced", door_node != null)
 	if door_node:
 		_check("stone door target_scene_path applied",
-			door_node.get("target_scene_path") == "res://Scenes/Test_Environment/Test_Environment.tscn")
+			door_node.get("target_scene_path") == "res://Modules/Showcase/floors/floor_upper.tscn")
 	_check("stone door gets a backing wall",
 		droot.get_node_or_null("Walls/WallBack_H_1_2") != null)
 

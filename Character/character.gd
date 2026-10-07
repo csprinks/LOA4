@@ -2,10 +2,11 @@ class_name Character
 extends RefCounted
 
 ## A single playable hero: identity, the six stats, derived attributes (HP/AP/FP/
-## armor), leveling, class choices, and equipped hand items. Serializes to/from a
-## plain dict for the SaveSystem.
+## armor), leveling, owned skills, and equipped items. There are no fixed classes:
+## the skills a hero takes (SkillBook) raise the stats and define the build.
+## Serializes to/from a plain dict for the SaveSystem.
 
-signal leveled_up(old_level, new_level, favor_gained)
+signal leveled_up(old_level, new_level)
 signal xp_gained(amount)
 
 # The six character stats, keyed by name -> Stat object. Order matters for the
@@ -13,17 +14,11 @@ signal xp_gained(amount)
 const STAT_NAMES := ["Might", "Awareness", "Finesse", "Intellect", "Charm", "Fate"]
 
 # --- Derived max HP ---------------------------------------------------------
-# max_hp = HP_BASE + HP_PER_LEVEL * (level - 1)
-#          + HP_PER_MIGHT_POINT * <Attribute Points spent in Might>.
-# The Might term is a FLAT +4 per Attribute Point invested in Might, independent
-# of the class Gain -- a point in Might is +4 HP whether it's off-class, primary,
-# or a double-Might build (it never doubles up). "Gritty" tuning: a level-1 hero
-# has ~110 HP with no Might investment, a bit more if Might is raised, and ~452
-# by level 20. Recomputed whenever level or Might changes (creation, level-up,
-# spending attribute points, loading a save). Tunables live here.
+# max_hp = HP_BASE + HP_PER_LEVEL * (level - 1). Level only for now; individual
+# Might skills can add HP once real skills exist. "Gritty" tuning: a level-1 hero
+# has 110 HP and ~452 by level 20. Recomputed on level-up and on loading a save.
 const HP_BASE := 110
 const HP_PER_LEVEL := 18
-const HP_PER_MIGHT_POINT := 4
 
 # Derived attributes
 var hit_points: HitPoints
@@ -42,16 +37,22 @@ var portrait: String = "res://Portraits/Portrait_1.png"
 const EQUIPMENT_SLOTS := ["primary", "secondary", "consumable1", "consumable2", "head", "chest", "hands", "feet", "neck", "ring"]
 var equipment: Dictionary = {}
 
-# Choices made on the Character Creation screen.
-var primary_class: String = ""
-var secondary_class: String = ""
+# Free-text title the player writes on the character sheet ("Paladin", "Hedge
+# Witch", ...). Purely cosmetic -- the skills are the real class.
+var title: String = ""
 
-# Attribute Points available to spend on stat growth AFTER creation. Character
-# creation uses its own fixed 10-point pool; this is a separate ongoing pool
-# (whatever creation left unspent) that grows by ATTRIBUTE_POINTS_PER_LEVEL on
-# every level-up and is spent through the Level Up panel (UI/level_up_panel.gd).
-const ATTRIBUTE_POINTS_PER_LEVEL := 2
-var available_attribute_points: int = 0
+# Owned skills. Bought and upgraded on the character sheet (UI/character_sheet.gd)
+# with Attribute Points; each rank raises the stat of the skill's line.
+var skills: SkillBook
+
+# Attribute Points buy skills, skill ranks and raw attribute points: a hero
+# starts with a few and earns more every level. Only the lifetime total is stored; what is left to spend is
+# that minus whatever the SkillBook has sunk, so a respec refunds everything.
+const STARTING_ATTRIBUTE_POINTS := 5
+const ATTRIBUTE_POINTS_PER_LEVEL := 5
+var attribute_points_earned: int = STARTING_ATTRIBUTE_POINTS
+var available_attribute_points: int:
+	get: return attribute_points_earned - skills.points_spent
 
 var stats: Dictionary = {}
 
@@ -59,6 +60,7 @@ func _init() -> void:
 	action_points = ActionPoints.new(5)
 	fortune_points = FortunePoints.new(1)
 	armor = Armor.new(0)
+	skills = SkillBook.new()
 
 	# Each stat is its own class so per-stat behaviour can be added later.
 	stats = {
@@ -70,12 +72,12 @@ func _init() -> void:
 		"Fate": Fate.new(),
 	}
 
-	level_system = LevelSystem.new(1, 0, 25)
+	level_system = LevelSystem.new(1, 0)
 	level_system.level_up.connect(_on_level_up)
 	level_system.xp_gained.connect(_on_xp_gained)
 
-	# HP is derived from level + Might, so build it after both exist and start
-	# the hero at full health.
+	# HP is derived from level, so build it after the level system exists and
+	# start the hero at full health.
 	hit_points = HitPoints.new(compute_max_hp())
 
 	for slot in EQUIPMENT_SLOTS:
@@ -90,32 +92,26 @@ func get_name() -> String:
 func reward_xp(amount: int) -> void:
 	level_system.add_xp(amount)
 
-func _on_level_up(old_level: int, new_level: int, favor_gained: int) -> void:
-	available_attribute_points += (new_level - old_level) * ATTRIBUTE_POINTS_PER_LEVEL
+func _on_level_up(old_level: int, new_level: int) -> void:
+	attribute_points_earned += (new_level - old_level) * ATTRIBUTE_POINTS_PER_LEVEL
 	# Higher level => higher max HP; grant the gained HP so leveling heals.
 	refresh_max_hp("delta")
-	leveled_up.emit(old_level, new_level, favor_gained)
+	leveled_up.emit(old_level, new_level)
 
 func _on_xp_gained(amount: int) -> void:
 	xp_gained.emit(amount)
-
-func use_favor_points(cost: int) -> bool:
-	return level_system.spend_favor_points(cost)
 #endregion
 
 #region Attributes
-# Max HP derived from the current level and Might investment (see the HP_*
-# constants). The Might term counts Attribute Points SPENT in Might (flat +4
-# each), not the class-multiplied Might total, so it never doubles up.
+# Max HP derived from the current level (see the HP_* constants).
 func compute_max_hp() -> int:
 	var lvl: int = level_system.current_level if level_system else 1
-	var might_points: int = stats["Might"].points_spent if stats.has("Might") else 0
-	return HP_BASE + HP_PER_LEVEL * (lvl - 1) + HP_PER_MIGHT_POINT * might_points
+	return HP_BASE + HP_PER_LEVEL * (lvl - 1)
 
 # Recompute max HP and reconcile current HP. `fill` decides what happens to the
 # current value:
 #   "full"  -> jump current up to the new max (fresh hero / character creation)
-#   "delta" -> add only the gained amount to current (level-up, raising Might)
+#   "delta" -> add only the gained amount to current (level-up)
 #   "keep"  -> leave current as-is, only clamped down to the new max (load)
 func refresh_max_hp(fill: String = "delta") -> void:
 	var old_max := hit_points.max_value
@@ -156,39 +152,16 @@ func reset_action_points() -> void:
 func get_stat(stat_name: String) -> Stat:
 	return stats.get(stat_name, null)
 
-# Apply Character Creation allocations: {name: {base, points_spent, gain_per_point}}.
-func apply_stat_data(stat_data: Dictionary) -> void:
+# Replace this hero's skills with `book` (the character sheet's confirmed draft)
+# and re-derive the stats from them.
+func apply_skills(book: SkillBook) -> void:
+	skills.copy_from(book)
+	refresh_stat_bonuses()
+
+# Re-derive every stat's bonus from the owned skills.
+func refresh_stat_bonuses() -> void:
 	for stat_name in stats:
-		if stat_data.has(stat_name):
-			var d: Dictionary = stat_data[stat_name]
-			# Fall back to the pre-rename keys so old save files still load.
-			stats[stat_name].configure(
-				int(d.get("base", Stat.BASE_DEFAULT)),
-				int(d.get("points_spent", d.get("deeds_spent", 0))),
-				int(d.get("gain_per_point", d.get("points_per_deed", 1))))
-	# Might may have changed; recompute HP and start a freshly built hero full.
-	refresh_max_hp("full")
-
-# Spend Attribute Points from the ongoing pool: {stat name: points}. Each point
-# raises the stat by the Gain fixed at creation. All-or-nothing: returns false
-# (changing nothing) if the allocation is invalid or exceeds the pool.
-func spend_attribute_points(allocation: Dictionary) -> bool:
-	var cost := 0
-	for stat_name in allocation:
-		var points := int(allocation[stat_name])
-		if points < 0 or not stats.has(stat_name):
-			return false
-		cost += points
-	if cost == 0 or cost > available_attribute_points:
-		return false
-
-	for stat_name in allocation:
-		if int(allocation[stat_name]) > 0:
-			stats[stat_name].add_points(int(allocation[stat_name]))
-	available_attribute_points -= cost
-	# Might may have risen; grant the gained HP like a level-up does.
-	refresh_max_hp("delta")
-	return true
+		stats[stat_name].set_bonus(skills.stat_bonus(stat_name))
 
 func _stats_to_dict() -> Dictionary:
 	var out := {}
@@ -226,15 +199,14 @@ func to_dict() -> Dictionary:
 
 		"level_system": {
 			"current_level": level_system.current_level,
-			"current_xp": level_system.current_xp,
-			"favor_points": level_system.favor_points
+			"current_xp": level_system.current_xp
 		},
 
 		"equipment": equipment,
 
-		"primary_class": primary_class,
-		"secondary_class": secondary_class,
-		"available_attribute_points": available_attribute_points,
+		"title": title,
+		"attribute_points_earned": attribute_points_earned,
+		"skills": skills.to_dict(),
 		"stats": _stats_to_dict()
 	}
 
@@ -245,7 +217,7 @@ func from_dict(data: Dictionary) -> void:
 	character_name = data.get("character_name", "Unnamed Hero")
 	portrait = data.get("portrait", "res://Portraits/Portrait_1.png")
 
-	# Max HP is derived from level + Might, recomputed after those load below, so
+	# Max HP is derived from level, recomputed after it loads below, so
 	# the stored max is ignored -- only the saved current (wound state) is kept.
 	# -1 means "no saved value"; the hero is then filled to the recomputed max.
 	var saved_hp_current := -1
@@ -264,7 +236,6 @@ func from_dict(data: Dictionary) -> void:
 		var level_data = data["level_system"]
 		level_system.current_level = level_data.get("current_level", 1)
 		level_system.current_xp = level_data.get("current_xp", 0)
-		level_system.favor_points = level_data.get("favor_points", 0)
 
 	# Equipped items. Normalise so every slot key always exists.
 	var equip_data = data.get("equipment", {})
@@ -272,12 +243,15 @@ func from_dict(data: Dictionary) -> void:
 	for slot in EQUIPMENT_SLOTS:
 		equipment[slot] = equip_data.get(slot, {}) if typeof(equip_data) == TYPE_DICTIONARY else {}
 
-	primary_class = data.get("primary_class", "")
-	secondary_class = data.get("secondary_class", "")
-	# Fall back to the pre-rename key so old save files still load.
-	available_attribute_points = int(data.get("available_attribute_points", data.get("available_deed_points", 0)))
+	title = data.get("title", "")
+	# A save from before the skill tree has neither key: the hero then loads with
+	# no skills and the full pool their level has earned.
+	attribute_points_earned = int(data.get("attribute_points_earned",
+		STARTING_ATTRIBUTE_POINTS + ATTRIBUTE_POINTS_PER_LEVEL * (level_system.current_level - 1)))
+	var skill_data = data.get("skills", {})
+	skills.from_dict(skill_data if typeof(skill_data) == TYPE_DICTIONARY else {})
 
-	# Rebuild each stat from its saved {base, points_spent, gain_per_point}.
+	# Rebuild each stat's base, then its bonus from the skills just loaded.
 	var stats_data = data.get("stats", {})
 	if typeof(stats_data) == TYPE_DICTIONARY:
 		for stat_name in stats:
@@ -285,8 +259,10 @@ func from_dict(data: Dictionary) -> void:
 			if typeof(sd) == TYPE_DICTIONARY:
 				stats[stat_name].from_dict(sd)
 
-	# Level and Might are loaded now: derive max HP and restore the saved current
-	# (migrates older saves whose stored max predates this formula).
+	refresh_stat_bonuses()
+
+	# Level is loaded now: derive max HP and restore the saved current (migrates
+	# older saves whose stored max predates this formula).
 	refresh_max_hp("keep")
 	if saved_hp_current >= 0:
 		hit_points.set_current(saved_hp_current)

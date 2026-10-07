@@ -7,7 +7,7 @@ extends Node2D
 ## Visual style matches the Main Menu: brown background + shared game_theme.
 
 const MAIN_MENU := "res://Scenes/Main_Menu/main_menu.tscn"
-const WORLD_SCENE := "res://Scenes/Test_Environment/Test_Environment.tscn"
+const WORLD_SCENE := "res://Modules/Showcase/floors/floor_upper.tscn"
 
 @onready var _slots: VBoxContainer = %SlotsContainer
 @onready var _back_button: Button = %BackButton

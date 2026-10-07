@@ -37,11 +37,9 @@ func _check(condition: bool, label: String) -> void:
 func _make_hero(hero_name: String, might: int, finesse: int, awareness: int) -> Character:
 	var c := Character.new()
 	c.character_name = hero_name
-	c.apply_stat_data({
-		"Might": {"base": might, "points_spent": 0, "gain_per_point": 1},
-		"Finesse": {"base": finesse, "points_spent": 0, "gain_per_point": 1},
-		"Awareness": {"base": awareness, "points_spent": 0, "gain_per_point": 1},
-	})
+	c.get_stat("Might").base = might
+	c.get_stat("Finesse").base = finesse
+	c.get_stat("Awareness").base = awareness
 	return c
 
 # Ally policy: attack the first reachable enemy if affordable, else pass.

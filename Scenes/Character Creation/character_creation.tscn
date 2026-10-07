@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bffpj6lfnt32u" path="res://Scenes/Character Creation/character_creation_flow.gd" id="1_flow"]
 [ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="2_theme"]
-[ext_resource type="PackedScene" uid="uid://b243g060s4n23" path="res://Scenes/Character Creation/hero_creation_panel.tscn" id="3_panel"]
 
 [node name="Node2D" type="Node2D" unique_id=1238433254]
 script = ExtResource("1_flow")
@@ -43,33 +42,29 @@ theme_override_font_sizes/font_size = 40
 text = "Create Your Party"
 horizontal_alignment = 1
 
-[node name="Panels" type="HBoxContainer" parent="UI/Root" unique_id=1202044948]
+[node name="Roster" type="HBoxContainer" parent="UI/Root"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
-anchor_top = 0.12
 anchor_right = 0.98
-anchor_bottom = 0.9
+offset_top = 72.0
+offset_bottom = 160.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Hero1" parent="UI/Root/Panels" unique_id=1874007406 instance=ExtResource("3_panel")]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Hero2" parent="UI/Root/Panels" unique_id=322653594 instance=ExtResource("3_panel")]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Hero3" parent="UI/Root/Panels" unique_id=1086937356 instance=ExtResource("3_panel")]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Hero4" parent="UI/Root/Panels" unique_id=973155276 instance=ExtResource("3_panel")]
-layout_mode = 2
-size_flags_vertical = 0
+[node name="SheetHolder" type="PanelContainer" parent="UI/Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_right = 0.98
+anchor_bottom = 1.0
+offset_top = 170.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MainMenuButton" type="Button" parent="UI/Root" unique_id=862143541]
 unique_name_in_owner = true
