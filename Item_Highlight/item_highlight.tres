@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://Item_Highlight/item_highlight.gdshader" id="1_shader"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/shine_color = Color(1, 0.92, 0.75, 0.55)
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_width = 0.15
+shader_parameter/cycle_interval = 3.0
+shader_parameter/angle_fade = 0.6
+shader_parameter/x_direction = 1.0
+shader_parameter/y_direction = 1.0
+shader_parameter/z_direction = 1.0

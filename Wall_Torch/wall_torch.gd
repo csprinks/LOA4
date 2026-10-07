@@ -33,6 +33,10 @@ func _ready():
 	add_to_group("interactable")
 	add_to_group("persistent")      # WorldState saves/restores whether we were taken
 	add_to_group("automap_ignore")  # the wall behind it is the wall, not this
+	for path in TORCH_PARTS:        # the torch glints; the wall plate stays behind, so it does not
+		var part := get_node_or_null(path)
+		if part:
+			ItemHighlight.apply(part)
 
 func _process(delta: float) -> void:
 	_flicker.advance(delta)

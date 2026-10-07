@@ -13,6 +13,7 @@ func _ready():
 	add_to_group("interactable")
 	add_to_group("persistent")      # WorldState saves/restores whether we were taken
 	add_to_group("automap_ignore")  # a thing on the floor is not a wall
+	ItemHighlight.apply(self)
 
 func interact():
 	if _taken or item == null:
