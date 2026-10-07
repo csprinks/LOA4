@@ -132,6 +132,7 @@ func _build_ui() -> void:
 	_layer_opt.add_item("Objects", 2)
 	_layer_opt.add_item("Spawn Point", 3)
 	_layer_opt.add_item("Links", 4)
+	_layer_opt.add_item("Wear", CanvasScript.LAYER_WEAR)
 	_layer_opt.item_selected.connect(_on_layer_changed)
 	bar2.add_child(_layer_opt)
 
@@ -501,11 +502,12 @@ func _on_scene_picked(path: String) -> void:
 
 #region Palette
 func _on_layer_changed(idx: int) -> void:
+	var layer := _layer_opt.get_item_id(idx)   # the canvas layer; not every one is listed, so not the index
 	if _canvas:
-		_canvas.active_layer = idx
-	_facing_opt.disabled = not (idx == 2 or idx == 3)  # objects & spawn use facing
-	_tool_opt.disabled = idx != 0                       # shape tools are floor-only
-	_rebuild_palette(idx)
+		_canvas.active_layer = layer
+	_facing_opt.disabled = not (layer == 2 or layer == 3)  # objects & spawn use facing
+	_tool_opt.disabled = layer != 0                         # shape tools are floor-only
+	_rebuild_palette(layer)
 
 func _on_auto_wall() -> void:
 	if _canvas == null or _data == null:
@@ -545,6 +547,13 @@ func _rebuild_palette(layer: int) -> void:
 					"all of its links."]:
 				_palette.set_item_disabled(_palette.add_item(line), true)
 			return
+		CanvasScript.LAYER_WEAR:
+			# In GridLevelData.Wear order. Right-click puts a cell back to normal.
+			_palette.add_item("Clean (no grime or damage)", _swatch(CanvasScript.WEAR_CLEAN_COLOR))
+			_palette.add_item("Normal", _swatch(Color(0.31, 0.28, 0.21)))
+			_palette.add_item("Heavy (mossy, cracked, wet)", _swatch(CanvasScript.WEAR_HEAVY_COLOR))
+			_palette.select(_canvas.active_wear)
+			return
 	for t in tiles:
 		var tile_icon: Texture2D = load("res://addons/level_painter/tile_icons.gd").badge(t)
 		var i := _palette.add_item(t.display_name, tile_icon if tile_icon else _swatch(t.color))
@@ -554,6 +563,9 @@ func _rebuild_palette(layer: int) -> void:
 		_on_palette_selected(0)
 
 func _on_palette_selected(index: int) -> void:
+	if _canvas.active_layer == CanvasScript.LAYER_WEAR:
+		_canvas.active_wear = index
+		return
 	if index < 0 or index >= _palette_tiles.size():
 		return
 	var t: TileDef = _palette_tiles[index]
