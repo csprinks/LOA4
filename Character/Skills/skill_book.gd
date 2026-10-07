@@ -9,9 +9,10 @@ extends RefCounted
 ##
 ## Rules: a path's first skill is always open; any other skill needs one skill of
 ## its attribute at the position before it, on either path. The first FREE_PICKS
-## skills are free; after that a new skill costs its position plus 1 per
-## OWNED_PER_SURCHARGE skills already owned. Upgrading costs the rank being
-## bought (rank 2 costs 2, rank 3 costs 3). Every rank adds the skill's position
+## steps are free -- two new skills, or one skill and its second rank; after
+## that a new skill costs its position plus 1 per OWNED_PER_SURCHARGE skills
+## already owned, and upgrading costs the rank being bought (rank 2 costs 2,
+## rank 3 costs 3). Every rank adds the skill's position
 ## to its attribute. A raw +1 to any attribute costs ATTRIBUTE_POINT_COST.
 
 var ranks: Dictionary = {}        # skill id -> rank (1..SkillTree.MAX_RANK); absent = not owned
@@ -41,14 +42,12 @@ func is_reachable(skill: SkillDefinition) -> bool:
 # -1 when there is no next step: maxed, or not yet reachable.
 func next_cost(skill: SkillDefinition) -> int:
 	var rank := rank_of(skill)
-	if rank >= SkillTree.MAX_RANK:
-		return -1
-	if rank > 0:
-		return rank + 1
-	if not is_reachable(skill):
+	if rank >= SkillTree.MAX_RANK or (rank == 0 and not is_reachable(skill)):
 		return -1
 	if free_picks_left > 0:
 		return 0
+	if rank > 0:
+		return rank + 1
 	return skill.position + owned_count() / SkillTree.OWNED_PER_SURCHARGE
 
 
@@ -62,7 +61,7 @@ func advance(skill: SkillDefinition, skill_points: int) -> bool:
 	if not can_advance(skill, skill_points):
 		return false
 	var cost := next_cost(skill)
-	if rank_of(skill) == 0 and free_picks_left > 0:
+	if free_picks_left > 0:
 		free_picks_left -= 1
 	skill_points_spent += cost
 	ranks[skill.id] = rank_of(skill) + 1

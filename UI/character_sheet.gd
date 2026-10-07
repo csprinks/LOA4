@@ -2,8 +2,8 @@ class_name CharacterSheet
 extends HBoxContainer
 
 ## One hero's character sheet, built in code: identity, vitals, attributes and
-## equipment on the left; the six attributes' skill lattices (two crossing paths
-## each) in the middle; the selected skill's details and the buy / upgrade
+## equipment on the left; the six attributes side by side in the middle, each a
+## column with its two crossing skill paths running down; the selected skill's details and the buy / upgrade
 ## controls on the right. Skills cost Skill Points; the "+" beside an attribute
 ## spends an Attribute Point on a raw +1.
 ##
@@ -65,7 +65,7 @@ var _respec_button: Button
 
 
 func _ready() -> void:
-	add_theme_constant_override("separation", 24)
+	add_theme_constant_override("separation", 16)
 	_build_identity_column()
 	add_child(VSeparator.new())
 	_build_tree_column()
@@ -191,45 +191,50 @@ func _build_identity_column() -> void:
 func _build_tree_column() -> void:
 	var col := VBoxContainer.new()
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	col.add_theme_constant_override("separation", 4)
+	col.add_theme_constant_override("separation", 10)
 	add_child(col)
 
 	_points_label = _label("", 22, UIStyle.GOLD_BRIGHT)
 	_points_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	col.add_child(_points_label)
 
-	for attribute in Character.STAT_NAMES:
-		var row := HBoxContainer.new()
-		row.add_theme_constant_override("separation", 0)
-		row.alignment = BoxContainer.ALIGNMENT_CENTER
-		row.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		col.add_child(row)
+	# One column per attribute: its total and "+" on top, its two skill paths
+	# running down beneath.
+	var columns := HBoxContainer.new()
+	columns.add_theme_constant_override("separation", 8)
+	columns.alignment = BoxContainer.ALIGNMENT_CENTER
+	columns.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	col.add_child(columns)
 
-		var header := _label("", 20, SkillTree.color_of(attribute).lightened(0.25))
-		header.custom_minimum_size = Vector2(140, 0)
-		header.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	for attribute in Character.STAT_NAMES:
+		var column := VBoxContainer.new()
+		column.add_theme_constant_override("separation", 8)
+		columns.add_child(column)
+
+		var head := HBoxContainer.new()
+		head.add_theme_constant_override("separation", 6)
+		head.alignment = BoxContainer.ALIGNMENT_CENTER
+		column.add_child(head)
+
+		var header := _label("", 18, SkillTree.color_of(attribute).lightened(0.25))
 		_line_labels[attribute] = header
-		row.add_child(header)
+		head.add_child(header)
 
 		# A raw +1 to the attribute, with no skill attached.
 		var raise := Button.new()
 		raise.text = "+"
-		raise.custom_minimum_size = Vector2(34, 34)
+		raise.custom_minimum_size = Vector2(30, 30)
 		raise.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		raise.add_theme_font_size_override("font_size", 20)
+		raise.add_theme_font_size_override("font_size", 18)
 		raise.tooltip_text = "+1 %s  (%d Attribute Point)" % [attribute, SkillTree.ATTRIBUTE_POINT_COST]
 		raise.pressed.connect(_on_raise_pressed.bind(attribute))
 		_raise_buttons[attribute] = raise
-		row.add_child(raise)
-
-		var gap := Control.new()
-		gap.custom_minimum_size = Vector2(14, 0)
-		row.add_child(gap)
+		head.add_child(raise)
 
 		var lattice := SkillLattice.new(attribute)
-		lattice.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		lattice.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		_lattices[attribute] = lattice
-		row.add_child(lattice)
+		column.add_child(lattice)
 		for skill in SkillTree.skills_of(attribute):
 			var node: SkillNode = lattice.nodes[skill.id]
 			node.pressed.connect(_select.bind(skill))
@@ -240,7 +245,7 @@ func _build_tree_column() -> void:
 
 func _build_detail_column() -> void:
 	var col := VBoxContainer.new()
-	col.custom_minimum_size = Vector2(340, 0)
+	col.custom_minimum_size = Vector2(310, 0)
 	col.add_theme_constant_override("separation", 10)
 	add_child(col)
 

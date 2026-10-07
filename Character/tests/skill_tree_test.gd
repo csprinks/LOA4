@@ -28,6 +28,13 @@ func _initialize() -> void:
 	_check(book.is_reachable(might[2]) and book.is_reachable(might_b[2]) and not book.is_reachable(might[3]),
 		"a skill opens both skills at the next position, and only those")
 
+	# The second free pick can instead go on the first skill's next rank.
+	var doubled := SkillBook.new()
+	_check(doubled.advance(fate[0], 0) and doubled.next_cost(fate[0]) == 0 and doubled.advance(fate[0], 0)
+		and doubled.rank_of(fate[0]) == 2 and doubled.free_picks_left == 0 and doubled.skill_points_spent == 0,
+		"both free picks on one skill take it to rank 2")
+	_check(doubled.next_cost(fate[0]) == 3, "after the free picks an upgrade costs its rank")
+
 	# 2 owned: position + 2 / 2.
 	_check(book.next_cost(fate[0]) == 2 and book.next_cost(might[2]) == 4 and book.next_cost(might_b[0]) == 2,
 		"new-skill cost = position + owned / 2")

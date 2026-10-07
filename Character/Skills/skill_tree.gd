@@ -12,7 +12,7 @@ const PATHS := 2
 const LINE_LENGTH := 5
 # Buying a skill is rank 1; it can then be upgraded up to MAX_RANK.
 const MAX_RANK := 3
-# Skills a new hero picks for free at creation.
+# Free steps a new hero gets at creation: each buys a skill or a rank of one.
 const FREE_PICKS := 2
 # New-skill cost in Skill Points = position + (skills already owned / OWNED_PER_SURCHARGE).
 const OWNED_PER_SURCHARGE := 2

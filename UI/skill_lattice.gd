@@ -1,11 +1,13 @@
 class_name SkillLattice
 extends Control
 
-## One attribute's skills on the character sheet: its two paths as two rows of
-## SkillNodes, and the lines between them -- straight along a path and diagonal
-## where the paths cross, since a skill opens both skills at the next position.
-## A line lights up in the attribute's colour once the skills at both its ends
-## are owned, running from the earlier skill to the later one.
+## One attribute's skills on the character sheet: its two paths as two columns of
+## SkillNodes running downward, and the lines between them -- straight down a
+## path and diagonal where the paths cross, since a skill opens both skills at
+## the next position. Lines leave from under a skill's name and arrive at the top
+## of the next diamond, so they never run through the text. A line lights up in
+## the attribute's colour once the skills at both its ends are owned, running
+## from the earlier skill to the later one.
 
 const LINK_TIME := 0.22    # how long a line takes to light up
 const LINK_DIM := Color(0.49, 0.36, 0.15, 0.55)
@@ -20,12 +22,12 @@ var _fill: Dictionary = {}          # link index -> 0..1 of it lit
 func _init(attribute: String) -> void:
 	_attribute = attribute
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	custom_minimum_size = Vector2(SkillNode.NODE_SIZE.x * SkillTree.LINE_LENGTH,
-		SkillNode.NODE_SIZE.y * SkillTree.PATHS)
+	custom_minimum_size = Vector2(SkillNode.NODE_SIZE.x * SkillTree.PATHS,
+		SkillNode.NODE_SIZE.y * SkillTree.LINE_LENGTH)
 	for skill in SkillTree.skills_of(attribute):
 		var node := SkillNode.new(skill)
-		node.position = Vector2((skill.position - 1) * SkillNode.NODE_SIZE.x,
-			(skill.path - 1) * SkillNode.NODE_SIZE.y)
+		node.position = Vector2((skill.path - 1) * SkillNode.NODE_SIZE.x,
+			(skill.position - 1) * SkillNode.NODE_SIZE.y)
 		node.size = SkillNode.NODE_SIZE
 		nodes[skill.id] = node
 		add_child(node)
@@ -61,19 +63,26 @@ func _set_fill(value: float, index: int) -> void:
 func _draw() -> void:
 	var color := SkillTree.color_of(_attribute)
 	for i in _links.size():
-		draw_line(_center(_links[i][0]), _center(_links[i][1]), LINK_DIM, 3.0, true)
+		draw_line(_exit(_links[i][0]), _entry(_links[i][1]), LINK_DIM, 3.0, true)
 	# Lit lines go on top of every dim one.
 	for i in _links.size():
 		var lit: float = _fill.get(i, 0.0)
 		if lit <= 0.0:
 			continue
-		var from := _center(_links[i][0])
-		var tip := from.lerp(_center(_links[i][1]), lit)
+		var from := _exit(_links[i][0])
+		var tip := from.lerp(_entry(_links[i][1]), lit)
 		draw_line(from, tip, color, 4.0, true)
 		if lit < 1.0:
 			draw_circle(tip, 5.0, color.lightened(0.5))
 
 
-func _center(skill: SkillDefinition) -> Vector2:
-	return Vector2((skill.position - 0.5) * SkillNode.NODE_SIZE.x,
-		(skill.path - 1) * SkillNode.NODE_SIZE.y + SkillNode.CENTER_Y)
+# Where lines leave a skill: under its name.
+func _exit(skill: SkillDefinition) -> Vector2:
+	return Vector2((skill.path - 0.5) * SkillNode.NODE_SIZE.x,
+		(skill.position - 1) * SkillNode.NODE_SIZE.y + SkillNode.NAME_BOTTOM)
+
+
+# Where lines arrive at a skill: the top point of its diamond.
+func _entry(skill: SkillDefinition) -> Vector2:
+	return Vector2((skill.path - 0.5) * SkillNode.NODE_SIZE.x,
+		(skill.position - 1) * SkillNode.NODE_SIZE.y + SkillNode.CENTER_Y - SkillNode.RADIUS)

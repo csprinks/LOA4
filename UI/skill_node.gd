@@ -2,7 +2,7 @@ class_name SkillNode
 extends BaseButton
 
 ## One skill on the character sheet: a diamond in its attribute's colour with the
-## skill's position numeral (or icon) and rank pips beneath. Purely a view --
+## skill's position numeral (or icon), rank pips and its name beneath. Purely a view --
 ## CharacterSheet pushes state in through show_state() and listens for pressed /
 ## activated; the lines between skills belong to the SkillLattice it sits in.
 ##
@@ -14,10 +14,13 @@ signal activated   # double-click: buy / upgrade without going through the detai
 
 enum State { LOCKED, AVAILABLE, OWNED }
 
-const NODE_SIZE := Vector2(124, 60)
-const RADIUS := 22.0
-const CENTER_Y := 26.0
-const PIP_Y := 54.0
+const NODE_SIZE := Vector2(86, 138)
+const RADIUS := 26.0
+const CENTER_Y := 34.0
+const PIP_Y := 70.0
+const NAME_BASELINE := 90.0     # first of up to two lines
+const NAME_FONT_SIZE := 13
+const NAME_BOTTOM := 108.0      # the lattice's lines leave from here
 const ROMAN := ["I", "II", "III", "IV", "V"]
 
 const HOVER_SWELL := 0.12       # extra scale at full hover
@@ -26,7 +29,7 @@ const PULSE_SPEED := 3.2
 const POP_SCALE := 0.45         # overshoot when a rank lands
 const POP_TIME := 0.45
 const BURST_TIME := 0.5
-const BURST_REACH := 34.0
+const BURST_REACH := 36.0
 const SPARKS := 8
 const DENY_TIME := 0.32
 const DENY_SHAKE := 6.0
@@ -188,11 +191,11 @@ func _draw() -> void:
 		draw_polyline(_diamond(RADIUS + 5.0, true), UIStyle.GOLD_BRIGHT, 2.0, true)
 
 	if definition.icon:
-		var icon_size := Vector2(26, 26)
+		var icon_size := Vector2(30, 30)
 		draw_texture_rect(definition.icon, Rect2(-icon_size * 0.5, icon_size), false,
 			Color.WHITE if owned else Color(1, 1, 1, 0.45))
 	else:
-		var font_size := 17
+		var font_size := 20
 		draw_string(UIStyle.font(), Vector2(-size.x * 0.5, font_size * 0.36),
 			ROMAN[definition.position - 1], HORIZONTAL_ALIGNMENT_CENTER, size.x, font_size, text_color)
 
@@ -203,14 +206,22 @@ func _draw() -> void:
 	# They sit under the diamond and don't swell with it; the newest one pops.
 	draw_set_transform(Vector2(shake, 0))
 	for i in SkillTree.MAX_RANK:
-		var pip := Vector2(center.x + (i - (SkillTree.MAX_RANK - 1) * 0.5) * 11.0, PIP_Y)
+		var pip := Vector2(center.x + (i - (SkillTree.MAX_RANK - 1) * 0.5) * 13.0, PIP_Y)
 		if i < _rank:
 			var newest := i == _rank - 1
-			draw_circle(pip, 3.5 * (1.0 + (_pop * 2.0 if newest else 0.0)),
+			draw_circle(pip, 4.0 * (1.0 + (_pop * 2.0 if newest else 0.0)),
 				(UIStyle.GOLD_BRIGHT if _pending else color.lightened(0.35)).lerp(Color.WHITE, _flash if newest else 0.0))
 		else:
-			draw_arc(pip, 3.0, 0.0, TAU, 14, UIStyle.GOLD_DIM, 1.2, true)
+			draw_arc(pip, 3.5, 0.0, TAU, 16, UIStyle.GOLD_DIM, 1.4, true)
 	draw_set_transform(Vector2.ZERO)
+
+	var name_color := UIStyle.MUTED
+	if _selected:
+		name_color = UIStyle.GOLD_BRIGHT
+	elif owned:
+		name_color = UIStyle.CREAM
+	draw_multiline_string(UIStyle.font(), Vector2(4, NAME_BASELINE), definition.display_name,
+		HORIZONTAL_ALIGNMENT_CENTER, size.x - 8, NAME_FONT_SIZE, 2, name_color)
 
 
 # The ring and sparks thrown off when a rank lands. Drawn in the diamond's space.
