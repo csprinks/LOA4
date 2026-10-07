@@ -10,7 +10,7 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hvmo7"]
 
 [node name="Inspector" type="CanvasLayer" unique_id=1437730790 node_paths=PackedStringArray("panelContainer", "itemImage", "itemName", "itemType", "itemArmor", "itemValue", "chargesValue", "attribute_one", "attribute_two", "attribute_three")]
-layer = 11
+layer = 46
 script = ExtResource("1_4pfup")
 panelContainer = NodePath("Control/PanelContainer")
 inspectorYOffset = 25

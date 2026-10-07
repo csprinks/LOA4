@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://cpk7137esyw0p" path="res://UI/game_theme.tres" id="3_theme"]
 
 [node name="InventoryExample" type="CanvasLayer" unique_id=879983234 node_paths=PackedStringArray("inventoryPanel", "inventoryGridContainer", "menuButton")]
-layer = 10
+layer = 45
 script = ExtResource("1_fxkr8")
 inventoryPanel = NodePath("Panel")
 inventoryGridContainer = NodePath("Panel/VBoxContainer/GridContainer")
