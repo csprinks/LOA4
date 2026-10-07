@@ -42,6 +42,10 @@ enum Kind {
 ## default, so it needs +90 to make the painted facing match what's rendered.
 @export var facing_offset: int = 0
 
+## OBJECT only: uniform scale applied when spawning, for a prop whose scene is
+## built at a different size than it should stand in a level.
+@export var scale: float = 1.0
+
 ## EDGE only: does this edge block movement / line of sight? Walls do; an open
 ## doorway visual might not. (Doors handle their own blocking at runtime.)
 @export var blocks: bool = true
@@ -70,6 +74,11 @@ enum Kind {
 ## the door reads as set into a wall and blocks movement — for transition doors
 ## like the stone door. The door is nudged toward the room so it stays visible.
 @export var wall_backed: bool = false
+
+## EDGE door only: how tall the doorway is, when shorter than the wall. The
+## builder fills the gap above it with a piece of wall that wears the texture of
+## the walls beside it. 0 = the door fills the wall's full height.
+@export var clear_height: float = 0.0
 
 ## OBJECT only: what this tile can be LINKED to on the painter's Links layer, and
 ## what a link sets on the built nodes. One Dictionary per kind of target:

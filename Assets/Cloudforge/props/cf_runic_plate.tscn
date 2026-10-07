@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/vessels/plate.gltf" id="1_3c7gu"]
 
-[node name="cf_runic_plate" type="Node3D" unique_id=710079122]
+[node name="cf_runic_plate" type="Node3D" unique_id=1618717127]
 
 [node name="Model" type="Node3D" parent="." unique_id=1253078188 instance=ExtResource("1_3c7gu")]
-transform = Transform3D(0.35960445, 0, 0, 0, 0.35960445, 0, 0, 0, 0.35960445, 0.00073636835, 0.024301251, -0.00028768842)
+transform = Transform3D(0.1598242, 0, 0, 0, 0.1598242, 0, 0, 0, 0.1598242, 0.0003272748, 0.010800556, -0.00012786152)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/pottery/lidded_pot.gltf" id="1_7e6sn"]
 
-[node name="cf_lidded_pot" type="Node3D" unique_id=919730690]
+[node name="cf_lidded_pot" type="Node3D" unique_id=1509801967]
 
 [node name="Model" type="Node3D" parent="." unique_id=1937644422 instance=ExtResource("1_7e6sn")]
-transform = Transform3D(2.128, 0, 0, 0, 2.128, 0, 0, 0, 2.128, 1.4142947, -0.0004967017, 0)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.7975346, -0.00028009494, 0)

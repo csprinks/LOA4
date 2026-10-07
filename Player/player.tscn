@@ -20,7 +20,7 @@ player_camera = NodePath("Camera_Controller/Player_Camera")
 
 [node name="Player_Camera" type="Camera3D" parent="Camera_Controller" unique_id=880131049]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.9993909, 0.034899496, 0, -0.034899496, 0.9993909, 0, 0.159383, 0.281204)
+transform = Transform3D(1, 0, 0, 0, 0.9993909, 0.034899496, 0, -0.034899496, 0.9993909, 0, 1.1, 0.281204)
 current = true
 fov = 90.0
 

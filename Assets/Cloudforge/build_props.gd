@@ -92,17 +92,38 @@ func _build(Props, prop: Dictionary) -> bool:
 		body.add_child(shape)
 		shape.owner = root
 
+	# Fire, and the light it gives: one light per prop, at the middle of its flames.
+	var flames := _flame_points(model, String(prop.get("flame", "")))
 	if prop.has("light"):
 		var light := OmniLight3D.new()
 		light.name = "Light"
 		light.light_color = LIGHT_COLOR
 		light.light_energy = float(prop["light"][0])
 		light.omni_range = float(prop["light"][1])
+		light.omni_attenuation = 1.4
+		# No specular: a bare point light this close to a wall or ceiling otherwise
+		# paints a hard white hot spot on it, like a light bulb.
+		light.light_specular = 0.0
 		light.shadow_enabled = false
-		var depth := fitted.z * 0.5 if prop.get("wall", false) else 0.0
-		light.position = Vector3(0.0, base + fitted.y * float(prop.get("light_at", 1.0)) + 0.15, depth)
+		var at := Vector3(0.0, base + fitted.y, fitted.z * 0.5 if prop.get("wall", false) else 0.0)
+		if not flames.is_empty():
+			at = Vector3.ZERO
+			for point in flames:
+				at += point
+			at /= flames.size()
+		light.position = at + Vector3(0.0, 0.12, 0.0)
 		root.add_child(light)
 		light.owner = root
+	for i in flames.size():
+		var flame := Node3D.new()
+		flame.name = "Flame%d" % (i + 1)
+		flame.set_script(load("res://Assets/Cloudforge/prop_flame.gd"))
+		flame.set("flame_size", float(prop.get("flame_size", 1.0)))
+		flame.position = flames[i]
+		root.add_child(flame)
+		flame.owner = root
+		if i == 0 and prop.has("light"):
+			flame.set("light_path", NodePath("../Light"))
 
 	var packed := PackedScene.new()
 	packed.pack(root)
@@ -111,6 +132,50 @@ func _build(Props, prop: Dictionary) -> bool:
 		"" if err == OK else "  SAVE FAILED: " + error_string(err)])
 	root.free()
 	return err == OK
+
+# Where a prop's fire burns, in the prop scene's space (`model` is already fitted
+# and placed). "top": one point in the middle of the model's top rim, sunk a
+# little into it. "wicks": the top of every hair-thin mesh.
+func _flame_points(model: Node3D, mode: String) -> Array:
+	var points: Array = []
+	if mode == "":
+		return points
+	var meshes: Array = []   # one PackedVector3Array of placed vertices per mesh
+	_collect_meshes(model, Transform3D.IDENTITY, meshes)
+	var whole := _aabb(model, Transform3D.IDENTITY)
+	if mode == "wicks":
+		var thin := maxf(whole.size.x, whole.size.z) * 0.02
+		for vertices: PackedVector3Array in meshes:
+			var box := AABB(vertices[0], Vector3.ZERO)
+			for vertex in vertices:
+				box = box.expand(vertex)
+			if maxf(box.size.x, box.size.z) <= thin:
+				points.append(Vector3(box.get_center().x, box.end.y, box.get_center().z))
+	else:
+		var rim := whole.end.y - whole.size.y * 0.12
+		var sum := Vector3.ZERO
+		var count := 0
+		for vertices: PackedVector3Array in meshes:
+			for vertex in vertices:
+				if vertex.y >= rim:
+					sum += vertex
+					count += 1
+		if count > 0:
+			points.append(Vector3(sum.x / count, whole.end.y - whole.size.y * 0.05, sum.z / count))
+	return points
+
+func _collect_meshes(node: Node, xform: Transform3D, out: Array) -> void:
+	var local := xform
+	if node is Node3D:
+		local = xform * (node as Node3D).transform
+	if node is MeshInstance3D and node.mesh:
+		var vertices := PackedVector3Array()
+		for vertex in node.mesh.get_faces():
+			vertices.append(local * vertex)
+		if not vertices.is_empty():
+			out.append(vertices)
+	for child in node.get_children():
+		_collect_meshes(child, local, out)
 
 func _aabb(node: Node, xform: Transform3D) -> AABB:
 	var local := xform

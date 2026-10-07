@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/griffon/griffon.gltf" id="1_e1amh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n2f4q"]
-size = Vector3(0.6002172, 2.0087628, 1.7)
+size = Vector3(0.53783906, 1.8, 1.5233257)
 
-[node name="cf_griffon" type="Node3D" unique_id=1736443611]
+[node name="cf_griffon" type="Node3D" unique_id=657175897]
 
 [node name="Model" type="Node3D" parent="." unique_id=528870977 instance=ExtResource("1_e1amh")]
-transform = Transform3D(27.560717, 0, 0, 0, 27.560717, 0, 0, 0, 27.560717, -0.2756347, 3.726229e-14, -0.83886546)
+transform = Transform3D(24.69644, 0, 0, 0, 24.69644, 0, 0, 0, 24.69644, -0.24698907, 3.3389768e-14, -0.7516855)
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=207795289 groups=["automap_ignore"]]
+[node name="Body" type="StaticBody3D" parent="." unique_id=765150066 groups=["automap_ignore"]]
 
-[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=236140661]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0043814, 0)
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1775333352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("BoxShape3D_n2f4q")

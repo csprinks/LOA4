@@ -74,13 +74,16 @@ static func default_catalog() -> TileCatalog:
 		{ "name": "target_spawn_marker_name", "label": "Marker (if no floor chosen)", "type": "string", "default": "PlayerSpawn" },
 	]
 	cat.tiles.append(stone_door)
-	cat.tiles.append(_mk_edge(3, "Grate Door", Color(0.45, 0.85, 0.95),
-		"res://Doors/Door_Metal_Grate/Door_Grate.tscn", 1.0, false))
+	var grate := _mk_edge(3, "Grate Door", Color(0.45, 0.85, 0.95),
+		"res://Doors/Door_Metal_Grate/Door_Grate.tscn", 1.0, false)
+	grate.clear_height = 2.0   # the gate is 2 tall in a 3-tall wall
+	cat.tiles.append(grate)
 
 	# --- Objects (name_id) ---
 	var chest := _mk_obj(&"chest", "Treasure Chest", Color(0.95, 0.80, 0.30),
 		"res://Treasure_Chest/treasure_chest.tscn", 0.0)
 	chest.facing_offset = 90   # chest model faces East by default; correct to painted facing
+	chest.scale = 0.7          # the scene is ~1.5 long and waist high; a chest is knee high
 	chest.params = [
 		{ "name": "crowns_reward", "label": "Crowns", "type": "int", "default": 0 },
 		{ "name": "contents", "label": "Items inside", "type": "resource_list", "default": [], "browse": "res://Inventory/Resources" },

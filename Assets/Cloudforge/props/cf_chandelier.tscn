@@ -1,14 +1,58 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/chandelier/chandelier.gltf" id="1_rqwio"]
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/chandelier/chandelier.gltf" id="1_7kbdd"]
+[ext_resource type="Script" path="res://Assets/Cloudforge/prop_flame.gd" id="2_vg6k5"]
 
-[node name="cf_chandelier" type="Node3D" unique_id=1024333385]
+[node name="cf_chandelier" type="Node3D" unique_id=249495757]
 
-[node name="Model" type="Node3D" parent="." unique_id=701421268 instance=ExtResource("1_rqwio")]
-transform = Transform3D(1.1053281, 0, 0, 0, 1.1053281, 0, 0, 0, 1.1053281, -2.3190705e-05, 1.4638959, 3.478606e-05)
+[node name="Model" type="Node3D" parent="." unique_id=701421268 instance=ExtResource("1_7kbdd")]
+transform = Transform3D(0.7829407, 0, 0, 0, 0.7829407, 0, 0, 0, 0.7829407, -1.642675e-05, 1.932343, 2.4640123e-05)
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=170594045]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9489038, 0)
+[node name="Light" type="OmniLight3D" parent="." unique_id=401258190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005053431, 2.235261, 0.0008440688)
 light_color = Color(1, 0.72, 0.42, 1)
-light_energy = 2.4
-omni_range = 10.0
+light_energy = 1.7
+light_specular = 0.0
+omni_range = 8.0
+omni_attenuation = 1.4
+
+[node name="Flame1" type="Node3D" parent="." unique_id=94990513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15807587, 2.1198583, -0.37219366)
+script = ExtResource("2_vg6k5")
+flame_size = 0.7
+light_path = NodePath("../Light")
+
+[node name="Flame2" type="Node3D" parent="." unique_id=86501027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15581854, 2.1189988, -0.37419423)
+script = ExtResource("2_vg6k5")
+flame_size = 0.7
+
+[node name="Flame3" type="Node3D" parent="." unique_id=1435043551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3728034, 2.099912, -0.15636376)
+script = ExtResource("2_vg6k5")
+flame_size = 0.7
+
+[node name="Flame4" type="Node3D" parent="." unique_id=887989381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37592602, 2.1183968, 0.15277949)
+script = ExtResource("2_vg6k5")
+flame_size = 0.7
+
+[node name="Flame5" type="Node3D" parent="." unique_id=914482809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15945028, 2.130798, 0.37703067)
+script = ExtResource("2_vg6k5")
+flame_size = 0.7
+
+[node name="Flame6" type="Node3D" parent="." unique_id=976460302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15457779, 2.0976086, 0.37477782)
+script = ExtResource("2_vg6k5")
+flame_size = 0.7
+
+[node name="Flame7" type="Node3D" parent="." unique_id=1847223559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37379912, 2.1206522, 0.15659334)
+script = ExtResource("2_vg6k5")
+flame_size = 0.7
+
+[node name="Flame8" type="Node3D" parent="." unique_id=733935167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3735027, 2.1158638, -0.15167706)
+script = ExtResource("2_vg6k5")
+flame_size = 0.7

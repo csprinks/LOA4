@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/barrel/barrel.gltf" id="1_f6dm4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bdnu8"]
-size = Vector3(1.4587821, 1.84, 1.4587822)
+size = Vector3(0.79281634, 1, 0.7928164)
 
-[node name="cf_barrel" type="Node3D" unique_id=1249937135]
+[node name="cf_barrel" type="Node3D" unique_id=1696330282]
 
 [node name="Model" type="Node3D" parent="." unique_id=4849252 instance=ExtResource("1_f6dm4")]
-transform = Transform3D(0.009435898, 0, 0, 0, 0.009435898, 0, 0, 0, 0.009435898, 7.1990186e-08, 0.7985609, 0)
+transform = Transform3D(0.0051282053, 0, 0, 0, 0.0051282053, 0, 0, 0, 0.0051282053, 3.91251e-08, 0.4340005, 0)
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1193499136 groups=["automap_ignore"]]
+[node name="Body" type="StaticBody3D" parent="." unique_id=970998039 groups=["automap_ignore"]]
 
-[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1553190825]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92, 0)
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1915769104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_bdnu8")

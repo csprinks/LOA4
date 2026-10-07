@@ -5,13 +5,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0f6bd"]
 size = Vector3(0.94491166, 3, 0.9449116)
 
-[node name="cf_pillar_stone" type="Node3D" unique_id=462914488]
+[node name="cf_pillar_stone" type="Node3D" unique_id=2053159524]
 
 [node name="Model" type="Node3D" parent="." unique_id=345635321 instance=ExtResource("1_dxnml")]
 transform = Transform3D(0.009449116, 0, 0, 0, 0.009449116, 0, 0, 0, 0.009449116, -3.6045517e-08, -9.44189e-05, 0)
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1095250543 groups=["automap_ignore"]]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1113283306 groups=["automap_ignore"]]
 
-[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1680702720]
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=148689792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_0f6bd")

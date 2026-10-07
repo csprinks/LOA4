@@ -1,23 +1,32 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/dungeon/torch/BP_Torch_Stand.gltf" id="1_8snys"]
+[ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/dungeon/torch/BP_Torch_Stand.gltf" id="1_880wh"]
+[ext_resource type="Script" path="res://Assets/Cloudforge/prop_flame.gd" id="2_7vtwy"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_880wh"]
-size = Vector3(1.2324547, 2.72, 1.2307113)
+[sub_resource type="BoxShape3D" id="BoxShape3D_aus5y"]
+size = Vector3(0.6796625, 1.5, 0.67870116)
 
-[node name="cf_torch_stand" type="Node3D" unique_id=1086158059]
+[node name="cf_torch_stand" type="Node3D" unique_id=881102081]
 
-[node name="Model" type="Node3D" parent="." unique_id=910945616 instance=ExtResource("1_8snys")]
-transform = Transform3D(2.9053621, 0, 0, 0, 2.9053621, 0, 0, 0, 2.9053621, 0, 0.0031958984, 0)
+[node name="Model" type="Node3D" parent="." unique_id=910945616 instance=ExtResource("1_880wh")]
+transform = Transform3D(1.6022218, 0, 0, 0, 1.6022218, 0, 0, 0, 1.6022218, 0, 0.001762444, 0)
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1357122176 groups=["automap_ignore"]]
+[node name="Body" type="StaticBody3D" parent="." unique_id=495478461 groups=["automap_ignore"]]
 
-[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=26774819]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36, 0)
-shape = SubResource("BoxShape3D_880wh")
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1884049603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_aus5y")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=1411109589]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8700001, 0)
+[node name="Light" type="OmniLight3D" parent="." unique_id=58108836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002003466, 1.545, 0.0013631815)
 light_color = Color(1, 0.72, 0.42, 1)
-light_energy = 2.2
-omni_range = 9.0
+light_energy = 1.6
+light_specular = 0.0
+omni_range = 7.0
+omni_attenuation = 1.4
+
+[node name="Flame1" type="Node3D" parent="." unique_id=1527917316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002003466, 1.425, 0.0013631815)
+script = ExtResource("2_7vtwy")
+flame_size = 1.9
+light_path = NodePath("../Light")

@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/bookshelf/bookshelf.gltf" id="1_lsgf2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_47skv"]
-size = Vector3(1.7, 2.4463444, 0.61243516)
+size = Vector3(1.5288117, 2.2, 0.55076355)
 
-[node name="cf_bookshelf" type="Node3D" unique_id=557580231]
+[node name="cf_bookshelf" type="Node3D" unique_id=1553277638]
 
 [node name="Model" type="Node3D" parent="." unique_id=705569065 instance=ExtResource("1_lsgf2")]
-transform = Transform3D(0.008060467, 0, 0, 0, 0.008060467, 0, 0, 0, 0.008060467, 0.64156526, 1.5676308, 0.16208728)
+transform = Transform3D(0.0072487863, 0, 0, 0, 0.0072487863, 0, 0, 0, 0.0072487863, 0.57696027, 1.4097719, 0.14576524)
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=428695320 groups=["automap_ignore"]]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1867508479 groups=["automap_ignore"]]
 
-[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=590234653]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2231722, 0.30621758)
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=77549722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.27538177)
 shape = SubResource("BoxShape3D_47skv")

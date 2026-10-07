@@ -161,7 +161,42 @@ static func _place_edge(data: GridLevelData, catalog: TileCatalog, parent: Node,
 		wall.set(WallTextures.PARAM, data.get_edge_params(tag, a, b).get(WallTextures.PARAM, ""))
 		_own(wall, own)
 		node.position += _inside_dir(data, tag, a, b) * 0.3   # clear of the wall face
+	# A doorway shorter than the wall gets the wall carried across above it.
+	if def and def.clear_height > 0.0 and def.clear_height < WALL_HEIGHT:
+		var lintel := _instance_or_slab(catalog.get_by_id(TileDef.Kind.EDGE, 1),
+			Vector3(CELL, WALL_HEIGHT, 0.2), Color(0.35, 0.30, 0.25))
+		lintel.name = "Lintel_%s_%d_%d" % [tag, a, b]
+		parent.add_child(lintel)
+		# A wall panel stands floor to ceiling from its origin: squash it into the gap.
+		lintel.position = pos + Vector3.UP * def.clear_height
+		lintel.rotation.y = yaw
+		lintel.scale.y = (WALL_HEIGHT - def.clear_height) / WALL_HEIGHT
+		lintel.set(WallTextures.PARAM, _neighbour_wall_texture(data, tag, a, b))
+		_own(lintel, own)
 	_own(node, own)
+
+## The texture for wall built over a doorway on edge (tag, a, b): one painted on
+## the edge itself if any, else that of the wall continuing the same line on
+## either side, else that of a wall meeting it at a corner. "" = plain.
+static func _neighbour_wall_texture(data: GridLevelData, tag: String, a: int, b: int) -> String:
+	var own_texture := String(data.get_edge_params(tag, a, b).get(WallTextures.PARAM, ""))
+	if own_texture != "":
+		return own_texture
+	var candidates: Array
+	if tag == "H":   # runs along X between vertices (a, b) and (a + 1, b)
+		candidates = [["H", a - 1, b], ["H", a + 1, b],
+			["V", a, b - 1], ["V", a, b], ["V", a + 1, b - 1], ["V", a + 1, b]]
+	else:            # runs along Z between vertices (a, b) and (a, b + 1)
+		candidates = [["V", a, b - 1], ["V", a, b + 1],
+			["H", a - 1, b], ["H", a, b], ["H", a - 1, b + 1], ["H", a, b + 1]]
+	for edge in candidates:
+		var id := data.get_edge_h(edge[1], edge[2]) if edge[0] == "H" else data.get_edge_v(edge[1], edge[2])
+		if id == 0:
+			continue
+		var texture := String(data.get_edge_params(edge[0], edge[1], edge[2]).get(WallTextures.PARAM, ""))
+		if texture != "":
+			return texture
+	return ""
 
 ## Unit direction from an edge toward the adjacent cell that has a floor (the room
 ## side), or ZERO if both/neither do. Used to nudge a wall-backed door into view.
@@ -250,6 +285,8 @@ static func _build_objects(data: GridLevelData, catalog: TileCatalog, parent: No
 		if def.wall_mounted:
 			node.position -= _facing_world(facing) * (CELL * 0.5 - 0.1)
 		node.rotation.y = _facing_to_yaw(facing) + deg_to_rad(def.facing_offset)
+		if not is_equal_approx(def.scale, 1.0):
+			node.scale = Vector3.ONE * def.scale
 		_apply_params(node, def, entry.get("params", {}))
 		if def.is_pit:
 			node.set(WallTextures.PARAM, surrounding_floor_texture(data, key))

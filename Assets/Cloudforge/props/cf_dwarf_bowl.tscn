@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/vessels/bowl.gltf" id="1_am5lj"]
 
-[node name="cf_dwarf_bowl" type="Node3D" unique_id=876633525]
+[node name="cf_dwarf_bowl" type="Node3D" unique_id=2131425763]
 
 [node name="Model" type="Node3D" parent="." unique_id=1818069847 instance=ExtResource("1_am5lj")]
-transform = Transform3D(0.35967627, 0, 0, 0, 0.35967627, 0, 0, 0, 0.35967627, 0.00071936473, 0.2086482, -0.0010071106)
+transform = Transform3D(0.17484264, 0, 0, 0, 0.17484264, 0, 0, 0, 0.17484264, 0.0003496912, 0.101426214, -0.0004895677)

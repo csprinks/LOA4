@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://Assets/Cloudforge/models/decor/vessels/vase.gltf" id="1_2m8h2"]
 
-[node name="cf_runic_vase" type="Node3D" unique_id=1114033542]
+[node name="cf_runic_vase" type="Node3D" unique_id=196659001]
 
 [node name="Model" type="Node3D" parent="." unique_id=1880395195 instance=ExtResource("1_2m8h2")]
-transform = Transform3D(0.47863585, 0, 0, 0, 0.47863585, 0, 0, 0, 0.47863585, -0.008041076, 0.4802632, 0.0016273467)
+transform = Transform3D(0.24928951, 0, 0, 0, 0.24928951, 0, 0, 0, 0.24928951, -0.0041880603, 0.2501371, 0.0008475764)

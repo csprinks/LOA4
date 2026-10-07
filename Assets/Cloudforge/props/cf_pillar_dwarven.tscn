@@ -5,13 +5,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_jhr74"]
 size = Vector3(0.91944623, 3, 0.91702765)
 
-[node name="cf_pillar_dwarven" type="Node3D" unique_id=151851309]
+[node name="cf_pillar_dwarven" type="Node3D" unique_id=245628911]
 
 [node name="Model" type="Node3D" parent="." unique_id=771577457 instance=ExtResource("1_ya3xj")]
 transform = Transform3D(0.6910532, 0, 0, 0, 0.6910532, 0, 0, 0, 0.6910532, -0.00044917673, -0.0044494653, -0.0005528931)
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2127043337 groups=["automap_ignore"]]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1811650538 groups=["automap_ignore"]]
 
-[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=633375376]
+[node name="Shape" type="CollisionShape3D" parent="Body" unique_id=1254528030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_jhr74")
