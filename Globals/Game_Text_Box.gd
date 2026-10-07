@@ -22,6 +22,12 @@ var next_text_delay: Timer
 var tween: Tween
 var rich_text_label: RichTextLabel
 
+# The box grows upward from its resting height to fit the text, up to MAX_HEIGHT;
+# past that it scrolls to follow the newest line.
+const MIN_HEIGHT := 88.0
+const MAX_HEIGHT := 320.0
+const BOTTOM_MARGIN := 42.0
+
 func _enter_tree():
 	# Ensure this node is at the root and has a consistent name
 	name = "Game_Text_Box"
@@ -38,6 +44,9 @@ func _ready():
 	rich_text_label.scroll_following = true
 	rich_text_label.bbcode_enabled = true
 	rich_text_label.fit_content = false
+	# Lay out the whole message up front, so the box is sized for all of it
+	# and words don't jump lines as they type in.
+	rich_text_label.visible_characters_behavior = TextServer.VC_CHARS_AFTER_SHAPING
 	
 	# Set custom font
 	var custom_font = UIStyle.font()
@@ -56,7 +65,7 @@ func _ready():
 	rich_text_label.add_theme_font_size_override("normal_font_size", 24)
 	
 	# Set fixed size and center it at the bottom of the screen
-	rich_text_label.size = Vector2(640, 88)
+	rich_text_label.size = Vector2(640, MIN_HEIGHT)
 	update_textbox_position()
 	
 	# Connect signals
@@ -83,8 +92,15 @@ func update_textbox_position():
 	var viewport_size = get_viewport().get_visible_rect().size
 	rich_text_label.position = Vector2(
 		(viewport_size.x - rich_text_label.size.x) / 2,  # Center horizontally
-		viewport_size.y - 130  # Position near bottom with some margin
+		viewport_size.y - BOTTOM_MARGIN - rich_text_label.size.y  # Bottom edge stays put
 	)
+
+# Size the box to the text it holds, keeping its bottom edge where it is.
+func fit_to_text():
+	var backing := rich_text_label.get_theme_stylebox("normal")
+	var wanted = rich_text_label.get_content_height() + backing.get_minimum_size().y
+	rich_text_label.size.y = clampf(wanted, MIN_HEIGHT, MAX_HEIGHT)
+	update_textbox_position()
 
 func setup_timers():
 	text_timer = Timer.new()
@@ -121,6 +137,7 @@ func show_next_dialogue():
 		text_history += "\n"
 	text_history += next_text
 	rich_text_label.text = text_history
+	fit_to_text()
 	
 	# Reset visible characters before starting new animation
 	rich_text_label.visible_characters = text_history.length() - next_text.length()
@@ -195,6 +212,7 @@ func clear_history():
 	rich_text_label.text = ""
 	text_history = ""
 	rich_text_label.visible_characters = 0
+	fit_to_text()
 	dialogue_queue.clear()
 	currently_typing = false
 
