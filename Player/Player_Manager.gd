@@ -13,6 +13,7 @@ signal player_moved(direction)
 var movement_system: PlayerMovement
 var free_look_system: PlayerFreeLook
 var interaction_system: PlayerInteraction
+var torch_light: PlayerTorchLight
 
 # True while a battle is running: freezes grid movement, turning, free-look, and
 # world interaction so the combat overlay owns input. Set by CombatManager.
@@ -51,6 +52,9 @@ func setup_systems():
 
 	interaction_system = PlayerInteraction.new(self, player_camera)
 	add_child(interaction_system)
+
+	torch_light = PlayerTorchLight.new()
+	add_child(torch_light)
 
 func connect_signals():
 	movement_system.movement_started.connect(_on_movement_started)

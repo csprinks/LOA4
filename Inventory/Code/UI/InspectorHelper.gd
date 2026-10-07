@@ -68,6 +68,8 @@ func ShowInspectorItem(inventoryitem: InventoryItem) -> void:
 	itemValue.text = "Value : %s" % str(item.price)
 	var chargeCount = inventoryitem.charges
 	var chargesText = ("Charges : %s" % str(inventoryitem.charges)) if chargeCount > 0 else ""
+	if item is TorchData:   # a torch's charges are the seconds it has left to burn
+		chargesText = "Burns for : %d:%02d" % [chargeCount / 60, chargeCount % 60]
 	chargesValue.text = chargesText
 	SetAttributes(inventoryitem)
 

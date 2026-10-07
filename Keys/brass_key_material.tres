@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://Keys/brass_key_basecolor.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://Keys/brass_key_metallic.png" id="2_metallic"]
+[ext_resource type="Texture2D" path="res://Keys/brass_key_roughness.png" id="3_roughness"]
+[ext_resource type="Texture2D" path="res://Keys/brass_key_normal.png" id="4_normal"]
+
+[resource]
+resource_name = "Bronz"
+albedo_texture = ExtResource("1_albedo")
+metallic = 1.0
+metallic_texture = ExtResource("2_metallic")
+roughness_texture = ExtResource("3_roughness")
+normal_enabled = true
+normal_texture = ExtResource("4_normal")

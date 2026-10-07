@@ -133,6 +133,8 @@ func CreateItemFromData(data: InventoryData, quantity: int = -1) -> InventoryIte
 
 	var item := _BuildItemForType(data)
 	item.quantity = quantity if quantity >= 0 else GetStackSize(data)
+	if data is TorchData:
+		item.charges = data.burn_seconds   # a fresh torch has its whole burn ahead of it
 	return item
 
 # Stackable resources put their whole quantity in one slot; anything else is
@@ -197,6 +199,21 @@ func AddItem(data: InventoryData) -> int:
 		added += 1
 
 	return added
+
+# True if the backpack holds at least one item made from this resource (a key
+# for a lock, say). Matched by resource path too, since a loaded save rebuilds its
+# items from their .tres files.
+func HasItem(data: InventoryData) -> bool:
+	if data == null or inventoryInstance == null:
+		return false
+	for slot in inventoryInstance.inventory:
+		var held := slot.GetData()
+		if held == null or held._resourceData == null or held._resourceData.isBlank:
+			continue
+		if held._resourceData == data \
+				or (data.resource_path != "" and held._resourceData.resource_path == data.resource_path):
+			return true
+	return false
 
 func CreateEquipmentForSlotType(slotRequirement: int) -> InventoryData:
 	var matchingItems: Array[InventoryData] = []

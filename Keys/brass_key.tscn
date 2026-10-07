@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Keys/item_pickup.gd" id="1_pickup"]
+[ext_resource type="Resource" path="res://Keys/brass_key.tres" id="2_item"]
+[ext_resource type="PackedScene" path="res://Keys/brass_key.fbx" id="3_model"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_key"]
+size = Vector3(0.6, 0.2, 0.3)
+
+[node name="Brass_Key" type="StaticBody3D" groups=["interactable"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_pickup")
+item = ExtResource("2_item")
+
+[node name="Model" parent="." instance=ExtResource("3_model")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0087, -0.038, 0.0162)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_key")

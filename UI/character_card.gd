@@ -48,6 +48,7 @@ var _flash_mat: ShaderMaterial = null
 var _restoring: bool = false
 
 func _ready() -> void:
+	add_to_group(GROUP)
 	_setup_equipment_slots()
 	_atr_label.mouse_filter = Control.MOUSE_FILTER_STOP
 	_atr_label.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -135,6 +136,52 @@ func _on_slot_changed(slot_key: String, slot: InventoryContainer) -> void:
 	if _restoring or not _character or not slot:
 		return
 	_character.set_equipment_slot(slot_key, EquipmentSerializer.item_to_dict(slot.GetData()))
+
+#region Hands
+const GROUP := "character_cards"
+
+## The cards of the heroes in the party, top of the HUD first.
+static func party_cards(tree: SceneTree) -> Array[CharacterCard]:
+	var cards: Array[CharacterCard] = []
+	for node in tree.get_nodes_in_group(GROUP):
+		var card := node as CharacterCard
+		if card and card._character:
+			cards.append(card)
+	return cards
+
+## This hero's hand slots, primary first.
+func hand_slots() -> Array[InventoryContainer]:
+	var hands: Array[InventoryContainer] = []
+	for key in ["primary", "secondary"]:
+		if _slots.has(key):
+			hands.append(_slots[key])
+	return hands
+
+## An empty hand that can take a one-handed item, or null. A hand left empty by a
+## two-handed weapon in the other one is not free.
+func free_hand() -> InventoryContainer:
+	var hands := hand_slots()
+	for hand in hands:
+		if not hand.IsBlank():
+			continue
+		var busy := false
+		for other in hands:
+			if other != hand and other.GetData()._resourceData.thisSlotRequires == Requires.WEAPON_2H:
+				busy = true
+		if not busy:
+			return hand
+	return null
+
+## Put a one-handed item in the first empty hand in the party, top hero first.
+## Returns the card of the hero who took it, or null if every hand is full.
+static func hold_in_free_hand(tree: SceneTree, item: InventoryItem) -> CharacterCard:
+	for card in party_cards(tree):
+		var hand := card.free_hand()
+		if hand:
+			hand.SetData(item)
+			return card
+	return null
+#endregion
 
 #region Character sheet
 # The points readout (Skill Points / Attribute Points) lights up gold while this

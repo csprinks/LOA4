@@ -192,6 +192,15 @@ static func default_catalog() -> TileCatalog:
 		{ "target": "edge:3", "property": "target_door", "many": false },
 	]
 	cat.tiles.append(wall_lock)
+	# What a Wall Lock asks for: lies on the floor until the party picks it up.
+	cat.tiles.append(_mk_obj(&"brass_key", "Brass Key", Color(0.90, 0.75, 0.30),
+		"res://Keys/brass_key.tscn", 0.0))
+	# A lit torch the party can lift out of its bracket and carry (see WallTorch).
+	var wall_torch := _mk_obj(&"wall_torch", "Wall Torch", Color(1.0, 0.60, 0.25),
+		"res://Wall_Torch/wall_torch.tscn", 1.5)
+	wall_torch.wall_mounted = true
+	wall_torch.facing_offset = 180   # the bracket's back is at z = 0 and it reaches toward +Z
+	cat.tiles.append(wall_torch)
 	var encounter := _mk_obj(&"encounter", "Monster Encounter", Color(0.85, 0.20, 0.25),
 		"res://Combat/encounter_trigger.tscn", 1.0)
 	encounter.params = [

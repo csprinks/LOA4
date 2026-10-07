@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TorchData" format=3]
+
+[ext_resource type="Script" path="res://Inventory/Code/Data/torch_data.gd" id="1_data"]
+[ext_resource type="Texture2D" path="res://Wall_Torch/torch_icon.png" id="2_icon"]
+[ext_resource type="Resource" path="res://Wall_Torch/torch_burnt.tres" id="3_burnt"]
+
+[resource]
+script = ExtResource("1_data")
+burnt_out = ExtResource("3_burnt")
+itemName = "Torch"
+description = "A rusty iron torch. Carry it in a hand to light the way, for as long as it burns."
+icon = ExtResource("2_icon")
+randomizeAttributes = false
+thisSlotRequires = 11
+itemType = 8
+isBlank = false
