@@ -2,8 +2,10 @@ class_name CharacterSheet
 extends HBoxContainer
 
 ## One hero's character sheet, built in code: identity, vitals, attributes and
-## equipment on the left; the six attribute skill lines in the middle; the
-## selected skill's details and the buy / upgrade controls on the right.
+## equipment on the left; the six attributes' skill lattices (two crossing paths
+## each) in the middle; the selected skill's details and the buy / upgrade
+## controls on the right. Skills cost Skill Points; the "+" beside an attribute
+## spends an Attribute Point on a raw +1.
 ##
 ## Doubles as character creation (creation_mode: portrait, name and title are
 ## editable and every change is written straight to the Character) and as the
@@ -32,7 +34,7 @@ var _undo: Array = []                # draft snapshots (SkillBook.to_dict), newe
 var _selected: SkillDefinition
 var _animate := false                # the refresh in progress follows a skill change
 var _shown_totals: Dictionary = {}   # attribute -> total last shown, to punch only what moved
-var _shown_points := -1
+var _shown_points := ""
 var _punches: Dictionary = {}        # Control -> its running punch Tween
 var _detail_fade: Tween
 
@@ -49,6 +51,7 @@ var _line_labels: Dictionary = {}    # attribute -> Label (skill line header tot
 var _raise_buttons: Dictionary = {}  # attribute -> Button (buy a raw +1)
 var _equip_labels: Dictionary = {}   # slot key -> Label
 var _nodes: Dictionary = {}          # skill id -> SkillNode
+var _lattices: Dictionary = {}       # attribute -> SkillLattice
 var _points_label: Label
 var _detail_text: VBoxContainer
 var _detail_name: Label
@@ -78,7 +81,7 @@ func bind(character: Character) -> void:
 	_draft = character.skills.duplicate_book()
 	_undo.clear()
 	_shown_totals.clear()
-	_shown_points = -1
+	_shown_points = ""
 	if _selected == null:
 		_selected = SkillTree.line(Character.STAT_NAMES[0])[0]
 	if is_node_ready():
@@ -214,7 +217,7 @@ func _build_tree_column() -> void:
 		raise.custom_minimum_size = Vector2(34, 34)
 		raise.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		raise.add_theme_font_size_override("font_size", 20)
-		raise.tooltip_text = "+1 %s  (%d ATR)" % [attribute, SkillTree.ATTRIBUTE_POINT_COST]
+		raise.tooltip_text = "+1 %s  (%d Attribute Point)" % [attribute, SkillTree.ATTRIBUTE_POINT_COST]
 		raise.pressed.connect(_on_raise_pressed.bind(attribute))
 		_raise_buttons[attribute] = raise
 		row.add_child(raise)
@@ -223,24 +226,16 @@ func _build_tree_column() -> void:
 		gap.custom_minimum_size = Vector2(14, 0)
 		row.add_child(gap)
 
-		for skill in SkillTree.line(attribute):
-			var cell := VBoxContainer.new()
-			cell.add_theme_constant_override("separation", 0)
-			cell.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-			row.add_child(cell)
-
-			var node := SkillNode.new(skill)
+		var lattice := SkillLattice.new(attribute)
+		lattice.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		_lattices[attribute] = lattice
+		row.add_child(lattice)
+		for skill in SkillTree.skills_of(attribute):
+			var node: SkillNode = lattice.nodes[skill.id]
 			node.pressed.connect(_select.bind(skill))
 			node.focus_entered.connect(_select.bind(skill))
 			node.activated.connect(_on_node_activated.bind(skill))
 			_nodes[skill.id] = node
-			cell.add_child(node)
-
-			var caption := _label(skill.display_name, 14, UIStyle.MUTED)
-			caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-			caption.custom_minimum_size = Vector2(SkillNode.NODE_SIZE.x, 0)
-			caption.clip_text = true
-			cell.add_child(caption)
 
 
 func _build_detail_column() -> void:
@@ -295,8 +290,12 @@ func _build_detail_column() -> void:
 
 
 #region Skill actions
-func _available_points() -> int:
-	return _character.attribute_points_earned - _draft.points_spent
+func _skill_points() -> int:
+	return _character.skill_points_earned - _draft.skill_points_spent
+
+
+func _attribute_points() -> int:
+	return _character.attribute_points_earned - _draft.attribute_points_spent
 
 
 func _select(skill: SkillDefinition) -> void:
@@ -321,7 +320,7 @@ func _advance_selected() -> void:
 	if _character == null or _selected == null:
 		return
 	var snapshot := _draft.to_dict()
-	if _draft.advance(_selected, _available_points()):
+	if _draft.advance(_selected, _skill_points()):
 		_undo.append(snapshot)
 		_draft_changed()
 		_punch(_action_button, 1.08)
@@ -334,7 +333,7 @@ func _on_raise_pressed(attribute: String) -> void:
 	if _character == null:
 		return
 	var snapshot := _draft.to_dict()
-	if _draft.buy_attribute(attribute, _available_points()):
+	if _draft.buy_attribute(attribute, _attribute_points()):
 		_undo.append(snapshot)
 		_draft_changed()
 		_punch(_raise_buttons[attribute], 1.25)
@@ -424,14 +423,15 @@ func _refresh_identity() -> void:
 
 
 func _refresh_tree() -> void:
-	var points := _available_points()
+	var skill_points := _skill_points()
+	var attribute_points := _attribute_points()
+	var readout := "Skill Points: %d        Attribute Points: %d" % [skill_points, attribute_points]
 	if _draft.free_picks_left > 0:
-		_points_label.text = "Free skills to choose: %d        Attribute Points: %d" % [_draft.free_picks_left, points]
-	else:
-		_points_label.text = "Attribute Points: %d" % points
-	if _animate and points != _shown_points:
-		_punch(_points_label, 1.15)
-	_shown_points = points
+		readout = "Free skills to choose: %d        %s" % [_draft.free_picks_left, readout]
+	_points_label.text = readout
+	if _animate and readout != _shown_points:
+		_punch(_points_label, 1.1)
+	_shown_points = readout
 
 	for attribute in Character.STAT_NAMES:
 		var stat := _character.get_stat(attribute)
@@ -445,21 +445,21 @@ func _refresh_tree() -> void:
 			_punch(_stat_labels[attribute], 1.5)
 			_punch(_line_labels[attribute], 1.2)
 		_shown_totals[attribute] = total
-		_raise_buttons[attribute].disabled = not _draft.can_buy_attribute(points)
+		_raise_buttons[attribute].disabled = not _draft.can_buy_attribute(attribute_points)
 
-		var line := SkillTree.line(attribute)
-		for i in line.size():
-			var skill: SkillDefinition = line[i]
+		var owned := {}
+		for skill: SkillDefinition in SkillTree.skills_of(attribute):
 			var rank := _draft.rank_of(skill)
 			var state := SkillNode.State.LOCKED
 			if rank > 0:
 				state = SkillNode.State.OWNED
+				owned[skill.id] = true
 			elif _draft.is_reachable(skill):
 				state = SkillNode.State.AVAILABLE
-			var next_owned: bool = i + 1 < line.size() and _draft.rank_of(line[i + 1]) > 0
 			_nodes[skill.id].show_state(state, rank, skill == _selected,
-				rank != _character.skills.rank_of(skill), next_owned,
-					_draft.can_advance(skill, points), _animate)
+				rank != _character.skills.rank_of(skill),
+				_draft.can_advance(skill, skill_points), _animate)
+		_lattices[attribute].show_links(owned, _animate)
 
 	_undo_button.disabled = _undo.is_empty()
 	_respec_button.disabled = _draft.is_blank()
@@ -473,7 +473,7 @@ func _refresh_detail() -> void:
 	var cost := _draft.next_cost(skill)
 
 	_detail_name.text = skill.display_name
-	_detail_line.text = "%s  -  Tier %s" % [skill.attribute, SkillNode.ROMAN[skill.position - 1]]
+	_detail_line.text = "%s  -  Path %s, Tier %s" % [skill.attribute, SkillNode.ROMAN[skill.path - 1], SkillNode.ROMAN[skill.position - 1]]
 	_detail_description.text = skill.description
 	_detail_rank.text = "Rank %d / %d\n+%d %s per rank" % [rank, SkillTree.MAX_RANK, skill.position, skill.attribute]
 
@@ -485,13 +485,14 @@ func _refresh_detail() -> void:
 	elif cost < 0:
 		_action_button.text = "Locked"
 		_action_button.disabled = true
-		_detail_status.text = "Requires %s." % SkillTree.prerequisite(skill).display_name
+		_detail_status.text = "Requires %s." % " or ".join(
+			SkillTree.prerequisites(skill).map(func(s): return s.display_name))
 	else:
 		var verb := "Upgrade to Rank %d" % (rank + 1) if rank > 0 else "Learn"
-		_action_button.text = "%s  (%s)" % [verb, "Free" if cost == 0 else "%d ATR" % cost]
-		if cost > _available_points():
+		_action_button.text = "%s  (%s)" % [verb, "Free" if cost == 0 else "%d SP" % cost]
+		if cost > _skill_points():
 			_action_button.disabled = true
-			_detail_status.text = "Not enough Attribute Points."
+			_detail_status.text = "Not enough Skill Points."
 #endregion
 
 

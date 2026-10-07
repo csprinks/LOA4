@@ -45,14 +45,19 @@ var title: String = ""
 # with Attribute Points; each rank raises the stat of the skill's line.
 var skills: SkillBook
 
-# Attribute Points buy skills, skill ranks and raw attribute points: a hero
-# starts with a few and earns more every level. Only the lifetime total is stored; what is left to spend is
-# that minus whatever the SkillBook has sunk, so a respec refunds everything.
-const STARTING_ATTRIBUTE_POINTS := 5
+# Two currencies, both earned every level (level 1 included, so a new hero
+# starts with one level's worth): Skill Points buy skills and their ranks,
+# Attribute Points buy raw +1s to the stats. Only the lifetime totals are stored;
+# what is left to spend is that minus whatever the SkillBook has sunk, so a
+# respec refunds everything.
+const SKILL_POINTS_PER_LEVEL := 5
 const ATTRIBUTE_POINTS_PER_LEVEL := 5
-var attribute_points_earned: int = STARTING_ATTRIBUTE_POINTS
+var skill_points_earned: int = SKILL_POINTS_PER_LEVEL
+var attribute_points_earned: int = ATTRIBUTE_POINTS_PER_LEVEL
+var available_skill_points: int:
+	get: return skill_points_earned - skills.skill_points_spent
 var available_attribute_points: int:
-	get: return attribute_points_earned - skills.points_spent
+	get: return attribute_points_earned - skills.attribute_points_spent
 
 var stats: Dictionary = {}
 
@@ -93,6 +98,7 @@ func reward_xp(amount: int) -> void:
 	level_system.add_xp(amount)
 
 func _on_level_up(old_level: int, new_level: int) -> void:
+	skill_points_earned += (new_level - old_level) * SKILL_POINTS_PER_LEVEL
 	attribute_points_earned += (new_level - old_level) * ATTRIBUTE_POINTS_PER_LEVEL
 	# Higher level => higher max HP; grant the gained HP so leveling heals.
 	refresh_max_hp("delta")
@@ -205,6 +211,7 @@ func to_dict() -> Dictionary:
 		"equipment": equipment,
 
 		"title": title,
+		"skill_points_earned": skill_points_earned,
 		"attribute_points_earned": attribute_points_earned,
 		"skills": skills.to_dict(),
 		"stats": _stats_to_dict()
@@ -244,10 +251,15 @@ func from_dict(data: Dictionary) -> void:
 		equipment[slot] = equip_data.get(slot, {}) if typeof(equip_data) == TYPE_DICTIONARY else {}
 
 	title = data.get("title", "")
-	# A save from before the skill tree has neither key: the hero then loads with
-	# no skills and the full pool their level has earned.
-	attribute_points_earned = int(data.get("attribute_points_earned",
-		STARTING_ATTRIBUTE_POINTS + ATTRIBUTE_POINTS_PER_LEVEL * (level_system.current_level - 1)))
+	# A save from before the pools were split (or before the skill tree) has no
+	# skill_points_earned: both pools are then what the hero's level has earned.
+	var level: int = level_system.current_level
+	if data.has("skill_points_earned"):
+		skill_points_earned = int(data["skill_points_earned"])
+		attribute_points_earned = int(data.get("attribute_points_earned", ATTRIBUTE_POINTS_PER_LEVEL * level))
+	else:
+		skill_points_earned = SKILL_POINTS_PER_LEVEL * level
+		attribute_points_earned = ATTRIBUTE_POINTS_PER_LEVEL * level
 	var skill_data = data.get("skills", {})
 	skills.from_dict(skill_data if typeof(skill_data) == TYPE_DICTIONARY else {})
 

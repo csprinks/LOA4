@@ -80,7 +80,7 @@ func _refresh_roster() -> void:
 		var owed: int = hero.skills.free_picks_left
 		var status := "Choose %d free skill%s" % [owed, "" if owed == 1 else "s"]
 		if owed == 0:
-			status = "Ready  (%d ATR unspent)" % hero.available_attribute_points
+			status = "Ready  (%d SP, %d ATR unspent)" % [hero.available_skill_points, hero.available_attribute_points]
 		else:
 			all_ready = false
 		button.text = "%s\n%s" % [_display_name(i), status]

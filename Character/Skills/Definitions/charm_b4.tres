@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Character/Skills/skill_definition.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+id = "charm_b4"
+display_name = "Command"
+description = "Give an order an enemy cannot help but follow."
+attribute = "Charm"
+path = 2
+position = 4

@@ -137,14 +137,16 @@ func _on_slot_changed(slot_key: String, slot: InventoryContainer) -> void:
 	_character.set_equipment_slot(slot_key, EquipmentSerializer.item_to_dict(slot.GetData()))
 
 #region Character sheet
-# The ATR readout lights up gold while this hero has skills to pick or Attribute
-# Points to spend. It and the portrait both open the character sheet.
+# The points readout (Skill Points / Attribute Points) lights up gold while this
+# hero has skills to pick or points to spend. It and the portrait both open the
+# character sheet.
 func _refresh_atr() -> void:
-	var points: int = _character.available_attribute_points
-	var spendable := points > 0 or _character.skills.free_picks_left > 0
-	_atr_label.text = ("ATR %d +" if spendable else "ATR %d") % points
+	var skill_points: int = _character.available_skill_points
+	var attribute_points: int = _character.available_attribute_points
+	var spendable := skill_points > 0 or attribute_points > 0 or _character.skills.free_picks_left > 0
+	_atr_label.text = "SP %d  ATR %d" % [skill_points, attribute_points] + (" +" if spendable else "")
 	_atr_label.add_theme_color_override("font_color", UIStyle.GOLD_BRIGHT if spendable else UIStyle.MUTED)
-	_atr_label.tooltip_text = "Spend Attribute Points" if spendable else "Character sheet (C)"
+	_atr_label.tooltip_text = "Spend Skill and Attribute Points" if spendable else "Character sheet (C)"
 
 func _on_sheet_click(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
