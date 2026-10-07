@@ -94,9 +94,7 @@ static func _add_environment(root: Node3D, data: GridLevelData) -> void:
 	var env := Environment.new()
 	env.background_mode = Environment.BG_COLOR
 	env.background_color = Color(0.08, 0.08, 0.1)
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color(0.5, 0.5, 0.55)
-	env.ambient_light_energy = 0.6
+	LevelAtmosphere.apply(env, false)
 	we.environment = env
 	# A floor with a sky swaps the dark backdrop for it when the level loads.
 	if LevelSky.is_enabled(data.sky):

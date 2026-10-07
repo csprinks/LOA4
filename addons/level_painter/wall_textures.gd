@@ -3,7 +3,8 @@ class_name WallTextures
 extends RefCounted
 
 ## The textures walls can be painted with: one folder each under DIR, holding
-## Color / NormalGL / Roughness (and optionally Metalness) maps plus a preview.
+## Color / NormalGL / Roughness (and optionally Metalness, AmbientOcclusion,
+## Displacement and Emission) maps plus a preview.
 ## A wall stores only the folder name (the Wall tile's "wall_texture" param);
 ## this turns the name into a shared material, a palette swatch, or a map colour.
 
@@ -14,10 +15,48 @@ const PARAM := "wall_texture"
 ## from the image's shape: several brick sets are 2:1 images, which cover 2 x 1
 ## units rather than being stretched over a square.
 const TILE_SIZE := 2.0
+## Trim (baseboards, cornices, beams) wears its wall's texture this much darker,
+## so the course reads as separate stonework.
+const TRIM_TINT := Color(0.62, 0.6, 0.58)
+const SURFACE_SHADER := preload("res://addons/level_painter/blocks/dungeon_surface.gdshader")
+## Map file name -> the shader parameter it feeds. AmbientOcclusion and
+## Displacement are worth adding to a set: without them the shader guesses the
+## crevices from the colour map and leaves the surface flat.
+const OPTIONAL_MAPS := {
+	"NormalGL": "normal_map",
+	"Roughness": "roughness_map",
+	"Metalness": "metalness_map",
+	"AmbientOcclusion": "ao_map",
+	"Displacement": "height_map",
+	"Emission": "emission_map",
+}
 
 static var _names: PackedStringArray = []
 static var _materials: Dictionary = {}
 static var _colors: Dictionary = {}
+static var _wear_map: ImageTexture
+static var _wear_grid := Vector2.ONE
+
+## Show the wear painted on `data` (the level now on screen): one texel per cell,
+## read by every painted surface. Null, or a level with no wear painted, leaves
+## everything at normal wear.
+static func set_level_wear(data: GridLevelData) -> void:
+	_wear_map = null
+	if data != null and not data.wear.is_empty():
+		var image := Image.create(data.width, data.height, false, Image.FORMAT_R8)
+		image.fill(Color(0.5, 0.0, 0.0))
+		for cell: Vector2i in data.wear:
+			if data.in_bounds(cell.x, cell.y):
+				image.set_pixel(cell.x, cell.y, Color(float(data.wear[cell]) * 0.5, 0.0, 0.0))
+		_wear_map = ImageTexture.create_from_image(image)
+		_wear_grid = Vector2(data.width, data.height)
+	for m: ShaderMaterial in _materials.values():
+		_apply_wear(m)
+
+static func _apply_wear(m: ShaderMaterial) -> void:
+	m.set_shader_parameter("has_wear_map", _wear_map != null)
+	m.set_shader_parameter("wear_map", _wear_map)
+	m.set_shader_parameter("wear_grid", _wear_grid)
 
 ## Every texture set available, sorted by name.
 static func names() -> PackedStringArray:
@@ -38,43 +77,44 @@ static func label(name: String) -> String:
 	return name if split == 0 or split == name.length() else name.substr(0, split) + " " + name.substr(split)
 
 ## The material for a texture set (shared between everything using it), or null
-## for "" / an unknown name. World-space triplanar, so neighbouring panels and
-## corner posts line up without any UV work. `flat` picks the variant for floors:
+## for "" / an unknown name. World-space triplanar (dungeon_surface.gdshader), so
+## neighbouring panels and corner posts line up without any UV work. `flat` picks
+## the variant for floors:
 ## a non-square image has to be laid along a different axis on a horizontal
-## surface than on an upright one to keep its proportions.
-static func material(name: String, flat: bool = false) -> StandardMaterial3D:
+## surface than on an upright one to keep its proportions. `trim` picks the
+## darker variant.
+static func material(name: String, flat: bool = false, trim: bool = false) -> ShaderMaterial:
 	if name == "":
 		return null
-	var key := name + ("|flat" if flat else "")
+	var key := name + ("|flat" if flat else "") + ("|trim" if trim else "")
 	if _materials.has(key):
 		return _materials[key]
 	var albedo := _map(name, "Color")
 	if albedo == null:
 		return null
-	var m := StandardMaterial3D.new()
-	m.albedo_texture = albedo
-	var normal := _map(name, "NormalGL")
-	if normal:
-		m.normal_enabled = true
-		m.normal_texture = normal
-	var roughness := _map(name, "Roughness")
-	if roughness:
-		m.roughness_texture = roughness
-		m.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_RED
-	var metalness := _map(name, "Metalness")
-	if metalness:
-		m.metallic = 1.0
-		m.metallic_texture = metalness
-	m.uv1_triplanar = true
-	m.uv1_world_triplanar = true
+	var m := ShaderMaterial.new()
+	m.shader = SURFACE_SHADER
+	m.set_shader_parameter("albedo_map", albedo)
+	# Maps a set doesn't have are left unset: the shader's defaults stand in for
+	# them (flat normal, fully rough, non-metal).
+	for map_name: String in OPTIONAL_MAPS:
+		var map := _map(name, map_name)
+		if map:
+			m.set_shader_parameter(OPTIONAL_MAPS[map_name], map)
+	m.set_shader_parameter("has_ao_map", _map(name, "AmbientOcclusion") != null)
+	m.set_shader_parameter("has_height_map", _map(name, "Displacement") != null)
+	m.set_shader_parameter("has_emission_map", _map(name, "Emission") != null)
 	# Triplanar reads (x, y) / (z, y) on upright faces and (x, z) on level ones.
 	# The image's V axis repeats `aspect` times as often as its U axis, so V is y
 	# for walls and z for floors.
 	var aspect := float(albedo.get_width()) / maxf(float(albedo.get_height()), 1.0)
 	var u := 1.0 / TILE_SIZE
-	m.uv1_scale = Vector3(u, u, u * aspect) if flat else Vector3(u, u * aspect, u)
-	# Floors are seen at a grazing angle; without this they smear into the distance.
-	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+	m.set_shader_parameter("uv_scale", Vector3(u, u, u * aspect) if flat else Vector3(u, u * aspect, u))
+	m.set_shader_parameter("wall_height", GridLevelBuilder.WALL_HEIGHT)
+	m.set_shader_parameter("cell_size", GridLevelData.CELL)
+	_apply_wear(m)
+	if trim:
+		m.set_shader_parameter("tint", TRIM_TINT)
 	_materials[key] = m
 	return m
 

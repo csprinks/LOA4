@@ -265,9 +265,6 @@ func _refresh_preview() -> void:
 		_env.background_mode = Environment.BG_COLOR
 		_env.background_color = Color(0.08, 0.08, 0.1)
 		_env.sky = null
-		_env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-		_env.ambient_light_color = Color(0.5, 0.5, 0.55)
-		_env.ambient_light_energy = 0.6
 		_sun.rotation = Vector3(deg_to_rad(-50), deg_to_rad(-30), 0)
 		_sun.light_color = Color.WHITE
 		_sun.light_energy = 1.0
@@ -276,6 +273,7 @@ func _refresh_preview() -> void:
 	else:
 		LevelSky.push(_material, _settings)
 		LevelSky.aim_sun(_sun, _settings)
+	LevelAtmosphere.apply(_env, on)
 	# Look a little to one side of the sun, so the disc and the lit clouds are in view.
 	var toward := LevelSky.sun_vector(_settings)
 	var heading := atan2(-toward.x, -toward.z) + deg_to_rad(28.0)

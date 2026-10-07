@@ -95,30 +95,143 @@ const WALL_HEIGHT := 3.0
 const CEILING_THICKNESS := 0.2
 const CEILING_COLOR := Color(0.30, 0.26, 0.22)
 
+## Beams hang under the ceiling along every BEAM_SPACING-th grid line, both ways,
+## so a room gets a coffered grid and a corridor a cross-beam every few steps.
+const BEAM_SPACING := 2
+const BEAM_WIDTH := 0.3
+const BEAM_DROP := 0.24
+
 ## One slab per roofed cell, resting on top of the walls. It casts shadow, so a
 ## roofed room is dark under a sky; nothing walks up there, so it has no collider.
+## A ceiling painted without a texture wears the level's commonest wall texture.
 static func _build_ceilings(data: GridLevelData, parent: Node, own: Node) -> void:
 	var plain := StandardMaterial3D.new()
 	plain.albedo_color = CEILING_COLOR
 	plain.roughness = 0.95
+	var fallback := _commonest_wall_texture(data)
 	for cell in data.ceilings:
-		if data.get_floor(cell.x, cell.y) == 0:
+		if not _is_roofed(data, cell.x, cell.y):
 			continue
 		var slab := CSGBox3D.new()
 		slab.name = "Ceiling_%d_%d" % [cell.x, cell.y]
 		slab.size = Vector3(CELL, CEILING_THICKNESS, CELL)
 		slab.material = plain
-		var texture := String(data.ceilings[cell])
+		var texture := _ceiling_texture(data, cell, fallback)
 		if texture != "":
 			slab.set_script(TEXTURED_WALL)
 			slab.set(WallTextures.PARAM, texture)
 		parent.add_child(slab)
 		slab.position = Vector3(cell.x * CELL, WALL_HEIGHT + CEILING_THICKNESS * 0.5, cell.y * CELL)
 		_own(slab, own)
+		# A beam on this cell's north / west grid line, where the roof carries on
+		# across it and no wall already stands there.
+		var y := WALL_HEIGHT - BEAM_DROP * 0.5
+		if cell.y % BEAM_SPACING == 0 and _is_roofed(data, cell.x, cell.y - 1) and data.get_edge_h(cell.x, cell.y) == 0:
+			_trim_box(parent, own, "Beam_H_%d_%d" % [cell.x, cell.y], Vector3(CELL, BEAM_DROP, BEAM_WIDTH),
+				Vector3(cell.x * CELL, y, (cell.y - 0.5) * CELL), texture, CEILING_COLOR)
+		if cell.x % BEAM_SPACING == 0 and _is_roofed(data, cell.x - 1, cell.y) and data.get_edge_v(cell.x, cell.y) == 0:
+			_trim_box(parent, own, "Beam_V_%d_%d" % [cell.x, cell.y], Vector3(BEAM_WIDTH, BEAM_DROP, CELL),
+				Vector3((cell.x - 0.5) * CELL, y, cell.y * CELL), texture, CEILING_COLOR)
+
+static func _is_roofed(data: GridLevelData, x: int, z: int) -> bool:
+	return data.ceilings.has(Vector2i(x, z)) and data.get_floor(x, z) != 0
+
+static func _ceiling_texture(data: GridLevelData, cell: Vector2i, fallback: String) -> String:
+	var texture := String(data.ceilings[cell])
+	return texture if texture != "" else fallback
+
+## The texture painted on the most wall edges of the level ("" if none is), the
+## alphabetically first on a tie.
+static func _commonest_wall_texture(data: GridLevelData) -> String:
+	var counts := {}
+	for z in data.height:
+		for ex in range(data.width + 1):
+			if data.get_edge_v(ex, z) != 0:
+				var texture := String(data.get_edge_params("V", ex, z).get(WallTextures.PARAM, ""))
+				counts[texture] = int(counts.get(texture, 0)) + 1
+	for ez in range(data.height + 1):
+		for x in data.width:
+			if data.get_edge_h(x, ez) != 0:
+				var texture := String(data.get_edge_params("H", x, ez).get(WallTextures.PARAM, ""))
+				counts[texture] = int(counts.get(texture, 0)) + 1
+	counts.erase("")
+	var names := counts.keys()
+	names.sort()
+	var best := ""
+	for texture: String in names:
+		if best == "" or counts[texture] > counts[best]:
+			best = texture
+	return best
+#endregion
+
+
+#region Trim (baseboards, cornices, beams)
+## How much darker trim is than the surface it runs along (plain-coloured trim;
+## textured trim is tinted by WallTextures).
+const TRIM_SHADE := 0.3
+
+## A decorative box: no collider, and its texture (if any) in the darker trim variant.
+static func _trim_box(parent: Node, own: Node, name: String, size: Vector3, pos: Vector3,
+		texture: String, col: Color) -> void:
+	var box := CSGBox3D.new()
+	box.name = name
+	box.size = size
+	var mat := StandardMaterial3D.new()
+	mat.albedo_color = col.darkened(TRIM_SHADE)
+	mat.roughness = 0.95
+	box.material = mat
+	if texture != "":
+		box.set_script(TEXTURED_WALL)
+		box.set(WallTextures.PARAM, texture)
+		box.set("trim", true)
+	parent.add_child(box)
+	box.position = pos
+	_own(box, own)
+
+const BASEBOARD_HEIGHT := 0.28
+const BASEBOARD_DEPTH := 0.05
+const CORNICE_HEIGHT := 0.2
+const CORNICE_DEPTH := 0.07
+const WALL_THICKNESS := 0.2
+
+## The courses that stand proud of the wall on edge (tag, a, b): a cornice along
+## its top and, on a solid wall (`baseboard`), a baseboard along its foot. Each is
+## one band wrapped round both faces. Where the edge ends at a corner the band
+## runs on past it, so the bands of the two walls close round the corner post.
+static func _build_wall_trim(data: GridLevelData, parent: Node, own: Node, tag: String, a: int, b: int,
+		pos: Vector3, texture: String, col: Color, baseboard: bool) -> void:
+	var along := Vector3(1, 0, 0) if tag == "H" else Vector3(0, 0, 1)
+	var across := Vector3(0, 0, 1) if tag == "H" else Vector3(1, 0, 0)
+	var start_corner: bool   # a wall crossing ours at its low-x / low-z end
+	var end_corner: bool
+	if tag == "H":
+		start_corner = _has_v_wall_at(data, a, b)
+		end_corner = _has_v_wall_at(data, a + 1, b)
+	else:
+		start_corner = _has_h_wall_at(data, a, b)
+		end_corner = _has_h_wall_at(data, a, b + 1)
+	var bands := [["Cornice", CORNICE_HEIGHT, CORNICE_DEPTH, WALL_HEIGHT - CORNICE_HEIGHT * 0.5]]
+	if baseboard:
+		bands.append(["Baseboard", BASEBOARD_HEIGHT, BASEBOARD_DEPTH, BASEBOARD_HEIGHT * 0.5])
+	for band in bands:
+		var reach: float = WALL_THICKNESS * 0.5 + band[2]   # how far the band stands from the wall's centre line
+		var before := reach if start_corner else 0.0
+		var after := reach if end_corner else 0.0
+		var size: Vector3 = along * (CELL + before + after) + across * (reach * 2.0) + Vector3.UP * band[1]
+		var at: Vector3 = pos + along * ((after - before) * 0.5) + Vector3.UP * band[3]
+		_trim_box(parent, own, "%s_%s_%d_%d" % [band[0], tag, a, b], size, at, texture, col)
+
+## Whether a wall running along Z / along X touches grid vertex (vx, vz).
+static func _has_v_wall_at(data: GridLevelData, vx: int, vz: int) -> bool:
+	return data.get_edge_v(vx, vz - 1) != 0 or data.get_edge_v(vx, vz) != 0
+
+static func _has_h_wall_at(data: GridLevelData, vx: int, vz: int) -> bool:
+	return data.get_edge_h(vx - 1, vz) != 0 or data.get_edge_h(vx, vz) != 0
 #endregion
 
 
 #region Edges (walls / doors)
+const WALL_ID := 1   ## the catalog's plain Wall edge tile
 static func _build_edges(data: GridLevelData, catalog: TileCatalog, parent: Node, own: Node) -> void:
 	# Vertical edges: run along Z, yaw 90°, at world X (ex - 0.5)*CELL.
 	for z in data.height:
@@ -178,6 +291,14 @@ static func _place_edge(data: GridLevelData, catalog: TileCatalog, parent: Node,
 		if WallTextures.PARAM in node:
 			node.set(WallTextures.PARAM, texture)
 	_own(node, own)
+	# Only the Wall tile itself is solid from floor to ceiling; doors keep their
+	# foot clear and get just the cornice, in the texture of the wall around them.
+	var is_wall := id == WALL_ID
+	var wall_tile := catalog.get_by_id(TileDef.Kind.EDGE, WALL_ID)
+	var trim_texture := String(data.get_edge_params(tag, a, b).get(WallTextures.PARAM, "")) if is_wall \
+		else _neighbour_wall_texture(data, tag, a, b)
+	_build_wall_trim(data, parent, own, tag, a, b, pos, trim_texture,
+		wall_tile.color if wall_tile else Color(0.35, 0.30, 0.25), is_wall)
 
 ## The texture for wall built over a doorway on edge (tag, a, b): one painted on
 ## the edge itself if any, else that of the wall continuing the same line on

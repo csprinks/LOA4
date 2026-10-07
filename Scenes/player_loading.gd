@@ -11,6 +11,11 @@ extends Node3D
 func _ready() -> void:
 	if not player_spawn:
 		player_spawn = find_child("PlayerSpawn", true, false)
+	# Children are ready by now, so a sky (level_sky_env.gd) is already in place.
+	LevelAtmosphere.apply_to_level(self)
+	LevelAmbience.apply_to_level(self)
+	# The wear painted on this level (a hand-made level has none).
+	WallTextures.set_level_wear(get_meta(LevelBuildPipeline.META_DATA, null) as GridLevelData)
 	# Defer so the whole tree is ready before we touch LevelManager.
 	call_deferred("_deferred_level_setup")
 

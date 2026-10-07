@@ -6,7 +6,7 @@ extends Control
 ##   MODULES  pick, create, play or delete a module, and choose which one a New
 ##            Game starts in.
 ##   EDITOR   paint a module's floors — floor, walls & doors, floor and wall
-##            textures, ceilings, objects, each floor's sky, the start point and the links between triggers and what
+##            textures, ceilings, wear, objects, each floor's sky, the start point and the links between triggers and what
 ##            they work — then Test Play it. "Back to Level Editor" (F10) returns here.
 ##
 ## It is a friendlier front end over the same core the editor dock uses
@@ -26,6 +26,9 @@ const LAYER_LINK := 4
 const LAYER_TEXTURE := 5
 const LAYER_FLOOR_TEXTURE := 6
 const LAYER_CEILING := 7
+const LAYER_WEAR := 8
+## The Wear layer's palette, in GridLevelData.Wear order.
+const WEAR_LABELS := ["Clean (no grime or damage)", "Normal", "Heavy (mossy, cracked, wet)"]
 
 # Layer buttons, two to a row: [canvas layer, button text, hint shown under them].
 const LAYERS := [
@@ -34,6 +37,7 @@ const LAYERS := [
 	[LAYER_FLOOR_TEXTURE, "Floor Textures", "Pick a texture, then click or drag over floor to paint it. Right-click puts floor back to plain. Pits can be textured too."],
 	[LAYER_TEXTURE, "Wall Textures", "Pick a texture, then click or drag along walls to paint them. Right-click puts a wall back to plain. Doors set in a wall take the texture too."],
 	[LAYER_CEILING, "Ceilings", "Pick a texture (or Plain), then click or drag over floor to roof it. Right-click opens it to the sky again. Roofed rooms are dark under a sky."],
+	[LAYER_WEAR, "Wear", "Pick Clean or Heavy, then click or drag over floor to mark it. Right-click puts it back to normal. It sets how grimy, mossy, cracked and wet the cell's floor, walls and ceiling look."],
 	[LAYER_OBJECT, "Objects", "Click a cell to place the chosen object. Click an object that is already there to select and edit it. A Pit Trap drops the party to another floor."],
 	[LAYER_SPAWN, "Start Point", "Click the cell where the party starts on this floor. Facing sets which way they look."],
 	[LAYER_LINK, "Links", "Drag from a lever, pressure plate, wall lock or lever puzzle onto the door or platform it works. Drag the same pair again to unlink; right-click clears."],
@@ -664,9 +668,12 @@ func _set_layer(layer: int) -> void:
 			_hint.text = row[2]
 	_tool_box.visible = layer == LAYER_FLOOR
 	var texturing := layer == LAYER_TEXTURE or layer == LAYER_FLOOR_TEXTURE or layer == LAYER_CEILING
-	_texture_box.visible = texturing
+	_texture_box.visible = texturing or layer == LAYER_WEAR
 	_ceiling_clear_button.visible = layer == LAYER_CEILING
 	match layer:
+		LAYER_WEAR:
+			_texture_all_button.text = "Set All Floor"
+			_texture_all_button.tooltip_text = "Give all the floor on this level the chosen wear."
 		LAYER_FLOOR_TEXTURE:
 			_texture_all_button.text = "Paint All Floor"
 			_texture_all_button.tooltip_text = "Give all the floor on this level the chosen texture."
@@ -677,13 +684,20 @@ func _set_layer(layer: int) -> void:
 			_texture_all_button.text = "Paint All Walls"
 			_texture_all_button.tooltip_text = "Give every wall on this floor the chosen texture."
 	_facing_box.visible = layer == LAYER_OBJECT or layer == LAYER_SPAWN
-	var has_palette := layer <= LAYER_OBJECT or texturing
+	var has_palette := layer <= LAYER_OBJECT or texturing or layer == LAYER_WEAR
 	_palette_label.visible = has_palette
 	_palette.visible = has_palette
 	_palette.clear()
 	_palette_tiles.clear()
 	_palette_textures.clear()
 	_palette.fixed_icon_size = Vector2i(44, 44)
+	if layer == LAYER_WEAR:
+		var swatches := [_canvas.WEAR_CLEAN_COLOR, Color(0.31, 0.28, 0.21), _canvas.WEAR_HEAVY_COLOR]
+		for level in WEAR_LABELS.size():
+			_palette.add_item(WEAR_LABELS[level], _swatch(swatches[level]))
+		_palette.select(_canvas.active_wear)
+		_canvas.queue_redraw()
+		return
 	if texturing:
 		_fill_texture_palette()
 		_canvas.queue_redraw()
@@ -730,6 +744,11 @@ func _fill_texture_palette() -> void:
 	_on_palette_selected(pick)
 
 func _on_texture_all() -> void:
+	if _canvas.active_layer == LAYER_WEAR:
+		var marked: int = _canvas.wear_all_floors(_canvas.active_wear)
+		_status.text = "Set the wear of %d floor cell%s." % [marked, "" if marked == 1 else "s"] if marked > 0 \
+			else "All the floor on this level already has that wear."
+		return
 	var texture := _active_texture()
 	var what := WallTextures.label(texture) if texture != "" else "plain"
 	if _canvas.active_layer == LAYER_CEILING:
@@ -752,6 +771,10 @@ func _on_clear_ceilings() -> void:
 		else "This floor has no ceilings."
 
 func _on_palette_selected(index: int) -> void:
+	if _canvas.active_layer == LAYER_WEAR:
+		if index >= 0 and index < WEAR_LABELS.size():
+			_canvas.active_wear = index
+		return
 	if _canvas.active_layer in [LAYER_TEXTURE, LAYER_FLOOR_TEXTURE, LAYER_CEILING]:
 		if index >= 0 and index < _palette_textures.size():
 			match _canvas.active_layer:

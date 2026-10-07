@@ -19,7 +19,7 @@ extends RefCounted
 ## Reads the previous build from disk, so save the built scene after wiring it.
 
 ## Root children the painter generates itself; anything else under the root is yours.
-const BUILDER_ROOT_NODES := ["Floors", "Walls", "Objects", "Arrivals", "PlayerSpawn", "Sun", "WorldEnvironment"]
+const BUILDER_ROOT_NODES := ["Floors", "Ceilings", "Walls", "Objects", "Arrivals", "PlayerSpawn", "Sun", "WorldEnvironment"]
 
 
 ## Copy links and extra root nodes from the scene at `old_path` (if there is one)

@@ -64,9 +64,16 @@ enum Facing { NORTH = 0, EAST = 1, SOUTH = 2, WEST = 3 }
 @export var floor_textures: Dictionary = {}
 
 ## Sparse ceilings (the Ceilings layer): Vector2i(x, z) -> the name of a
-## WallTextures set, or "" for a plain ceiling. A cell not listed is open to the
+## WallTextures set, or "" for one that takes the level's commonest wall texture. A cell not listed is open to the
 ## sky. Only floor can be roofed; erasing the floor removes its ceiling.
 @export var ceilings: Dictionary = {}
+
+## Sparse per-cell wear (the Wear layer): Vector2i(x, z) -> Wear.CLEAN or
+## Wear.HEAVY. A cell not listed is Wear.NORMAL. It scales the grime, moss, cracks
+## and puddles on the cell's floor, ceiling and the walls beside it (see
+## WallTextures.set_level_wear). Cleared when the cell's floor is erased.
+enum Wear { CLEAN, NORMAL, HEAVY }
+@export var wear: Dictionary = {}
 
 ## This floor's sky (see LevelSky): its settings, edited in the Level Editor's Sky
 ## panel. Empty, or "enabled": false, means no sky - an underground level.
@@ -119,6 +126,7 @@ func set_floor(x: int, z: int, id: int) -> void:
 		if id == 0:
 			floor_textures.erase(Vector2i(x, z))
 			ceilings.erase(Vector2i(x, z))
+			wear.erase(Vector2i(x, z))
 
 func get_floor_texture(x: int, z: int) -> String:
 	return floor_textures.get(Vector2i(x, z), "")
@@ -138,6 +146,18 @@ func set_ceiling(x: int, z: int, texture: String) -> void:
 
 func erase_ceiling(x: int, z: int) -> void:
 	ceilings.erase(Vector2i(x, z))
+
+func get_wear(x: int, z: int) -> int:
+	return wear.get(Vector2i(x, z), Wear.NORMAL)
+
+## Set how worn a cell is (a Wear value). Does nothing where there is no floor.
+func set_wear(x: int, z: int, level: int) -> void:
+	if get_floor(x, z) == 0:
+		return
+	if level == Wear.NORMAL:
+		wear.erase(Vector2i(x, z))
+	else:
+		wear[Vector2i(x, z)] = level
 
 ## Texture the floor at a cell ("" = back to plain). Does nothing where there is
 ## no floor.
@@ -360,6 +380,7 @@ func _reset_arrays() -> void:
 	objects = {}
 	floor_textures = {}
 	ceilings = {}
+	wear = {}
 	# `links` is left alone: resize() calls this and must keep them. A link whose
 	# end fell off the grid simply stops resolving (LevelPaintedLinks skips it).
 
@@ -378,6 +399,7 @@ func resize(new_w: int, new_h: int) -> void:
 	var old_objects := objects
 	var old_floor_textures := floor_textures
 	var old_ceilings := ceilings
+	var old_wear := wear
 
 	width = new_w
 	height = new_h
@@ -405,4 +427,7 @@ func resize(new_w: int, new_h: int) -> void:
 	for key in old_ceilings:
 		if key.x < new_w and key.y < new_h:
 			ceilings[key] = old_ceilings[key]
+	for key in old_wear:
+		if key.x < new_w and key.y < new_h:
+			wear[key] = old_wear[key]
 #endregion

@@ -27,6 +27,7 @@ const LAYER_LINK := 4    ## drag from a trigger (lever, plate, lock) onto what i
 const LAYER_TEXTURE := 5 ## paint a texture onto walls that are already there
 const LAYER_FLOOR_TEXTURE := 6 ## paint a texture onto floor that is already there
 const LAYER_CEILING := 7 ## roof cells of floor, plain or textured
+const LAYER_WEAR := 8    ## mark cells as clean or heavily worn
 
 const LINK_COLOR := Color(0.35, 0.95, 1.0)
 const BLUEPRINT_COLOR := Color(0.35, 0.70, 1.0)
@@ -37,7 +38,9 @@ const TOOL_RECT := 1    ## drag a rectangle of floor
 const TOOL_ROOM := 2    ## drag a rectangle of floor and wall its outline
 const TOOL_FILL := 3    ## flood-fill floor up to walls / other floor types
 
-const EDGE_HIT := 0.34   ## how close (in cells) to a line counts as "on the edge"
+const WEAR_CLEAN_COLOR := Color(0.62, 0.78, 0.88)   ## how the Wear layer draws a clean cell
+const WEAR_HEAVY_COLOR := Color(0.36, 0.44, 0.2)    ## ... and a heavily worn one
+const EDGE_HIT := 0.34  ## how close (in cells) to a line counts as "on the edge"
 const MIN_ZOOM := 8.0
 const MAX_ZOOM := 96.0
 
@@ -55,6 +58,7 @@ var active_facing := 0
 var active_texture := ""  ## WallTextures name the Wall Textures layer paints ("" = plain)
 var active_floor_texture := ""  ## ... and the one the Floor Textures layer paints
 var active_ceiling_texture := ""  ## ... and the one new ceiling gets ("" = plain)
+var active_wear: int = GridLevelData.Wear.HEAVY  ## what the Wear layer paints
 var tool := TOOL_BRUSH    ## shape tool; only applies on the FLOOR layer
 var force_erase := false  ## when true, left-click erases too (Erase toggle in the dock)
 ## When true, clicking a cell that already holds an object SELECTS it instead of
@@ -435,6 +439,8 @@ func _apply_at(pos: Vector2, erase: bool) -> void:
 						data.erase_ceiling(x, z)
 					else:
 						data.set_ceiling(x, z, active_ceiling_texture)
+				LAYER_WEAR:
+					data.set_wear(x, z, GridLevelData.Wear.NORMAL if erase else active_wear)
 				LAYER_OBJECT:
 					if erase:
 						data.erase_object(x, z)
@@ -538,6 +544,24 @@ func ceiling_all_floors(texture: String) -> int:
 		emit_signal("changed")
 	return count
 
+## Set the wear of every floor cell to `level`, as one undoable step. Returns how
+## many cells changed.
+func wear_all_floors(level: int) -> int:
+	if data == null:
+		return 0
+	var before := _snapshot()
+	var count := 0
+	for z in data.height:
+		for x in data.width:
+			if data.get_floor(x, z) != 0 and data.get_wear(x, z) != level:
+				data.set_wear(x, z, level)
+				count += 1
+	if count > 0:
+		_push_undo(before, _snapshot())
+		queue_redraw()
+		emit_signal("changed")
+	return count
+
 ## Take every ceiling off the floor, as one undoable step. Returns how many went.
 func clear_ceilings() -> int:
 	if data == null or data.ceilings.is_empty():
@@ -565,6 +589,7 @@ func _snapshot() -> Dictionary:
 		"floors": data.floors.duplicate(),
 		"floor_textures": data.floor_textures.duplicate(),
 		"ceilings": data.ceilings.duplicate(),
+		"wear": data.wear.duplicate(),
 		"edges_v": data.edges_v.duplicate(),
 		"edges_h": data.edges_h.duplicate(),
 		"objects": data.objects.duplicate(true),
@@ -578,6 +603,7 @@ func _restore(s: Dictionary) -> void:
 	data.floors = s.floors.duplicate()
 	data.floor_textures = s.floor_textures.duplicate()
 	data.ceilings = s.ceilings.duplicate()
+	data.wear = s.wear.duplicate()
 	data.edges_v = s.edges_v.duplicate()
 	data.edges_h = s.edges_h.duplicate()
 	data.objects = s.objects.duplicate(true)
@@ -598,7 +624,7 @@ func _push_undo(before: Dictionary, after: Dictionary) -> void:
 	_redo.clear()
 
 func _snapshots_equal(a: Dictionary, b: Dictionary) -> bool:
-	return a.floors == b.floors and a.floor_textures == b.floor_textures and a.ceilings == b.ceilings and a.edges_v == b.edges_v and a.edges_h == b.edges_h \
+	return a.floors == b.floors and a.floor_textures == b.floor_textures and a.ceilings == b.ceilings and a.wear == b.wear and a.edges_v == b.edges_v and a.edges_h == b.edges_h \
 		and a.objects == b.objects and a.links == b.links and a.edge_params == b.edge_params \
 		and a.spawn_cell == b.spawn_cell and a.spawn_facing == b.spawn_facing
 
@@ -666,6 +692,12 @@ func _draw_floors() -> void:
 					col = WallTextures.color(roof) if roof != "" else Color(0.47, 0.42, 0.37)
 				else:
 					col = (def.color if def else Color(0.6, 0.55, 0.42)).darkened(0.6)
+			# The Wear layer shows only the marked cells in colour.
+			if active_layer == LAYER_WEAR:
+				match data.get_wear(x, z):
+					GridLevelData.Wear.CLEAN: col = WEAR_CLEAN_COLOR
+					GridLevelData.Wear.HEAVY: col = WEAR_HEAVY_COLOR
+					_: col = (def.color if def else Color(0.6, 0.55, 0.42)).darkened(0.5)
 			var tl := _screen_from_grid(Vector2(x, z))
 			draw_rect(Rect2(tl, Vector2(zoom, zoom)), col)
 			# On the other layers a roofed cell just carries a small corner tab.
@@ -886,6 +918,10 @@ func _floor_texture_note() -> String:
 			return "  -  open to the sky"
 		var roof := data.get_ceiling(_hover.a, _hover.b)
 		return "  -  ceiling: " + (WallTextures.label(roof) if roof != "" else "plain")
+	if active_layer == LAYER_WEAR:
+		if data.get_floor(_hover.a, _hover.b) == 0:
+			return "  -  no floor here to mark"
+		return "  -  wear: " + ["clean", "normal", "heavy"][data.get_wear(_hover.a, _hover.b)]
 	if active_layer != LAYER_FLOOR_TEXTURE:
 		return ""
 	if data.get_floor(_hover.a, _hover.b) == 0:
