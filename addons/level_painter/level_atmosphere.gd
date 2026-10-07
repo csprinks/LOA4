@@ -11,16 +11,23 @@ extends RefCounted
 ## Ambient light of a level with no sky: just enough to find the walls by.
 const INDOOR_AMBIENT_COLOR := Color(0.45, 0.48, 0.6)
 const INDOOR_AMBIENT_ENERGY := 0.38
+## How much of the sky's own light fills a level that has one. Ambient light is not
+## stopped by ceilings, so at full strength roofed rooms come out as flat as the
+## open ground; the sun still lights whatever it reaches.
+const SKY_AMBIENT_ENERGY := 0.45
 const INDOOR_FOG_COLOR := Color(0.05, 0.045, 0.05)
 const INDOOR_FOG_DENSITY := 0.018
 const SKY_FOG_DENSITY := 0.004
 
 ## Dress `env`. `has_sky` = the level has a painted sky (LevelSky), which owns the
-## background and the ambient light; without one the level is a dark interior.
+## background and the colour of the ambient light; without one the level is a
+## dark interior.
 static func apply(env: Environment, has_sky: bool) -> void:
 	if env == null:
 		return
-	if not has_sky:
+	if has_sky:
+		env.ambient_light_energy = SKY_AMBIENT_ENERGY
+	else:
 		env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 		env.ambient_light_color = INDOOR_AMBIENT_COLOR
 		env.ambient_light_energy = INDOOR_AMBIENT_ENERGY
