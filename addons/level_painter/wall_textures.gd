@@ -21,7 +21,8 @@ const TRIM_TINT := Color(0.62, 0.6, 0.58)
 const SURFACE_SHADER := preload("res://addons/level_painter/blocks/dungeon_surface.gdshader")
 ## Map file name -> the shader parameter it feeds. AmbientOcclusion and
 ## Displacement are worth adding to a set: without them the shader guesses the
-## crevices from the colour map and leaves the surface flat.
+## crevices from the colour map and leaves the surface flat. Add both or neither:
+## Displacement on its own marks a set as a smooth surface (see material()).
 const OPTIONAL_MAPS := {
 	"NormalGL": "normal_map",
 	"Roughness": "roughness_map",
@@ -101,8 +102,14 @@ static func material(name: String, flat: bool = false, trim: bool = false) -> Sh
 		var map := _map(name, map_name)
 		if map:
 			m.set_shader_parameter(OPTIONAL_MAPS[map_name], map)
-	m.set_shader_parameter("has_ao_map", _map(name, "AmbientOcclusion") != null)
-	m.set_shader_parameter("has_height_map", _map(name, "Displacement") != null)
+	# A set that ships Displacement but no AmbientOcclusion is a smooth surface
+	# (polished tile, sheet metal): its height map is a few hairs of tilt stretched
+	# over the full black-to-white range, and parallax from it warps the pattern.
+	var has_ao := _map(name, "AmbientOcclusion") != null
+	var has_height := _map(name, "Displacement") != null
+	m.set_shader_parameter("has_ao_map", has_ao)
+	m.set_shader_parameter("has_height_map", has_height and has_ao)
+	m.set_shader_parameter("smooth_surface", has_height and not has_ao)
 	m.set_shader_parameter("has_emission_map", _map(name, "Emission") != null)
 	# Triplanar reads (x, y) / (z, y) on upright faces and (x, z) on level ones.
 	# The image's V axis repeats `aspect` times as often as its U axis, so V is y

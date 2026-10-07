@@ -20,6 +20,9 @@ uniform sampler2D ao_map : hint_default_white, filter_linear_mipmap_anisotropic,
 uniform sampler2D height_map : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform bool has_ao_map = false;
 uniform bool has_height_map = false;
+// Polished tile, sheet metal and the like: no relief worth a parallax shift or
+// any occlusion, whatever pattern its colour map carries.
+uniform bool smooth_surface = false;
 
 // Repeats per world unit along x / y / z (WallTextures works it out from the image's shape).
 uniform vec3 uv_scale = vec3(0.5);
@@ -140,6 +143,8 @@ void fragment() {
 	float occlusion;
 	if (has_ao_map) {
 		occlusion = triplanar(ao_map, uv_x, uv_y, uv_z, weights).r;
+	} else if (smooth_surface) {
+		occlusion = 1.0;
 	} else {
 		// No AO map: whatever is darker than its blurred surroundings is a crevice.
 		vec3 blurred = textureLod(albedo_map, uv_x, 5.0).rgb * weights.x
